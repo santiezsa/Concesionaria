@@ -1,4 +1,4 @@
-"# Concesionaria" 🚗
+# Concesionaria 🚗
 
 Este proyecto es una aplicación en **C++** desarrollada en **Code::Blocks** para gestionar vehículos en una concesionaria. Permite registrar, modificar y eliminar datos, garantizando una administración eficiente.
 
