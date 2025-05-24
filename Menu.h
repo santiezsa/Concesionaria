@@ -1,16 +1,13 @@
-#ifndef MENU_H
-#define MENU_H
-
+#pragma once
 
 class Menu
 {
     public:
         Menu();
-        virtual ~Menu();
 
     protected:
 
     private:
 };
 
-#endif // MENU_H
+

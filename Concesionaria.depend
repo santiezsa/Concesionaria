@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1748098846 source:c:\0repos\concesionaria\main.cpp
+	<iostream>
+
+1748098854 source:c:\0repos\concesionaria\menu.cpp
+	"Menu.h"
+
+1748098846 c:\0repos\concesionaria\menu.h
+
+1748098867 source:c:\0repos\concesionaria\cliente.cpp
+	"Cliente.h"
+
+1748099456 c:\0repos\concesionaria\cliente.h
+	<string>
+	"Fecha.h"
+
+1748102390 c:\0repos\concesionaria\fecha.h
+	<string>
+
+1748102390 source:c:\0repos\concesionaria\fecha.cpp
+	"Fecha.h"
+
+1748101797 source:c:\0repos\concesionaria\persona.cpp
+	"Persona.h"
+	<cstring>
+
+1748101937 c:\0repos\concesionaria\persona.h
+	"Fecha.h"
+	"Direccion.h"
+
+1748102425 c:\0repos\concesionaria\direccion.h
+
+1748102304 source:c:\0repos\concesionaria\direccion.cpp
+	"Direccion.h"
+	<cstring>
+
