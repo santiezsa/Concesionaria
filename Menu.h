@@ -3,7 +3,8 @@
 class Menu
 {
     public:
-        Menu();
+        void mostrarPantallaPrincipal();
+        void mostrarMenuPrincipal();
 
     protected:
 
