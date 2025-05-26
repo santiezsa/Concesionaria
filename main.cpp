@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     Menu menu;
-    menu.mostrarPantallaPrincipal();
+    //menu.mostrarPantallaPrincipal();
+    menu.mostrarMenuPrincipal();
     return 0;
 }
