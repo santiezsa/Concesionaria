@@ -50,6 +50,8 @@
 		<Unit filename="Persona.h" />
 		<Unit filename="Vendedor.cpp" />
 		<Unit filename="Vendedor.h" />
+		<Unit filename="Venta.cpp" />
+		<Unit filename="Venta.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
