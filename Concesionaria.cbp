@@ -38,6 +38,10 @@
 		<Unit filename="ArchivoVendedor.h" />
 		<Unit filename="Auto.cpp" />
 		<Unit filename="Auto.h" />
+		<Unit filename="AutoNuevo.cpp" />
+		<Unit filename="AutoNuevo.h" />
+		<Unit filename="AutoUsado.cpp" />
+		<Unit filename="AutoUsado.h" />
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h" />
 		<Unit filename="Direccion.cpp" />
