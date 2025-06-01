@@ -53,52 +53,35 @@ void Menu::mostrarMenuPrincipal()
     int opcion;
     do
     {
-        mostrarLogo();
-        cout << "1 - Planes" << endl;
-        cout << "2 - Clientes" << endl;
-        cout << "3 - Vendedores" << endl;
-        cout << "4 - Ventas" << endl;
-        cout << "5 - Configuracion" << endl;
-        cout << "------------------------" << endl;
-        cout << "0 - Salir" << endl;
-
-        cout << "Ingrese una opcion: " << endl;
-        cin >> opcion;
-        /*while (opcion<0 || opcion>5)
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
         {
             system("cls");
             mostrarLogo();
-            cout << "Opcion incorrecta. " << endl;
-            system("pause");
-            system("cls");
-        }*/
+            cout << "1 - Planes" << endl;
+            cout << "2 - Clientes" << endl;
+            cout << "3 - Vendedores" << endl;
+            cout << "4 - Ventas" << endl;
+            cout << "5 - Configuracion" << endl;
+            cout << "------------------------" << endl;
+            cout << "0 - Salir" << endl;
 
-        /*if (opcion == 1)
-        {
-            mostrarMenuPlanes();
-        }
-        else
-        {
-            if (opcion == 2)
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcion;
+
+            if (cin.fail()) // Si la entrada es inválida
             {
-                mostrarMenuClientes();
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
             }
             else
             {
-                if (opcion == 3)
-                {
-                    mostrarMenuVendedores();
-                }
-                else
-                {
-                    system("cls");
-                    mostrarLogo();
-                    cout << "Opcion incorrecta. " << endl;
-                    opcion = -1;
-                }
+                break; // Si la entrada es válida, salir del bucle
             }
-        }*/
-
+        }
 
         switch (opcion)
         {
@@ -138,10 +121,8 @@ void Menu::mostrarMenuPrincipal()
         default:            //VALIDAR QUE SEA SOLO NUMERO - - CAMBIAR SWITCH POR IF
             system("cls");
             mostrarLogo();
-            cout << "Opcion incorrecta. " << endl;
+            cout << "Entrada invalida. Intente nuevamente." << endl;
             system("pause");
-            system("cls");
-            cin.ignore();
             break;
         }
     }
@@ -163,15 +144,32 @@ void Menu::mostrarMenuPlanes()
     int opcionPlanes;
     do
     {
-        system("cls");
-        mostrarLogo();
-        cout << "1 - Cargar plan nuevo" << endl;
-        cout << "2 - Modificar plan existente" << endl;
-        cout << "3 - Buscar plan" << endl;
-        cout << "4 - Volver al menu anterior" << endl;
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Cargar plan nuevo" << endl;
+            cout << "2 - Modificar plan existente" << endl;
+            cout << "3 - Buscar plan" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
 
-        cout << "Ingrese una opcion: " << endl;
-        cin >> opcionPlanes;
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionPlanes;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
 
         switch(opcionPlanes)
         {
@@ -198,7 +196,7 @@ void Menu::mostrarMenuPlanes()
         default:            //VALIDAR QUE SEA SOLO NUMERO
             system("cls");
             mostrarLogo();
-            cout << "Opcion incorrecta. " << endl;
+            cout << "Entrada invalida. Intente nuevamente." << endl;
             system("pause");
             system("cls");
 
@@ -210,91 +208,132 @@ void Menu::mostrarMenuPlanes()
 void Menu::mostrarMenuClientes()
 {
     int opcionClientes;
-    system("cls");
-    mostrarLogo();
-    cout << "1 - Cargar cliente nuevo" << endl;
-    cout << "2 - Modificar cliente existente" << endl;
-    cout << "3 - Buscar cliente" << endl;
-    cout << "4 - Volver al menu anterior" << endl;
-
-    cout << "Ingrese una opcion: " << endl;
-    cin >> opcionClientes;
-
-    switch(opcionClientes)
+    do
     {
-    case 1:
-        //
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Cargar cliente nuevo" << endl;
+            cout << "2 - Modificar cliente existente" << endl;
+            cout << "3 - Buscar cliente" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
 
-        break;
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionClientes;
 
-    case 2:
-        //
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
 
-        break;
+        switch(opcionClientes)
+        {
+        case 1:
+            //
 
-    case 3:
-        //
+            break;
 
-        break;
+        case 2:
+            //
 
-    case 4:
-        //
+            break;
 
-        break;
+        case 3:
+            //
 
-    default:                //VALIDAR QUE SEA SOLO NUMERO
-        system("cls");
-        mostrarLogo();
-        cout << "Opcion incorrecta. " << endl;
-        system("pause");
-        system("cls");
+            break;
 
+        case 4:
+            //
+
+            break;
+
+        default:                //VALIDAR QUE SEA SOLO NUMERO
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+
+        }
     }
+    while (opcionClientes != 4);
 }
 
 void Menu::mostrarMenuVendedores()
 {
     int opcionVendedor;
-    system("cls");
-    mostrarLogo();
-    cout << "1 - Cargar vendedor nuevo" << endl;
-    cout << "2 - Modificar vendedor existente" << endl;
-    cout << "3 - Buscar vendedor" << endl;
-    cout << "4 - Volver al menu anterior" << endl;
-
-    cout << "Ingrese una opcion: " << endl;
-    cin >> opcionVendedor;
-
-    switch(opcionVendedor)
+    do
     {
-    case 1:
-        //
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Cargar vendedor nuevo" << endl;
+            cout << "2 - Modificar vendedor existente" << endl;
+            cout << "3 - Buscar vendedor" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
 
-        break;
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionVendedor;
 
-    case 2:
-        //
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
 
-        break;
+        switch(opcionVendedor)
+        {
+        case 1:
+            //
 
-    case 3:
-        //
+            break;
 
-        break;
+        case 2:
+            //
 
-    case 4:
-        //
+            break;
 
-        break;
+        case 3:
+            //
 
-    default:                //VALIDAR QUE SEA SOLO NUMERO
-        system("cls");
-        mostrarLogo();
-        cout << "Opcion incorrecta. " << endl;
-        system("pause");
-        system("cls");
+            break;
 
+        case 4:
+            //
+
+            break;
+
+        default:                //VALIDAR QUE SEA SOLO NUMERO
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+        }
     }
+    while (opcionVendedor != 4);
 }
 
 void Menu::mostrarMenuVentas()
