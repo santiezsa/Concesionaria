@@ -8,9 +8,7 @@ class Vendedor : public Persona
 public:
     Vendedor();
 
-    Vendedor(int idVendedor, const char* dni, const char* nombre, const char* apellido,
-             Direccion direccion, const char* numeroTelefono, const char* email,
-             Fecha fechaNacimiento, Fecha fechaDeIngreso);
+    Vendedor(int idVendedor, const char* dni, const char* nombre, const char* apellido, Direccion direccion, const char* numeroTelefono, const char* email, Fecha fechaNacimiento, Fecha fechaDeIngreso);
 
     /// Getters
     int getIdVendedor();
