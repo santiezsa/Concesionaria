@@ -120,3 +120,95 @@
 1748812069 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
 
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\vendedor.h
+	"Persona.h"
+	"Fecha.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\persona.h
+	"Fecha.h"
+	"Direccion.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\fecha.h
+	<string>
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\direccion.h
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\auto.cpp
+	"Auto.h"
+	<cstring>
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\auto.h
+	"Patente.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\patente.h
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\cliente.cpp
+	"Cliente.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\cliente.h
+	"Persona.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\direccion.cpp
+	"Direccion.h"
+	<cstring>
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\fecha.cpp
+	"Fecha.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\main.cpp
+	<iostream>
+	<string>
+	"Menu.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\menu.h
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\menu.cpp
+	<iostream>
+	<string>
+	"Menu.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\patente.cpp
+	"Patente.h"
+	<cstring>
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\persona.cpp
+	"Persona.h"
+	<cstring>
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\vendedor.cpp
+	"Vendedor.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\venta.cpp
+	"Venta.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\venta.h
+	"Fecha.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\autonuevo.cpp
+	"AutoNuevo.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\autonuevo.h
+	"Auto.h"
+
+1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\autousado.cpp
+	"AutoUsado.h"
+
+1748901201 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\autousado.h
+	"Auto.h"
+
+1748904343 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivocliente.cpp
+	"ArchivoCliente.h"
+
+1748902582 c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivocliente.h
+	<cstring>
+	"Cliente.h"
+
+1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
+
