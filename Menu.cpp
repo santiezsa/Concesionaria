@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Menu.h"
+#include <limits>
+
 using namespace std;
 
 void Menu::mostrarPantallaPrincipal()
@@ -64,41 +66,21 @@ void Menu::mostrarMenuPrincipal()
 
         cout << "Ingrese una opcion: " << endl;
         cin >> opcion;
-        /*while (opcion<0 || opcion>5)
+
+        /*
+
+        if (!(cin >> opcion))
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             mostrarLogo();
-            cout << "Opcion incorrecta. " << endl;
+            cout << "Entrada no válida. Por favor, ingrese un número." << endl;
             system("pause");
-            system("cls");
-        }*/
-
-        /*if (opcion == 1)
-        {
-            mostrarMenuPlanes();
+            continue;
         }
-        else
-        {
-            if (opcion == 2)
-            {
-                mostrarMenuClientes();
-            }
-            else
-            {
-                if (opcion == 3)
-                {
-                    mostrarMenuVendedores();
-                }
-                else
-                {
-                    system("cls");
-                    mostrarLogo();
-                    cout << "Opcion incorrecta. " << endl;
-                    opcion = -1;
-                }
-            }
-        }*/
 
+        */
 
         switch (opcion)
         {
@@ -140,12 +122,10 @@ void Menu::mostrarMenuPrincipal()
             mostrarLogo();
             cout << "Opcion incorrecta. " << endl;
             system("pause");
-            system("cls");
-            cin.ignore();
             break;
         }
     }
-    while (true);
+    while (opcion != 0);
 }
 
 void Menu::mostrarLogo()
