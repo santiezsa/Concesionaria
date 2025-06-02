@@ -120,3 +120,22 @@
 1748812069 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
 
+1748818887 source:c:\0repos\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+
+1748817421 c:\0repos\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1748820064 source:c:\0repos\concesionaria\autonuevo.cpp
+	"AutoNuevo.h"
+
+1748819985 c:\0repos\concesionaria\autonuevo.h
+	"Auto.h"
+
+1748820731 source:c:\0repos\concesionaria\autousado.cpp
+	"AutoUsado.h"
+
+1748820123 c:\0repos\concesionaria\autousado.h
+	"Auto.h"
+
