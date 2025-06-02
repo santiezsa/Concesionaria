@@ -120,6 +120,7 @@
 1748812069 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
 
+<<<<<<< HEAD
 1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 
@@ -212,3 +213,24 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
+=======
+1748818887 source:c:\0repos\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+
+1748817421 c:\0repos\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1748820064 source:c:\0repos\concesionaria\autonuevo.cpp
+	"AutoNuevo.h"
+
+1748819985 c:\0repos\concesionaria\autonuevo.h
+	"Auto.h"
+
+1748820731 source:c:\0repos\concesionaria\autousado.cpp
+	"AutoUsado.h"
+
+1748820123 c:\0repos\concesionaria\autousado.h
+	"Auto.h"
+
+>>>>>>> 465e874d67180f9fafe28ca8e109aa5188f96a09

@@ -58,6 +58,8 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="Pago.cpp" />
+		<Unit filename="Pago.h" />
 		<Unit filename="Patente.cpp" />
 		<Unit filename="Patente.h" />
 		<Unit filename="Persona.cpp" />
