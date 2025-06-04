@@ -4,17 +4,21 @@
 	<string>
 	"Menu.h"
 
-1748806554 source:c:\0repos\concesionaria\menu.cpp
+1749001622 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
 
 1748301980 c:\0repos\concesionaria\menu.h
 
-1748103573 source:c:\0repos\concesionaria\cliente.cpp
+1749001622 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
+	"ArchivoCliente.h"
+	<iostream>
 
-1748995514 c:\0repos\concesionaria\cliente.h
+1749001622 c:\0repos\concesionaria\cliente.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -78,10 +82,10 @@
 
 1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
-1748815999 source:c:\0repos\concesionaria\vendedor.cpp
+1749001622 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
 
-1748995514 c:\0repos\concesionaria\vendedor.h
+1749001622 c:\0repos\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -118,13 +122,15 @@
 	"Patente.h"
 	<cstring>
 
-1748812533 source:c:\0repos\concesionaria\venta.cpp
+1749001622 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
+	<iostream>
 
-1748812069 c:\0repos\concesionaria\venta.h
+1749001622 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
+	"Patente.h"
 
-1748812069 D
+1748820123 D
 
 1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
@@ -218,10 +224,10 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
-1748818887 source:c:\0repos\concesionaria\archivovendedor.cpp
+1749002020 source:c:\0repos\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 
-1748817421 c:\0repos\concesionaria\archivovendedor.h
+1749002038 c:\0repos\concesionaria\archivovendedor.h
 	<string>
 	"Vendedor.h"
 
@@ -237,8 +243,7 @@
 1748820123 c:\0repos\concesionaria\autousado.h
 	"Auto.h"
 
-<<<<<<< HEAD
-1748820123 e874d67180f9fafe28ca8e109aa5188f96a09
+1748995729 e874d67180f9fafe28ca8e109aa5188f96a09
 
 1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
 	"ArchivoAutoNuevo.h"
@@ -311,15 +316,54 @@
 
 1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
 
-=======
-<<<<<<< Updated upstream
->>>>>>> 465e874d67180f9fafe28ca8e109aa5188f96a09
-=======
+1748995729 ated upstream
+
 1748903763 source:c:\0repos\concesionaria\pago.cpp
 	"Pago.h"
 
 1748903214 c:\0repos\concesionaria\pago.h
 	"Fecha.h"
 
->>>>>>> Stashed changes
->>>>>>> 0e23441a02d841ba0c3873b9cc34ce7ced2b2491
+1748903214 shed changes
+
+1748903214 3441a02d841ba0c3873b9cc34ce7ced2b2491
+
+1749001622 source:c:\0repos\concesionaria\archivoautonuevo.cpp
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+
+1749001622 c:\0repos\concesionaria\archivoautonuevo.h
+	<string>
+	"AutoNuevo.h"
+
+1749001622 source:c:\0repos\concesionaria\archivoautousado.cpp
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+
+1749001622 c:\0repos\concesionaria\archivoautousado.h
+	<string>
+	"AutoUsado.h"
+
+1749001622 source:c:\0repos\concesionaria\archivocliente.cpp
+	"ArchivoCliente.h"
+
+1749001622 c:\0repos\concesionaria\archivocliente.h
+	<cstring>
+	"Cliente.h"
+
+1749001622 source:c:\0repos\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+
+1749001622 c:\0repos\concesionaria\concesionariamanager.h
+
