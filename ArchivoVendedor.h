@@ -5,6 +5,7 @@
 class ArchivoVendedor
 {
     public:
+        ArchivoVendedor();
         ArchivoVendedor(std::string nombreArchivo);
 
         bool Guardar(Vendedor vendedor);

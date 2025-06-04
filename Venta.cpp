@@ -11,14 +11,9 @@ Venta::Venta()
     _idCliente = 0;
     _idVendedor = 0;
 }
-<<<<<<< HEAD
+
 ///TODO: Agregar ID Cliente, numero de chasis
-Venta::Venta(int idVenta, float monto, Fecha fechaDePago, int idVendedor)
-=======
-
-
 Venta::Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor)
->>>>>>> 0e23441a02d841ba0c3873b9cc34ce7ced2b2491
 {
     setIdVenta(idVenta);
     setPatente(patente);
@@ -90,7 +85,6 @@ void Venta::setIdVendedor(int idVendedor)
 {
     _idVendedor = idVendedor;
 }
-<<<<<<< HEAD
 
 bool Venta::cargarPlanes()///Numero de chasis
 {
@@ -105,6 +99,3 @@ void Venta::mostrarPlanes()
 
 }
 
-
-=======
->>>>>>> 0e23441a02d841ba0c3873b9cc34ce7ced2b2491

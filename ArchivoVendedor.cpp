@@ -1,5 +1,10 @@
 #include "ArchivoVendedor.h"
 
+ArchivoVendedor::ArchivoVendedor()
+{
+    _nombreArchivo = "vendedor.dat";
+}
+
 ArchivoVendedor::ArchivoVendedor(std::string nombreArchivo)
 {
     _nombreArchivo = nombreArchivo;
