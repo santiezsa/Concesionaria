@@ -21,6 +21,9 @@ public:
     void setFechaDePago(Fecha fechaDePago);
     void setIdVendedor(int idVendedor);
 
+    bool cargarPlanes(); ///Auto duplicado
+    void mostrarPlanes();
+
 private:
     int _idVenta;
     float _monto;

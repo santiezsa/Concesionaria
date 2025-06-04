@@ -1,5 +1,11 @@
 #include "ArchivoCliente.h"
 
+
+ArchivoCliente::ArchivoCliente()
+{
+    _nombreArchivo = "clientes.dat";
+}
+
 ArchivoCliente::ArchivoCliente(std::string nombreArchivo)
 {
     _nombreArchivo = nombreArchivo;
@@ -94,4 +100,27 @@ void ArchivoCliente::Leer(int cantidadRegistros, Cliente *vector){
         fread(&vector[i], sizeof(Cliente), 1, pArchivo);
     }
     fclose(pArchivo);
+}
+
+/// Busca un cliente por su DNI y retorna la posición de su registro en el archivo
+int ArchivoCliente::Buscar(char* _dniCliente)
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if(pArchivo == NULL)
+    {
+        return -2;
+    }
+    Cliente cliente;
+    int i = 0;
+    while(fread(&cliente, sizeof(Cliente), 1, pArchivo))
+    {
+        if(strcmp(cliente.getDni(),_dniCliente)==0)
+        {
+            fclose(pArchivo);
+            return i;
+        }
+        i++;
+    }
+    fclose(pArchivo);
+    return -1;
 }

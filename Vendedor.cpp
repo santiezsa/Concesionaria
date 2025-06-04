@@ -34,3 +34,13 @@ void Vendedor::setFechaDeIngreso(Fecha fechaDeIngreso)
 {
     _fechaDeIngreso = fechaDeIngreso;
 }
+
+bool Vendedor::cargarVendedor()
+{
+
+}
+
+void Vendedor::mostrarVendedor()
+{
+
+}
