@@ -1,6 +1,6 @@
 #pragma once
 #include "Persona.h"
-#include "Fecha.h" // Se necesita porque Vendedor tiene un miembro Fecha
+#include "Fecha.h"
 
 class Vendedor : public Persona
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "Persona.h"
+#include "Fecha.h"
 
 
 class Cliente : public Persona
