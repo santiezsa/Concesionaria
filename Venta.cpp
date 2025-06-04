@@ -1,18 +1,24 @@
 #include "Venta.h"
 
+
 Venta::Venta()
 {
     _idVenta = 0;
+    _patente = Patente();
     _monto = 0.0f;
-    _fechaDePago = Fecha();
+    _fechaDeVenta = Fecha();
+    _idCliente = 0;
     _idVendedor = 0;
 }
 
-Venta::Venta(int idVenta, float monto, Fecha fechaDePago, int idVendedor)
+
+Venta::Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor)
 {
     setIdVenta(idVenta);
+    setPatente(patente);
     setMonto(monto);
-    setFechaDePago(fechaDePago);
+    setFechaDeVenta(fechaDeVenta);
+    setIdCliente(idCliente);
     setIdVendedor(idVendedor);
 }
 
@@ -22,14 +28,24 @@ int Venta::getIdVenta()
     return _idVenta;
 }
 
+Patente Venta::getPatente()
+{
+    return _patente;
+}
+
 float Venta::getMonto()
 {
     return _monto;
 }
 
-Fecha Venta::getFechaDePago()
+Fecha Venta::getFechaDeVenta()
 {
-    return _fechaDePago;
+    return _fechaDeVenta;
+}
+
+int Venta::getIdCliente()
+{
+    return _idCliente;
 }
 
 int Venta::getIdVendedor()
@@ -44,23 +60,27 @@ void Venta::setIdVenta(int idVenta)
     _idVenta = idVenta;
 }
 
+void Venta::setPatente(Patente patente)
+{
+    _patente = patente;
+}
+
 void Venta::setMonto(float monto)
 {
     _monto = monto;
 }
 
-void Venta::setFechaDePago(Fecha fechaDePago)
+void Venta::setFechaDeVenta(Fecha fechaDeVenta)
 {
-    _fechaDePago = fechaDePago;
+    _fechaDeVenta = fechaDeVenta;
+}
+
+void Venta::setIdCliente(int idCliente)
+{
+    _idCliente = idCliente;
 }
 
 void Venta::setIdVendedor(int idVendedor)
 {
     _idVendedor = idVendedor;
 }
-
-
-
-
-
-
