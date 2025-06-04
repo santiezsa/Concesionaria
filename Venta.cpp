@@ -1,4 +1,5 @@
 #include "Venta.h"
+#include <iostream>
 
 Venta::Venta()
 {
@@ -7,7 +8,7 @@ Venta::Venta()
     _fechaDePago = Fecha();
     _idVendedor = 0;
 }
-
+///TODO: Agregar ID Cliente, numero de chasis
 Venta::Venta(int idVenta, float monto, Fecha fechaDePago, int idVendedor)
 {
     setIdVenta(idVenta);
@@ -59,8 +60,17 @@ void Venta::setIdVendedor(int idVendedor)
     _idVendedor = idVendedor;
 }
 
+bool Venta::cargarPlanes()///Numero de chasis
+{
+    ///TODO: Ver como hacer el IDVENTA automatico e incremental
+//    cout << "Ingrese numero de chasis: " << endl;
+    //cin >>
 
+}
 
+void Venta::mostrarPlanes()
+{
 
+}
 
 

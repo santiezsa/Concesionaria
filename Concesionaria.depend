@@ -40,7 +40,7 @@
 1748114981 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
 	"Cliente.h"
 
-1748114981 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.h
+1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.h
 	"Persona.h"
 
 1748114981 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\persona.h
@@ -68,10 +68,12 @@
 	"Persona.h"
 	<cstring>
 
-1748795521 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+1749000967 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
 
 1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
@@ -95,11 +97,12 @@
 	"Patente.h"
 	<cstring>
 
-1748294554 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
+1748995729 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
 	"Vendedor.h"
 
-1748294554 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
+1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
 	"Persona.h"
+	"Fecha.h"
 
 1748209337 source:c:\0repos\concesionaria\auto.cpp
 	"Auto.h"
@@ -120,7 +123,8 @@
 1748812069 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
 
-<<<<<<< HEAD
+1748812069 D
+
 1748901201 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 
@@ -213,7 +217,6 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
-=======
 1748818887 source:c:\0repos\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 
@@ -233,4 +236,76 @@
 1748820123 c:\0repos\concesionaria\autousado.h
 	"Auto.h"
 
->>>>>>> 465e874d67180f9fafe28ca8e109aa5188f96a09
+1748820123 e874d67180f9fafe28ca8e109aa5188f96a09
+
+1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+
+1749001299 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.h
+	<string>
+	"AutoNuevo.h"
+
+1748987080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autonuevo.h
+	"Auto.h"
+
+1749000210 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.cpp
+	"ArchivoCliente.h"
+
+1749000298 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.h
+	<cstring>
+	"Cliente.h"
+
+1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+
+1748987080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autonuevo.cpp
+	"AutoNuevo.h"
+
+1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.cpp
+	"AutoUsado.h"
+
+1748987080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.h
+	"Auto.h"
+
+1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\pago.cpp
+	"Pago.h"
+
+1748987080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\pago.h
+	"Fecha.h"
+
+1749000370 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
+	"Venta.h"
+	<iostream>
+
+1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.h
+	"Fecha.h"
+
+1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.cpp
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+
+1749001299 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.h
+	<string>
+	"AutoUsado.h"
+
+1748995729 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+
+1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
+

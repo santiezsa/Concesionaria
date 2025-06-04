@@ -1,4 +1,11 @@
 #include "ArchivoAutoUsado.h"
+#include <string>
+#include <cstring>
+
+ArchivoAutoUsado::ArchivoAutoUsado()
+{
+    _nombreArchivo = "autousado.dat";
+}
 
 ArchivoAutoUsado::ArchivoAutoUsado(std::string nombreArchivo)
 {
@@ -35,7 +42,7 @@ bool ArchivoAutoUsado::Guardar(AutoUsado autoUsado, int posicion)
 
 
 /// Busca un Auto por su ID y retorna la posición de su registro en el archivo
-int ArchivoAutoUsado::Buscar(int idAutoUsado)/// IDAuto = NroChasis
+int ArchivoAutoUsado::Buscar(char idChasisAutoUsado[])/// IDAuto = NroChasis
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
     if(pArchivo == NULL)
@@ -46,7 +53,8 @@ int ArchivoAutoUsado::Buscar(int idAutoUsado)/// IDAuto = NroChasis
     int i = 0;
     while(fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
     {
-        if(autoUsado.getPatente().getNumeroChasis == idAutoUsado) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
+        if (strcmp(autoUsado.getPatente().getNumeroChasis(), idChasisAutoUsado) == 0)
+        //if(autoUsado.getPatente().getNumeroChasis == idAutoUsado) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
         {
             fclose(pArchivo);
             return i;

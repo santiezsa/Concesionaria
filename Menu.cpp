@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Menu.h"
+#include "ConcesionariaManager.h"
+#include "Cliente.h"
 using namespace std;
 
 void Menu::mostrarPantallaPrincipal()
@@ -131,12 +133,19 @@ void Menu::mostrarMenuPrincipal()
 
 void Menu::mostrarLogo()
 {
-    cout << "      _____         \t *****  *   *  *****  *****  *   *  *   *  *****" << endl;
-    cout << "  ___/__|__\\_____  \t |   |  |   |    |    |   |  |   |  |*  |  |   |" << endl;
-    cout << " |  _     1   _  `. \t *****  *   *    *    *   *  *   *  * * *  *   *" << endl;
-    cout << " '-(_)-------(_)-^  \t |   |  |   |    |    |   |  |   |  |  *|  |   |" << endl;
-    cout << "                    \t *   *  *****    *    *****  *****  *   *  *****" << endl;
+    cout << "                                                                     \t\t      ______________ " << endl;
+    cout << "      _____         \t *****  *   *  *****  *****  *   *  *   *  ***** \t     /              \\ " << endl;
+    cout << "  ___/__|__\\_____  \t |   |  |   |    |    |   |  |   |  |*  |  |   | \t    /                \\ " << endl;
+    cout << " |  _     1   _  `. \t *****  *   *    *    *   *  *   *  * * *  *   * \t __|__________________|__ " << endl;
+    cout << " '-(_)-------(_)-^  \t |   |  |   |    |    |   |  |   |  |  *|  |   | \t | _ |              | _ | " << endl;
+    cout << "                    \t *   *  *****    *    *****  *****  *   *  ***** \t |(_)|   |AUT001|   |(_)| " << endl;
+    cout << "                                                                     \t\t L___J==============L___J " << endl;
+    cout << "                                                                     \t\t  !_!                !_! " << endl;
+
     cout << endl;
+
+
+
 }
 
 void Menu::mostrarMenuPlanes()
@@ -193,7 +202,7 @@ void Menu::mostrarMenuPlanes()
 
             break;
 
-        default:            //VALIDAR QUE SEA SOLO NUMERO
+        default:
             system("cls");
             mostrarLogo();
             cout << "Entrada invalida. Intente nuevamente." << endl;
@@ -208,6 +217,7 @@ void Menu::mostrarMenuPlanes()
 void Menu::mostrarMenuClientes()
 {
     int opcionClientes;
+    Cliente cliente;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -240,7 +250,7 @@ void Menu::mostrarMenuClientes()
         switch(opcionClientes)
         {
         case 1:
-            //
+            cliente.cargarCliente();
 
             break;
 
@@ -259,7 +269,7 @@ void Menu::mostrarMenuClientes()
 
             break;
 
-        default:                //VALIDAR QUE SEA SOLO NUMERO
+        default:
             system("cls");
             mostrarLogo();
             cout << "Entrada invalida. Intente nuevamente." << endl;
@@ -325,7 +335,7 @@ void Menu::mostrarMenuVendedores()
 
             break;
 
-        default:                //VALIDAR QUE SEA SOLO NUMERO
+        default:
             system("cls");
             mostrarLogo();
             cout << "Entrada invalida. Intente nuevamente." << endl;

@@ -52,6 +52,8 @@
 		<Unit filename="AutoUsado.h" />
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h" />
+		<Unit filename="ConcesionariaManager.cpp" />
+		<Unit filename="ConcesionariaManager.h" />
 		<Unit filename="Direccion.cpp" />
 		<Unit filename="Direccion.h" />
 		<Unit filename="Fecha.cpp" />

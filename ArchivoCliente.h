@@ -5,6 +5,7 @@
 class ArchivoCliente
 {
     public:
+        ArchivoCliente();
         ArchivoCliente(std::string nombreArchivo);
         bool Guardar(Cliente cliente);
         bool Guardar(Cliente cliente, int posicion);
@@ -12,6 +13,7 @@ class ArchivoCliente
         Cliente Leer(int posicion);
         int CantidadRegistros();
         void Leer(int CantidadRegistros, Cliente *vec);
+        int Buscar(char* _dniCliente);
 
     private:
         std::string _nombreArchivo;
