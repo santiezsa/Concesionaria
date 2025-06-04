@@ -14,8 +14,9 @@
 1748103573 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 
-1748103407 c:\0repos\concesionaria\cliente.h
+1748995514 c:\0repos\concesionaria\cliente.h
 	"Persona.h"
+	"Fecha.h"
 
 1748102390 c:\0repos\concesionaria\fecha.h
 	<string>
@@ -80,7 +81,7 @@
 1748815999 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
 
-1748817268 c:\0repos\concesionaria\vendedor.h
+1748995514 c:\0repos\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -236,6 +237,7 @@
 1748820123 c:\0repos\concesionaria\autousado.h
 	"Auto.h"
 
+<<<<<<< HEAD
 1748820123 e874d67180f9fafe28ca8e109aa5188f96a09
 
 1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
@@ -309,3 +311,15 @@
 
 1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> 465e874d67180f9fafe28ca8e109aa5188f96a09
+=======
+1748903763 source:c:\0repos\concesionaria\pago.cpp
+	"Pago.h"
+
+1748903214 c:\0repos\concesionaria\pago.h
+	"Fecha.h"
+
+>>>>>>> Stashed changes
+>>>>>>> 0e23441a02d841ba0c3873b9cc34ce7ced2b2491
