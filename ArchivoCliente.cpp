@@ -134,7 +134,7 @@ int ArchivoCliente::generarIdCliente()
         cliente = Leer(i);
         if(cliente.getIdCliente() > maxId)
         {
-            maxId = vendedor.getIdCliente();
+            maxId = cliente.getIdCliente();
         }
     }
 
