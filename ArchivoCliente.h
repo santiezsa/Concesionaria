@@ -14,6 +14,7 @@ class ArchivoCliente
         int CantidadRegistros();
         void Leer(int CantidadRegistros, Cliente *vec);
         int Buscar(char* _dniCliente);
+        int generarIdCliente();
 
     private:
         std::string _nombreArchivo;

@@ -122,3 +122,21 @@ int ArchivoCliente::Buscar(char* _dniCliente)
     fclose(pArchivo);
     return -1;
 }
+
+int ArchivoCliente::generarIdCliente()
+{
+    int cantidad = CantidadRegistros();
+    int maxId = 0;
+    Cliente cliente;
+
+    for(int i = 0; i < cantidad; i++)
+    {
+        cliente = Leer(i);
+        if(cliente.getIdCliente() > maxId)
+        {
+            maxId = vendedor.getIdCliente();
+        }
+    }
+
+    return maxId + 1; /// Devuelve el siguiente ID
+}
