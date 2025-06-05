@@ -14,6 +14,8 @@ class ArchivoVendedor
         Vendedor Leer(int posicion);
         int CantidadRegistros();
         void Leer(int CantidadRegistros, Vendedor *vec);
+        int buscarVendedor(const char* _dniVendedor);
+        int generarIdVendedor();
 
     private:
         std::string _nombreArchivo;

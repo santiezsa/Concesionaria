@@ -1,6 +1,5 @@
 #include "ArchivoCliente.h"
 
-
 ArchivoCliente::ArchivoCliente()
 {
     _nombreArchivo = "clientes.dat";
@@ -23,7 +22,6 @@ bool ArchivoCliente::Guardar(Cliente cliente)
     fclose(pArchivo);
     return ok;
 }
-
 
 /// Guarda un registro de Cliente en una posición específica (sobrescribe)
 bool ArchivoCliente::Guardar(Cliente cliente, int posicion)
