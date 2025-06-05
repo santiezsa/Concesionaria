@@ -1,4 +1,7 @@
 #include "ArchivoVendedor.h"
+#include "Vendedor.h"
+#include <iostream>
+#include <cstring>
 
 ArchivoVendedor::ArchivoVendedor()
 {
@@ -24,7 +27,7 @@ bool ArchivoVendedor::Guardar(Vendedor vendedor)
 }
 
 
-/// Guarda un registro de Vendedor en una posición específica (sobrescribe)
+/// Guarda un registro de Vendedor en una posiciï¿½n especï¿½fica (sobrescribe)
 bool ArchivoVendedor::Guardar(Vendedor vendedor, int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
@@ -39,7 +42,7 @@ bool ArchivoVendedor::Guardar(Vendedor vendedor, int posicion)
 }
 
 
-/// Busca un vendedor por su ID y retorna la posición de su registro en el archivo
+/// Busca un vendedor por su ID y retorna la posiciï¿½n de su registro en el archivo
 int ArchivoVendedor::Buscar(int idVendedor)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -62,7 +65,7 @@ int ArchivoVendedor::Buscar(int idVendedor)
     return -1;
 }
 
-/// Lee un registro de Vendedor en una posición específica
+/// Lee un registro de Vendedor en una posiciï¿½n especï¿½fica
 Vendedor ArchivoVendedor::Leer(int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -78,9 +81,11 @@ Vendedor ArchivoVendedor::Leer(int posicion)
 }
 
 /// Calcula y retorna la cantidad total de registros de Vendedor en el archivo
-int ArchivoVendedor::CantidadRegistros(){
+int ArchivoVendedor::CantidadRegistros()
+{
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL){
+    if(pArchivo == NULL)
+    {
         return 0;
     }
     fseek(pArchivo, 0, SEEK_END);
@@ -89,16 +94,63 @@ int ArchivoVendedor::CantidadRegistros(){
     return cantidadRegistros;
 }
 
-/// Lee una cantidad específica de registros en un vector de Vendedor
-void ArchivoVendedor::Leer(int cantidadRegistros, Vendedor *vector){
+/// Lee una cantidad especï¿½fica de registros en un vector de Vendedor
+void ArchivoVendedor::Leer(int cantidadRegistros, Vendedor *vector)
+{
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL){
+    if(pArchivo == NULL)
+    {
         return;
     }
-    for(int i = 0; i < cantidadRegistros; i++){
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
         fread(&vector[i], sizeof(Vendedor), 1, pArchivo);
     }
     fclose(pArchivo);
 }
 
+
+int ArchivoVendedor::buscarVendedor(const char* _dniVendedor) ///
+{
+    Vendedor vendedor;
+    FILE *pArchivo;
+    pArchivo=fopen(_nombreArchivo.c_str(),"rb");
+
+    if(pArchivo==nullptr)   ///NULL
+    {
+        ///cout<<"ERROR DE ARCHIVO"<<endl;
+        return -2;
+    }
+
+    int pos=0;
+    while(fread(&vendedor, sizeof(Vendedor),1,pArchivo)==1)
+    {
+        if(strcmp(vendedor.getDni(),_dniVendedor)==0)
+        {
+            return pos;
+        }
+        pos++;
+    }
+
+    fclose(pArchivo);
+    return -1;
+}
+
+int ArchivoVendedor::generarIdVendedor()
+{
+    int cantidad = CantidadRegistros();
+    int maxId = 0;
+    Vendedor vendedor;
+
+    for(int i = 0; i < cantidad; i++)
+    {
+        vendedor = Leer(i);
+        if(vendedor.getIdVendedor() > maxId)
+        {
+            maxId = vendedor.getIdVendedor();
+        }
+    }
+
+    return maxId + 1; /// Devuelve el siguiente ID
+}
 
