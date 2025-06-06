@@ -3,8 +3,9 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-
+#include "Menu.h"
 using namespace std;
+Menu menu;
 
 Vendedor::Vendedor()
 {
@@ -65,10 +66,10 @@ bool Vendedor::cargarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.ignore();
         cin.getline(dni, sizeof(dni));
-        char comparar[12];
+        /*char comparar[12];
         cin.getline(comparar, sizeof(comparar));
-        if (strcmp(dni, comparar) == 0)
-        //if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
+        if (strcmp(dni, comparar) == 0)*/
+        if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
         {
             cout << "Error: Ya existe un vendedor con ese DNI." << endl;
             cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
@@ -109,10 +110,6 @@ bool Vendedor::cargarVendedor()
                 cin.ignore();
                 break;
             }
-            /*else
-            {
-                cin.ignore();
-            }*/
         }
     }
 
@@ -226,28 +223,79 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
     while(true)
     {
-        cout << "Ingrese altura: ";
-        cin >> altura;
+        while (true)
+        {
+            cout << "Ingrese altura: ";
+            cin >> altura;
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
         if(altura <= 0)
         {
             cout << "Error: La altura debe ser mayor a cero" << endl;
         }
         else
         {
-            break;
+            cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
     while(true)
     {
         cout << "Ingrese localidad: ";
-        cin.ignore();
         cin.getline(localidad, sizeof(localidad));
         if(strlen(localidad) == 0)
         {
@@ -255,7 +303,25 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -272,7 +338,25 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -326,6 +410,17 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
+    cout << "DNI: " << vendedor.getDni() << endl;
+    cout << "Nombre: " << vendedor.getNombre() << endl;
+    cout << "Apellido: " << vendedor.getApellido() << endl;
+    cout << "Direccion: " << vendedor.getDireccion().getCalle() << " " << vendedor.getDireccion().getAltura() << ", " << vendedor.getDireccion().getLocalidad() << endl;
+    cout << "Telefono: " << vendedor.getNumeroTelefono() << endl;
+    cout << "email: " << vendedor.getEmail() << endl;
+    cout << "Fecha de Nacimiento: " << vendedor.getFechaNacimiento().toString() << endl;
+    cout << "Fecha de Ingreso: " << vendedor.getFechaDeIngreso().toString() << endl;
+
+    system("pause");
+    archivoVendedor.Guardar(vendedor);
     return true;
 }
 
