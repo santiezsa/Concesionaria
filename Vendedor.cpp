@@ -2,6 +2,7 @@
 #include "ArchivoVendedor.h"
 #include <iostream>
 #include <cstring>
+#include <cctype>
 
 using namespace std;
 
@@ -42,6 +43,7 @@ void Vendedor::setFechaDeIngreso(Fecha fechaDeIngreso)
 
 bool Vendedor::cargarVendedor()
 {
+    char confirmar;
     int idVendedor;
     char dni[12];
     char nombre[50];
@@ -59,17 +61,58 @@ bool Vendedor::cargarVendedor()
     /// Carga DNI
     while(true)
     {
+        char cargarOtro;
         cout << "Ingrese DNI del vendedor: ";
         cin.ignore();
         cin.getline(dni, sizeof(dni));
-
-        if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
+        char comparar[12];
+        cin.getline(comparar, sizeof(comparar));
+        if (strcmp(dni, comparar) == 0)
+        //if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
         {
             cout << "Error: Ya existe un vendedor con ese DNI." << endl;
+            cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+            cin >> cargarOtro;
+            tolower(cargarOtro);
+            while(cargarOtro != 's' && cargarOtro != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+                cin >> cargarOtro;
+                tolower(cargarOtro);
+            }
+            switch(cargarOtro)
+            {
+            case 's':
+                break;
+            case 'n':
+                return false;
+
+            default:
+                cout << "No deberia esta aca." << endl;
+            }
         }
         else
         {
-            break;
+            cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            /*else
+            {
+                cin.ignore();
+            }*/
         }
     }
 
@@ -84,7 +127,25 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -99,7 +160,25 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -114,7 +193,25 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            break;
+            cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -229,18 +326,6 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
-    /*
-    setDni(dni);
-    setNombre(nombre);
-    setApellido(apellido);
-    setDireccion(direccion);
-    setNumeroTelefono(numeroTelefono);
-    setEmail(email);
-    setFechaNacimiento(fechaNacimiento);
-    setIdVendedor(idVendedor);
-    setFechaDeIngreso(fechaDeIngreso);
-
-    */
     return true;
 }
 
