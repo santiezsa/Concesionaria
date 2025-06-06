@@ -62,6 +62,8 @@ bool Vendedor::cargarVendedor()
     /// Carga DNI
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese DNI del vendedor: ";
         cin.ignore();
@@ -71,12 +73,16 @@ bool Vendedor::cargarVendedor()
         if (strcmp(dni, comparar) == 0)*/
         if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: Ya existe un vendedor con ese DNI." << endl;
             cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
             cin >> cargarOtro;
             tolower(cargarOtro);
             while(cargarOtro != 's' && cargarOtro != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
                 cin >> cargarOtro;
@@ -91,15 +97,20 @@ bool Vendedor::cargarVendedor()
 
             default:
                 cout << "No deberia esta aca." << endl;
+                system("pause");
             }
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -116,19 +127,28 @@ bool Vendedor::cargarVendedor()
     /// Carga nombre
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese nombre: ";
         cin.getline(nombre, sizeof(nombre));
         if(strlen(nombre) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: El nombre no puede estar vacio." << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -149,19 +169,28 @@ bool Vendedor::cargarVendedor()
     /// Carga apellido
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese apellido: ";
         cin.getline(apellido, sizeof(apellido));
         if(strlen(apellido) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: El apellido no puede estar vacio." << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -182,19 +211,28 @@ bool Vendedor::cargarVendedor()
     /// Carga email
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese email: ";
         cin.getline(email, sizeof(email));
         if(strlen(email) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: el email no puede estar vacio." << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -215,19 +253,28 @@ bool Vendedor::cargarVendedor()
     /// Carga direccion
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese calle: ";
         cin.getline(calle, sizeof(calle));
         if(strlen(calle) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: La calle no puede estar vacia" << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -249,6 +296,8 @@ bool Vendedor::cargarVendedor()
     {
         while (true)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Ingrese altura: ";
             cin >> altura;
             if (cin.fail()) // Si la entrada es inválida
@@ -267,15 +316,22 @@ bool Vendedor::cargarVendedor()
         }
         if(altura <= 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: La altura debe ser mayor a cero" << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -295,19 +351,28 @@ bool Vendedor::cargarVendedor()
 
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese localidad: ";
         cin.getline(localidad, sizeof(localidad));
         if(strlen(localidad) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: La localidad no puede estar vacia" << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -330,19 +395,28 @@ bool Vendedor::cargarVendedor()
     /// Carga telefono
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "Ingrese numero de telefono: ";
         cin.getline(numeroTelefono, sizeof(numeroTelefono));
         if(strlen(numeroTelefono) == 0)
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: el numero de telefono no puede estar vacio" << endl;
+            system("pause");
         }
         else
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
+                system("cls");
+                menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
@@ -363,6 +437,8 @@ bool Vendedor::cargarVendedor()
     /// Carga fecha de nacimiento
     while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "== Fecha de nacimiento ===" << endl;
         cout << "Dia: ";
         cin >> dia;
@@ -374,7 +450,10 @@ bool Vendedor::cargarVendedor()
         fechaNacimiento = Fecha(dia, mes, anio);
         if(!fechaNacimiento.esValida())
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: Fecha de nacimiento invalida" << endl;
+            system("pause");
         }
         else
         {
@@ -385,6 +464,8 @@ bool Vendedor::cargarVendedor()
     /// Carga fecha de ingreso
        while(true)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "== Fecha de ingreso ===" << endl;
         cout << "Dia: ";
         cin >> dia;
@@ -396,7 +477,10 @@ bool Vendedor::cargarVendedor()
         fechaDeIngreso = Fecha(dia, mes, anio);
         if(!fechaDeIngreso.esValida())
         {
+            system("cls");
+            menu.mostrarLogo();
             cout << "Error: Fecha de ingreso invalida" << endl;
+            system("pause");
         }
         else
         {
@@ -410,6 +494,8 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
+    system("cls");
+    menu.mostrarLogo();
     cout << "DNI: " << vendedor.getDni() << endl;
     cout << "Nombre: " << vendedor.getNombre() << endl;
     cout << "Apellido: " << vendedor.getApellido() << endl;
@@ -420,7 +506,7 @@ bool Vendedor::cargarVendedor()
     cout << "Fecha de Ingreso: " << vendedor.getFechaDeIngreso().toString() << endl;
 
     system("pause");
-    archivoVendedor.Guardar(vendedor);
+    //archivoVendedor.Guardar(vendedor);
     return true;
 }
 
