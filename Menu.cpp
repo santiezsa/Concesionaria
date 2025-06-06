@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "ConcesionariaManager.h"
 #include "Cliente.h"
+#include "Vendedor.h"
 using namespace std;
 
 void Menu::mostrarPantallaPrincipal()
@@ -63,7 +64,7 @@ void Menu::mostrarMenuPrincipal()
             cout << "2 - Clientes" << endl;
             cout << "3 - Vendedores" << endl;
             cout << "4 - Ventas" << endl;
-            cout << "5 - Configuracion" << endl;
+            //cout << "5 - Configuracion" << endl;
             cout << "------------------------" << endl;
             cout << "0 - Salir" << endl;
 
@@ -107,10 +108,10 @@ void Menu::mostrarMenuPrincipal()
 
             break;
 
-        case 5:
+        /*case 5:
             mostrarMenuConfiguracion();
 
-            break;
+            break;*/
 
         case 0:
             system("cls");
@@ -284,6 +285,7 @@ void Menu::mostrarMenuClientes()
 void Menu::mostrarMenuVendedores()
 {
     int opcionVendedor;
+    Vendedor vendedor;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -316,7 +318,7 @@ void Menu::mostrarMenuVendedores()
         switch(opcionVendedor)
         {
         case 1:
-            //
+            vendedor.cargarVendedor();
 
             break;
 
