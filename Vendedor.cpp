@@ -229,7 +229,6 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
-    vendedor.getApellido();
     /*
     setDni(dni);
     setNombre(nombre);
