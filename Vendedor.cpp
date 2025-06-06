@@ -227,6 +227,10 @@ bool Vendedor::cargarVendedor()
     idVendedor = archivoVendedor.generarIdVendedor();
 
     /// Guardo datos
+    Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
+
+    vendedor.getApellido();
+    /*
     setDni(dni);
     setNombre(nombre);
     setApellido(apellido);
@@ -237,6 +241,7 @@ bool Vendedor::cargarVendedor()
     setIdVendedor(idVendedor);
     setFechaDeIngreso(fechaDeIngreso);
 
+    */
     return true;
 }
 
