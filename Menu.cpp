@@ -4,6 +4,7 @@
 #include "ConcesionariaManager.h"
 #include "Cliente.h"
 #include "Vendedor.h"
+#include "ArchivoVendedor.h"
 using namespace std;
 
 void Menu::mostrarPantallaPrincipal()
@@ -286,6 +287,7 @@ void Menu::mostrarMenuVendedores()
 {
     int opcionVendedor;
     Vendedor vendedor;
+    ArchivoVendedor archivoVendedor;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -294,7 +296,7 @@ void Menu::mostrarMenuVendedores()
             mostrarLogo();
             cout << "1 - Cargar vendedor nuevo" << endl;
             cout << "2 - Modificar vendedor existente" << endl;
-            cout << "3 - Buscar vendedor" << endl;
+            cout << "3 - Mostrar vendedor" << endl;
             cout << "4 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
@@ -319,17 +321,106 @@ void Menu::mostrarMenuVendedores()
         {
         case 1:
             vendedor.cargarVendedor();
-
             break;
-
         case 2:
-            //
+            char dni[12];
+            char confirmar;
 
+            while(true)
+            {
+                system("cls");
+                mostrarLogo();
+                cout << "Ingrese DNI del vendedor: ";
+                cin.ignore();
+                cin.getline(dni, sizeof(dni));
+
+                if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Error: No existe un vendedor con ese DNI." << endl;
+                }
+                else
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                    while(confirmar != 's' && confirmar != 'n')
+                    {
+                        system("cls");
+                        mostrarLogo();
+                        cout << "Error: Opcion incorrecta." << endl;
+                        cout << "Desea confirmar? (s/n)" << endl;
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+                    if (confirmar == 's')
+                    {
+                        cin.ignore();
+                        int pos = archivoVendedor.buscarVendedor(dni); /// Busco la posicion del vendedor en base al DNI
+                        Vendedor vendedor;
+                        vendedor = archivoVendedor.Leer(pos);
+                        vendedor.modificarVendedor(vendedor);
+                        if(archivoVendedor.Guardar(vendedor, pos))
+                        {
+                            cout << "Vendedor modificado exitosamente." << endl;
+                        }
+                        else
+                        {
+                            cout << "No se pudo modificar el vendedor." << endl;
+                        }
+                        system("pause");
+                        break;
+                    }
+                }
+            }
             break;
 
         case 3:
-            //
+            while(true)
+            {
+                system("cls");
+                mostrarLogo();
+                cout << "Ingrese DNI del vendedor: ";
+                cin.ignore();
+                cin.getline(dni, sizeof(dni));
 
+                if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Error: No existe un vendedor con ese DNI." << endl;
+                }
+                else
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                    while(confirmar != 's' && confirmar != 'n')
+                    {
+                        system("cls");
+                        mostrarLogo();
+                        cout << "Error: Opcion incorrecta." << endl;
+                        cout << "Desea confirmar? (s/n)" << endl;
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+                    if (confirmar == 's')
+                    {
+                        cin.ignore();
+                        int pos = archivoVendedor.buscarVendedor(dni); /// Busco la posicion del vendedor en base al DNI
+                        Vendedor vendedor;
+                        vendedor = archivoVendedor.Leer(pos);
+                        vendedor.mostrarVendedor(vendedor);
+                        system("pause");
+                        break;
+                    }
+                }
+            }
             break;
 
         case 4:
