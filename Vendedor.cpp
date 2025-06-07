@@ -60,64 +60,78 @@ bool Vendedor::cargarVendedor()
     ArchivoVendedor archivoVendedor;
 
     /// Carga DNI
+    cin.ignore();
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese DNI del vendedor: ";
-        cin.ignore();
         cin.getline(dni, sizeof(dni));
 
-        if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
+        if(strlen(dni) == 0 || strlen(dni) > 11)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ya existe un vendedor con ese DNI." << endl;
-            cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
-            cin >> cargarOtro;
-            cargarOtro = tolower(cargarOtro);
-            while(cargarOtro != 's' && cargarOtro != 'n')
-            {
-                system("cls");
-                menu.mostrarLogo();
-                cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
-                cin >> cargarOtro;
-                cargarOtro = tolower(cargarOtro);
-            }
-            switch(cargarOtro)
-            {
-            case 's':
-                break;
-            case 'n':
-                return false;
-
-            default:
-                cout << "No deberia esta aca." << endl;
-                system("pause");
-            }
+            cout << "Error: Ingrese un DNI valido." << endl;
+            system("pause");
         }
         else
         {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
-            cin >> confirmar;
-            confirmar = tolower(confirmar);
-            while(confirmar != 's' && confirmar != 'n')
+            if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
             {
                 system("cls");
                 menu.mostrarLogo();
-                cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "Error: Ya existe un vendedor con ese DNI." << endl;
+                cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+                cin >> cargarOtro;
+                cargarOtro = tolower(cargarOtro);
+                while(cargarOtro != 's' && cargarOtro != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: Opcion incorrecta." << endl;
+                    cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+                    cin >> cargarOtro;
+                    cargarOtro = tolower(cargarOtro);
+                }
+                switch(cargarOtro)
+                {
+                case 's':
+                    break;
+                case 'n':
+                    return false;
+
+                default:
+                    cout << "No deberia esta aca." << endl;
+                    system("pause");
+                }
+            }
+            else
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
-            }
-            if (confirmar == 's')
-            {
-                cin.ignore();
-                break;
+                while(confirmar != 's' && confirmar != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: Opcion incorrecta." << endl;
+                    cout << "Desea confirmar? (s/n)" << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if (confirmar == 's')
+                {
+                    cin.ignore();
+                    break;
+                }
+                else
+                {
+                    cin.ignore();
+                }
             }
         }
     }
@@ -129,11 +143,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese nombre: ";
         cin.getline(nombre, sizeof(nombre));
-        if(strlen(nombre) == 0)
+        if(strlen(nombre) == 0 || strlen(nombre) > 50)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: El nombre no puede estar vacio." << endl;
+            cout << "Error: Ingrese un nombre valido." << endl;
             system("pause");
         }
         else
