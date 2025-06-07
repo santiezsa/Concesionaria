@@ -101,24 +101,28 @@ void ArchivoCliente::Leer(int cantidadRegistros, Cliente *vector){
 }
 
 /// Busca un cliente por su DNI y retorna la posición de su registro en el archivo
-int ArchivoCliente::Buscar(char* _dniCliente)
+int ArchivoCliente::buscarCliente(const char* _dniCliente) ///
 {
-    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL)
+    Cliente cliente;
+    FILE *pArchivo;
+    pArchivo=fopen(_nombreArchivo.c_str(),"rb");
+
+    if(pArchivo==nullptr)   ///NULL
     {
+        ///cout<<"ERROR DE ARCHIVO"<<endl;
         return -2;
     }
-    Cliente cliente;
-    int i = 0;
-    while(fread(&cliente, sizeof(Cliente), 1, pArchivo))
+
+    int pos=0;
+    while(fread(&cliente, sizeof(Cliente),1,pArchivo)==1)
     {
         if(strcmp(cliente.getDni(),_dniCliente)==0)
         {
-            fclose(pArchivo);
-            return i;
+            return pos;
         }
-        i++;
+        pos++;
     }
+
     fclose(pArchivo);
     return -1;
 }

@@ -13,7 +13,7 @@ class ArchivoCliente
         Cliente Leer(int posicion);
         int CantidadRegistros();
         void Leer(int CantidadRegistros, Cliente *vec);
-        int Buscar(char* _dniCliente);
+        int buscarCliente(const char* _dniCliente);
         int generarIdCliente();
 
     private:

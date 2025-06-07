@@ -16,8 +16,8 @@ class Cliente : public Persona
         /// Setter
         void setIdCliente(int idCliente);
 
-        bool cargarCliente(char* _nuevoDni = (char*) "Vacio");///Cliente duplicado
-        void mostrarCliente();
+        bool cargarCliente();///Cliente duplicado
+        void mostrarCliente(Cliente &cliente);
 
     private:
         int _idCliente;
