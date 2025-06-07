@@ -4,12 +4,13 @@
 	<string>
 	"Menu.h"
 
-1749001622 source:c:\0repos\concesionaria\menu.cpp
+1749260965 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
 	"ConcesionariaManager.h"
 	"Cliente.h"
+	"Vendedor.h"
 
 1748301980 c:\0repos\concesionaria\menu.h
 
@@ -92,7 +93,7 @@
 	<iostream>
 	<cstring>
 
-1749001622 c:\0repos\concesionaria\vendedor.h
+1749261262 c:\0repos\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -235,13 +236,13 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
-1749166023 source:c:\0repos\concesionaria\archivovendedor.cpp
+1749260965 source:c:\0repos\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 	"Vendedor.h"
 	<iostream>
 	<cstring>
 
-1749166022 c:\0repos\concesionaria\archivovendedor.h
+1749260965 c:\0repos\concesionaria\archivovendedor.h
 	<string>
 	"Vendedor.h"
 

@@ -18,7 +18,8 @@ public:
     void setIdVendedor(int idVendedor);
     void setFechaDeIngreso(Fecha fechaDeIngreso);
     bool cargarVendedor();///Vendedor duplicado
-    void mostrarVendedor();
+    void mostrarVendedor(Vendedor &vendedor);
+
 
 private:
     int _idVendedor;

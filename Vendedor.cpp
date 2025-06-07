@@ -78,7 +78,7 @@ bool Vendedor::cargarVendedor()
             cout << "Error: Ya existe un vendedor con ese DNI." << endl;
             cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
             cin >> cargarOtro;
-            tolower(cargarOtro);
+            cargarOtro = tolower(cargarOtro);
             while(cargarOtro != 's' && cargarOtro != 'n')
             {
                 system("cls");
@@ -86,7 +86,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
                 cin >> cargarOtro;
-                tolower(cargarOtro);
+                cargarOtro = tolower(cargarOtro);
             }
             switch(cargarOtro)
             {
@@ -106,7 +106,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -114,7 +114,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -144,7 +144,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -152,7 +152,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -186,7 +186,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -194,7 +194,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -228,7 +228,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -236,7 +236,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -270,7 +270,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -278,7 +278,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -327,7 +327,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -335,7 +335,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -368,7 +368,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -376,7 +376,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -412,7 +412,7 @@ bool Vendedor::cargarVendedor()
             menu.mostrarLogo();
             cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
-            tolower(confirmar);
+            confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -420,7 +420,7 @@ bool Vendedor::cargarVendedor()
                 cout << "Error: Opcion incorrecta." << endl;
                 cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
-                tolower(confirmar);
+                confirmar = tolower(confirmar);
             }
             if (confirmar == 's')
             {
@@ -462,7 +462,7 @@ bool Vendedor::cargarVendedor()
     }
 
     /// Carga fecha de ingreso
-       while(true)
+    while(true)
     {
         system("cls");
         menu.mostrarLogo();
@@ -494,6 +494,24 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
+    mostrarVendedor(vendedor);
+
+    system("pause");
+
+    if(archivoVendedor.Guardar(vendedor))
+    {
+        cout << "Vendedor guardado exitosamente." << endl;
+        return true;
+    }
+    else
+    {
+        cout << "No se pudo guardar el vendedor." << endl;
+        return false;
+    }
+}
+
+void Vendedor::mostrarVendedor(Vendedor &vendedor)
+{
     system("cls");
     menu.mostrarLogo();
     cout << "DNI: " << vendedor.getDni() << endl;
@@ -501,17 +519,11 @@ bool Vendedor::cargarVendedor()
     cout << "Apellido: " << vendedor.getApellido() << endl;
     cout << "Direccion: " << vendedor.getDireccion().getCalle() << " " << vendedor.getDireccion().getAltura() << ", " << vendedor.getDireccion().getLocalidad() << endl;
     cout << "Telefono: " << vendedor.getNumeroTelefono() << endl;
-    cout << "email: " << vendedor.getEmail() << endl;
+    cout << "Email: " << vendedor.getEmail() << endl;
     cout << "Fecha de Nacimiento: " << vendedor.getFechaNacimiento().toString() << endl;
     cout << "Fecha de Ingreso: " << vendedor.getFechaDeIngreso().toString() << endl;
-
-    system("pause");
-    //archivoVendedor.Guardar(vendedor);
-    return true;
 }
 
 
-    void Vendedor::mostrarVendedor()
-{
 
-}
+
