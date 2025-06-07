@@ -554,6 +554,17 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
         cin >> opcion;
         opcion = tolower(opcion);
 
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
         if(opcion == 's')
         {
             confirmarTodo = true;

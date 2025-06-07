@@ -21,8 +21,6 @@ public:
     void mostrarVendedor(Vendedor &vendedor);
     bool modificarVendedor(Vendedor &vendedor);
 
-
-
 private:
     int _idVendedor;
     Fecha _fechaDeIngreso;

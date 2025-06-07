@@ -325,13 +325,13 @@ void Menu::mostrarMenuVendedores()
         case 2:
             char dni[12];
             char confirmar;
+            cin.ignore();
 
             while(true)
             {
                 system("cls");
                 mostrarLogo();
                 cout << "Ingrese DNI del vendedor: ";
-                cin.ignore();
                 cin.getline(dni, sizeof(dni));
 
                 if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
@@ -339,6 +339,7 @@ void Menu::mostrarMenuVendedores()
                     system("cls");
                     mostrarLogo();
                     cout << "Error: No existe un vendedor con ese DNI." << endl;
+                    system("pause");
                 }
                 else
                 {
@@ -379,12 +380,12 @@ void Menu::mostrarMenuVendedores()
             break;
 
         case 3:
+            cin.ignore();
             while(true)
             {
                 system("cls");
                 mostrarLogo();
                 cout << "Ingrese DNI del vendedor: ";
-                cin.ignore();
                 cin.getline(dni, sizeof(dni));
 
                 if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
@@ -392,6 +393,7 @@ void Menu::mostrarMenuVendedores()
                     system("cls");
                     mostrarLogo();
                     cout << "Error: No existe un vendedor con ese DNI." << endl;
+                    system("pause");
                 }
                 else
                 {
