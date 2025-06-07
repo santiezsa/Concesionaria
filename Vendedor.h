@@ -19,6 +19,8 @@ public:
     void setFechaDeIngreso(Fecha fechaDeIngreso);
     bool cargarVendedor();///Vendedor duplicado
     void mostrarVendedor(Vendedor &vendedor);
+    bool modificarVendedor(Vendedor &vendedor);
+
 
 
 private:

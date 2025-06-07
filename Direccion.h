@@ -18,6 +18,9 @@ public:
     void setAltura(int altura);
     void setLocalidad(const char* localidad);
 
+    /// Otros metodos
+    const char* toString(); /// Retorna direccion con formato prolijo
+
 private:
     char _calle[50];
     int _altura;

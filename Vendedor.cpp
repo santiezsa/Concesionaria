@@ -68,9 +68,7 @@ bool Vendedor::cargarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.ignore();
         cin.getline(dni, sizeof(dni));
-        /*char comparar[12];
-        cin.getline(comparar, sizeof(comparar));
-        if (strcmp(dni, comparar) == 0)*/
+
         if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
         {
             system("cls");
@@ -494,9 +492,12 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
-    mostrarVendedor(vendedor);
 
-    system("pause");
+    /// Valido datos con el usuario
+    if(!modificarVendedor(vendedor))
+    {
+        return false;
+    }
 
     if(archivoVendedor.Guardar(vendedor))
     {
@@ -514,6 +515,7 @@ void Vendedor::mostrarVendedor(Vendedor &vendedor)
 {
     system("cls");
     menu.mostrarLogo();
+    cout << "ID Vendedor: " << vendedor.getIdVendedor() << endl;
     cout << "DNI: " << vendedor.getDni() << endl;
     cout << "Nombre: " << vendedor.getNombre() << endl;
     cout << "Apellido: " << vendedor.getApellido() << endl;
@@ -522,6 +524,254 @@ void Vendedor::mostrarVendedor(Vendedor &vendedor)
     cout << "Email: " << vendedor.getEmail() << endl;
     cout << "Fecha de Nacimiento: " << vendedor.getFechaNacimiento().toString() << endl;
     cout << "Fecha de Ingreso: " << vendedor.getFechaDeIngreso().toString() << endl;
+}
+
+bool Vendedor::modificarVendedor(Vendedor &vendedor)
+{
+    char opcion;
+    bool confirmarTodo = false;
+    char dni[12];
+    char nombre[50];
+    char apellido[50];
+    char numeroTelefono[20];
+    char email[50];
+    char calle[50];
+    int altura;
+    char localidad[50];
+    int dia, mes, anio;
+    Fecha fechaNacimiento, fechaDeIngreso;
+
+    ArchivoVendedor archivoVendedor;
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DEL VENDEDOR ===" << endl;
+        mostrarVendedor(vendedor);
+        cout << endl;
+        cout << "Los datos son correctos? (s/n)";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        if(opcion == 's')
+        {
+            confirmarTodo = true;
+        }
+        else if(opcion == 'n')
+        {
+            cout << endl;
+            cout << "Que campo desea modificar?" << endl;
+            cout << "1 - DNI" << endl;
+            cout << "2 - Nombre" << endl;
+            cout << "3 - Apellido" << endl;
+            cout << "4 - Email" << endl;
+            cout << "5 - Direccion" << endl;
+            cout << "6 - Telefono" << endl;
+            cout << "7 - Fecha de Nacimiento" << endl;
+            cout << "8 - Fecha de Ingreso" << endl;
+            cout << "9 - Cancelar y volver a cargar todo" << endl;
+
+            int opcionModificar;
+            cin >> opcionModificar;
+            cin.ignore();
+
+            switch(opcionModificar)
+            {
+            case 1:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo DNI: ";
+                    cin.getline(dni, sizeof(dni));
+                    if(archivoVendedor.buscarVendedor(dni) >= 0 && strcmp(dni, vendedor.getDni()) != 0)
+                    {
+                        cout << "Error: Ya existe un vendedor con ese DNI." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setDni(dni);
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo nombre: ";
+                    cin.getline(nombre, sizeof(nombre));
+                    if(strlen(nombre) == 0)
+                    {
+                        cout << "Error: El nombre no puede estar vacio." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setNombre(nombre);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo apellido: ";
+                    cin.getline(apellido, sizeof(apellido));
+                    if(strlen(apellido) == 0)
+                    {
+                        cout << "Error: El apellido no puede estar vacio." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setApellido(apellido);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo email: ";
+                    cin.getline(email, sizeof(email));
+                    if(strlen(email) == 0)
+                    {
+                        cout << "Error: El email no puede estar vacio." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setEmail(email);
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva calle: ";
+                    cin.getline(calle, sizeof(calle));
+                    if(strlen(calle) == 0)
+                    {
+                        cout << "Error: La calle no puede estar vacia." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    cout << "Ingrese nueva altura: ";
+                    cin >> altura;
+                    if(cin.fail() || altura <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: La altura debe ser un numero positivo." << endl;
+                        system("pause");
+                        continue;
+                    }
+                    cin.ignore();
+
+                    cout << "Ingrese nueva localidad: ";
+                    cin.getline(localidad, sizeof(localidad));
+                    if(strlen(localidad) == 0)
+                    {
+                        cout << "Error: La localidad no puede estar vacia." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    Direccion nuevaDireccion(calle, altura, localidad);
+                    vendedor.setDireccion(nuevaDireccion);
+                    break;
+                }
+                break;
+            case 6:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo telefono: ";
+                    cin.getline(numeroTelefono, sizeof(numeroTelefono));
+                    if(strlen(numeroTelefono) == 0)
+                    {
+                        cout << "Error: El telefono no puede estar vacio." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setNumeroTelefono(numeroTelefono);
+                        break;
+                    }
+                }
+                break;
+            case 7:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva fecha de nacimiento:" << endl;
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+                    Fecha nuevaFechaNacimiento(dia, mes, anio);
+                    if(!nuevaFechaNacimiento.esValida())
+                    {
+                        cout << "Error: Fecha invalida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setFechaNacimiento(nuevaFechaNacimiento);
+                        break;
+                    }
+                }
+                break;
+            case 8:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva fecha de ingreso:" << endl;
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+                    Fecha nuevaFechaIngreso(dia, mes, anio);
+                    if(!nuevaFechaIngreso.esValida())
+                    {
+                        cout << "Error: Fecha invalida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        vendedor.setFechaDeIngreso(nuevaFechaIngreso);
+                        break;
+                    }
+                }
+                break;
+            case 9:
+                return false; /// para cargar desde el inicio
+            default:
+                cout << "Opcion invalida." << endl;
+                system("pause");
+            }
+        }
+    }
+    return true;
 }
 
 
