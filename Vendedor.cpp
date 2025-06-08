@@ -5,7 +5,6 @@
 #include <cctype>
 #include "Menu.h"
 using namespace std;
-Menu menu;
 
 Vendedor::Vendedor()
 {
@@ -44,6 +43,7 @@ void Vendedor::setFechaDeIngreso(Fecha fechaDeIngreso)
 
 bool Vendedor::cargarVendedor()
 {
+    Menu menu;
     char confirmar;
     int idVendedor;
     char dni[12];
@@ -528,6 +528,7 @@ bool Vendedor::cargarVendedor()
 
 void Vendedor::mostrarVendedor(Vendedor &vendedor)
 {
+    Menu menu;
     system("cls");
     menu.mostrarLogo();
     cout << "ID Vendedor: " << vendedor.getIdVendedor() << endl;
@@ -543,6 +544,7 @@ void Vendedor::mostrarVendedor(Vendedor &vendedor)
 
 bool Vendedor::modificarVendedor(Vendedor &vendedor)
 {
+    Menu menu;
     char opcion;
     bool confirmarTodo = false;
     char dni[12];
