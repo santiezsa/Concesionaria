@@ -5,7 +5,10 @@
 #include "Cliente.h"
 #include "Vendedor.h"
 #include "ArchivoVendedor.h"
+#include "ArchivoCliente.h"
 using namespace std;
+
+/// TODO: Pendiente agregar validaciones en inputs de modificarVendedor y modificarCliente
 
 void Menu::mostrarPantallaPrincipal()
 {
@@ -220,9 +223,10 @@ void Menu::mostrarMenuClientes()
 {
     int opcionClientes;
     Cliente cliente;
+    ArchivoCliente archivoCliente;
     do
     {
-        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        while (true) // Bucle infinito hasta que se ingrese un valor valido
         {
             system("cls");
             mostrarLogo();
@@ -234,7 +238,7 @@ void Menu::mostrarMenuClientes()
             cout << "Ingrese una opcion: " << endl;
             cin >> opcionClientes;
 
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invalida
             {
                 system("cls");
                 mostrarLogo();
@@ -245,7 +249,7 @@ void Menu::mostrarMenuClientes()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es valida, salir del bucle
             }
         }
 
@@ -253,16 +257,99 @@ void Menu::mostrarMenuClientes()
         {
         case 1:
             cliente.cargarCliente();
-
             break;
-
         case 2:
-            //
+            char dni[12];
+            char confirmar;
+            cin.ignore();
 
+            while(true)
+            {
+                system("cls");
+                mostrarLogo();
+                cout << "Ingrese DNI del cliente: ";
+                cin.getline(dni, sizeof(dni));
+
+                if(!(archivoCliente.buscarCliente(dni) >= 0))
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Error: No existe un cliente con ese DNI." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                    while(confirmar != 's' && confirmar != 'n')
+                    {
+                        system("cls");
+                        mostrarLogo();
+                        cout << "Error: Opcion incorrecta. " << endl;
+                        cout << "Desea confirmar? (s/n)" << endl;
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+                    if(confirmar == 's')
+                    {
+                        cin.ignore();
+                        int pos = archivoCliente.buscarCliente(dni);
+                        Cliente cliente;
+                        cliente = archivoCliente.Leer(pos);
+                        cliente.modificarCliente(cliente);
+                        if(archivoCliente.Guardar(cliente, pos))
+                        {
+                            cout << "Cliente modificado exitosamente." << endl;
+                        }
+                        else
+                        {
+                            cout << "No se pudo modificar el cliente." << endl;
+                        }
+                        system("pause");
+                        break;
+                    }
+                }
+            }
             break;
-
         case 3:
-            //
+            cin.ignore();
+            while(true)
+            {
+                system("cls");
+                mostrarLogo();
+                cout << "Ingrese DNI del cliente: ";
+                cin.getline(dni, sizeof(dni));
+
+                if(!(archivoCliente.buscarCliente(dni) >= 0))
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Error: No existe un cliente con ese DNI." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Error: Opcion incorrecta" << endl;
+                    cout << "Desea confirmar? (s/n)" << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if(confirmar == 's')
+                {
+                    cin.ignore();
+                    int pos = archivoCliente.buscarCliente(dni);
+                    Cliente cliente;
+                    cliente = archivoCliente.Leer(pos);
+                    cliente.mostrarCliente(cliente);
+                    system("pause");
+                    break;
+                }
+            }
 
             break;
 

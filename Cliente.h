@@ -18,6 +18,7 @@ class Cliente : public Persona
 
         bool cargarCliente();///Cliente duplicado
         void mostrarCliente(Cliente &cliente);
+        bool modificarCliente(Cliente &cliente);
 
     private:
         int _idCliente;

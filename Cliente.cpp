@@ -55,7 +55,14 @@ bool Cliente::cargarCliente()
         cin.ignore();
         cin.getline(dni, sizeof(dni));
 
-        if(archivoCliente.buscarCliente(dni) >= 0)  /// si cuenta y encuentra el registro
+        if(strlen(dni) == 0 || strlen(dni) > 11)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error. Ingrese un DNI valido." << endl;
+            system("pause");
+        }
+        else if(archivoCliente.buscarCliente(dni) >= 0)  /// si busca y encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -115,11 +122,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese nombre: ";
         cin.getline(nombre, sizeof(nombre));
-        if(strlen(nombre) == 0)
+        if(strlen(nombre) == 0 || strlen(nombre) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: El nombre no puede estar vacio." << endl;
+            cout << "Error: Ingrese un nombre valido." << endl;
             system("pause");
         }
         else
@@ -157,11 +164,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese apellido: ";
         cin.getline(apellido, sizeof(apellido));
-        if(strlen(apellido) == 0)
+        if(strlen(apellido) == 0 || strlen(apellido) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: El apellido no puede estar vacio." << endl;
+            cout << "Error: Ingrese un apellido valido." << endl;
             system("pause");
         }
         else
@@ -199,11 +206,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese email: ";
         cin.getline(email, sizeof(email));
-        if(strlen(email) == 0)
+        if(strlen(email) == 0 || strlen(email) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: el email no puede estar vacio." << endl;
+            cout << "Error: Ingrese un email valido." << endl;
             system("pause");
         }
         else
@@ -241,11 +248,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese calle: ";
         cin.getline(calle, sizeof(calle));
-        if(strlen(calle) == 0)
+        if(strlen(calle) == 0 || strlen(calle) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La calle no puede estar vacia" << endl;
+            cout << "Error: Ingrese una calle valida." << endl;
             system("pause");
         }
         else
@@ -284,7 +291,7 @@ bool Cliente::cargarCliente()
             menu.mostrarLogo();
             cout << "Ingrese altura: ";
             cin >> altura;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invalida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -295,7 +302,7 @@ bool Cliente::cargarCliente()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es valida, salir del bucle
             }
         }
         if(altura <= 0)
@@ -339,11 +346,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese localidad: ";
         cin.getline(localidad, sizeof(localidad));
-        if(strlen(localidad) == 0)
+        if(strlen(localidad) == 0 || strlen(localidad) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La localidad no puede estar vacia" << endl;
+            cout << "Error: Ingrese una localidad valida." << endl;
             system("pause");
         }
         else
@@ -383,11 +390,11 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese numero de telefono: ";
         cin.getline(numeroTelefono, sizeof(numeroTelefono));
-        if(strlen(numeroTelefono) == 0)
+        if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: el numero de telefono no puede estar vacio" << endl;
+            cout << "Error: Ingrese un numero de telefono valido." << endl;
             system("pause");
         }
         else
@@ -445,16 +452,18 @@ bool Cliente::cargarCliente()
         }
     }
 
-
     /// Genero ID del cliente (automatico)
     idCliente = archivoCliente.generarIdCliente();
 
     /// Guardo datos
     Cliente cliente(idCliente, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento);
 
-    mostrarCliente(cliente);
+    /// Valido datos con el usuario
+    if(!modificarCliente(cliente))
+    {
+        return false;
+    }
 
-    system("pause");
 
     if(archivoCliente.Guardar(cliente))
     {
@@ -482,4 +491,243 @@ void Cliente::mostrarCliente(Cliente &cliente)
     cout << "Telefono: " << cliente.getNumeroTelefono() << endl;
     cout << "Email: " << cliente.getEmail() << endl;
     cout << "Fecha de Nacimiento: " << cliente.getFechaNacimiento().toString() << endl;
+}
+
+bool Cliente::modificarCliente(Cliente &cliente)
+{
+    Menu menu;
+    char opcion;
+    bool confirmarTodo = false;
+    char dni[12];
+    char nombre[50];
+    char apellido[50];
+    char numeroTelefono[50];
+    char email[50];
+    char calle[50];
+    int altura;
+    char localidad[50];
+    int dia, mes, anio;
+    Fecha fechaNacimiento;
+
+    ArchivoCliente archivoCliente;
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DEL CLIENTE ===" << endl;
+        mostrarCliente(cliente);
+        cout << endl;
+        cout << "Los datos son correctos? (s/n): ";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "Desea confirmar? (s/n): " << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
+        if(opcion == 's')
+        {
+            confirmarTodo = true;
+        }
+        else if(opcion == 'n')
+        {
+            cout << endl;
+            cout << "Que campo desea modificar?" << endl;
+            cout << "1 - DNI" << endl;
+            cout << "2 - Nombre" << endl;
+            cout << "3 - Apellido" << endl;
+            cout << "4 - Email" << endl;
+            cout << "5 - Direccion" << endl;
+            cout << "6 - Telefono" << endl;
+            cout << "7 - Fecha de Nacimiento" << endl;
+            cout << "8 - Cancelar y volver a cargar todo" << endl;
+
+            int opcionModificar;
+            cin >> opcionModificar;
+            cin.ignore();
+
+            switch(opcionModificar)
+            {
+            case 1:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo DNI: ";
+                    cin.getline(dni, sizeof(dni));
+                    if(strlen(dni) == 0 || strlen(dni) > 11)
+                    {
+                        cout << "Error: Ingrese un DNI valido." << endl;
+                        system("pause");
+                    }
+                    else if(archivoCliente.buscarCliente(dni) >= 0 && strcmp(dni, cliente.getDni()) != 0)
+                    {
+                        cout << "Error: Ya existe un cliente con ese DNI." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setDni(dni);
+                        break;
+                    }
+                }
+                break;
+            case 2:
+
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo nombre: ";
+                    cin.getline(nombre, sizeof(nombre));
+                    if(strlen(nombre) == 0 || strlen(nombre) > 49)
+                    {
+                        cout << "Error: Ingrese un nombre valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setNombre(nombre);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo apellido: ";
+                    cin.getline(apellido, sizeof(apellido));
+                    if(strlen(apellido) == 0 || strlen(apellido) > 49)
+                    {
+                        cout << "Error: Ingrese un apellido valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setApellido(apellido);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo email: ";
+                    cin.getline(email, sizeof(email));
+                    if(strlen(email) == 0 || strlen(email) > 49)
+                    {
+                        cout << "Error: Ingrese un email valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setEmail(email);
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva calle: ";
+                    cin.getline(calle, sizeof(calle));
+                    if(strlen(calle) == 0 || strlen(calle) > 49)
+                    {
+                        cout << "Error: Ingrese una calle valida." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    cout << "Ingrese nueva altura: ";
+                    cin >> altura;
+                    if(cin.fail() || altura <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: La altura debe ser un numero positivo." << endl;
+                        system("pause");
+                        continue;
+                    }
+                    cin.ignore();
+
+                    cout << "Ingrese nueva localidad: ";
+                    cin.getline(localidad, sizeof(localidad));
+                    if(strlen(localidad) == 0 || strlen(localidad) > 49)
+                    {
+                        cout << "Error: Ingrese una localidad valida." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    Direccion nuevaDireccion(calle, altura, localidad);
+                    cliente.setDireccion(nuevaDireccion);
+                    break;
+                }
+                break;
+            case 6:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo telefono: ";
+                    cin.getline(numeroTelefono, sizeof(numeroTelefono));
+                    if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
+                    {
+                        cout << "Error: Ingrese un numero de telefono valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setNumeroTelefono(numeroTelefono);
+                        break;
+                    }
+                }
+                break;
+            case 7:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva fecha de nacimiento:" << endl;
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+                    Fecha nuevaFechaNacimiento(dia, mes, anio);
+                    if(!nuevaFechaNacimiento.esValida())
+                    {
+                        cout << "Error: Fecha invalida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        cliente.setFechaNacimiento(nuevaFechaNacimiento);
+                        break;
+                    }
+                }
+                break;
+            case 8:
+                return false; /// para cargar desde el inicio
+            default:
+                cout << "Opcion invalida." << endl;
+                system("pause");
+            }
+        }
+    }
+    return true;
 }

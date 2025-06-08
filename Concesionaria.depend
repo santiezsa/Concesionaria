@@ -4,7 +4,7 @@
 	<string>
 	"Menu.h"
 
-1749331597 source:c:\0repos\concesionaria\menu.cpp
+1749406973 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
@@ -12,16 +12,17 @@
 	"Cliente.h"
 	"Vendedor.h"
 	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
 
 1748301980 c:\0repos\concesionaria\menu.h
 
-1749262998 source:c:\0repos\concesionaria\cliente.cpp
+1749400371 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
 	<iostream>
 
-1749262617 c:\0repos\concesionaria\cliente.h
+1749400262 c:\0repos\concesionaria\cliente.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -89,7 +90,7 @@
 
 1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
-1749332370 source:c:\0repos\concesionaria\vendedor.cpp
+1749400387 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
@@ -97,7 +98,7 @@
 	<cctype>
 	"Menu.h"
 
-1749331597 c:\0repos\concesionaria\vendedor.h
+1749400262 c:\0repos\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
