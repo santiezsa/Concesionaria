@@ -143,7 +143,8 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese nombre: ";
         cin.getline(nombre, sizeof(nombre));
-        if(strlen(nombre) == 0 || strlen(nombre) > 50)
+
+        if(strlen(nombre) == 0 || strlen(nombre) > 49)
         {
             system("cls");
             menu.mostrarLogo();
@@ -185,11 +186,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese apellido: ";
         cin.getline(apellido, sizeof(apellido));
-        if(strlen(apellido) == 0)
+        if(strlen(apellido) == 0 || strlen(apellido) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: El apellido no puede estar vacio." << endl;
+            cout << "Error: Ingrese un apellido valido." << endl;
             system("pause");
         }
         else
@@ -227,11 +228,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese email: ";
         cin.getline(email, sizeof(email));
-        if(strlen(email) == 0)
+        if(strlen(email) == 0 || strlen(email) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: el email no puede estar vacio." << endl;
+            cout << "Error: Ingrese un email valido." << endl;
             system("pause");
         }
         else
@@ -269,11 +270,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese calle: ";
         cin.getline(calle, sizeof(calle));
-        if(strlen(calle) == 0)
+        if(strlen(calle) == 0 || strlen(calle) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La calle no puede estar vacia" << endl;
+            cout << "Error: Ingrese una calle valida." << endl;
             system("pause");
         }
         else
@@ -367,11 +368,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese localidad: ";
         cin.getline(localidad, sizeof(localidad));
-        if(strlen(localidad) == 0)
+        if(strlen(localidad) == 0 || strlen(localidad) >49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La localidad no puede estar vacia" << endl;
+            cout << "Error: Ingrese una localidad valida." << endl;
             system("pause");
         }
         else
@@ -411,11 +412,11 @@ bool Vendedor::cargarVendedor()
         menu.mostrarLogo();
         cout << "Ingrese numero de telefono: ";
         cin.getline(numeroTelefono, sizeof(numeroTelefono));
-        if(strlen(numeroTelefono) == 0)
+        if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: el numero de telefono no puede estar vacio" << endl;
+            cout << "Error: Ingrese un numero de telefono valido." << endl;
             system("pause");
         }
         else
@@ -629,9 +630,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo nombre: ";
                     cin.getline(nombre, sizeof(nombre));
-                    if(strlen(nombre) == 0)
+                    if(strlen(nombre) == 0 || strlen(nombre) > 49)
                     {
-                        cout << "Error: El nombre no puede estar vacio." << endl;
+                        cout << "Error: Ingrese un nombre valido." << endl;
                         system("pause");
                     }
                     else
@@ -648,9 +649,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo apellido: ";
                     cin.getline(apellido, sizeof(apellido));
-                    if(strlen(apellido) == 0)
+                    if(strlen(apellido) == 0 || strlen(apellido) > 49)
                     {
-                        cout << "Error: El apellido no puede estar vacio." << endl;
+                        cout << "Error: Ingrese un apellido valido." << endl;
                         system("pause");
                     }
                     else
@@ -667,9 +668,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo email: ";
                     cin.getline(email, sizeof(email));
-                    if(strlen(email) == 0)
+                    if(strlen(email) == 0|| strlen(email) > 49)
                     {
-                        cout << "Error: El email no puede estar vacio." << endl;
+                        cout << "Error: Ingrese un email valido." << endl;
                         system("pause");
                     }
                     else
@@ -686,9 +687,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nueva calle: ";
                     cin.getline(calle, sizeof(calle));
-                    if(strlen(calle) == 0)
+                    if(strlen(calle) == 0 || strlen(calle) > 49)
                     {
-                        cout << "Error: La calle no puede estar vacia." << endl;
+                        cout << "Error: Ingrese una calle valida." << endl;
                         system("pause");
                         continue;
                     }
@@ -707,9 +708,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
 
                     cout << "Ingrese nueva localidad: ";
                     cin.getline(localidad, sizeof(localidad));
-                    if(strlen(localidad) == 0)
+                    if(strlen(localidad) == 0 || strlen(localidad) > 49)
                     {
-                        cout << "Error: La localidad no puede estar vacia." << endl;
+                        cout << "Error: Ingrese una localidad valida." << endl;
                         system("pause");
                         continue;
                     }
@@ -726,9 +727,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo telefono: ";
                     cin.getline(numeroTelefono, sizeof(numeroTelefono));
-                    if(strlen(numeroTelefono) == 0)
+                    if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
                     {
-                        cout << "Error: El telefono no puede estar vacio." << endl;
+                        cout << "Error: Ingrese un numero de telefono valido." << endl;
                         system("pause");
                     }
                     else
