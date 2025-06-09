@@ -72,6 +72,10 @@ void ConcesionariaManager::modificarCliente()
                 system("pause");
                 break;
             }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 }
@@ -99,20 +103,31 @@ void ConcesionariaManager::buscarCliente()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Opcion incorrecta" << endl;
-            cout << "Desea confirmar? (s/n)" << endl;
+            cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
-        }
-        if(confirmar == 's')
-        {
-            cin.ignore();
-            int pos = archivoCliente.buscarCliente(dni);
-            Cliente cliente;
-            cliente = archivoCliente.Leer(pos);
-            cliente.mostrarCliente(cliente);
-            system("pause");
-            break;
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoCliente.buscarCliente(dni); /// Busco la posicion del cliente en base al DNI
+                cliente = archivoCliente.Leer(pos);
+                cliente.mostrarCliente(cliente);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 }
@@ -157,7 +172,6 @@ void ConcesionariaManager::modificarVendedor()
             {
                 cin.ignore();
                 int pos = archivoVendedor.buscarVendedor(dni); /// Busco la posicion del vendedor en base al DNI
-                Vendedor vendedor;
                 vendedor = archivoVendedor.Leer(pos);
                 vendedor.modificarVendedor(vendedor);
                 if(archivoVendedor.Guardar(vendedor, pos))
@@ -170,6 +184,10 @@ void ConcesionariaManager::modificarVendedor()
                 }
                 system("pause");
                 break;
+            }
+            else
+            {
+                cin.ignore();
             }
         }
     }
@@ -219,6 +237,10 @@ void ConcesionariaManager::buscarVendedor()
                 vendedor.mostrarVendedor(vendedor);
                 system("pause");
                 break;
+            }
+            else
+            {
+                cin.ignore();
             }
         }
     }

@@ -278,8 +278,7 @@ void Menu::mostrarMenuClientes()
                     mostrarLogo();
                     cout << "1 - Buscar cliente por ID" << endl;
                     cout << "2 - Buscar cliente por DNI" << endl;
-                    cout << "3 - Buscar cliente por Apellido" << endl;
-                    cout << "4 - Volver al menu anterior" << endl;
+                    cout << "3 - Volver al menu anterior" << endl;
 
                     cout << "Ingrese una opcion: " << endl;
                     cin >> opcionBuscarCliente;
@@ -312,7 +311,6 @@ void Menu::mostrarMenuClientes()
                     break;
 
                 case 3:
-                    concesionariaManager.buscarCliente();
 
                     break;
 
@@ -342,9 +340,11 @@ void Menu::mostrarMenuClientes()
             system("pause");
             system("cls");
 
+            break;
+
         }
     }
-    while (opcionClientes != 4);
+    while (opcionClientes != 3);
 }
 
 void Menu::mostrarMenuVendedores()
@@ -401,8 +401,7 @@ void Menu::mostrarMenuVendedores()
                     mostrarLogo();
                     cout << "1 - Buscar vendedor por ID" << endl;
                     cout << "2 - Buscar vendedor por DNI" << endl;
-                    cout << "3 - Buscar vendedor por Apellido" << endl;
-                    cout << "4 - Volver al menu anterior" << endl;
+                    cout << "3 - Volver al menu anterior" << endl;
 
                     cout << "Ingrese una opcion: " << endl;
                     cin >> opcionBuscarVendedor;
@@ -435,7 +434,6 @@ void Menu::mostrarMenuVendedores()
                     break;
 
                 case 3:
-                    concesionariaManager.buscarVendedor();
 
                     break;
 
@@ -449,12 +447,7 @@ void Menu::mostrarMenuVendedores()
                     break;
                 }
             }
-            while (opcionBuscarVendedor != 4);
-
-            break;
-
-        case 4:
-            //
+            while (opcionBuscarVendedor != 3);
 
             break;
 
@@ -464,6 +457,8 @@ void Menu::mostrarMenuVendedores()
             cout << "Entrada invalida. Intente nuevamente." << endl;
             system("pause");
             system("cls");
+
+            break;
         }
     }
     while (opcionVendedor != 4);

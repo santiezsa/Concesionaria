@@ -69,7 +69,7 @@ bool Vendedor::cargarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.getline(dni, sizeof(dni));
 
-        if(strlen(dni) == 0 || strlen(dni) > 11)
+        if(strlen(dni) == 0 || strlen(dni) > 11)///<------------------------------------------ Se rompe
         {
             system("cls");
             menu.mostrarLogo();
@@ -577,7 +577,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Opcion incorrecta." << endl;
-            cout << "Desea cargar un vendedor nuevo? (s/n)" << endl;
+            cout << "Los datos son correctos? (s/n)" << endl;
             cin >> opcion;
             opcion = tolower(opcion);
         }
@@ -588,20 +588,37 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
         }
         else if(opcion == 'n')
         {
-            cout << endl;
-            cout << "Que campo desea modificar?" << endl;
-            cout << "1 - DNI" << endl;
-            cout << "2 - Nombre" << endl;
-            cout << "3 - Apellido" << endl;
-            cout << "4 - Email" << endl;
-            cout << "5 - Direccion" << endl;
-            cout << "6 - Telefono" << endl;
-            cout << "7 - Fecha de Nacimiento" << endl;
-            cout << "8 - Fecha de Ingreso" << endl;
-            cout << "9 - Cancelar y volver a cargar todo" << endl;
-
             int opcionModificar;
-            cin >> opcionModificar;
+            while (true)
+            {
+                cout << endl;
+                cout << "Que campo desea modificar?" << endl;
+                cout << "1 - DNI" << endl;
+                cout << "2 - Nombre" << endl;
+                cout << "3 - Apellido" << endl;
+                cout << "4 - Email" << endl;
+                cout << "5 - Direccion" << endl;
+                cout << "6 - Telefono" << endl;
+                cout << "7 - Fecha de Nacimiento" << endl;
+                cout << "8 - Fecha de Ingreso" << endl;
+                cout << "9 - Cancelar y volver a cargar todo" << endl;
+
+                cin >> opcionModificar;
+                if (cin.fail()) // Si la entrada es inválida
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cin.clear(); // Limpia el estado de error
+                    cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                    cout << "Entrada invalida. Intente nuevamente." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    break; // Si la entrada es válida, salir del bucle
+                }
+            }
+
             cin.ignore();
 
             switch(opcionModificar)
