@@ -484,6 +484,7 @@ void Cliente::mostrarCliente(Cliente &cliente)
     Menu menu;
     system("cls");
     menu.mostrarLogo();
+    cout << "ID Cliente: " << cliente.getIdCliente() << endl;
     cout << "DNI: " << cliente.getDni() << endl;
     cout << "Nombre: " << cliente.getNombre() << endl;
     cout << "Apellido: " << cliente.getApellido() << endl;
