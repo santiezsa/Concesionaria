@@ -46,12 +46,13 @@
 	"Direccion.h"
 	<cstring>
 
-1749001331 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
+1749423381 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
+	"Menu.h"
 	<iostream>
 
-1749001471 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.h
+1749423381 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -62,7 +63,7 @@
 1748114981 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\fecha.h
 	<string>
 
-1748114981 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\direccion.h
+1749330080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\direccion.h
 
 1748114981 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\direccion.cpp
 	"Direccion.h"
@@ -80,13 +81,15 @@
 	"Persona.h"
 	<cstring>
 
-1749173103 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+1749504162 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
 	"ConcesionariaManager.h"
 	"Cliente.h"
 	"Vendedor.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
 
 1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
@@ -115,14 +118,15 @@
 	"Patente.h"
 	<cstring>
 
-1749251396 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
+1749423381 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
 	<cstring>
 	<cctype>
+	"Menu.h"
 
-1749001471 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
+1749423381 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -277,10 +281,10 @@
 1748987080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autonuevo.h
 	"Auto.h"
 
-1749167888 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.cpp
+1749267343 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.cpp
 	"ArchivoCliente.h"
 
-1749167888 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.h
+1749267343 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.h
 	<cstring>
 	"Cliente.h"
 
@@ -326,7 +330,7 @@
 	<string>
 	"AutoUsado.h"
 
-1748995729 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
+1749505059 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -337,8 +341,9 @@
 	"ArchivoCliente.h"
 	"ArchivoAutoNuevo.h"
 	"ArchivoAutoUsado.h"
+	"Menu.h"
 
-1748995729 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
+1749503992 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
 
 1748995729 ated upstream
 

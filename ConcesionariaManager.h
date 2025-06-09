@@ -8,7 +8,11 @@ class ConcesionariaManager
 
         void modificarCliente();
 
+        void buscarCliente();
+
         void modificarVendedor();
+
+        void buscarVendedor();
 
     private:
 };
