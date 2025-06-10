@@ -62,7 +62,7 @@ bool Cliente::cargarCliente()
             cout << "Error. Ingrese un DNI valido." << endl;
             system("pause");
         }
-        else if(archivoCliente.buscarCliente(dni) >= 0)  /// si busca y encuentra el registro
+        else if(archivoCliente.buscarClientePorDNI(dni) >= 0)  /// si busca y encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -568,7 +568,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                         cout << "Error: Ingrese un DNI valido." << endl;
                         system("pause");
                     }
-                    else if(archivoCliente.buscarCliente(dni) >= 0 && strcmp(dni, cliente.getDni()) != 0)
+                    else if(archivoCliente.buscarClientePorDNI(dni) >= 0 && strcmp(dni, cliente.getDni()) != 0)
                     {
                         cout << "Error: Ya existe un cliente con ese DNI." << endl;
                         system("pause");

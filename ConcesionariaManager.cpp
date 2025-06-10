@@ -31,7 +31,7 @@ void ConcesionariaManager::modificarCliente()
         cout << "Ingrese DNI del cliente: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoCliente.buscarCliente(dni) >= 0))
+        if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -57,7 +57,7 @@ void ConcesionariaManager::modificarCliente()
             if(confirmar == 's')
             {
                 cin.ignore();
-                int pos = archivoCliente.buscarCliente(dni);
+                int pos = archivoCliente.buscarClientePorDNI(dni);
                 Cliente cliente;
                 cliente = archivoCliente.Leer(pos);
                 cliente.modificarCliente(cliente);
@@ -80,7 +80,7 @@ void ConcesionariaManager::modificarCliente()
     }
 }
 
-void ConcesionariaManager::buscarCliente()
+void ConcesionariaManager::buscarClientePorDNI()
 {
     char dni[12];
     char confirmar;
@@ -92,7 +92,7 @@ void ConcesionariaManager::buscarCliente()
         cout << "Ingrese DNI del cliente: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoCliente.buscarCliente(dni) >= 0))
+        if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -118,7 +118,76 @@ void ConcesionariaManager::buscarCliente()
             if (confirmar == 's')
             {
                 cin.ignore();
-                int pos = archivoCliente.buscarCliente(dni); /// Busco la posicion del cliente en base al DNI
+                int pos = archivoCliente.buscarClientePorDNI(dni); /// Busco la posicion del cliente en base al DNI
+                cliente = archivoCliente.Leer(pos);
+                cliente.mostrarCliente(cliente);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+}
+
+void ConcesionariaManager::buscarClientePorID()
+{
+    int idCliente;
+    char confirmar;
+    while(true)
+    {
+
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Ingrese ID del cliente: ";
+            cin >> idCliente;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        if(!(archivoCliente.buscarClientePorID(idCliente) >= 0))  /// si cuenta y NO encuentra el registro
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un cliente con ese ID." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El ID ingresado es " << idCliente << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoCliente.buscarClientePorID(idCliente); /// Busco la posicion del cliente en base al ID
                 cliente = archivoCliente.Leer(pos);
                 cliente.mostrarCliente(cliente);
                 system("pause");
@@ -145,7 +214,7 @@ void ConcesionariaManager::modificarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
+        if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -171,7 +240,7 @@ void ConcesionariaManager::modificarVendedor()
             if (confirmar == 's')
             {
                 cin.ignore();
-                int pos = archivoVendedor.buscarVendedor(dni); /// Busco la posicion del vendedor en base al DNI
+                int pos = archivoVendedor.buscarVendedorPorDNI(dni); /// Busco la posicion del vendedor en base al DNI
                 vendedor = archivoVendedor.Leer(pos);
                 vendedor.modificarVendedor(vendedor);
                 if(archivoVendedor.Guardar(vendedor, pos))
@@ -193,7 +262,7 @@ void ConcesionariaManager::modificarVendedor()
     }
 }
 
-void ConcesionariaManager::buscarVendedor()
+void ConcesionariaManager::buscarVendedorPorDNI()
 {
     char dni[12];
     char confirmar;
@@ -205,7 +274,7 @@ void ConcesionariaManager::buscarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoVendedor.buscarVendedor(dni) >= 0))  /// si cuenta y NO encuentra el registro
+        if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -231,7 +300,7 @@ void ConcesionariaManager::buscarVendedor()
             if (confirmar == 's')
             {
                 cin.ignore();
-                int pos = archivoVendedor.buscarVendedor(dni); /// Busco la posicion del vendedor en base al DNI
+                int pos = archivoVendedor.buscarVendedorPorDNI(dni); /// Busco la posicion del vendedor en base al DNI
                 Vendedor vendedor;
                 vendedor = archivoVendedor.Leer(pos);
                 vendedor.mostrarVendedor(vendedor);
@@ -245,3 +314,73 @@ void ConcesionariaManager::buscarVendedor()
         }
     }
 }
+
+void ConcesionariaManager::buscarVendedorPorID()
+{
+    int idVendedor;
+    char confirmar;
+    while(true)
+    {
+
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Ingrese ID del vendedor: ";
+            cin >> idVendedor;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        if(!(archivoVendedor.buscarVendedorPorID(idVendedor) >= 0))  /// si cuenta y NO encuentra el registro
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un vendedor con ese ID." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El ID ingresado es " << idVendedor << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoVendedor.buscarVendedorPorID(idVendedor); /// Busco la posicion del vendedor en base al DNI
+                vendedor = archivoVendedor.Leer(pos);
+                vendedor.mostrarVendedor(vendedor);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+}
+

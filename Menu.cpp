@@ -301,12 +301,12 @@ void Menu::mostrarMenuClientes()
                 switch(opcionBuscarCliente)
                 {
                 case 1:
-                    concesionariaManager.buscarCliente();
+                    concesionariaManager.buscarClientePorID();
 
                     break;
 
                 case 2:
-                    concesionariaManager.buscarCliente();
+                    concesionariaManager.buscarClientePorDNI();
 
                     break;
 
@@ -324,12 +324,11 @@ void Menu::mostrarMenuClientes()
                     break;
                 }
             }
-            while (opcionBuscarCliente != 4);
+            while (opcionBuscarCliente != 3);
 
             break;
 
         case 4:
-            //
 
             break;
 
@@ -344,7 +343,7 @@ void Menu::mostrarMenuClientes()
 
         }
     }
-    while (opcionClientes != 3);
+    while (opcionClientes != 4);
 }
 
 void Menu::mostrarMenuVendedores()
@@ -424,12 +423,12 @@ void Menu::mostrarMenuVendedores()
                 switch(opcionBuscarVendedor)
                 {
                 case 1:
-                    concesionariaManager.buscarVendedor();
+                    concesionariaManager.buscarVendedorPorID();
 
                     break;
 
                 case 2:
-                    concesionariaManager.buscarVendedor();
+                    concesionariaManager.buscarVendedorPorDNI();
 
                     break;
 
@@ -448,6 +447,10 @@ void Menu::mostrarMenuVendedores()
                 }
             }
             while (opcionBuscarVendedor != 3);
+
+            break;
+
+        case 4:
 
             break;
 
