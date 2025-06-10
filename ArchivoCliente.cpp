@@ -101,7 +101,7 @@ void ArchivoCliente::Leer(int cantidadRegistros, Cliente *vector){
 }
 
 /// Busca un cliente por su DNI y retorna la posición de su registro en el archivo
-int ArchivoCliente::buscarCliente(const char* _dniCliente) ///
+int ArchivoCliente::buscarClientePorDNI(const char* _dniCliente) ///
 {
     Cliente cliente;
     FILE *pArchivo;
@@ -143,4 +143,30 @@ int ArchivoCliente::generarIdCliente()
     }
 
     return maxId + 1; /// Devuelve el siguiente ID
+}
+
+int ArchivoCliente::buscarClientePorID(int _idCliente) ///
+{
+    Cliente cliente;
+    FILE *pArchivo;
+    pArchivo=fopen(_nombreArchivo.c_str(),"rb");
+
+    if(pArchivo==nullptr)   ///NULL
+    {
+        ///cout<<"ERROR DE ARCHIVO"<<endl;
+        return -2;
+    }
+
+    int pos=0;
+    while(fread(&cliente, sizeof(Cliente),1,pArchivo)==1)
+    {
+        if(cliente.getIdCliente() == _idCliente)
+        {
+            return pos;
+        }
+        pos++;
+    }
+
+    fclose(pArchivo);
+    return -1;
 }

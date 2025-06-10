@@ -110,7 +110,7 @@ void ArchivoVendedor::Leer(int cantidadRegistros, Vendedor *vector)
 }
 
 
-int ArchivoVendedor::buscarVendedor(const char* _dniVendedor) ///
+int ArchivoVendedor::buscarVendedorPorDNI(const char* _dniVendedor) ///
 {
     Vendedor vendedor;
     FILE *pArchivo;
@@ -154,3 +154,28 @@ int ArchivoVendedor::generarIdVendedor()
     return maxId + 1; /// Devuelve el siguiente ID
 }
 
+int ArchivoVendedor::buscarVendedorPorID(int _idVendedor) ///
+{
+    Vendedor vendedor;
+    FILE *pArchivo;
+    pArchivo=fopen(_nombreArchivo.c_str(),"rb");
+
+    if(pArchivo==nullptr)   ///NULL
+    {
+        ///cout<<"ERROR DE ARCHIVO"<<endl;
+        return -2;
+    }
+
+    int pos=0;
+    while(fread(&vendedor, sizeof(Vendedor),1,pArchivo)==1)
+    {
+        if(vendedor.getIdVendedor() == _idVendedor)
+        {
+            return pos;
+        }
+        pos++;
+    }
+
+    fclose(pArchivo);
+    return -1;
+}

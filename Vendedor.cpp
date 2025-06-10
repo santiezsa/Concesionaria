@@ -78,7 +78,7 @@ bool Vendedor::cargarVendedor()
         }
         else
         {
-            if(archivoVendedor.buscarVendedor(dni) >= 0)  /// si cuenta y encuentra el registro
+            if(archivoVendedor.buscarVendedorPorDNI(dni) >= 0)  /// si cuenta y encuentra el registro
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -630,7 +630,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo DNI: ";
                     cin.getline(dni, sizeof(dni));
-                    if(archivoVendedor.buscarVendedor(dni) >= 0 && strcmp(dni, vendedor.getDni()) != 0)
+                    if(archivoVendedor.buscarVendedorPorDNI(dni) >= 0 && strcmp(dni, vendedor.getDni()) != 0)
                     {
                         cout << "Error: Ya existe un vendedor con ese DNI." << endl;
                         system("pause");
