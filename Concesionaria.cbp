@@ -42,8 +42,12 @@
 		<Unit filename="ArchivoAutoUsado.h" />
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoPago.cpp" />
+		<Unit filename="ArchivoPago.h" />
 		<Unit filename="ArchivoVendedor.cpp" />
 		<Unit filename="ArchivoVendedor.h" />
+		<Unit filename="ArchivoVenta.cpp" />
+		<Unit filename="ArchivoVenta.h" />
 		<Unit filename="Auto.cpp" />
 		<Unit filename="Auto.h" />
 		<Unit filename="AutoNuevo.cpp" />
