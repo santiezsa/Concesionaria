@@ -5,7 +5,7 @@
 
 ArchivoPago::ArchivoPago()
 {
-    _nombreArchivo = "pago.dat";
+    _nombreArchivo = "pagos.dat";
 }
 
 ArchivoPago::ArchivoPago(std::string nombreArchivo)

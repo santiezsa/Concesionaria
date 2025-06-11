@@ -4,7 +4,7 @@
 	<string>
 	"Menu.h"
 
-1749597301 source:c:\0repos\concesionaria\menu.cpp
+1749606727 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
@@ -14,15 +14,15 @@
 	"ArchivoVendedor.h"
 	"ArchivoCliente.h"
 
-1748301980 c:\0repos\concesionaria\menu.h
+1749606294 c:\0repos\concesionaria\menu.h
 
-1749597301 source:c:\0repos\concesionaria\cliente.cpp
+1749605168 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
 	<iostream>
 
-1749400262 c:\0repos\concesionaria\cliente.h
+1749605168 c:\0repos\concesionaria\cliente.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -245,7 +245,7 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
-1749597301 source:c:\0repos\concesionaria\archivovendedor.cpp
+1749605351 source:c:\0repos\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 	"Vendedor.h"
 	<iostream>
@@ -403,4 +403,14 @@
 1749599448 c:\0repos\concesionaria\archivoventa.h
 	<string>
 	"Venta.h"
+
+1749605308 source:c:\0repos\concesionaria\archivopago.cpp
+	"ArchivoPago.h"
+	"Pago.h"
+	<iostream>
+	<cstring>
+
+1749600554 c:\0repos\concesionaria\archivopago.h
+	<cstring>
+	"Pago.h"
 

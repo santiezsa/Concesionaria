@@ -71,7 +71,10 @@ void Menu::mostrarMenuPrincipal()
             cout << "2 - Clientes" << endl;
             cout << "3 - Vendedores" << endl;
             cout << "4 - Ventas" << endl;
-            //cout << "5 - Configuracion" << endl;
+            cout << "5 - Autos" << endl;
+            cout << "6 - Listados" << endl;
+            cout << "7 - Consultas" << endl;
+            cout << "8 - Informes" << endl;
             cout << "------------------------" << endl;
             cout << "0 - Salir" << endl;
 
@@ -114,11 +117,18 @@ void Menu::mostrarMenuPrincipal()
             mostrarMenuVentas();
 
             break;
-
-        /*case 5:
-            mostrarMenuConfiguracion();
-
-            break;*/
+        case 5:
+            mostrarMenuAutos();
+            break;
+        case 6:
+            mostrarMenuListados();
+            break;
+        case 7:
+            mostrarMenuConsultas();
+            break;
+        case 8:
+            mostrarMenuInformes();
+            break;
 
         case 0:
             system("cls");
@@ -227,7 +237,6 @@ void Menu::mostrarMenuClientes()
     int opcionClientes;
     Cliente cliente;
     ArchivoCliente archivoCliente;
-
 
     do
     {
@@ -472,7 +481,22 @@ void Menu::mostrarMenuVentas()
 
 }
 
-void Menu::mostrarMenuConfiguracion()
+void Menu::mostrarMenuAutos()
+{
+
+}
+
+void Menu::mostrarMenuListados()
+{
+
+}
+
+void Menu::mostrarMenuInformes()
+{
+
+}
+
+void Menu::mostrarMenuConsultas()
 {
 
 }

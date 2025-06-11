@@ -27,7 +27,7 @@ bool ArchivoVendedor::Guardar(Vendedor vendedor)
 }
 
 
-/// Guarda un registro de Vendedor en una posici�n espec�fica (sobrescribe)
+/// Guarda un registro de Vendedor en una posicion especifica (sobrescribe)
 bool ArchivoVendedor::Guardar(Vendedor vendedor, int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
@@ -42,7 +42,7 @@ bool ArchivoVendedor::Guardar(Vendedor vendedor, int posicion)
 }
 
 
-/// Busca un vendedor por su ID y retorna la posici�n de su registro en el archivo
+/// Busca un vendedor por su ID y retorna la posicion de su registro en el archivo
 int ArchivoVendedor::Buscar(int idVendedor)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -65,7 +65,7 @@ int ArchivoVendedor::Buscar(int idVendedor)
     return -1;
 }
 
-/// Lee un registro de Vendedor en una posici�n espec�fica
+/// Lee un registro de Vendedor en una posicion especifica
 Vendedor ArchivoVendedor::Leer(int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -110,7 +110,7 @@ void ArchivoVendedor::Leer(int cantidadRegistros, Vendedor *vector)
 }
 
 
-int ArchivoVendedor::buscarVendedorPorDNI(const char* _dniVendedor) ///
+int ArchivoVendedor::buscarVendedorPorDNI(const char* _dniVendedor)
 {
     Vendedor vendedor;
     FILE *pArchivo;

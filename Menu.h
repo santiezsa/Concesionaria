@@ -10,7 +10,10 @@ class Menu
         void mostrarMenuClientes();
         void mostrarMenuVendedores();
         void mostrarMenuVentas();
-        void mostrarMenuConfiguracion();
+        void mostrarMenuAutos();
+        void mostrarMenuListados();
+        void mostrarMenuConsultas();
+        void mostrarMenuInformes();
 
     protected:
 
