@@ -4,7 +4,7 @@
 	<string>
 	"Menu.h"
 
-1749406973 source:c:\0repos\concesionaria\menu.cpp
+1749597301 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Menu.h"
@@ -16,7 +16,7 @@
 
 1748301980 c:\0repos\concesionaria\menu.h
 
-1749400371 source:c:\0repos\concesionaria\cliente.cpp
+1749597301 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
@@ -93,7 +93,7 @@
 
 1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
-1749400387 source:c:\0repos\concesionaria\vendedor.cpp
+1749597301 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
@@ -245,13 +245,13 @@
 
 1748905518 source:c:\users\serge\onedrive\documentos\programación\programacion ii\concesionaria\concesionaria\archivoautonuevo.cpp
 
-1749260965 source:c:\0repos\concesionaria\archivovendedor.cpp
+1749597301 source:c:\0repos\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 	"Vendedor.h"
 	<iostream>
 	<cstring>
 
-1749260965 c:\0repos\concesionaria\archivovendedor.h
+1749597301 c:\0repos\concesionaria\archivovendedor.h
 	<string>
 	"Vendedor.h"
 
@@ -375,14 +375,14 @@
 	<string>
 	"AutoUsado.h"
 
-1749262927 source:c:\0repos\concesionaria\archivocliente.cpp
+1749597301 source:c:\0repos\concesionaria\archivocliente.cpp
 	"ArchivoCliente.h"
 
-1749262911 c:\0repos\concesionaria\archivocliente.h
+1749597301 c:\0repos\concesionaria\archivocliente.h
 	<cstring>
 	"Cliente.h"
 
-1749001622 source:c:\0repos\concesionaria\concesionariamanager.cpp
+1749597301 source:c:\0repos\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -393,6 +393,14 @@
 	"ArchivoCliente.h"
 	"ArchivoAutoNuevo.h"
 	"ArchivoAutoUsado.h"
+	"Menu.h"
 
-1749001622 c:\0repos\concesionaria\concesionariamanager.h
+1749597301 c:\0repos\concesionaria\concesionariamanager.h
+
+1749599521 source:c:\0repos\concesionaria\archivoventa.cpp
+	"ArchivoVenta.h"
+
+1749599448 c:\0repos\concesionaria\archivoventa.h
+	<string>
+	"Venta.h"
 
