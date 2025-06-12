@@ -67,14 +67,12 @@ void Menu::mostrarMenuPrincipal()
         {
             system("cls");
             mostrarLogo();
-            cout << "1 - Planes" << endl;
+            cout << "1 - Ventas" << endl;
             cout << "2 - Clientes" << endl;
             cout << "3 - Vendedores" << endl;
-            cout << "4 - Ventas" << endl;
-            cout << "5 - Autos" << endl;
-            cout << "6 - Listados" << endl;
-            cout << "7 - Consultas" << endl;
-            cout << "8 - Informes" << endl;
+            cout << "4 - Autos" << endl;
+            cout << "5 - Listados" << endl;
+            cout << "6 - Consultas" << endl;
             cout << "------------------------" << endl;
             cout << "0 - Salir" << endl;
 
@@ -99,7 +97,7 @@ void Menu::mostrarMenuPrincipal()
         switch (opcion)
         {
         case 1:
-            mostrarMenuPlanes();
+            mostrarMenuVentas();
 
             break;
 
@@ -114,20 +112,18 @@ void Menu::mostrarMenuPrincipal()
             break;
 
         case 4:
-            mostrarMenuVentas();
+            mostrarMenuAutos();
 
             break;
+
         case 5:
-            mostrarMenuAutos();
-            break;
-        case 6:
             mostrarMenuListados();
+
             break;
-        case 7:
+
+        case 6:
             mostrarMenuConsultas();
-            break;
-        case 8:
-            mostrarMenuInformes();
+
             break;
 
         case 0:
@@ -166,22 +162,22 @@ void Menu::mostrarLogo()
 
 }
 
-void Menu::mostrarMenuPlanes()
+void Menu::mostrarMenuVentas()
 {
-    int opcionPlanes;
+    int opcionVentas;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
         {
             system("cls");
             mostrarLogo();
-            cout << "1 - Cargar plan nuevo" << endl;
-            cout << "2 - Modificar plan existente" << endl;
-            cout << "3 - Buscar plan" << endl;
+            cout << "1 - Cargar venta nueva" << endl;
+            cout << "2 - Modificar venta existente" << endl;
+            cout << "3 - Buscar venta" << endl;
             cout << "4 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
-            cin >> opcionPlanes;
+            cin >> opcionVentas;
 
             if (cin.fail()) // Si la entrada es inválida
             {
@@ -198,7 +194,7 @@ void Menu::mostrarMenuPlanes()
             }
         }
 
-        switch(opcionPlanes)
+        switch(opcionVentas)
         {
         case 1:
             //
@@ -229,7 +225,7 @@ void Menu::mostrarMenuPlanes()
 
         }
     }
-    while (opcionPlanes != 4);
+    while (opcionVentas != 4);
 }
 
 void Menu::mostrarMenuClientes()
@@ -278,62 +274,7 @@ void Menu::mostrarMenuClientes()
 
             break;
         case 3:
-            int opcionBuscarCliente;
-            do
-            {
-                while (true) // Bucle infinito hasta que se ingrese un valor válido
-                {
-                    system("cls");
-                    mostrarLogo();
-                    cout << "1 - Buscar cliente por ID" << endl;
-                    cout << "2 - Buscar cliente por DNI" << endl;
-                    cout << "3 - Volver al menu anterior" << endl;
-
-                    cout << "Ingrese una opcion: " << endl;
-                    cin >> opcionBuscarCliente;
-
-                    if (cin.fail()) // Si la entrada es inválida
-                    {
-                        system("cls");
-                        mostrarLogo();
-                        cin.clear(); // Limpia el estado de error
-                        cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
-                        cout << "Entrada invalida. Intente nuevamente." << endl;
-                        system("pause");
-                    }
-                    else
-                    {
-                        break; // Si la entrada es válida, salir del bucle
-                    }
-                }
-
-                switch(opcionBuscarCliente)
-                {
-                case 1:
-                    concesionariaManager.buscarClientePorID();
-
-                    break;
-
-                case 2:
-                    concesionariaManager.buscarClientePorDNI();
-
-                    break;
-
-                case 3:
-
-                    break;
-
-                default:
-                    system("cls");
-                    mostrarLogo();
-                    cout << "Entrada invalida. Intente nuevamente." << endl;
-                    system("pause");
-                    system("cls");
-
-                    break;
-                }
-            }
-            while (opcionBuscarCliente != 3);
+            subMenuBuscarCliente();
 
             break;
 
@@ -400,62 +341,7 @@ void Menu::mostrarMenuVendedores()
             break;
 
         case 3:
-            int opcionBuscarVendedor;
-            do
-            {
-                while (true) // Bucle infinito hasta que se ingrese un valor válido
-                {
-                    system("cls");
-                    mostrarLogo();
-                    cout << "1 - Buscar vendedor por ID" << endl;
-                    cout << "2 - Buscar vendedor por DNI" << endl;
-                    cout << "3 - Volver al menu anterior" << endl;
-
-                    cout << "Ingrese una opcion: " << endl;
-                    cin >> opcionBuscarVendedor;
-
-                    if (cin.fail()) // Si la entrada es inválida
-                    {
-                        system("cls");
-                        mostrarLogo();
-                        cin.clear(); // Limpia el estado de error
-                        cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
-                        cout << "Entrada invalida. Intente nuevamente." << endl;
-                        system("pause");
-                    }
-                    else
-                    {
-                        break; // Si la entrada es válida, salir del bucle
-                    }
-                }
-
-                switch(opcionBuscarVendedor)
-                {
-                case 1:
-                    concesionariaManager.buscarVendedorPorID();
-
-                    break;
-
-                case 2:
-                    concesionariaManager.buscarVendedorPorDNI();
-
-                    break;
-
-                case 3:
-
-                    break;
-
-                default:
-                    system("cls");
-                    mostrarLogo();
-                    cout << "Entrada invalida. Intente nuevamente." << endl;
-                    system("pause");
-                    system("cls");
-
-                    break;
-                }
-            }
-            while (opcionBuscarVendedor != 3);
+            subMenuBuscarVendedor();
 
             break;
 
@@ -476,9 +362,129 @@ void Menu::mostrarMenuVendedores()
     while (opcionVendedor != 4);
 }
 
-void Menu::mostrarMenuVentas()
+void Menu::subMenuBuscarVendedor()
 {
+    int opcionBuscarVendedor;
+    Vendedor vendedor;
+    ArchivoVendedor archivoVendedor;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Buscar vendedor por ID" << endl;
+            cout << "2 - Buscar vendedor por DNI" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
 
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionBuscarVendedor;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionBuscarVendedor)
+        {
+        case 1:
+            concesionariaManager.buscarVendedorPorID();
+
+            break;
+
+        case 2:
+            concesionariaManager.buscarVendedorPorDNI();
+
+            break;
+
+        case 3:
+
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+
+            break;
+        }
+    }
+    while (opcionBuscarVendedor != 3);
+
+}
+
+void Menu::subMenuBuscarCliente()
+{
+    Cliente cliente;
+    ArchivoCliente archivoCliente;
+    int opcionBuscarCliente;
+            do
+            {
+                while (true) // Bucle infinito hasta que se ingrese un valor válido
+                {
+                    system("cls");
+                    mostrarLogo();
+                    cout << "1 - Buscar cliente por ID" << endl;
+                    cout << "2 - Buscar cliente por DNI" << endl;
+                    cout << "3 - Volver al menu anterior" << endl;
+
+                    cout << "Ingrese una opcion: " << endl;
+                    cin >> opcionBuscarCliente;
+
+                    if (cin.fail()) // Si la entrada es inválida
+                    {
+                        system("cls");
+                        mostrarLogo();
+                        cin.clear(); // Limpia el estado de error
+                        cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                        cout << "Entrada invalida. Intente nuevamente." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        break; // Si la entrada es válida, salir del bucle
+                    }
+                }
+
+                switch(opcionBuscarCliente)
+                {
+                case 1:
+                    concesionariaManager.buscarClientePorID();
+
+                    break;
+
+                case 2:
+                    concesionariaManager.buscarClientePorDNI();
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                default:
+                    system("cls");
+                    mostrarLogo();
+                    cout << "Entrada invalida. Intente nuevamente." << endl;
+                    system("pause");
+                    system("cls");
+
+                    break;
+                }
+            }
+            while (opcionBuscarCliente != 3);
 }
 
 void Menu::mostrarMenuAutos()
@@ -487,11 +493,6 @@ void Menu::mostrarMenuAutos()
 }
 
 void Menu::mostrarMenuListados()
-{
-
-}
-
-void Menu::mostrarMenuInformes()
 {
 
 }

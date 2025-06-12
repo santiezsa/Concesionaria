@@ -91,7 +91,7 @@
 	"ArchivoVendedor.h"
 	"ArchivoCliente.h"
 
-1748296584 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
+1749688683 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
 
 1749597301 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
@@ -288,7 +288,7 @@
 	<cstring>
 	"Cliente.h"
 
-1749594656 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.cpp
+1749683230 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.cpp
 	"ArchivoVendedor.h"
 	"Vendedor.h"
 	<iostream>
@@ -413,4 +413,21 @@
 1749600554 c:\0repos\concesionaria\archivopago.h
 	<cstring>
 	"Pago.h"
+
+1749683230 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivopago.cpp
+	"ArchivoPago.h"
+	"Pago.h"
+	<iostream>
+	<cstring>
+
+1749601333 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivopago.h
+	<cstring>
+	"Pago.h"
+
+1749601333 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoventa.cpp
+	"ArchivoVenta.h"
+
+1749601333 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoventa.h
+	<string>
+	"Venta.h"
 
