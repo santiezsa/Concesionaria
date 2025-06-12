@@ -197,22 +197,22 @@ void Menu::mostrarMenuVentas()
         switch(opcionVentas)
         {
         case 1:
-            //
+            ///ventas.cargarVentas();
 
             break;
 
         case 2:
-            //
+            ///concesionaria.modificarVenta();
 
             break;
 
         case 3:
-            //
+            ///concesionaria.buscarVenta();
 
             break;
 
         case 4:
-            //
+            ///Break solo para terminar el ciclo
 
             break;
 
@@ -279,6 +279,7 @@ void Menu::mostrarMenuClientes()
             break;
 
         case 4:
+            ///Break solo para terminar el ciclo
 
             break;
 
@@ -334,7 +335,9 @@ void Menu::mostrarMenuVendedores()
         {
         case 1:
             vendedor.cargarVendedor();
+
             break;
+
         case 2:
             concesionariaManager.modificarVendedor();
 
@@ -346,6 +349,7 @@ void Menu::mostrarMenuVendedores()
             break;
 
         case 4:
+            ///Break solo para terminar ciclo
 
             break;
 
