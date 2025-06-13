@@ -18,5 +18,9 @@ class ConcesionariaManager
 
         void buscarVendedorPorID();
 
+
+        ///concesionaria.modificarVenta();
+        ///concesionaria.buscarVenta();
+
     private:
 };

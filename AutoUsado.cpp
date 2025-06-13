@@ -1,4 +1,5 @@
 #include "AutoUsado.h"
+#include <iostream>
 
 AutoUsado::AutoUsado() : Auto()
 {
@@ -20,4 +21,11 @@ int AutoUsado::getKilometraje()
 void AutoUsado::setKilometraje(int kilometraje)
 {
     _kilometraje = kilometraje;
+}
+
+void AutoUsado::mostrar()
+{
+    mostrar();
+    std::cout << "Kilometraje: " << getKilometraje() << std::endl;
+
 }

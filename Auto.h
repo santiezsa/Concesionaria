@@ -26,6 +26,8 @@ class Auto
         void setColor(const char* color);
         void setPrecioDeVenta(float precioDeVenta);
 
+        void mostrar();
+
     protected:
         Patente _patente;
         char _marca[50];

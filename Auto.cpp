@@ -1,5 +1,6 @@
 #include "Auto.h"
 #include <cstring>
+#include <iostream>
 
 
 Auto::Auto()
@@ -95,4 +96,17 @@ void Auto::setColor(const char* color)
 void Auto::setPrecioDeVenta(float precioDeVenta)
 {
     _precioDeVenta = precioDeVenta;
+}
+
+void Auto::mostrar()
+{
+    Patente patente;
+    std::cout << "Marca: " << _marca << std::endl;
+    std::cout << "Modelo: " << _modelo << std::endl;
+    std::cout << "Version: " << _version << std::endl;
+    std::cout << "Año: " << _anio << std::endl;
+    std::cout << "Color: " << _color << std::endl;
+    std::cout << "Precio de Venta: $" << _precioDeVenta << std::endl;
+    std::cout << "Patente: " << patente.getNumeroPatente() << std::endl;
+    std::cout << "Numero de chasis: " << patente.getNumeroChasis() << std::endl;
 }

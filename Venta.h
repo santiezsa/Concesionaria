@@ -25,8 +25,9 @@ public:
     void setIdCliente(int idCliente);
     void setIdVendedor(int idVendedor);
 
-    bool cargarPlanes(); ///Auto duplicado
-    void mostrarPlanes();
+    bool cargarVentaAutoNuevo();
+    bool cargarVentaAutoUsado();
+
 
 private:
     int _idVenta;

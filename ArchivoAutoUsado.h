@@ -14,6 +14,8 @@ class ArchivoAutoUsado
         int CantidadRegistros();
         void Leer(int CantidadRegistros, AutoUsado *vec);
 
+        void mostrarAutosUsados();
+
     private:
         std::string _nombreArchivo;
 };
