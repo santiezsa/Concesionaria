@@ -14,6 +14,8 @@ public:
     /// Setter
     void setGarantia(int garantia);
 
+    bool cargarAutoNuevo();
+
 private:
     int _garantia;
 };
