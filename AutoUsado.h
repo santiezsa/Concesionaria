@@ -14,6 +14,8 @@ public:
     /// Setter
     void setKilometraje(int kilometraje);
 
+    void mostrar();
+
 private:
     int _kilometraje;
 };

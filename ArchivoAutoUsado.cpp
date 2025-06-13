@@ -1,6 +1,7 @@
 #include "ArchivoAutoUsado.h"
 #include <string>
 #include <cstring>
+#include <iostream>
 
 ArchivoAutoUsado::ArchivoAutoUsado()
 {
@@ -54,7 +55,7 @@ int ArchivoAutoUsado::Buscar(char idChasisAutoUsado[])/// IDAuto = NroChasis
     while(fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
     {
         if (strcmp(autoUsado.getPatente().getNumeroChasis(), idChasisAutoUsado) == 0)
-        //if(autoUsado.getPatente().getNumeroChasis == idAutoUsado) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
+        //if(autoUsado.getPatente().getNumeroChasis() == idAutoUsado) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
         {
             fclose(pArchivo);
             return i;
@@ -100,6 +101,32 @@ void ArchivoAutoUsado::Leer(int cantidadRegistros, AutoUsado *vector){
     }
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&vector[i], sizeof(AutoUsado), 1, pArchivo);
+    }
+    fclose(pArchivo);
+}
+
+/// Listar todos los autos usados
+void ArchivoAutoUsado::mostrarAutosUsados()
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if (pArchivo == NULL)
+    {
+        return;
+    }
+
+    AutoUsado autoUsado;
+    int i = 0;
+    std::cout << "=== Listado de Autos Usados ===" << std::endl;
+    while (fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
+    {
+        std::cout << "Registro #" << i + 1 << std::endl;
+        autoUsado.mostrar();
+        std::cout << "-------------------------------" << std::endl;
+        i++;
+    }
+
+    if (i == 0) {
+        std::cout << "No hay autos usados registrados en el archivo." << std::endl;
     }
     fclose(pArchivo);
 }

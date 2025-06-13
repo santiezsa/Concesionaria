@@ -123,3 +123,5 @@ int ArchivoVenta::generarIdVenta()
 
     return maxId + 1; /// Devuelve el siguiente ID
 }
+
+

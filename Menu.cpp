@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Venta.h"
 #include "Menu.h"
 #include "ConcesionariaManager.h"
 #include "Cliente.h"
@@ -164,6 +165,7 @@ void Menu::mostrarLogo()
 
 void Menu::mostrarMenuVentas()
 {
+    Venta ventas;
     int opcionVentas;
     do
     {
@@ -171,10 +173,12 @@ void Menu::mostrarMenuVentas()
         {
             system("cls");
             mostrarLogo();
-            cout << "1 - Cargar venta nueva" << endl;
-            cout << "2 - Modificar venta existente" << endl;
-            cout << "3 - Buscar venta" << endl;
-            cout << "4 - Volver al menu anterior" << endl;
+            cout << "1 - Cargar venta auto nuevo (0 Kilometro)" << endl;
+            cout << "2 - Cargar venta auto usado" << endl;
+            cout << "3 - Modificar venta auto nuevo existente " << endl;
+            cout << "4 - Modificar venta auto usado existente " << endl;
+            cout << "5 - Buscar venta" << endl;
+            cout << "6 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
             cin >> opcionVentas;
@@ -197,21 +201,25 @@ void Menu::mostrarMenuVentas()
         switch(opcionVentas)
         {
         case 1:
-            ///ventas.cargarVentas();
+            ///ventas.cargarVentaAutoNuevo();
 
             break;
-
         case 2:
-            ///concesionaria.modificarVenta();
-
+            ventas.cargarVentaAutoUsado();
             break;
-
         case 3:
-            ///concesionaria.buscarVenta();
-
+            ///concesionariaManager.modificarVentaAutoNuevo();
             break;
-
         case 4:
+            ///concesionariaManager.modificarVentaAutoUsado();
+            break;
+        case 5:
+            ///concesionariaManager.buscarVentaAutoNuevo();
+            break;
+        case 6:
+            ///concesionariaManager.buscarVentaAutoNuevo();
+            break;
+        case 7:
             ///Break solo para terminar el ciclo
 
             break;
