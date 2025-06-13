@@ -5,6 +5,8 @@
 #include "ConcesionariaManager.h"
 #include "Cliente.h"
 #include "Vendedor.h"
+#include "AutoNuevo.h"
+#include "ArchivoAutoNuevo.h"
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
 using namespace std;
@@ -502,7 +504,68 @@ void Menu::subMenuBuscarCliente()
 
 void Menu::mostrarMenuAutos()
 {
+    int opcionAutoNuevo;
+    AutoNuevo autoNuevo;
+    ArchivoAutoNuevo ArchivoAutoNuevo;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Cargar auto 0km" << endl; // Queda bien 0km? o dejamos auto nuevo siempre?
+            cout << "2 - Modificar auto 0km existente" << endl;
+            cout << "3 - Mostrar auto 0km" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
 
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionAutoNuevo;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionAutoNuevo)
+        {
+        case 1:
+            autoNuevo.cargarAutoNuevo();
+            break;
+        case 2:
+            //concesionariaManager.modificarVendedor();
+
+            break;
+
+        case 3:
+            //subMenuBuscarVendedor();
+
+            break;
+
+        case 4:
+
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+
+            break;
+        }
+    }
+    while (opcionAutoNuevo != 4);
 }
 
 void Menu::mostrarMenuListados()
