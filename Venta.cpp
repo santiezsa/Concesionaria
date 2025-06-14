@@ -102,6 +102,7 @@ bool Venta::cargarVentaAutoUsado()
     char numeroChasis[10];
     Patente patente;
     float monto;
+    int dia, mes, anio;
     Fecha fechaDeVenta;
     int idCliente;
     int idVendedor;
@@ -166,16 +167,82 @@ bool Venta::cargarVentaAutoUsado()
                 /// Busco informacion del auto en base al numero de chasis
                 int pos = archivoAutoUsado.Buscar(numeroChasis);
                 autoUsado = archivoAutoUsado.Leer(pos); /// Devuelve el objeto auto usado
-                ///monto = getAutoUsado(); /// TODO: Pendiente el monto de auto <---------------------------------- PRIORIDAD
+                autoUsado.mostrar();
+                cout << endl;
+                cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
 
-                /// Pido el ID al vendedor:
+                while(confirmar != 's' && confirmar != 'n')
+                {
+                    cout << "Error: opcion incorrecta." << endl;
+                    cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if(confirmar == 'n')
+                {
+                    cout << "Operacion cancelada." << endl;
+                    system("pause");
+                    return false;
+                }
 
-                /// Busco el ID del cliente:
+                /// Obtengo el monto
+                monto = autoUsado.getPrecioDeVenta();     /// TODO: Pendiente el monto de auto <---------------------------------- PRIORIDAD
+                cout << endl;
+                cout << "Monto a cobrar: $" << monto << endl;
 
-                /// Ingresa la fecha de la operacion
+                /// Pido el ID al vendedor
+                cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID
+                cin >> idVendedor;
 
-                /// Muestro el monto a cobrar
+                /// Pido el ID del cliente
+                cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID
+                cin >> idCliente;
 
+
+                /// Ingresa la fecha de la venta
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "=== Fecha de venta ===" << endl;
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+
+                    fechaDeVenta = Fecha(dia, mes, anio);
+                    if(!fechaDeVenta.esValida())
+                    {
+                        cout << "Error: Fecha invalida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                venta = Venta(idVenta, autoUsado.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
+
+                if(archivoVenta.Guardar(venta))
+                {
+                    cout << "Venta registrada exitosamente." << endl;
+                    /// Marca el auto como vendido
+                    autoUsado.setEstado(false);
+                    archivoAutoUsado.Guardar(autoUsado, pos);
+                    system("pause");
+                    return true;
+                }
+                else
+                {
+                    cout << "Error al guardar la venta." << endl;
+                    system("pause");
+                    return false;
+                }
                 break;
             }
             else
@@ -191,8 +258,6 @@ bool Venta::cargarVentaAutoUsado()
         system("pause");
         return false;
     }
-    ///Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor)
-    ///return true;
 }
 
 bool Venta::cargarVentaAutoNuevo()
