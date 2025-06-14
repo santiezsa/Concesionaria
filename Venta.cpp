@@ -262,7 +262,7 @@ bool Venta::cargarVentaAutoUsado()
 
 bool Venta::cargarVentaAutoNuevo()
 {
-
+    /// test
     return true;
 }
 

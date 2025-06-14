@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "AutoNuevo.h"
 #include "ArchivoAutoNuevo.h"
+#include <cstring>
 using namespace std;
 
 
@@ -30,33 +31,37 @@ bool AutoNuevo::cargarAutoNuevo(){
 
     Menu menu;
     char confirmar;
-
-    char numeroChasis[20];
-    char numeroPatente[10] = "ABC123";
-
-    char marca[50] = "toyota";
-    char modelo[50] = "modelo";
-    char version[20] = "full";
-    int anio = 2025;
-    char color[20] = "blanco";
-    float precioVenta = 15000;
-    int garantia = 5;
+    char numeroChasis[10];
+    char numeroPatente[10];
+    strcpy(numeroPatente, "");
+    char marca[50];
+    char modelo[50];
+    char version[50];
+    int anio;
+    char color[20];
+    float precioVenta;
+    int garantia;
 
     ArchivoAutoNuevo archivoAutoNuevo;
 
     /// Carga NUMERO CHASIS (id)
-    cin.ignore();
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese el numero de chasis del auto 0km: ";
+        cin.ignore();
         cin.getline(numeroChasis, sizeof(numeroChasis));
 
-        /// TODO: Validar antes la cantidad de caracteres para una patente
-
-        if(archivoAutoNuevo.Buscar(numeroChasis) >= 0)  /// si encuentra el registro
+        if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error. Ingrese un numero de chasis valido." << endl;
+            system("pause");
+        }
+        else if(archivoAutoNuevo.Buscar(numeroChasis) >= 0)  /// si encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -107,38 +112,30 @@ bool AutoNuevo::cargarAutoNuevo(){
                 cin.ignore();
                 break;
             }
-            else
-            {
-                cin.ignore();
-            }
         }
-
     }
     Patente patente(numeroPatente, numeroChasis);
 
-/*
- El chasis ingresado es " << numeroChasis << ". Es correcto? (s/n)
-
-    /// Carga nombre
+    /// Carga marca
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "Ingrese nombre: ";
-        cin.getline(nombre, sizeof(nombre));
+        cout << "Ingrese marca: ";
+        cin.getline(marca, sizeof(marca));
 
-        if(strlen(nombre) == 0 || strlen(nombre) > 49)
+        if(strlen(marca) == 0 || strlen(marca) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un nombre valido." << endl;
+            cout << "Error: Ingrese una marca valida." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
+            cout << "La marca ingresada es " << marca << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -146,7 +143,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "La marca ingresada es " << marca << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -162,25 +159,25 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
-    /// Carga apellido
+    /// Carga modelo
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "Ingrese apellido: ";
-        cin.getline(apellido, sizeof(apellido));
-        if(strlen(apellido) == 0 || strlen(apellido) > 49)
+        cout << "Ingrese modelo: ";
+        cin.getline(modelo, sizeof(modelo));
+        if(strlen(modelo) == 0 || strlen(modelo) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un apellido valido." << endl;
+            cout << "Error: Ingrese un modelo valido." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
+            cout << "El modelo ingresado es " << modelo << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -188,7 +185,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El modelo ingresado es " << modelo << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -204,25 +201,25 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
-    /// Carga email
+    /// Carga version
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "Ingrese email: ";
-        cin.getline(email, sizeof(email));
-        if(strlen(email) == 0 || strlen(email) > 49)
+        cout << "Ingrese version: ";
+        cin.getline(version, sizeof(version));
+        if(strlen(version) == 0 || strlen(version) > 49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un email valido." << endl;
+            cout << "Error: Ingrese una version valida." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
+            cout << "La version ingresada es " << version << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -230,7 +227,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "La version ingresada es " << version << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -246,56 +243,15 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
-    /// Carga direccion
-    while(true)
-    {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "Ingrese calle: ";
-        cin.getline(calle, sizeof(calle));
-        if(strlen(calle) == 0 || strlen(calle) > 49)
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Error: Ingrese una calle valida." << endl;
-            system("pause");
-        }
-        else
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
-            cin >> confirmar;
-            confirmar = tolower(confirmar);
-            while(confirmar != 's' && confirmar != 'n')
-            {
-                system("cls");
-                menu.mostrarLogo();
-                cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
-                cin >> confirmar;
-                confirmar = tolower(confirmar);
-            }
-            if (confirmar == 's')
-            {
-                cin.ignore();
-                break;
-            }
-            else
-            {
-                cin.ignore();
-            }
-        }
-    }
-
+    /// Carga anio
     while(true)
     {
         while (true)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Ingrese altura: ";
-            cin >> altura;
+            cout << "Ingrese anio: ";
+            cin >> anio;
             if (cin.fail()) // Si la entrada es inválida
             {
                 system("cls");
@@ -310,18 +266,18 @@ bool AutoNuevo::cargarAutoNuevo(){
                 break; // Si la entrada es válida, salir del bucle
             }
         }
-        if(altura <= 0)
+        if(anio < 1900 || anio > 2025)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La altura debe ser mayor a cero" << endl;
+            cout << "Error: Ingrese un anio valido." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
+            cout << "El anio ingresado es " << anio << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -329,7 +285,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El anio ingresado es " << anio << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -345,24 +301,25 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
+    ///Carga color
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "Ingrese localidad: ";
-        cin.getline(localidad, sizeof(localidad));
-        if(strlen(localidad) == 0 || strlen(localidad) >49)
+        cout << "Ingrese color: ";
+        cin.getline(color, sizeof(color));
+        if(strlen(color) == 0 || strlen(color) >49)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese una localidad valida." << endl;
+            cout << "Error: Ingrese un color valido." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
+            cout << "El color ingresado es " << color << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -370,7 +327,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El color ingresado es " << color << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -386,27 +343,41 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
-    Direccion direccion(calle, altura, localidad);
-
-    /// Carga telefono
+    /// Carga precio de venta
     while(true)
     {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "Ingrese numero de telefono: ";
-        cin.getline(numeroTelefono, sizeof(numeroTelefono));
-        if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
+        while (true)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un numero de telefono valido." << endl;
+            cout << "Ingrese el precio de venta del auto: ";
+            cin >> precioVenta;
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+        if(precioVenta < 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: El precio de venta debe ser mayor a cero." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
+            cout << "El precio de venta del auto ingresado es " << anio << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -414,7 +385,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El precio de venta del auto ingresado es " << anio << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -430,82 +401,343 @@ bool AutoNuevo::cargarAutoNuevo(){
         }
     }
 
-    /// Carga fecha de nacimiento
+    /// Carga garantia
     while(true)
     {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "== Fecha de nacimiento ===" << endl;
-        cout << "Dia: ";
-        cin >> dia;
-        cout << "Mes: ";
-        cin >> mes;
-        cout << "Anio: ";
-        cin >> anio;
-
-        fechaNacimiento = Fecha(dia, mes, anio);
-        if(!fechaNacimiento.esValida())
+        while (true)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Fecha de nacimiento invalida" << endl;
+            cout << "Ingrese anios de garantia: ";
+            cin >> garantia;
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+        if(garantia < 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese anios de garantia valida." << endl;
             system("pause");
         }
         else
         {
-            break;
-        }
-    }
-
-    /// Carga fecha de ingreso
-    while(true)
-    {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "== Fecha de ingreso ===" << endl;
-        cout << "Dia: ";
-        cin >> dia;
-        cout << "Mes: ";
-        cin >> mes;
-        cout << "Anio: ";
-        cin >> anio;
-
-        fechaDeIngreso = Fecha(dia, mes, anio);
-        if(!fechaDeIngreso.esValida())
-        {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Fecha de ingreso invalida" << endl;
-            system("pause");
-        }
-        else
-        {
-            break;
+            cout << "Los anios de garantia ingresados es " << anio << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Los anios de garantia ingresados es " << anio << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
-    */
-
 
     /// Guardo datos
     AutoNuevo autoNuevo(patente, marca, modelo, version, anio, color, precioVenta, garantia);
 
 
     /// Valido datos con el usuario
-    /*
-    if(!modificarVendedor(vendedor))
+
+    if(!modificarAutoNuevo(autoNuevo))
     {
         return false;
     }
-    */
+
 
     if(archivoAutoNuevo.Guardar(autoNuevo))
     {
-        cout << "Vendedor guardado exitosamente." << endl;
+        cout << "Auto registrado exitosamente." << endl;
         return true;
     }
     else
     {
-        cout << "No se pudo guardar el vendedor." << endl;
+        cout << "No se pudo registrar el auto." << endl;
         return false;
     }
+}
+
+void AutoNuevo::mostrarAutoNuevo(AutoNuevo &autoNuevo)
+{
+    Menu menu;
+    system("cls");
+    menu.mostrarLogo();
+    cout << "Numero de chasis: " << autoNuevo.getPatente().getNumeroChasis() << endl;
+    cout << "Patente: " << autoNuevo.getPatente().getNumeroChasis() << endl;
+    cout << "Marca: " << autoNuevo.getMarca() << endl;
+    cout << "Modelo: " << autoNuevo.getModelo() << endl;
+    cout << "Version: " << autoNuevo.getVersion() << endl;
+    cout << "Anio: " << autoNuevo.getAnio() << endl;
+    cout << "Color: " << autoNuevo.getColor() << endl;
+    cout << "Precio de venta: $" << autoNuevo.getPrecioDeVenta() << endl;
+    cout << "Garantia: " << autoNuevo.getGarantia() << " anios" << endl;
+}
+
+bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
+{
+    Menu menu;
+    Patente patente;
+    char opcion;
+    bool confirmarTodo = false;
+    char numeroChasis[10];
+    char numeroPatente[10];
+    strcpy(numeroPatente, "");
+    char marca[50];
+    char modelo[50];
+    char version[50];
+    int anio;
+    char color[20];
+    float precioVenta;
+    int garantia;
+
+    ArchivoAutoNuevo archivoAutoNuevo;
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DEL AUTO ===" << endl;
+        mostrarAutoNuevo(autoNuevo);
+        cout << endl;
+        cout << "Los datos son correctos? (s/n): ";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "=== DATOS DEL AUTO ===" << endl;
+            mostrarAutoNuevo(autoNuevo);
+            cout << endl;
+            cout << "Los datos son correctos? (s/n): " << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
+        if(opcion == 's')
+        {
+            confirmarTodo = true;
+        }
+        else if(opcion == 'n')
+        {
+            cout << endl;
+            cout << "Que campo desea modificar?" << endl;
+            cout << "1 - Numero de chasis" << endl;
+            cout << "2 - Marca" << endl;
+            cout << "3 - Modelo" << endl;
+            cout << "4 - Version" << endl;
+            cout << "5 - Anio" << endl;
+            cout << "6 - Color" << endl;
+            cout << "7 - Precio de venta" << endl;
+            cout << "8 - Garantia" << endl;
+            cout << "9 - Cancelar y volver a cargar todo" << endl;
+
+            int opcionModificar;
+            cin >> opcionModificar;
+            cin.ignore();
+
+            switch(opcionModificar)
+            {
+            case 1:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo Numero de chasis: ";
+                    cin.getline(numeroChasis, sizeof(numeroChasis));
+                    if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+                    {
+                        cout << "Error: Ingrese un Numero de chasis valido." << endl;
+                        system("pause");
+                    }
+                    else if(archivoAutoNuevo.Buscar(numeroChasis) >= 0 && strcmp(numeroChasis, autoNuevo.getPatente().getNumeroChasis()) != 0)
+                    {
+                        cout << "Error: Ya existe un auto con ese Numero de chasis." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        patente.setNumeroChasis(numeroChasis);
+                        autoNuevo.setPatente(patente);
+                        break;
+                    }
+                }
+                break;
+            case 2:
+
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva Marca: ";
+                    cin.getline(marca, sizeof(marca));
+                    if(strlen(marca) == 0 || strlen(marca) > 49)
+                    {
+                        cout << "Error: Ingrese una marca valida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoNuevo.setMarca(marca);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo modelo: ";
+                    cin.getline(modelo, sizeof(modelo));
+                    if(strlen(modelo) == 0 || strlen(modelo) > 49)
+                    {
+                        cout << "Error: Ingrese un modelo valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoNuevo.setModelo(modelo);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva version: ";
+                    cin.getline(version, sizeof(version));
+                    if(strlen(version) == 0 || strlen(version) > 49)
+                    {
+                        cout << "Error: Ingrese una version valida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoNuevo.setVersion(version);
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese nuevo anio: ";
+                    cin >> anio;
+                    if(cin.fail() || anio < 1900 || anio > 2025)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese un anio valido." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoNuevo.setAnio(anio);
+                    break;
+                }
+                break;
+            case 6:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo color: ";
+                    cin.getline(color, sizeof(color));
+                    if(strlen(color) == 0 || strlen(color) > 49)
+                    {
+                        cout << "Error: Ingrese un color valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoNuevo.setColor(color);
+                        break;
+                    }
+                }
+                break;
+            case 7:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese nuevo precio de venta: ";
+                    cin >> precioVenta;
+                    if(cin.fail() || precioVenta <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese un precio de venta valido." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoNuevo.setPrecioDeVenta(precioVenta);
+                    break;
+                }
+                break;
+                case 8:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese nuevos anios de garantia: ";
+                    cin >> garantia;
+                    if(cin.fail() || garantia <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese anios de garantia validos." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoNuevo.setGarantia(garantia);
+                    break;
+                }
+                break;
+            case 9:
+                return false; /// para cargar desde el inicio
+            default:
+                cout << "Opcion invalida." << endl;
+                system("pause");
+            }
+        }
+    }
+    return true;
 }
