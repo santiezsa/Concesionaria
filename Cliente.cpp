@@ -103,7 +103,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -141,7 +141,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -183,7 +183,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -225,7 +225,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -267,7 +267,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -309,7 +309,7 @@ bool Cliente::cargarCliente()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: La altura debe ser mayor a cero" << endl;
+            cout << "Error: La altura debe ser mayor a cero." << endl;
             system("pause");
         }
         else
@@ -324,7 +324,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -365,7 +365,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -409,7 +409,7 @@ bool Cliente::cargarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
