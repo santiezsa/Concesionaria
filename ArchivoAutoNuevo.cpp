@@ -1,6 +1,7 @@
 #include "ArchivoAutoNuevo.h"
 #include <string>
 #include <cstring>
+#include <iostream>
 
 ArchivoAutoNuevo::ArchivoAutoNuevo()
 {
@@ -100,6 +101,32 @@ void ArchivoAutoNuevo::Leer(int cantidadRegistros, AutoNuevo *vector){
     }
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&vector[i], sizeof(AutoNuevo), 1, pArchivo);
+    }
+    fclose(pArchivo);
+}
+
+/// Listar todos los autos nuevos
+void ArchivoAutoNuevo::mostrarAutosNuevos()
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if (pArchivo == NULL)
+    {
+        return;
+    }
+
+    AutoNuevo autoNuevo;
+    int i = 0;
+    std::cout << "=== Listado de Autos Nuevos (0 km) ===" << std::endl;
+    while (fread(&autoNuevo, sizeof(AutoNuevo), 1, pArchivo))
+    {
+        std::cout << "Registro #" << i + 1 << std::endl;
+        autoNuevo.mostrar();
+        std::cout << "-------------------------------" << std::endl;
+        i++;
+    }
+
+    if (i == 0) {
+        std::cout << "No hay autos nuevos (0 kilometro) registrados en el archivo." << std::endl;
     }
     fclose(pArchivo);
 }

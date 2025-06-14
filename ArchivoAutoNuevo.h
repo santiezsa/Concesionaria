@@ -13,6 +13,7 @@ class ArchivoAutoNuevo
         AutoNuevo Leer(int posicion);
         int CantidadRegistros();
         void Leer(int CantidadRegistros, AutoNuevo *vec);
+        void mostrarAutosNuevos();
 
     private:
         std::string _nombreArchivo;
