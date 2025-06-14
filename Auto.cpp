@@ -12,9 +12,10 @@ Auto::Auto()
     _anio = 0;
     strcpy(_color, "");
     _precioDeVenta = 0.0f;
+    _estado = true;
 }
 
-Auto::Auto(Patente patente, const char* marca, const char* modelo, const char* version, int anio, const char* color, float precioDeVenta)
+Auto::Auto(Patente patente, const char* marca, const char* modelo, const char* version, int anio, const char* color, float precioDeVenta, bool estado)
 {
     setPatente(patente);
     setMarca(marca);
@@ -23,6 +24,7 @@ Auto::Auto(Patente patente, const char* marca, const char* modelo, const char* v
     setAnio(anio);
     setColor(color);
     setPrecioDeVenta(precioDeVenta);
+    setEstado(estado);
 }
 
 /// Getters
@@ -61,6 +63,11 @@ float Auto::getPrecioDeVenta()
     return _precioDeVenta;
 }
 
+bool Auto::getEstado()
+{
+    return _estado;
+}
+
 /// Setters
 /// TODO: Agregar validaciones
 void Auto::setPatente(Patente patente)
@@ -96,6 +103,11 @@ void Auto::setColor(const char* color)
 void Auto::setPrecioDeVenta(float precioDeVenta)
 {
     _precioDeVenta = precioDeVenta;
+}
+
+void Auto::setEstado(bool estado)
+{
+    _estado = estado;
 }
 
 void Auto::mostrar()

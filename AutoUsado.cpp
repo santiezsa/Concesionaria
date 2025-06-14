@@ -6,7 +6,7 @@ AutoUsado::AutoUsado() : Auto()
     _kilometraje = 0;
 }
 
-AutoUsado::AutoUsado(Patente patente, const char* marca, const char* modelo, const char* version, int anio, const char* color, float precioDeVenta, int kilometraje) : Auto(patente, marca, modelo, version, anio, color, precioDeVenta) // Llama al constructor de Auto
+AutoUsado::AutoUsado(Patente patente, const char* marca, const char* modelo, const char* version, int anio, const char* color, float precioDeVenta, int kilometraje) : Auto(patente, marca, modelo, version, anio, color, precioDeVenta, true) // Llama al constructor de Auto
 {
     setKilometraje(kilometraje);
 }

@@ -1,0 +1,179 @@
+# depslib dependency file v1.0
+1749001622 source:c:\0repos\concesionaria\archivoautonuevo.cpp
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+
+1749001622 c:\0repos\concesionaria\archivoautonuevo.h
+	<string>
+	"AutoNuevo.h"
+
+1749853475 c:\0repos\concesionaria\autonuevo.h
+	"Auto.h"
+
+1749859802 c:\0repos\concesionaria\auto.h
+	"Patente.h"
+
+1748209515 c:\0repos\concesionaria\patente.h
+
+1749777906 source:c:\0repos\concesionaria\archivoautousado.cpp
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+	<iostream>
+
+1749776472 c:\0repos\concesionaria\archivoautousado.h
+	<string>
+	"AutoUsado.h"
+
+1749859802 c:\0repos\concesionaria\autousado.h
+	"Auto.h"
+
+1749597301 source:c:\0repos\concesionaria\archivocliente.cpp
+	"ArchivoCliente.h"
+
+1749597301 c:\0repos\concesionaria\archivocliente.h
+	<cstring>
+	"Cliente.h"
+
+1749605168 c:\0repos\concesionaria\cliente.h
+	"Persona.h"
+	"Fecha.h"
+
+1748101937 c:\0repos\concesionaria\persona.h
+	"Fecha.h"
+	"Direccion.h"
+
+1748102390 c:\0repos\concesionaria\fecha.h
+	<string>
+
+1749331597 c:\0repos\concesionaria\direccion.h
+
+1749605308 source:c:\0repos\concesionaria\archivopago.cpp
+	"ArchivoPago.h"
+	"Pago.h"
+	<iostream>
+	<cstring>
+
+1749600554 c:\0repos\concesionaria\archivopago.h
+	<cstring>
+	"Pago.h"
+
+1748903214 c:\0repos\concesionaria\pago.h
+	"Fecha.h"
+
+1749605351 source:c:\0repos\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+	"Vendedor.h"
+	<iostream>
+	<cstring>
+
+1749597301 c:\0repos\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1749400262 c:\0repos\concesionaria\vendedor.h
+	"Persona.h"
+	"Fecha.h"
+
+1749773086 source:c:\0repos\concesionaria\archivoventa.cpp
+	"ArchivoVenta.h"
+
+1749599448 c:\0repos\concesionaria\archivoventa.h
+	<string>
+	"Venta.h"
+
+1749776506 c:\0repos\concesionaria\venta.h
+	"Fecha.h"
+	"Patente.h"
+
+1749858736 source:c:\0repos\concesionaria\autonuevo.cpp
+	<iostream>
+	"Menu.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+
+1749769435 c:\0repos\concesionaria\menu.h
+
+1749858736 source:c:\0repos\concesionaria\autousado.cpp
+	"AutoUsado.h"
+	<iostream>
+
+1749605168 source:c:\0repos\concesionaria\cliente.cpp
+	"Cliente.h"
+	"ArchivoCliente.h"
+	"Menu.h"
+	<iostream>
+
+1749597301 source:c:\0repos\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"Menu.h"
+
+1749773086 c:\0repos\concesionaria\concesionariamanager.h
+
+1749331597 source:c:\0repos\concesionaria\direccion.cpp
+	"Direccion.h"
+	<cstring>
+
+1748102390 source:c:\0repos\concesionaria\fecha.cpp
+	"Fecha.h"
+
+1748301980 source:c:\0repos\concesionaria\main.cpp
+	<iostream>
+	<string>
+	"Menu.h"
+
+1749853475 source:c:\0repos\concesionaria\menu.cpp
+	<iostream>
+	<string>
+	"Venta.h"
+	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+
+1748903763 source:c:\0repos\concesionaria\pago.cpp
+	"Pago.h"
+
+1748209556 source:c:\0repos\concesionaria\patente.cpp
+	"Patente.h"
+	<cstring>
+
+1748101797 source:c:\0repos\concesionaria\persona.cpp
+	"Persona.h"
+	<cstring>
+
+1749597301 source:c:\0repos\concesionaria\vendedor.cpp
+	"Vendedor.h"
+	"ArchivoVendedor.h"
+	<iostream>
+	<cstring>
+	<cctype>
+	"Menu.h"
+
+1749857703 source:c:\0repos\concesionaria\auto.cpp
+	"Auto.h"
+	<cstring>
+	<iostream>
+
+1749859326 source:c:\0repos\concesionaria\venta.cpp
+	"Venta.h"
+	"Menu.h"
+	"ArchivoVenta.h"
+	"ArchivoAutoUsado.h"
+	<iostream>
+	<cstring>
+
