@@ -16,6 +16,10 @@ public:
 
     bool cargarAutoNuevo();
 
+    void mostrarAutoNuevo(AutoNuevo &autoNuevo);
+
+    bool modificarAutoNuevo(AutoNuevo &autoNuevo);
+
 private:
     int _garantia;
 };
