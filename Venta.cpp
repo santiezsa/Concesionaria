@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "ArchivoVenta.h"
 #include "ArchivoAutoUsado.h"
+#include "ArchivoAutoNuevo.h"
 #include <iostream>
 #include <cstring>
 
@@ -115,145 +116,145 @@ bool Venta::cargarVentaAutoUsado()
     /// Genero ID de venta
     idVenta = archivoVenta.generarIdVenta();
 
-
-    /// TODO: Desactivar autos ya vendidos (de manera automatica)
-    /// Verificar que no haya patentes iguales -> No deberia suceder si se cumple lo anterior
+    /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehiculos vendidos se desactivan (estado: false)
 
     if(archivoAutoUsado.CantidadRegistros() != 0)
     {
-    cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
-    archivoAutoUsado.mostrarAutosUsados();
-    cout << "===========================================" << endl;
-    cout << endl;
+        cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
+        archivoAutoUsado.mostrarAutosUsados();
+        cout << "===========================================" << endl;
+        cout << endl;
 
-    cin.ignore();
-    while(true)
-    {
-        cout << "Ingrese el numero de chasis deseado: ";
-        cin.getline(numeroChasis, sizeof(numeroChasis));
+        cin.ignore();
+        while(true)
+        {
+            cout << "Ingrese el numero de chasis deseado: ";
+            cin.getline(numeroChasis, sizeof(numeroChasis));
 
-        if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 11)
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Error. Ingrese un numero de chasis valido." << endl;
-            system("pause");
-        }
-        else if(!(archivoAutoUsado.Buscar(numeroChasis) >= 0))
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
-        }
-        else
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
-            cin >> confirmar;
-            confirmar = tolower(confirmar);
-            while(confirmar != 's' && confirmar != 'n')
+            if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 11)
             {
                 system("cls");
                 menu.mostrarLogo();
-                cout << "Error: opcion incorrecta." << endl;
-                cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
-                cin >> confirmar;
-                confirmar = tolower(confirmar);
+                cout << "Error. Ingrese un numero de chasis valido." << endl;
+                system("pause");
             }
-            if(confirmar == 's')
+            else if(!(archivoAutoUsado.Buscar(numeroChasis) >= 0))
             {
-                cin.ignore();
-                /// Busco informacion del auto en base al numero de chasis
-                int pos = archivoAutoUsado.Buscar(numeroChasis);
-                autoUsado = archivoAutoUsado.Leer(pos); /// Devuelve el objeto auto usado
-                autoUsado.mostrar();
-                cout << endl;
-                cout << "Confirma que este es el auto que desea vender? (s/n): ";
-                cin >> confirmar;
-                confirmar = tolower(confirmar);
-
-                while(confirmar != 's' && confirmar != 'n')
-                {
-                    cout << "Error: opcion incorrecta." << endl;
-                    cout << "Confirma que este es el auto que desea vender? (s/n): ";
-                    cin >> confirmar;
-                    confirmar = tolower(confirmar);
-                }
-                if(confirmar == 'n')
-                {
-                    cout << "Operacion cancelada." << endl;
-                    system("pause");
-                    return false;
-                }
-
-                /// Obtengo el monto
-                monto = autoUsado.getPrecioDeVenta();     /// TODO: Pendiente el monto de auto <---------------------------------- PRIORIDAD
-                cout << endl;
-                cout << "Monto a cobrar: $" << monto << endl;
-
-                /// Pido el ID al vendedor
-                cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID
-                cin >> idVendedor;
-
-                /// Pido el ID del cliente
-                cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID
-                cin >> idCliente;
-
-
-                /// Ingresa la fecha de la venta
-                while(true)
-                {
-                    system("cls");
-                    menu.mostrarLogo();
-                    cout << "=== Fecha de venta ===" << endl;
-                    cout << "Dia: ";
-                    cin >> dia;
-                    cout << "Mes: ";
-                    cin >> mes;
-                    cout << "Anio: ";
-                    cin >> anio;
-
-                    fechaDeVenta = Fecha(dia, mes, anio);
-                    if(!fechaDeVenta.esValida())
-                    {
-                        cout << "Error: Fecha invalida." << endl;
-                        system("pause");
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                venta = Venta(idVenta, autoUsado.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
-
-                if(archivoVenta.Guardar(venta))
-                {
-                    cout << "Venta registrada exitosamente." << endl;
-                    /// Marca el auto como vendido
-                    autoUsado.setEstado(false);
-                    archivoAutoUsado.Guardar(autoUsado, pos);
-                    system("pause");
-                    return true;
-                }
-                else
-                {
-                    cout << "Error al guardar la venta." << endl;
-                    system("pause");
-                    return false;
-                }
-                break;
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
             }
             else
             {
-                cin.ignore();
+                system("cls");
+                menu.mostrarLogo();
+                cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+                while(confirmar != 's' && confirmar != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: opcion incorrecta." << endl;
+                    cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if(confirmar == 's')
+                {
+                    cin.ignore();
+                    /// Busco informacion del auto en base al numero de chasis
+                    int pos = archivoAutoUsado.Buscar(numeroChasis);
+                    autoUsado = archivoAutoUsado.Leer(pos); /// Devuelve el objeto auto usado
+                    autoUsado.mostrar();
+                    cout << endl;
+                    cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+
+                    while(confirmar != 's' && confirmar != 'n')
+                    {
+                        cout << "Error: opcion incorrecta." << endl;
+                        cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+                    if(confirmar == 'n')
+                    {
+                        cout << "Operacion cancelada." << endl;
+                        system("pause");
+                        return false;
+                    }
+
+                    /// Obtengo el monto
+                    monto = autoUsado.getPrecioDeVenta();     /// TODO: Pendiente el monto de auto <---------------------------------- PRIORIDAD
+                    cout << endl;
+                    cout << "Monto a cobrar: $" << monto << endl;
+
+                    /// Pido el ID al vendedor
+                    cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
+                    cin >> idVendedor;
+
+                    /// Pido el ID del cliente
+                    cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID y corroborar que exista en el ingreso
+                    cin >> idCliente;
+
+
+                    /// Ingresa la fecha de la venta
+                    while(true)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "=== Fecha de venta ===" << endl;
+                        cout << "Dia: ";
+                        cin >> dia;
+                        cout << "Mes: ";
+                        cin >> mes;
+                        cout << "Anio: ";
+                        cin >> anio;
+
+                        fechaDeVenta = Fecha(dia, mes, anio);
+                        if(!fechaDeVenta.esValida())
+                        {
+                            cout << "Error: Fecha invalida." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    venta = Venta(idVenta, autoUsado.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
+
+                    if(archivoVenta.Guardar(venta))
+                    {
+                        cout << "Venta registrada exitosamente." << endl;
+                        /// Marca el auto como vendido
+                        autoUsado.setEstado(false);
+                        archivoAutoUsado.Guardar(autoUsado, pos);
+                        system("pause");
+                        return true;
+                    }
+                    else
+                    {
+                        cout << "Error al guardar la venta." << endl;
+                        system("pause");
+                        return false;
+                    }
+                    break;
+                }
+                else
+                {
+                    cin.ignore();
+                }
             }
         }
     }
-    }
     else
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "No se registraron autos usados." << endl;
         system("pause");
         return false;
@@ -262,8 +263,168 @@ bool Venta::cargarVentaAutoUsado()
 
 bool Venta::cargarVentaAutoNuevo()
 {
-    /// test
-    return true;
+    Menu menu;
+    Venta venta;
+    AutoNuevo autoNuevo;
+    int idVenta;
+    char numeroChasis[10];
+    Patente patente;
+    float monto;
+    int dia, mes, anio;
+    Fecha fechaDeVenta;
+    int idCliente;
+    int idVendedor;
+    char confirmar;
+
+    ArchivoVenta archivoVenta;
+    ArchivoAutoNuevo archivoAutoNuevo;
+
+    /// Genero ID de venta
+    idVenta = archivoVenta.generarIdVenta();
+
+    /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehículos vendidos se desactivan (estado: false)
+
+    if(archivoAutoNuevo.CantidadRegistros() != 0)
+    {
+        cout << "=== LISTADO DE AUTOS NUEVOS DISPONIBLES ===" << endl;
+        archivoAutoNuevo.mostrarAutosNuevos();
+        cout << "===========================================" << endl;
+        cout << endl;
+
+        cin.ignore();
+        while(true)
+        {
+            cout << "Ingrese el numero de chasis deseado: ";
+            cin.getline(numeroChasis, sizeof(numeroChasis));
+
+            if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 11)
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error. Ingrese un numero de chasis valido." << endl;
+                system("pause");
+            }
+            else if (!(archivoAutoNuevo.Buscar(numeroChasis) >= 0))
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: No existe un vehiculo con ese número de chasis." << endl;
+            }
+            else
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "El numero de chasis ingresado es: " << numeroChasis << ". ¿Es correcto? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+
+                while (confirmar != 's' && confirmar != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: opcion incorrecta." << endl;
+                    cout << "El numero de chasis ingresado es: " << numeroChasis << ". ¿Es correcto? (s/n)" << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+
+                if(confirmar == 's')
+                {
+                    cin.ignore();
+                    /// Busco informacion del auto en base al numero de chasis
+                    int pos = archivoAutoNuevo.Buscar(numeroChasis);
+                    autoNuevo = archivoAutoNuevo.Leer(pos); /// Devuelve el objeto auto nuevo
+                    autoNuevo.mostrar();
+                    cout << endl;
+
+                    cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+
+                    while (confirmar != 's' && confirmar != 'n')
+                    {
+                        cout << "Error: opcion incorrecta." << endl;
+                        cout << "Confirma que este es el auto que desea vender? (s/n): ";
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+
+                    if (confirmar == 'n')
+                    {
+                        cout << "Operacion cancelada." << endl;
+                        system("pause");
+                        return false;
+                    }
+
+                    /// Obtengo el monto
+                    monto = autoNuevo.getPrecioDeVenta();
+                    cout << endl;
+                    cout << "Monto a cobrar: $" << monto << endl;
+
+                    /// Pido el ID al vendedor
+                    cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
+                    cin >> idVendedor;
+
+                    /// Pido el ID del cliente
+                    cout << "Ingrese ID del cliente: "; /// TODO: Mostrar todos los CLIENTES cuando se pide el ID y corroborar que exista en el ingreso
+                    cin >> idCliente;
+
+                    /// Ingresa la fecha de la venta
+                    while (true)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "=== Fecha de venta ===" << endl;
+                        cout << "Dia: ";
+                        cin >> dia;
+                        cout << "Mes: ";
+                        cin >> mes;
+                        cout << "Año: ";
+                        cin >> anio;
+
+                        fechaDeVenta = Fecha(dia, mes, anio);
+                        if (!fechaDeVenta.esValida())
+                        {
+                            cout << "Error: Fecha invalida." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    venta = Venta(idVenta, autoNuevo.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
+
+                    if (archivoVenta.Guardar(venta))
+                    {
+                        cout << "Venta registrada exitosamente." << endl;
+                        /// Marca el auto como vendido
+                        autoNuevo.setEstado(false);
+                        archivoAutoNuevo.Guardar(autoNuevo, pos);
+                        system("pause");
+                        return true;
+                    }
+                    else
+                    {
+                        cout << "Error al guardar la venta." << endl;
+                        system("pause");
+                        return false;
+                    }
+                }
+                else
+                {
+                    cin.ignore();
+                }
+            }
+        }
+    }
+    else
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se registraron autos nuevos." << endl;
+        system("pause");
+        return false;
+    }
 }
-
-

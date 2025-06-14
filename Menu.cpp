@@ -183,7 +183,7 @@ void Menu::mostrarMenuVentas()
             cout << "6 - Buscar venta de auto usado" << endl;
             cout << "7 - Volver al menu anterior" << endl;
 
-            cout << "Ingrese una opcion: " << endl;
+            cout << "\nIngrese una opcion: ";
             cin >> opcionVentas;
 
             if (cin.fail()) // Si la entrada es inválida

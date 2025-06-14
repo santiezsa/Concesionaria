@@ -1,19 +1,75 @@
 # depslib dependency file v1.0
-<<<<<<< HEAD
-1749001622 source:c:\0repos\concesionaria\archivoautonuevo.cpp
-=======
-1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
+140717494949482 <<<<<<< HEAD
+
+1749942585 source:c:\0repos\concesionaria\archivoautonuevo.cpp
 	"ArchivoAutoNuevo.h"
 	<string>
 	<cstring>
+	<iostream>
 
-<<<<<<< HEAD
-1749001622 c:\0repos\concesionaria\archivoautonuevo.h
+1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
+
+1749857133 5311ab1ed5c1b37074f48cc727a09eaa8dfe6
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+	<iostream>
+	"ArchivoPago.h"
+	"Pago.h"
+	<iostream>
+	<cstring>
+	"ArchivoVendedor.h"
+	"Vendedor.h"
+	<iostream>
+	<cstring>
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"Menu.h"
+	<iostream>
+	<string>
+	"Menu.h"
+	<iostream>
+	<string>
+	"Venta.h"
+	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"Vendedor.h"
+	"ArchivoVendedor.h"
+	<iostream>
+	<cstring>
+	<cctype>
+	"Menu.h"
+	"Venta.h"
+	"Menu.h"
+	"ArchivoVenta.h"
+	"ArchivoAutoUsado.h"
+	<iostream>
+	<cstring>
+
+1749779266 D
+
+1749942569 c:\0repos\concesionaria\archivoautonuevo.h
 	<string>
 	"AutoNuevo.h"
 
-1749853475 c:\0repos\concesionaria\autonuevo.h
+1749860109 c:\0repos\concesionaria\autonuevo.h
 	"Auto.h"
 
 1749859802 c:\0repos\concesionaria\auto.h
@@ -22,7 +78,7 @@
 1748209515 c:\0repos\concesionaria\patente.h
 
 1749777906 source:c:\0repos\concesionaria\archivoautousado.cpp
-=======
+
 1749001299 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.h
 	<string>
 	"AutoNuevo.h"
@@ -36,13 +92,7 @@
 1748294554 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\patente.h
 
 1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	"ArchivoAutoUsado.h"
-	<string>
-	<cstring>
-	<iostream>
 
-<<<<<<< HEAD
 1749776472 c:\0repos\concesionaria\archivoautousado.h
 	<string>
 	"AutoUsado.h"
@@ -71,7 +121,7 @@
 1749331597 c:\0repos\concesionaria\direccion.h
 
 1749605308 source:c:\0repos\concesionaria\archivopago.cpp
-=======
+
 1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.h
 	<string>
 	"AutoUsado.h"
@@ -100,13 +150,7 @@
 1749330080 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\direccion.h
 
 1749683230 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivopago.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	"ArchivoPago.h"
-	"Pago.h"
-	<iostream>
-	<cstring>
 
-<<<<<<< HEAD
 1749600554 c:\0repos\concesionaria\archivopago.h
 	<cstring>
 	"Pago.h"
@@ -115,7 +159,7 @@
 	"Fecha.h"
 
 1749605351 source:c:\0repos\concesionaria\archivovendedor.cpp
-=======
+
 1749601333 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivopago.h
 	<cstring>
 	"Pago.h"
@@ -124,13 +168,7 @@
 	"Fecha.h"
 
 1749683230 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	"ArchivoVendedor.h"
-	"Vendedor.h"
-	<iostream>
-	<cstring>
 
-<<<<<<< HEAD
 1749597301 c:\0repos\concesionaria\archivovendedor.h
 	<string>
 	"Vendedor.h"
@@ -150,26 +188,27 @@
 	"Fecha.h"
 	"Patente.h"
 
-1749858736 source:c:\0repos\concesionaria\autonuevo.cpp
+1749860109 source:c:\0repos\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
 	"ArchivoAutoNuevo.h"
+	<cstring>
 
 1749769435 c:\0repos\concesionaria\menu.h
 
-1749858736 source:c:\0repos\concesionaria\autousado.cpp
+1749859802 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 
-1749605168 source:c:\0repos\concesionaria\cliente.cpp
+1749860109 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
 	<iostream>
 
 1749597301 source:c:\0repos\concesionaria\concesionariamanager.cpp
-=======
+
 1749594576 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.h
 	<string>
 	"Vendedor.h"
@@ -199,20 +238,7 @@
 	<iostream>
 
 1749597134 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	<iostream>
-	<string>
-	"ConcesionariaManager.h"
-	"Cliente.h"
-	"Vendedor.h"
-	"Venta.h"
-	"ArchivoVendedor.h"
-	"ArchivoCliente.h"
-	"ArchivoAutoNuevo.h"
-	"ArchivoAutoUsado.h"
-	"Menu.h"
 
-<<<<<<< HEAD
 1749773086 c:\0repos\concesionaria\concesionariamanager.h
 
 1749331597 source:c:\0repos\concesionaria\direccion.cpp
@@ -223,7 +249,7 @@
 	"Fecha.h"
 
 1748301980 source:c:\0repos\concesionaria\main.cpp
-=======
+
 1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
 
 1749688683 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
@@ -236,16 +262,8 @@
 	"Fecha.h"
 
 1748299170 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\main.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	<iostream>
-	<string>
-	"Menu.h"
 
-<<<<<<< HEAD
-1749853475 source:c:\0repos\concesionaria\menu.cpp
-=======
-1749853974 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
+1749860785 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
@@ -258,7 +276,8 @@
 	"ArchivoVendedor.h"
 	"ArchivoCliente.h"
 
-<<<<<<< HEAD
+1749853974 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+
 1748903763 source:c:\0repos\concesionaria\pago.cpp
 	"Pago.h"
 
@@ -271,7 +290,7 @@
 	<cstring>
 
 1749597301 source:c:\0repos\concesionaria\vendedor.cpp
-=======
+
 1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\pago.cpp
 	"Pago.h"
 
@@ -284,37 +303,26 @@
 	<cstring>
 
 1749596164 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
-	"Vendedor.h"
-	"ArchivoVendedor.h"
-	<iostream>
-	<cstring>
-	<cctype>
-	"Menu.h"
 
-<<<<<<< HEAD
-1749857703 source:c:\0repos\concesionaria\auto.cpp
+1749859802 source:c:\0repos\concesionaria\auto.cpp
 	"Auto.h"
 	<cstring>
 	<iostream>
 
-1749859326 source:c:\0repos\concesionaria\venta.cpp
-=======
-1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
+1749942768 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
 	"ArchivoAutoUsado.h"
+	"ArchivoAutoNuevo.h"
 	<iostream>
 	<cstring>
 
-<<<<<<< HEAD
-=======
+1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
+
 1749857133 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
 	<iostream>
 
->>>>>>> b355311ab1ed5c1b37074f48cc727a09eaa8dfe6
