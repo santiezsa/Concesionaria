@@ -16,6 +16,13 @@ public:
 
     void mostrar();
 
+    bool cargarAutoUsado();
+
+    void mostrarAutoUsado(AutoUsado &autoUsado);
+
+    bool modificarAutoUsado(AutoUsado &autoUsado);
+
+
 private:
     int _kilometraje;
 };
