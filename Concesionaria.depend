@@ -97,7 +97,7 @@
 	<string>
 	"AutoUsado.h"
 
-1749859802 c:\0repos\concesionaria\autousado.h
+1750015504 c:\0repos\concesionaria\autousado.h
 	"Auto.h"
 
 1749597301 source:c:\0repos\concesionaria\archivocliente.cpp
@@ -188,7 +188,7 @@
 	"Fecha.h"
 	"Patente.h"
 
-1749860109 source:c:\0repos\concesionaria\autonuevo.cpp
+1750015504 source:c:\0repos\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
@@ -197,9 +197,12 @@
 
 1749769435 c:\0repos\concesionaria\menu.h
 
-1749859802 source:c:\0repos\concesionaria\autousado.cpp
+1750017711 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
+	"Menu.h"
+	"ArchivoAutoUsado.h"
+	<cstring>
 
 1749860109 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
@@ -309,7 +312,7 @@
 	<cstring>
 	<iostream>
 
-1749942768 source:c:\0repos\concesionaria\venta.cpp
+1749943047 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
