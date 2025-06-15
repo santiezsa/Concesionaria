@@ -377,7 +377,7 @@ bool AutoNuevo::cargarAutoNuevo(){
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El precio de venta del auto ingresado es " << anio << ". Es correcto? (s/n) " << endl;
+            cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -385,7 +385,7 @@ bool AutoNuevo::cargarAutoNuevo(){
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "El precio de venta del auto ingresado es " << anio << ". Es correcto? (s/n) " << endl;
+                cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }

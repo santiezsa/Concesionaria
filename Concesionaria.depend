@@ -326,3 +326,184 @@
 	"Menu.h"
 	<iostream>
 
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoautonuevo.cpp
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+	<iostream>
+
+1749991102 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoautonuevo.h
+	<string>
+	"AutoNuevo.h"
+
+1749991102 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.h
+	"Auto.h"
+
+1749991102 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\auto.h
+	"Patente.h"
+
+1748551013 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\patente.h
+
+1749783049 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoautousado.cpp
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+	<iostream>
+
+1749783049 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoautousado.h
+	<string>
+	"AutoUsado.h"
+
+1749992903 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autousado.h
+	"Auto.h"
+
+1749599736 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivocliente.cpp
+	"ArchivoCliente.h"
+
+1749599736 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivocliente.h
+	<cstring>
+	"Cliente.h"
+
+1749513494 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\cliente.h
+	"Persona.h"
+	"Fecha.h"
+
+1748551013 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\persona.h
+	"Fecha.h"
+	"Direccion.h"
+
+1748551013 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\fecha.h
+	<string>
+
+1749513494 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\direccion.h
+
+1749685161 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivopago.cpp
+	"ArchivoPago.h"
+	"Pago.h"
+	<iostream>
+	<cstring>
+
+1749685161 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivopago.h
+	<cstring>
+	"Pago.h"
+
+1749123024 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\pago.h
+	"Fecha.h"
+
+1749685161 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivovendedor.cpp
+	"ArchivoVendedor.h"
+	"Vendedor.h"
+	<iostream>
+	<cstring>
+
+1749599736 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivovendedor.h
+	<string>
+	"Vendedor.h"
+
+1749513494 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.h
+	"Persona.h"
+	"Fecha.h"
+
+1749783049 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoventa.cpp
+	"ArchivoVenta.h"
+
+1749685161 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\archivoventa.h
+	<string>
+	"Venta.h"
+
+1749783049 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.h
+	"Fecha.h"
+	"Patente.h"
+
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\auto.cpp
+	"Auto.h"
+	<cstring>
+	<iostream>
+
+1749992241 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.cpp
+	<iostream>
+	"Menu.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	<cstring>
+
+1749689558 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.h
+
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autousado.cpp
+	"AutoUsado.h"
+	<iostream>
+
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\cliente.cpp
+	"Cliente.h"
+	"ArchivoCliente.h"
+	"Menu.h"
+	<iostream>
+
+1749688985 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"Menu.h"
+
+1749783049 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.h
+
+1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\direccion.cpp
+	"Direccion.h"
+	<cstring>
+
+1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\fecha.cpp
+	"Fecha.h"
+
+1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\main.cpp
+	<iostream>
+	<string>
+	"Menu.h"
+
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.cpp
+	<iostream>
+	<string>
+	"Venta.h"
+	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+
+1749123024 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\pago.cpp
+	"Pago.h"
+
+1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\patente.cpp
+	"Patente.h"
+	<cstring>
+
+1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\persona.cpp
+	"Persona.h"
+	<cstring>
+
+1749599736 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.cpp
+	"Vendedor.h"
+	"ArchivoVendedor.h"
+	<iostream>
+	<cstring>
+	<cctype>
+	"Menu.h"
+
+1749991102 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.cpp
+	"Venta.h"
+	"Menu.h"
+	"ArchivoVenta.h"
+	"ArchivoAutoUsado.h"
+	"ArchivoAutoNuevo.h"
+	<iostream>
+	<cstring>
+
