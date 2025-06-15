@@ -34,7 +34,8 @@ void AutoUsado::mostrar()
 
 }
 
-bool AutoUsado::cargarAutoUsado(){
+bool AutoUsado::cargarAutoUsado()
+{
 
     Menu menu;
     char confirmar;
@@ -471,12 +472,10 @@ bool AutoUsado::cargarAutoUsado(){
 
 
     /// Valido datos con el usuario
-/*
-    if(!modificarAutoNuevo(autoNuevo))
+    if(!modificarAutoUsado(autoUsado))
     {
         return false;
     }
-*/
 
 
     if(archivoAutoUsado.Guardar(autoUsado))
@@ -490,3 +489,284 @@ bool AutoUsado::cargarAutoUsado(){
         return false;
     }
 }
+
+bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
+{
+    Menu menu;
+    Patente patente;
+    char opcion;
+    bool confirmarTodo = false;
+    char numeroChasis[10];
+    char numeroPatente[10];
+    char marca[50];
+    char modelo[50];
+    char version[50];
+    int anio;
+    char color[20];
+    float precioVenta;
+    int kilometraje;
+
+    ArchivoAutoUsado archivoAutoUsado;
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DEL AUTO ===" << endl;
+        mostrarAutoUsado(autoUsado);
+        cout << endl;
+        cout << "Los datos son correctos? (s/n): ";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "=== DATOS DEL AUTO ===" << endl;
+            mostrarAutoUsado(autoUsado);
+            cout << endl;
+            cout << "Los datos son correctos? (s/n): " << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
+        if(opcion == 's')
+        {
+            confirmarTodo = true;
+        }
+        else if(opcion == 'n')
+        {
+            cout << endl;
+            cout << "Que campo desea modificar?" << endl;
+            cout << "1 - Numero de chasis" << endl;
+            cout << "2 - Patente" << endl;
+            cout << "3 - Marca" << endl;
+            cout << "4 - Modelo" << endl;
+            cout << "5 - Version" << endl;
+            cout << "6 - Anio" << endl;
+            cout << "7 - Color" << endl;
+            cout << "8 - Precio de venta" << endl;
+            cout << "9 - Kilometraje" << endl;
+            cout << "10 - Cancelar y volver a cargar todo" << endl;
+
+            int opcionModificar;
+            cin >> opcionModificar;
+            cin.ignore();
+
+            switch(opcionModificar)
+            {
+            case 1:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo numero de chasis: ";
+                    cin.getline(numeroChasis, sizeof(numeroChasis));
+                    if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+                    {
+                        cout << "Error: Ingrese un Numero de chasis valido." << endl;
+                        system("pause");
+                    }
+                    else if(archivoAutoUsado.Buscar(numeroChasis) >= 0 && strcmp(numeroChasis, autoUsado.getPatente().getNumeroChasis()) != 0)
+                    {
+                        cout << "Error: Ya existe un auto con ese numero de chasis." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        patente.setNumeroChasis(numeroChasis);
+                        autoUsado.setPatente(patente);
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo numero de patente: ";
+                    cin.getline(numeroPatente, sizeof(numeroPatente));
+                    if(strlen(numeroPatente) == 0 || strlen(numeroPatente) > 9)
+                    {
+                        cout << "Error: Ingrese un numero de patente valido." << endl;
+                        system("pause");
+                    }
+                    else if(archivoAutoUsado.Buscar(numeroPatente) >= 0 && strcmp(numeroPatente, autoUsado.getPatente().getNumeroPatente()) != 0)
+                    {
+                        patente.setNumeroPatente(numeroPatente);
+                        autoUsado.setPatente(patente);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva Marca: ";
+                    cin.getline(marca, sizeof(marca));
+                    if(strlen(marca) == 0 || strlen(marca) > 49)
+                    {
+                        cout << "Error: Ingrese una marca valida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoUsado.setMarca(marca);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo modelo: ";
+                    cin.getline(modelo, sizeof(modelo));
+                    if(strlen(modelo) == 0 || strlen(modelo) > 49)
+                    {
+                        cout << "Error: Ingrese un modelo valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoUsado.setModelo(modelo);
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nueva version: ";
+                    cin.getline(version, sizeof(version));
+                    if(strlen(version) == 0 || strlen(version) > 49)
+                    {
+                        cout << "Error: Ingrese una version valida." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoUsado.setVersion(version);
+                        break;
+                    }
+                }
+                break;
+            case 6:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese nuevo anio: ";
+                    cin >> anio;
+                    if(cin.fail() || anio < 1900 || anio > 2025)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese un anio valido." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoUsado.setAnio(anio);
+                    break;
+                }
+                break;
+            case 7:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Ingrese nuevo color: ";
+                    cin.getline(color, sizeof(color));
+                    if(strlen(color) == 0 || strlen(color) > 49)
+                    {
+                        cout << "Error: Ingrese un color valido." << endl;
+                        system("pause");
+                    }
+                    else
+                    {
+                        autoUsado.setColor(color);
+                        break;
+                    }
+                }
+                break;
+            case 8:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese nuevo precio de venta: ";
+                    cin >> precioVenta;
+                    if(cin.fail() || precioVenta <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese un precio de venta valido." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoUsado.setPrecioDeVenta(precioVenta);
+                    break;
+                }
+                break;
+            case 9:
+                while(true)
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+
+                    cout << "Ingrese kilometraje del auto: ";
+                    cin >> kilometraje;
+                    if(cin.fail() || kilometraje <= 0)
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        cout << "Error: Ingrese un numero de kilometraje valido." << endl;
+                        system("pause");
+                        continue;
+                    }
+
+                    autoUsado.setKilometraje(kilometraje);
+                    break;
+                }
+                break;
+            case 10:
+                return false; /// para cargar desde el inicio
+            default:
+                cout << "Opcion invalida." << endl;
+                system("pause");
+            }
+        }
+    }
+    return true;
+}
+
+void AutoUsado::mostrarAutoUsado(AutoUsado &autoUsado)
+{
+    Menu menu;
+    system("cls");
+    menu.mostrarLogo();
+    cout << "Numero de chasis: " << autoUsado.getPatente().getNumeroChasis() << endl;
+    cout << "Patente: " << autoUsado.getPatente().getNumeroPatente() << endl;
+    cout << "Marca: " << autoUsado.getMarca() << endl;
+    cout << "Modelo: " << autoUsado.getModelo() << endl;
+    cout << "Version: " << autoUsado.getVersion() << endl;
+    cout << "Anio: " << autoUsado.getAnio() << endl;
+    cout << "Color: " << autoUsado.getColor() << endl;
+    cout << "Precio de venta: $" << autoUsado.getPrecioDeVenta() << endl;
+    cout << "Kilometraje: " << autoUsado.getKilometraje() << " kilometros." << endl;
+}
+
+
