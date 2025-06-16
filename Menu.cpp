@@ -220,7 +220,7 @@ void Menu::mostrarMenuVentas()
 
         }
     }
-    while (opcionVentas != 4);
+    while (opcionVentas != 7);
 }
 
 void Menu::mostrarMenuClientes()
@@ -731,7 +731,7 @@ void Menu::subMenuBuscarAutoUsado()
             system("cls");
             mostrarLogo();
             cout << "1 - Buscar auto usado por numero de chasis" << endl;
-            /// TODO: Se puede agregar para buscar por numero de patente
+            cout << "2 - Buscar auto usado por numero de patente" << endl;
             cout << "2 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
@@ -757,6 +757,10 @@ void Menu::subMenuBuscarAutoUsado()
             concesionariaManager.buscarAutoUsadoPorNumeroDeChasis();
         }
         else if(opcionBuscarAutoUsado == 2)
+        {
+            concesionariaManager.buscarAutoUsadoPorNumeroDePatente();
+        }
+        else if(opcionBuscarAutoUsado == 3)
         {
             break;
         }

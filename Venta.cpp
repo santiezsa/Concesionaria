@@ -149,7 +149,7 @@ bool Venta::cargarVentaAutoUsado()
                 cout << "Error. Ingrese un numero de chasis valido." << endl;
                 system("pause");
             }
-            else if(!(archivoAutoUsado.Buscar(numeroChasis) >= 0))
+            else if(!(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0))
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -175,7 +175,7 @@ bool Venta::cargarVentaAutoUsado()
                 {
                     cin.ignore();
                     /// Busco informacion del auto en base al numero de chasis
-                    int pos = archivoAutoUsado.Buscar(numeroChasis);
+                    int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis);
                     autoUsado = archivoAutoUsado.Leer(pos); /// Devuelve el objeto auto usado
                     autoUsado.mostrar();
                     cout << endl;

@@ -9,7 +9,9 @@ class ArchivoAutoUsado
         ArchivoAutoUsado(std::string nombreArchivo);
         bool Guardar(AutoUsado autoUsado);
         bool Guardar(AutoUsado autoUsado, int posicion);
-        int Buscar(char idAutoUsado[]); ///IDAuto = NroChasis
+        ///int Buscar(char idAutoUsado[]); ///IDAuto = NroChasis
+        int BuscarAutoUsadoPorNumeroDeChasis(char idChasisAutoUsado[]);
+        int BuscarAutoUsadoPorNumeroDePatente(char idPatenteAutoUsado[]);
         AutoUsado Leer(int posicion);
         int CantidadRegistros();
         void Leer(int CantidadRegistros, AutoUsado *vec);
