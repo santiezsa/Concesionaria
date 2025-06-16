@@ -7,7 +7,7 @@ class Venta
 public:
     Venta();
 
-    Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor);
+    Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor, bool estado);
 
     /// Getters
     int getIdVenta();
@@ -16,6 +16,7 @@ public:
     Fecha getFechaDeVenta();
     int getIdCliente();
     int getIdVendedor();
+    bool getEstado();
 
     /// Setters
     void setIdVenta(int idVenta);
@@ -24,6 +25,7 @@ public:
     void setFechaDeVenta(Fecha fechaDeVenta);
     void setIdCliente(int idCliente);
     void setIdVendedor(int idVendedor);
+    void setEstado(bool estado);
 
     bool cargarVentaAutoNuevo();
     bool cargarVentaAutoUsado();
@@ -36,4 +38,5 @@ private:
     Fecha _fechaDeVenta;
     int _idCliente;
     int _idVendedor;
+    bool _estado;
 };

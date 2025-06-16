@@ -101,42 +101,28 @@ void Menu::mostrarMenuPrincipal()
         {
         case 1:
             mostrarMenuVentas();
-
             break;
-
         case 2:
             mostrarMenuClientes();
-
             break;
-
         case 3:
             mostrarMenuVendedores();
-
             break;
-
         case 4:
             mostrarMenuAutos();
-
             break;
-
         case 5:
             mostrarMenuListados();
-
             break;
-
         case 6:
             mostrarMenuConsultas();
-
             break;
-
         case 0:
             system("cls");
             mostrarLogo();
             cout << "Saliendo del programa." << endl;
             exit(0);
-
             break;
-
         default:            //VALIDAR QUE SEA SOLO NUMERO - - CAMBIAR SWITCH POR IF
             system("cls");
             mostrarLogo();
@@ -160,14 +146,12 @@ void Menu::mostrarLogo()
     cout << "                                                                     \t\t  !_!                !_! " << endl;
 
     cout << endl;
-
-
-
 }
 
 void Menu::mostrarMenuVentas()
 {
     Venta ventas;
+    ConcesionariaManager concesionariaManager;
     int opcionVentas;
     do
     {
@@ -204,17 +188,16 @@ void Menu::mostrarMenuVentas()
         switch(opcionVentas)
         {
         case 1:
-            ///ventas.cargarVentaAutoNuevo();
-
+            ventas.cargarVentaAutoNuevo();
             break;
         case 2:
             ventas.cargarVentaAutoUsado();
             break;
         case 3:
-            ///concesionariaManager.modificarVentaAutoNuevo();
+            concesionariaManager.modificarVentaAutoNuevo();
             break;
         case 4:
-            ///concesionariaManager.modificarVentaAutoUsado();
+            concesionariaManager.modificarVentaAutoUsado();
             break;
         case 5:
             ///concesionariaManager.buscarVentaAutoNuevo();
