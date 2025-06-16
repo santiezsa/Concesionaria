@@ -10,6 +10,8 @@
 #include "ArchivoAutoUsado.h"
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
+#include "rlutil.h"
+#include <iomanip>
 using namespace std;
 
 /// TODO: Pendiente agregar validaciones en inputs de modificarVendedor y modificarCliente
@@ -67,34 +69,109 @@ void Menu::mostrarMenuPrincipal()
     int opcion;
     do
     {
-        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        while (true) // Bucle infinito hasta que se ingrese un valor valido
         {
             system("cls");
             mostrarLogo();
-            cout << "1 - Ventas" << endl;
-            cout << "2 - Clientes" << endl;
-            cout << "3 - Vendedores" << endl;
-            cout << "4 - Autos" << endl;
-            cout << "5 - Listados" << endl;
-            cout << "6 - Consultas" << endl;
-            cout << "------------------------" << endl;
-            cout << "0 - Salir" << endl;
 
-            cout << "Ingrese una opcion: " << endl;
+            // Configurar colores
+            rlutil::setColor(rlutil::LIGHTBLUE);
+
+            // Dibujar borde superior
+            rlutil::locate(10, 10);
+            cout << "+--------------------------------------------------------------------------------+" << endl;
+
+            // Título del menu
+            rlutil::locate(10, 11);
+            cout << "|";
+            rlutil::locate(45, 11);
+            cout << "MENU PRINCIPAL";
+            rlutil::locate(91, 11);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 12);
+            cout << "+--------------------------------------------------------------------------------+" << endl;
+
+            // Opciones del menu
+            rlutil::locate(10, 13);
+            cout << "|";
+            rlutil::locate(45, 13);
+            cout << "1 - Ventas";
+            rlutil::locate(91, 13);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 14);
+            cout << "|";
+            rlutil::locate(45, 14);
+            cout << "2 - Clientes";
+            rlutil::locate(91, 14);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 15);
+            cout << "|";
+            rlutil::locate(45, 15);
+            cout << "3 - Vendedores";
+            rlutil::locate(91, 15);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 16);
+            cout << "|";
+            rlutil::locate(45, 16);
+            cout << "4 - Autos";
+            rlutil::locate(91, 16);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 17);
+            cout << "|";
+            rlutil::locate(45, 17);
+            cout << "5 - Listados";
+            rlutil::locate(91, 17);
+            cout << "|" << endl;
+
+            rlutil::locate(10, 18);
+            cout << "|";
+            rlutil::locate(45, 18);
+            cout << "6 - Consultas";
+            rlutil::locate(91, 18);
+            cout << "|" << endl;
+
+            // Linea separadora
+            rlutil::locate(10, 19);
+            cout << "+--------------------------------------------------------------------------------+" << endl;
+
+            // Opcion de salir
+            rlutil::locate(10, 20);
+            cout << "|";
+            rlutil::locate(45, 20);
+            cout << "0 - Salir";
+            rlutil::locate(91, 20);
+            cout << "|" << endl;
+
+            // Borde inferior
+            rlutil::locate(10, 21);
+            cout << "+--------------------------------------------------------------------------------+" << endl;
+
+            // Cambiar color para la entrada
+            rlutil::setColor(rlutil::WHITE);
+            rlutil::locate(45, 23);
+            cout << "Ingrese una opcion: ";
             cin >> opcion;
 
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invalida
             {
                 system("cls");
                 mostrarLogo();
                 cin.clear(); // Limpia el estado de error
                 cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
-                cout << "Entrada invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::LIGHTRED);
+                rlutil::locate(35, 25);
+                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
                 system("pause");
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es valida, salir del bucle
             }
         }
 
@@ -115,26 +192,32 @@ void Menu::mostrarMenuPrincipal()
         case 5:
             mostrarMenuListados();
             break;
-
         case 6:
             mostrarMenuConsultas();
             break;
         case 0:
             system("cls");
             mostrarLogo();
-            cout << "Saliendo del programa." << endl;
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            rlutil::locate(35, 25);
+            cout << "Gracias por usar el sistema!" << endl;
+            rlutil::setColor(rlutil::WHITE);
             exit(0);
             break;
-        default:            //VALIDAR QUE SEA SOLO NUMERO - - CAMBIAR SWITCH POR IF
+        default:
             system("cls");
             mostrarLogo();
-            cout << "Entrada invalida. Intente nuevamente." << endl;
+            rlutil::setColor(rlutil::LIGHTRED);
+            rlutil::locate(35, 25);
+            cout << "Error: Opcion invalida. Intente nuevamente." << endl;
+            rlutil::setColor(rlutil::WHITE);
             system("pause");
             break;
         }
     }
     while (true);
 }
+
 
 void Menu::mostrarLogo()
 {
@@ -159,7 +242,8 @@ void Menu::mostrarLogoAnimado()
     int y = 3;
 
     // Animación del auto moviéndose
-    for(int i = 0; i < 40; i++) {
+    for(int i = 0; i < 40; i++)
+    {
         rlutil::locate(x + i, y);
         cout << "    ______       ";
         rlutil::locate(x + i, y + 1);
