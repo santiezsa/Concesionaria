@@ -26,6 +26,12 @@ public:
     void buscarVentaAutoUsadoPorNumeroChasis();
     void buscarVentaAutoUsadoPorIDVenta();
 
+    /// Seccion Autos
+    void buscarAutoNuevoPorNumeroDeChasis();
+    void modificarAutoNuevo();
+
+    void buscarAutoUsadoPorNumeroDeChasis();
+    void modificarAutoUsado();
 
 private:
 };

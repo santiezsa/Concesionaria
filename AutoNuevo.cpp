@@ -27,7 +27,8 @@ void AutoNuevo::setGarantia(int garantia) {
 }
 
 
-bool AutoNuevo::cargarAutoNuevo(){
+bool AutoNuevo::cargarAutoNuevo()
+{
 
     Menu menu;
     char confirmar;
