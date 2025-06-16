@@ -137,6 +137,45 @@ void Menu::mostrarMenuPrincipal()
 
 void Menu::mostrarLogo()
 {
+    system("cls");
+
+    // Posición inicial del auto
+    int x = 5;
+    int y = 3;
+
+    // Animación del auto moviéndose
+    for(int i = 0; i < 40; i++) {
+        rlutil::locate(x + i, y);
+        cout << "    ______       ";
+        rlutil::locate(x + i, y + 1);
+        cout << " ___/__|__\\_____";
+        rlutil::locate(x + i, y + 2);
+        cout << "|  _     1   _  `.";
+        rlutil::locate(x + i, y + 3);
+        cout << "'-(_)-------(_)-^";
+
+        // Pequeña pausa para la animación
+        rlutil::msleep(50);
+
+        // Borrar el auto en la posición actual
+        rlutil::locate(x + i, y);
+        cout << "                ";
+        rlutil::locate(x + i, y + 1);
+        cout << "                ";
+        rlutil::locate(x + i, y + 2);
+        cout << "                ";
+        rlutil::locate(x + i, y + 3);
+        cout << "                ";
+    }
+
+    // Limpiar la pantalla antes de mostrar el logo final
+    system("cls");
+
+    // Pequeña pausa antes de mostrar el logo
+    rlutil::msleep(200);
+
+    // Mostrar el logo completo
+    cout << endl;
     cout << "                                                                     \t\t      ______________ " << endl;
     cout << "      _____         \t *****  *   *  *****  *****  *   *  *   *  ***** \t     /              \\ " << endl;
     cout << "  ___/__|__\\_____  \t |   |  |   |    |    |   |  |   |  |*  |  |   | \t    /                \\ " << endl;
@@ -145,7 +184,6 @@ void Menu::mostrarLogo()
     cout << "                    \t *   *  *****    *    *****  *****  *   *  ***** \t |(_)|   |AUT001|   |(_)| " << endl;
     cout << "                                                                     \t\t L___J==============L___J " << endl;
     cout << "                                                                     \t\t  !_!                !_! " << endl;
-
     cout << endl;
 }
 
@@ -461,18 +499,12 @@ void Menu::subMenuBuscarCliente()
         {
         case 1:
             concesionariaManager.buscarClientePorID();
-
             break;
-
         case 2:
             concesionariaManager.buscarClientePorDNI();
-
             break;
-
         case 3:
-
             break;
-
         default:
             system("cls");
             mostrarLogo();
