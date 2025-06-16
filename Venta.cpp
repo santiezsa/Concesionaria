@@ -407,8 +407,6 @@ bool Venta::cargarVentaAutoNuevo()
                         }
                     }
 
-
-
                     venta = Venta(idVenta, autoNuevo.getPatente(), monto, fechaDeVenta, idCliente, idVendedor, true);
 
                     /// Valido datos con el usuario
