@@ -733,7 +733,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
         cout << "Ingrese numero de chasis del vehiculo: ";
         cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
 
-        if(!(archivoAutoUsado.Buscar(numeroDeChasis) >= 0))
+        if(!(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) >= 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -759,7 +759,62 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
             if (confirmar == 's')
             {
                 cin.ignore();
-                int pos = archivoAutoUsado.Buscar(numeroDeChasis); /// Busco la posicion del auto en base al numero de chasis
+                int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis); /// Busco la posicion del auto en base al numero de chasis
+                autoUsado = archivoAutoUsado.Leer(pos);
+                autoUsado.mostrarAutoUsado(autoUsado);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+
+}
+
+void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
+{
+    char numeroDePatente[10];
+    char confirmar;
+    ArchivoAutoUsado archivoAutoUsado;
+    AutoUsado autoUsado;
+    cin.ignore();
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese numero de patente del vehiculo: ";
+        cin.getline(numeroDePatente, sizeof(numeroDePatente));
+
+        if(!(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente) >= 0))
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un vehiculo con ese numero de patente." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El numero de pantente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "El numero de patente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente); /// Busco la posicion del auto en base al numero de patente
                 autoUsado = archivoAutoUsado.Leer(pos);
                 autoUsado.mostrarAutoUsado(autoUsado);
                 system("pause");

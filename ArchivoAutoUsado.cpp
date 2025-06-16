@@ -42,8 +42,8 @@ bool ArchivoAutoUsado::Guardar(AutoUsado autoUsado, int posicion)
 }
 
 
-/// Busca un Auto por su ID y retorna la posición de su registro en el archivo
-int ArchivoAutoUsado::Buscar(char idChasisAutoUsado[])/// IDAuto = NroChasis
+/// Busca un Auto por su numero de chasis y retorna la posición de su registro en el archivo
+int ArchivoAutoUsado::BuscarAutoUsadoPorNumeroDeChasis(char idChasisAutoUsado[])
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
     if(pArchivo == NULL)
@@ -55,7 +55,29 @@ int ArchivoAutoUsado::Buscar(char idChasisAutoUsado[])/// IDAuto = NroChasis
     while(fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
     {
         if (strcmp(autoUsado.getPatente().getNumeroChasis(), idChasisAutoUsado) == 0)
-        //if(autoUsado.getPatente().getNumeroChasis() == idAutoUsado) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
+        {
+            fclose(pArchivo);
+            return i;
+        }
+        i++;
+    }
+    fclose(pArchivo);
+    return -1;
+}
+
+/// Busca un Auto por su numero de patente y retorna la posición de su registro en el archivo
+int ArchivoAutoUsado::BuscarAutoUsadoPorNumeroDePatente(char idPatenteAutoUsado[])
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if(pArchivo == NULL)
+    {
+        return -1;
+    }
+    AutoUsado autoUsado;
+    int i = 0;
+    while(fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
+    {
+        if (strcmp(autoUsado.getPatente().getNumeroPatente(), idPatenteAutoUsado) == 0)
         {
             fclose(pArchivo);
             return i;

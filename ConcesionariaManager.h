@@ -31,6 +31,7 @@ public:
     void modificarAutoNuevo();
 
     void buscarAutoUsadoPorNumeroDeChasis();
+    void buscarAutoUsadoPorNumeroDePatente();
     void modificarAutoUsado();
 
 private:

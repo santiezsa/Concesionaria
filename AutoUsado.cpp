@@ -69,7 +69,7 @@ bool AutoUsado::cargarAutoUsado()
             cout << "Error. Ingrese un numero de chasis valido." << endl;
             system("pause");
         }
-        else if(archivoAutoUsado.Buscar(numeroChasis) >= 0)  /// si encuentra el registro
+        else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0)  /// si encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -569,7 +569,7 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                         cout << "Error: Ingrese un Numero de chasis valido." << endl;
                         system("pause");
                     }
-                    else if(archivoAutoUsado.Buscar(numeroChasis) >= 0 && strcmp(numeroChasis, autoUsado.getPatente().getNumeroChasis()) != 0)
+                    else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0 && strcmp(numeroChasis, autoUsado.getPatente().getNumeroChasis()) != 0)
                     {
                         cout << "Error: Ya existe un auto con ese numero de chasis." << endl;
                         system("pause");
@@ -594,7 +594,7 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                         cout << "Error: Ingrese un numero de patente valido." << endl;
                         system("pause");
                     }
-                    else if(archivoAutoUsado.Buscar(numeroPatente) >= 0 && strcmp(numeroPatente, autoUsado.getPatente().getNumeroPatente()) != 0)
+                    else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente) >= 0 && strcmp(numeroPatente, autoUsado.getPatente().getNumeroPatente()) != 0)
                     {
                         patente.setNumeroPatente(numeroPatente);
                         autoUsado.setPatente(patente);
