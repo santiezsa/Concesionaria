@@ -128,6 +128,7 @@ bool Venta::cargarVentaAutoUsado()
     idVenta = archivoVenta.generarIdVenta();
 
     /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehiculos vendidos se desactivan (estado: false)
+    /// TODO: Validar que el auto a vender tenga estado true (para no vender un auto ya vendido)
 
     if(archivoAutoUsado.CantidadRegistros() != 0)
     {
@@ -294,6 +295,7 @@ bool Venta::cargarVentaAutoNuevo()
     idVenta = archivoVenta.generarIdVenta();
 
     /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehículos vendidos se desactivan (estado: false)
+    /// TODO: Validar que el auto a vender tenga estado true (para no vender un auto ya vendido)
 
     if(archivoAutoNuevo.CantidadRegistros() != 0)
     {
@@ -405,7 +407,38 @@ bool Venta::cargarVentaAutoNuevo()
                         }
                     }
 
+
+
                     venta = Venta(idVenta, autoNuevo.getPatente(), monto, fechaDeVenta, idCliente, idVendedor, true);
+
+                    /// Valido datos con el usuario
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "La venta a cargar es la siguiente: ";
+                    mostrarVenta(venta);
+                    cout << endl;
+                    cout << "Confirma la venta? (s/n)";
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+
+                    while(confirmar != 's' && confirmar != 'n')
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: opcion incorrecta." << endl;
+                        cout << "La venta a cargar es la siguiente: " << endl;
+                        mostrarVenta(venta);
+                        cout << endl;
+                        cout << "Confirma la venta? (s/n)";
+                        cin >> confirmar;
+                        confirmar = tolower(confirmar);
+                    }
+                    if(confirmar == 'n')
+                    {
+                        cout << "Operacion de venta cancelada." << endl;
+                        system("pause");
+                        return false;
+                    }
 
                     if (archivoVenta.Guardar(venta))
                     {
@@ -439,3 +472,31 @@ bool Venta::cargarVentaAutoNuevo()
         return false;
     }
 }
+
+void Venta::cancelarVenta()
+{
+    setEstado(false);
+}
+
+void Venta::mostrarVenta(Venta &venta)
+{
+    Menu menu;
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== DATOS DE LA VENTA ===" << endl;
+    cout << "ID Venta: " << venta.getIdVenta() << endl;
+    cout << "Monto: $" << venta.getMonto() << endl;
+    cout << "Fecha: " << venta.getFechaDeVenta().toString() << endl;
+    cout << "ID Cliente: " << venta.getIdCliente() << endl;
+    cout << "ID Vendedor: " << venta.getIdVendedor() << endl;
+    if(getEstado())
+    {
+        cout << "Estado actual de la venta: ACTIVA" << endl;
+    }
+    else
+    {
+        cout << "Estado actual de la venta: INACTIVA" << endl;
+    }
+}
+
+

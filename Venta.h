@@ -30,6 +30,10 @@ public:
     bool cargarVentaAutoNuevo();
     bool cargarVentaAutoUsado();
 
+    bool modificarVenta(Venta &venta);
+    void cancelarVenta();
+    void mostrarVenta(Venta &venta);
+
 
 private:
     int _idVenta;
