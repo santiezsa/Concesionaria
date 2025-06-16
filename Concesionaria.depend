@@ -184,7 +184,7 @@
 	<string>
 	"Venta.h"
 
-1749776506 c:\0repos\concesionaria\venta.h
+1750031405 c:\0repos\concesionaria\venta.h
 	"Fecha.h"
 	"Patente.h"
 
@@ -197,7 +197,7 @@
 
 1749769435 c:\0repos\concesionaria\menu.h
 
-1750017711 source:c:\0repos\concesionaria\autousado.cpp
+1750026329 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
@@ -210,7 +210,19 @@
 	"Menu.h"
 	<iostream>
 
-1749597301 source:c:\0repos\concesionaria\concesionariamanager.cpp
+1750032670 source:c:\0repos\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVenta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"Menu.h"
 
 1749594576 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.h
 	<string>
@@ -242,7 +254,9 @@
 
 1749597134 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
 
-1749773086 c:\0repos\concesionaria\concesionariamanager.h
+1750032620 c:\0repos\concesionaria\concesionariamanager.h
+	"AutoNuevo.h"
+	"AutoUsado.h"
 
 1749331597 source:c:\0repos\concesionaria\direccion.cpp
 	"Direccion.h"
@@ -266,7 +280,7 @@
 
 1748299170 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\main.cpp
 
-1749860785 source:c:\0repos\concesionaria\menu.cpp
+1750032620 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
@@ -312,7 +326,7 @@
 	<cstring>
 	<iostream>
 
-1749943047 source:c:\0repos\concesionaria\venta.cpp
+1750032069 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"

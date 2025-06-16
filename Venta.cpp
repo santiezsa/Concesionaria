@@ -20,7 +20,7 @@ Venta::Venta()
 }
 
 ///TODO: Agregar ID Cliente, numero de chasis
-Venta::Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor)
+Venta::Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int idCliente, int idVendedor, bool estado)
 {
     setIdVenta(idVenta);
     setPatente(patente);
@@ -28,6 +28,7 @@ Venta::Venta(int idVenta, Patente patente, float monto, Fecha fechaDeVenta, int 
     setFechaDeVenta(fechaDeVenta);
     setIdCliente(idCliente);
     setIdVendedor(idVendedor);
+    setEstado(true);
 }
 
 /// Getters
@@ -61,6 +62,11 @@ int Venta::getIdVendedor()
     return _idVendedor;
 }
 
+bool Venta::getEstado()
+{
+    return _estado;
+}
+
 /// Setters
 /// TODO: Agregar validaciones
 void Venta::setIdVenta(int idVenta)
@@ -91,6 +97,11 @@ void Venta::setIdCliente(int idCliente)
 void Venta::setIdVendedor(int idVendedor)
 {
     _idVendedor = idVendedor;
+}
+
+void Venta::setEstado(bool estado)
+{
+    _estado = estado;
 }
 
 bool Venta::cargarVentaAutoUsado()
@@ -225,7 +236,7 @@ bool Venta::cargarVentaAutoUsado()
                         }
                     }
 
-                    venta = Venta(idVenta, autoUsado.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
+                    venta = Venta(idVenta, autoUsado.getPatente(), monto, fechaDeVenta, idCliente, idVendedor, true);
 
                     if(archivoVenta.Guardar(venta))
                     {
@@ -394,7 +405,7 @@ bool Venta::cargarVentaAutoNuevo()
                         }
                     }
 
-                    venta = Venta(idVenta, autoNuevo.getPatente(), monto, fechaDeVenta, idCliente, idVendedor);
+                    venta = Venta(idVenta, autoNuevo.getPatente(), monto, fechaDeVenta, idCliente, idVendedor, true);
 
                     if (archivoVenta.Guardar(venta))
                     {

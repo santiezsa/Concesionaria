@@ -4,6 +4,7 @@
 #include "Cliente.h"
 #include "Vendedor.h"
 #include "Venta.h"
+#include "ArchivoVenta.h"
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
 #include "ArchivoAutoNuevo.h"
@@ -11,6 +12,9 @@
 #include "Menu.h"
 
 using namespace std;
+
+
+/* ------------------ Seccion CLIENTES & VENDEDORES ------------------ */
 
 Menu menu;
 ArchivoCliente archivoCliente;
@@ -383,4 +387,233 @@ void ConcesionariaManager::buscarVendedorPorID()
         }
     }
 }
+
+/* ------------------ Seccion VENTAS ------------------ */
+
+/* ****************** AUTOS NUEVOS ****************** */
+
+bool ConcesionariaManager::modificarVentaAutoNuevo()
+{
+    Menu menu;
+    char opcion;
+    bool confirmarTodo = false;
+    int idVenta;
+    ArchivoVenta archivoVenta;
+    Venta venta;
+    int pos;
+    AutoNuevo autoNuevo;
+
+    // Pedir ID de la venta
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese el ID de la venta a modificar: ";
+        cin >> idVenta;
+
+        pos = archivoVenta.Buscar(idVenta);
+        if(pos == -1)
+        {
+            cout << "Error: No existe una venta con ese ID." << endl;
+            system("pause");
+        }
+        else
+        {
+            venta = archivoVenta.Leer(pos);
+            break;
+        }
+    }
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DE LA VENTA ===" << endl;   /// TODO: Funcion para mostrarVenta
+        cout << "ID Venta: " << venta.getIdVenta() << endl;
+        cout << "Monto: $" << venta.getMonto() << endl;
+        cout << "Fecha: " << venta.getFechaDeVenta().toString() << endl;
+        cout << "ID Cliente: " << venta.getIdCliente() << endl;
+        cout << "ID Vendedor: " << venta.getIdVendedor() << endl;
+        cout << endl;
+        if(venta.getEstado() == true)
+        {
+            cout << "Estado actual de la venta: ACTIVA" << endl;
+        }
+        else
+        {
+            cout << "Estado actual de la venta: INACTIVA" << endl;
+        }
+        cout << endl;
+        cout << "Desea cambiar el estado de la venta? (s/n): ";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "Desea cambiar el estado de la venta? (s/n): " << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
+        if(opcion == 's')
+        {
+            if(venta.getEstado() == true)
+            {
+                venta.setEstado(false);
+                cout << "Estado de la venta actualizado a: INACTIVA" << endl;
+                // Si la venta se desactiva, el auto vuelve a estar disponible
+                autoNuevo.setEstado(true);
+            }
+            else
+            {
+                venta.setEstado(true);
+                cout << "Estado de la venta actualizado a: ACTIVA" << endl;
+                // Si la venta se activa, el auto se marca como vendido
+                autoNuevo.setEstado(false);
+            }
+            // Guardar los cambios
+            archivoVenta.Guardar(venta, pos);
+            system("pause");
+            confirmarTodo = true;
+        }
+        else
+        {
+            confirmarTodo = true;
+        }
+    }
+    return true;
+}
+
+bool ConcesionariaManager::modificarVentaAutoUsado()
+{
+    Menu menu;
+    char opcion;
+    bool confirmarTodo = false;
+    int idVenta;
+    ArchivoVenta archivoVenta;
+    Venta venta;
+    int pos;
+    AutoUsado autoUsado;
+
+    // Pedir ID de la venta
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese el ID de la venta a modificar: ";
+        cin >> idVenta;
+
+        pos = archivoVenta.Buscar(idVenta);
+        if(pos == -1)
+        {
+            cout << "Error: No existe una venta con ese ID." << endl;
+            system("pause");
+        }
+        else
+        {
+            venta = archivoVenta.Leer(pos);
+            break;
+        }
+    }
+
+    while(!confirmarTodo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "=== DATOS DE LA VENTA ===" << endl;
+        cout << "ID Venta: " << venta.getIdVenta() << endl;
+        cout << "Monto: $" << venta.getMonto() << endl;
+        cout << "Fecha: " << venta.getFechaDeVenta().toString() << endl;
+        cout << "ID Cliente: " << venta.getIdCliente() << endl;
+        cout << "ID Vendedor: " << venta.getIdVendedor() << endl;
+        cout << endl;
+        if(venta.getEstado() == true)
+        {
+            cout << "Estado actual de la venta: ACTIVA" << endl;
+        }
+        else
+        {
+            cout << "Estado actual de la venta: INACTIVA" << endl;
+        }
+        cout << endl;
+        cout << "Desea cambiar el estado de la venta? (s/n): ";
+        cin >> opcion;
+        opcion = tolower(opcion);
+
+        while(opcion != 's' && opcion != 'n')
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Opcion incorrecta." << endl;
+            cout << "Desea cambiar el estado de la venta? (s/n): " << endl;
+            cin >> opcion;
+            opcion = tolower(opcion);
+        }
+
+        if(opcion == 's')
+        {
+            if(venta.getEstado() == true)
+            {
+                venta.setEstado(false);
+                cout << "Estado de la venta actualizado a: INACTIVA" << endl;
+                // Si la venta se desactiva, el auto vuelve a estar disponible
+                autoUsado.setEstado(true);
+            }
+            else
+            {
+                venta.setEstado(true);
+                cout << "Estado de la venta actualizado a: ACTIVA" << endl;
+                // Si la venta se activa, el auto se marca como vendido
+                autoUsado.setEstado(false);
+            }
+            // Guardar los cambios
+            archivoVenta.Guardar(venta, pos);
+            system("pause");
+            confirmarTodo = true;
+        }
+        else
+        {
+            confirmarTodo = true;
+        }
+    }
+    return true;
+}
+
+void ConcesionariaManager::buscarVentaAutoNuevoPorNumeroChasis()
+{
+
+}
+
+void ConcesionariaManager::buscarVentaAutoNuevoPorIDVenta()
+{
+
+}
+
+void ConcesionariaManager::buscarVentaAutoUsadoPorNumeroChasis()
+{
+
+}
+
+void ConcesionariaManager::buscarVentaAutoUsadoPorIDVenta()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

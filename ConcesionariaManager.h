@@ -1,26 +1,31 @@
 #pragma once
+#include "AutoNuevo.h"
+#include "AutoUsado.h"
 
 class ConcesionariaManager
 {
-    public:
+public:
 
-        void modificarPlanes();
+    /// Seccion Clientes
+    void modificarCliente();
+    void buscarClientePorDNI();
+    void buscarClientePorID();
+    //void modificarPlanes();----------> ?
 
-        void modificarCliente();
+    /// Seccion Vendedores
+    void modificarVendedor();
+    void buscarVendedorPorDNI();
+    void buscarVendedorPorID();
 
-        void buscarClientePorDNI();
+    /// Seccion Ventas
+    bool modificarVentaAutoNuevo();
+    bool modificarVentaAutoUsado();
 
-        void buscarClientePorID();
-
-        void modificarVendedor();
-
-        void buscarVendedorPorDNI();
-
-        void buscarVendedorPorID();
+    void buscarVentaAutoNuevoPorNumeroChasis();
+    void buscarVentaAutoNuevoPorIDVenta();
+    void buscarVentaAutoUsadoPorNumeroChasis();
+    void buscarVentaAutoUsadoPorIDVenta();
 
 
-        ///concesionaria.modificarVenta();
-        ///concesionaria.buscarVenta();
-
-    private:
+private:
 };
