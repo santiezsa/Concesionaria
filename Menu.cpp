@@ -138,6 +138,20 @@ void Menu::mostrarMenuPrincipal()
 
 void Menu::mostrarLogo()
 {
+    cout << "                                                                     \t\t      ______________ " << endl;
+    cout << "      _____         \t *****  *   *  *****  *****  *   *  *   *  ***** \t     /              \\ " << endl;
+    cout << "  ___/__|__\\_____  \t |   |  |   |    |    |   |  |   |  |*  |  |   | \t    /                \\ " << endl;
+    cout << " |  _     1   _  `. \t *****  *   *    *    *   *  *   *  * * *  *   * \t __|__________________|__ " << endl;
+    cout << " '-(_)-------(_)-^  \t |   |  |   |    |    |   |  |   |  |  *|  |   | \t | _ |              | _ | " << endl;
+    cout << "                    \t *   *  *****    *    *****  *****  *   *  ***** \t |(_)|   |AUT001|   |(_)| " << endl;
+    cout << "                                                                     \t\t L___J==============L___J " << endl;
+    cout << "                                                                     \t\t  !_!                !_! " << endl;
+
+    cout << endl;
+}
+
+void Menu::mostrarLogoAnimado()
+{
     system("cls");
 
     // Posición inicial del auto
