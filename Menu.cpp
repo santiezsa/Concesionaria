@@ -487,6 +487,70 @@ void Menu::subMenuBuscarCliente()
 
 void Menu::mostrarMenuAutos()
 {
+    int opcionTipoAuto;
+
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Auto nuevo" << endl;
+            cout << "2 - Auto usado" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionTipoAuto;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionTipoAuto)
+        {
+        case 1:
+            menuAutosNuevos();
+            break;
+        case 2:
+            //concesionariaManager.modificarVendedor();
+
+            break;
+
+        case 3:
+
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+
+            break;
+        }
+
+    }
+    while(opcionTipoAuto != 3);
+
+
+
+}
+
+void Menu::menuAutosNuevos()
+{
+
     int opcionAutoNuevo;
     AutoNuevo autoNuevo;
     ArchivoAutoNuevo ArchivoAutoNuevo;
@@ -560,3 +624,5 @@ void Menu::mostrarMenuConsultas()
 {
 
 }
+
+
