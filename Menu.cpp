@@ -115,6 +115,7 @@ void Menu::mostrarMenuPrincipal()
         case 5:
             mostrarMenuListados();
             break;
+
         case 6:
             mostrarMenuConsultas();
             break;
@@ -764,7 +765,7 @@ void Menu::subMenuBuscarAutoUsado()
             mostrarLogo();
             cout << "1 - Buscar auto usado por numero de chasis" << endl;
             cout << "2 - Buscar auto usado por numero de patente" << endl;
-            cout << "2 - Volver al menu anterior" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
             cin >> opcionBuscarAutoUsado;
