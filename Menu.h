@@ -7,6 +7,7 @@ class Menu
         void mostrarPantallaPrincipal();
         void mostrarMenuPrincipal();
         void mostrarLogo();
+        void mostrarLogoAnimado();
         void mostrarMenuClientes();
         void mostrarMenuVendedores();
         void mostrarMenuVentas();
