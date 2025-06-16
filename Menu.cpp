@@ -7,6 +7,7 @@
 #include "Vendedor.h"
 #include "AutoNuevo.h"
 #include "ArchivoAutoNuevo.h"
+#include "ArchivoAutoUsado.h"
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
 using namespace std;
@@ -428,61 +429,61 @@ void Menu::subMenuBuscarCliente()
     Cliente cliente;
     ArchivoCliente archivoCliente;
     int opcionBuscarCliente;
-            do
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Buscar cliente por ID" << endl;
+            cout << "2 - Buscar cliente por DNI" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionBuscarCliente;
+
+            if (cin.fail()) // Si la entrada es inválida
             {
-                while (true) // Bucle infinito hasta que se ingrese un valor válido
-                {
-                    system("cls");
-                    mostrarLogo();
-                    cout << "1 - Buscar cliente por ID" << endl;
-                    cout << "2 - Buscar cliente por DNI" << endl;
-                    cout << "3 - Volver al menu anterior" << endl;
-
-                    cout << "Ingrese una opcion: " << endl;
-                    cin >> opcionBuscarCliente;
-
-                    if (cin.fail()) // Si la entrada es inválida
-                    {
-                        system("cls");
-                        mostrarLogo();
-                        cin.clear(); // Limpia el estado de error
-                        cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
-                        cout << "Entrada invalida. Intente nuevamente." << endl;
-                        system("pause");
-                    }
-                    else
-                    {
-                        break; // Si la entrada es válida, salir del bucle
-                    }
-                }
-
-                switch(opcionBuscarCliente)
-                {
-                case 1:
-                    concesionariaManager.buscarClientePorID();
-
-                    break;
-
-                case 2:
-                    concesionariaManager.buscarClientePorDNI();
-
-                    break;
-
-                case 3:
-
-                    break;
-
-                default:
-                    system("cls");
-                    mostrarLogo();
-                    cout << "Entrada invalida. Intente nuevamente." << endl;
-                    system("pause");
-                    system("cls");
-
-                    break;
-                }
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
             }
-            while (opcionBuscarCliente != 3);
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionBuscarCliente)
+        {
+        case 1:
+            concesionariaManager.buscarClientePorID();
+
+            break;
+
+        case 2:
+            concesionariaManager.buscarClientePorDNI();
+
+            break;
+
+        case 3:
+
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+
+            break;
+        }
+    }
+    while (opcionBuscarCliente != 3);
 }
 
 void Menu::mostrarMenuAutos()
@@ -523,14 +524,10 @@ void Menu::mostrarMenuAutos()
             menuAutosNuevos();
             break;
         case 2:
-            //concesionariaManager.modificarVendedor();
-
+            menuAutosUsados();
             break;
-
         case 3:
-
             break;
-
         default:
             system("cls");
             mostrarLogo();
@@ -550,10 +547,9 @@ void Menu::mostrarMenuAutos()
 
 void Menu::menuAutosNuevos()
 {
-
     int opcionAutoNuevo;
     AutoNuevo autoNuevo;
-    ArchivoAutoNuevo ArchivoAutoNuevo;
+    ConcesionariaManager concesionariaManager;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -589,17 +585,12 @@ void Menu::menuAutosNuevos()
             autoNuevo.cargarAutoNuevo();
             break;
         case 2:
-            //concesionariaManager.modificarVendedor();
-
+            concesionariaManager.modificarAutoNuevo();
             break;
-
         case 3:
-            //subMenuBuscarVendedor();
-
+            subMenuBuscarAutoNuevo();
             break;
-
         case 4:
-
             break;
 
         default:
@@ -608,11 +599,178 @@ void Menu::menuAutosNuevos()
             cout << "Entrada invalida. Intente nuevamente." << endl;
             system("pause");
             system("cls");
-
             break;
         }
     }
     while (opcionAutoNuevo != 4);
+}
+
+void Menu::menuAutosUsados()
+{
+    int opcionAutoUsado;
+    AutoUsado autoUsado;
+    ConcesionariaManager concesionariaManager;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Cargar auto usado" << endl;
+            cout << "2 - Modificar auto usado existente" << endl;
+            cout << "3 - Mostrar auto usado" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionAutoUsado;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionAutoUsado)
+        {
+        case 1:
+            autoUsado.cargarAutoUsado();
+            break;
+        case 2:
+            concesionariaManager.modificarAutoUsado();
+            break;
+        case 3:
+            subMenuBuscarAutoUsado();
+            break;
+        case 4:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionAutoUsado != 4);
+
+}
+
+void Menu::subMenuBuscarAutoNuevo()
+{
+    int opcionBuscarAutoNuevo;
+    AutoNuevo autoNuevo;
+    ArchivoAutoNuevo archivoAutoNuevo;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Buscar auto (0 km) por numero de chasis" << endl;
+            cout << "2 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionBuscarAutoNuevo;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        if(opcionBuscarAutoNuevo == 1)
+        {
+            concesionariaManager.buscarAutoNuevoPorNumeroDeChasis();
+        }
+        else if(opcionBuscarAutoNuevo == 2)
+        {
+            break;
+        }
+        else
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionBuscarAutoNuevo != 2);
+}
+
+void Menu::subMenuBuscarAutoUsado()
+{
+    int opcionBuscarAutoUsado;
+    AutoUsado autoUsado;
+    ArchivoAutoUsado archivoAutoUsado;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Buscar auto usado por numero de chasis" << endl;
+            /// TODO: Se puede agregar para buscar por numero de patente
+            cout << "2 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionBuscarAutoUsado;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        if(opcionBuscarAutoUsado == 1)
+        {
+            concesionariaManager.buscarAutoUsadoPorNumeroDeChasis();
+        }
+        else if(opcionBuscarAutoUsado == 2)
+        {
+            break;
+        }
+        else
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionBuscarAutoUsado != 2);
 }
 
 void Menu::mostrarMenuListados()

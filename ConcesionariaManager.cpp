@@ -592,6 +592,188 @@ void ConcesionariaManager::buscarVentaAutoNuevoPorIDVenta()
 
 }
 
+void ConcesionariaManager::modificarAutoNuevo()
+{
+    char numeroDeChasis[10];
+    char confirmar;
+    AutoNuevo autoNuevo;
+    ArchivoAutoNuevo archivoAutoNuevo;
+    cin.ignore();
+
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese numero de chasis del auto a modificar: ";
+        cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
+
+        if(!(archivoAutoNuevo.Buscar(numeroDeChasis) >= 0))  /// si cuenta y NO encuentra el registro
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un auto con ese numero de chasis." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Desea confirmar? (s/n)" << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoAutoNuevo.Buscar(numeroDeChasis); /// Busco la posicion del auto en base al numero de chasis
+                autoNuevo = archivoAutoNuevo.Leer(pos);
+                autoNuevo.modificarAutoNuevo(autoNuevo);
+                if(archivoAutoNuevo.Guardar(autoNuevo, pos))
+                {
+                    cout << "Auto modificado exitosamente." << endl;
+                }
+                else
+                {
+                    cout << "No se pudo modificar el auto." << endl;
+                }
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+}
+
+
+void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
+{
+    char numeroDeChasis[10];
+    char confirmar;
+    ArchivoAutoNuevo archivoAutoNuevo;
+    AutoNuevo autoNuevo;
+    cin.ignore();
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese numero de chasis del vehiculo: ";
+        cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
+
+        if(!(archivoAutoNuevo.Buscar(numeroDeChasis) >= 0))
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoAutoNuevo.Buscar(numeroDeChasis); /// Busco la posicion del auto en base al numero de chasis
+                autoNuevo = archivoAutoNuevo.Leer(pos);
+                autoNuevo.mostrarAutoNuevo(autoNuevo);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+
+}
+
+/* ****************** AUTOS USADOS ****************** */
+
+
+void ConcesionariaManager::modificarAutoUsado()
+{
+
+}
+
+void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
+{
+    char numeroDeChasis[10];
+    char confirmar;
+    ArchivoAutoUsado archivoAutoUsado;
+    AutoUsado autoUsado;
+    cin.ignore();
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese numero de chasis del vehiculo: ";
+        cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
+
+        if(!(archivoAutoUsado.Buscar(numeroDeChasis) >= 0))
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                int pos = archivoAutoUsado.Buscar(numeroDeChasis); /// Busco la posicion del auto en base al numero de chasis
+                autoUsado = archivoAutoUsado.Leer(pos);
+                autoUsado.mostrarAutoUsado(autoUsado);
+                system("pause");
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+        }
+    }
+
+}
+
 void ConcesionariaManager::buscarVentaAutoUsadoPorNumeroChasis()
 {
 
@@ -601,8 +783,6 @@ void ConcesionariaManager::buscarVentaAutoUsadoPorIDVenta()
 {
 
 }
-
-
 
 
 

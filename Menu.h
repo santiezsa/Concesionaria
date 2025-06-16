@@ -13,8 +13,17 @@ class Menu
         void mostrarMenuConsultas();
         void subMenuBuscarVendedor();
         void subMenuBuscarCliente();
+
+
         void mostrarMenuAutos();
+
+        /// Autos nuevos
         void menuAutosNuevos();
+        void subMenuBuscarAutoNuevo();
+
+        /// Autos usados
+        void menuAutosUsados();
+        void subMenuBuscarAutoUsado();
 
     protected:
 
