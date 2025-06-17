@@ -490,7 +490,7 @@ void AutoNuevo::mostrarAutoNuevo(AutoNuevo &autoNuevo)
     system("cls");
     menu.mostrarLogo();
     cout << "Numero de chasis: " << autoNuevo.getPatente().getNumeroChasis() << endl;
-    cout << "Patente: " << autoNuevo.getPatente().getNumeroChasis() << endl;
+    cout << "Patente: " << autoNuevo.getPatente().getNumeroPatente() << endl;
     cout << "Marca: " << autoNuevo.getMarca() << endl;
     cout << "Modelo: " << autoNuevo.getModelo() << endl;
     cout << "Version: " << autoNuevo.getVersion() << endl;

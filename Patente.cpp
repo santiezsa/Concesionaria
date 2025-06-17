@@ -35,3 +35,4 @@ void Patente::setNumeroChasis(const char* numeroChasis)
 {
     strcpy(_numeroChasis, numeroChasis);
 }
+
