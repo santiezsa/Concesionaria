@@ -448,7 +448,7 @@
 	<cstring>
 	<iostream>
 
-1750163527 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.cpp
+1750164624 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
@@ -471,7 +471,7 @@
 	"Menu.h"
 	<iostream>
 
-1750108788 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
+1750251108 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -501,7 +501,7 @@
 	<string>
 	"Menu.h"
 
-1750120216 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.cpp
+1750250453 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
