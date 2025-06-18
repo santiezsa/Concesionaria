@@ -809,7 +809,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "El numero de patente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;s
+                cout << "El numero de patente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
