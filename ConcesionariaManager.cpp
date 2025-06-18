@@ -707,6 +707,7 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
                 cin.ignore();
             }
         }
+        break;
     }
 
 }
@@ -770,6 +771,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
                 cin.ignore();
             }
         }
+        break;
     }
 
 }
@@ -807,7 +809,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "El numero de patente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;
+                cout << "El numero de patente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;s
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -825,6 +827,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
                 cin.ignore();
             }
         }
+        break;
     }
 
 }

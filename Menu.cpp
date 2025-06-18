@@ -905,7 +905,7 @@ void Menu::subMenuBuscarAutoUsado()
             break;
         }
     }
-    while (opcionBuscarAutoUsado != 2);
+    while (opcionBuscarAutoUsado != 3);
 }
 
 void Menu::mostrarMenuListados()
