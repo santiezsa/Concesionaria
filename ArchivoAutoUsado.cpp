@@ -138,7 +138,6 @@ void ArchivoAutoUsado::mostrarAutosUsados()
 
     AutoUsado autoUsado;
     int i = 0;
-    std::cout << "=== Listado de Autos Usados ===" << std::endl;
     while (fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
     {
         std::cout << "Registro #" << i + 1 << std::endl;

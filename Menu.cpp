@@ -672,8 +672,6 @@ void Menu::mostrarMenuAutos()
     }
     while(opcionTipoAuto != 3);
 
-
-
 }
 
 void Menu::menuAutosNuevos()

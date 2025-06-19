@@ -26,6 +26,7 @@ void ConcesionariaManager::modificarCliente()
 {
     char dni[12];
     char confirmar;
+    char volverAtras;
     cin.ignore();
 
     while(true)
@@ -40,7 +41,20 @@ void ConcesionariaManager::modificarCliente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un cliente con ese DNI." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
+            //system("pause");
         }
         else
         {
@@ -88,6 +102,7 @@ void ConcesionariaManager::buscarClientePorDNI()
 {
     char dni[12];
     char confirmar;
+    char volverAtras;
     cin.ignore();
     while(true)
     {
@@ -101,7 +116,18 @@ void ConcesionariaManager::buscarClientePorDNI()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un cliente con ese DNI." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -140,6 +166,7 @@ void ConcesionariaManager::buscarClientePorID()
 {
     int idCliente;
     char confirmar;
+    char volverAtras;
     while(true)
     {
 
@@ -157,7 +184,18 @@ void ConcesionariaManager::buscarClientePorID()
                 cin.clear(); // Limpia el estado de error
                 cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
                 cout << "Entrada invalida. Intente nuevamente." << endl;
-                system("pause");
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+                rlutil::setColor(rlutil::WHITE);
+                cin >> volverAtras;
+                if(volverAtras == 'q')
+                {
+                    break;
+                }
+                else
+                {
+                    cin.ignore();
+                }
             }
             else
             {
@@ -209,6 +247,7 @@ void ConcesionariaManager::modificarVendedor()
 {
     char dni[12];
     char confirmar;
+    char volverAtras;
     cin.ignore();
 
     while(true)
@@ -223,7 +262,18 @@ void ConcesionariaManager::modificarVendedor()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un vendedor con ese DNI." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -270,6 +320,7 @@ void ConcesionariaManager::buscarVendedorPorDNI()
 {
     char dni[12];
     char confirmar;
+    char volverAtras;
     cin.ignore();
     while(true)
     {
@@ -283,7 +334,18 @@ void ConcesionariaManager::buscarVendedorPorDNI()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un vendedor con ese DNI." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -323,6 +385,7 @@ void ConcesionariaManager::buscarVendedorPorID()
 {
     int idVendedor;
     char confirmar;
+    char volverAtras;
     while(true)
     {
 
@@ -340,7 +403,18 @@ void ConcesionariaManager::buscarVendedorPorID()
                 cin.clear(); // Limpia el estado de error
                 cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
                 cout << "Entrada invalida. Intente nuevamente." << endl;
-                system("pause");
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+                rlutil::setColor(rlutil::WHITE);
+                cin >> volverAtras;
+                if(volverAtras == 'q')
+                {
+                    break;
+                }
+                else
+                {
+                    cin.ignore();
+                }
             }
             else
             {
@@ -400,22 +474,52 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
     int idVenta;
     ArchivoVenta archivoVenta;
     Venta venta;
+    char volverAtras;
     int pos;
     AutoNuevo autoNuevo;
 
     // Pedir ID de la venta
     while(true)
     {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "Ingrese el ID de la venta a modificar: ";
-        cin >> idVenta;
+        while(true)
+        {
+
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Ingrese el ID de la venta a modificar: ";
+            cin >> idVenta;
+
+            if(cin.fail())
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break;
+            }
+        }
 
         pos = archivoVenta.Buscar(idVenta);
         if(pos == -1)
         {
             cout << "Error: No existe una venta con ese ID." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -495,22 +599,51 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
     int idVenta;
     ArchivoVenta archivoVenta;
     Venta venta;
+    char volverAtras;
     int pos;
     AutoUsado autoUsado;
 
     // Pedir ID de la venta
     while(true)
     {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "Ingrese el ID de la venta a modificar: ";
-        cin >> idVenta;
+        while(true)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Ingrese el ID de la venta a modificar: ";
+            cin >> idVenta;
+
+            if(cin.fail())
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break;
+            }
+        }
 
         pos = archivoVenta.Buscar(idVenta);
         if(pos == -1)
         {
             cout << "Error: No existe una venta con ese ID." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -598,6 +731,7 @@ void ConcesionariaManager::modificarAutoNuevo()
     char confirmar;
     AutoNuevo autoNuevo;
     ArchivoAutoNuevo archivoAutoNuevo;
+    char volverAtras;
     cin.ignore();
 
     while(true)
@@ -612,7 +746,18 @@ void ConcesionariaManager::modificarAutoNuevo()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un auto con ese numero de chasis." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -660,6 +805,7 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
 {
     char numeroDeChasis[10];
     char confirmar;
+    char volverAtras;
     ArchivoAutoNuevo archivoAutoNuevo;
     AutoNuevo autoNuevo;
     cin.ignore();
@@ -675,7 +821,18 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -715,6 +872,8 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
 /* ****************** AUTOS USADOS ****************** */
 
 
+/// TODO: Hacer esta funcion
+
 void ConcesionariaManager::modificarAutoUsado()
 {
 
@@ -724,6 +883,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
 {
     char numeroDeChasis[10];
     char confirmar;
+    char volverAtras;
     ArchivoAutoUsado archivoAutoUsado;
     AutoUsado autoUsado;
     cin.ignore();
@@ -739,7 +899,18 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
@@ -782,6 +953,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
     char confirmar;
     ArchivoAutoUsado archivoAutoUsado;
     AutoUsado autoUsado;
+    char volverAtras;
     cin.ignore();
     while(true)
     {
@@ -795,7 +967,18 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un vehiculo con ese numero de patente." << endl;
-            system("pause");
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
+            rlutil::setColor(rlutil::WHITE);
+            cin >> volverAtras;
+            if(volverAtras == 'q')
+            {
+                break;
+            }
+            else
+            {
+                cin.ignore();
+            }
         }
         else
         {
