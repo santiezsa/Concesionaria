@@ -129,6 +129,7 @@ bool AutoUsado::cargarAutoUsado()
         }
     }
 
+    /// Carga patente
     while(true)
     {
         system("cls");
