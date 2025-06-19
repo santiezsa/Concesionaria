@@ -132,6 +132,8 @@ bool Venta::cargarVentaAutoUsado()
 
     if(archivoAutoUsado.CantidadRegistros() != 0)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
         archivoAutoUsado.mostrarAutosUsados();
         cout << "===========================================" << endl;
@@ -199,13 +201,31 @@ bool Venta::cargarVentaAutoUsado()
                     }
 
                     /// Obtengo el monto
-                    monto = autoUsado.getPrecioDeVenta();     /// TODO: Pendiente el monto de auto <---------------------------------- PRIORIDAD
+                    monto = autoUsado.getPrecioDeVenta();
                     cout << endl;
                     cout << "Monto a cobrar: $" << monto << endl;
 
                     /// Pido el ID al vendedor
-                    cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
-                    cin >> idVendedor;
+                    while(true)
+                    {
+                        cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
+                        cin >> idVendedor;
+                        if(cin.fail())
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cin.clear();
+                            cin.ignore(1000,'\n');
+                            cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+
 
                     /// Pido el ID del cliente
                     cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID y corroborar que exista en el ingreso

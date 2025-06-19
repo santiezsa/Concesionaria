@@ -29,8 +29,15 @@ void AutoUsado::setKilometraje(int kilometraje)
 
 void AutoUsado::mostrar()
 {
-    mostrar();
-    std::cout << "Kilometraje: " << getKilometraje() << std::endl;
+    cout << "Numero de chasis: " << getPatente().getNumeroChasis() << endl;
+    cout << "Patente: " << getPatente().getNumeroPatente() << endl;
+    cout << "Marca: " << getMarca() << endl;
+    cout << "Modelo: " << getModelo() << endl;
+    cout << "Version: " << getVersion() << endl;
+    cout << "Anio: " << getAnio() << endl;
+    cout << "Color: " << getColor() << endl;
+    cout << "Precio de venta: $" << getPrecioDeVenta() << endl;
+    cout << "Kilometraje: " << getKilometraje() << endl;
 
 }
 
@@ -41,7 +48,6 @@ bool AutoUsado::cargarAutoUsado()
     char confirmar;
     char numeroChasis[10];
     char numeroPatente[10];
-    strcpy(numeroPatente, "");
     char marca[50];
     char modelo[50];
     char version[50];
@@ -119,6 +125,48 @@ bool AutoUsado::cargarAutoUsado()
             {
                 cin.ignore();
                 break;
+            }
+        }
+    }
+
+    while(true)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese numero de patente: ";
+        cin.getline(numeroPatente, sizeof(numeroPatente));
+
+        if(strlen(numeroPatente) == 0 || strlen(numeroPatente) > 49)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese una patente valida." << endl;
+            system("pause");
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "La patente ingresada es " << numeroPatente << ". Es correcto? (s/n) " << endl;
+            cin >> confirmar;
+            confirmar = tolower(confirmar);
+            while(confirmar != 's' && confirmar != 'n')
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Opcion incorrecta." << endl;
+                cout << "La patente ingresada es " << numeroPatente << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+            }
+            if (confirmar == 's')
+            {
+                cin.ignore();
+                break;
+            }
+            else
+            {
+                cin.ignore();
             }
         }
     }
