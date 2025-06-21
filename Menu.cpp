@@ -72,6 +72,7 @@ void Menu::mostrarMenuPrincipal()
         while (true) // Bucle infinito hasta que se ingrese un valor valido
         {
             system("cls");
+            //mostrarLogoAnimado();
             mostrarLogo();
 
             // Configurar colores

@@ -3,6 +3,8 @@
 #include "ArchivoVenta.h"
 #include "ArchivoAutoUsado.h"
 #include "ArchivoAutoNuevo.h"
+#include "ArchivoVendedor.h"
+#include "ArchivoCliente.h"
 #include <iostream>
 #include <cstring>
 
@@ -106,6 +108,8 @@ void Venta::setEstado(bool estado)
 
 bool Venta::cargarVentaAutoUsado()
 {
+    /// TODO: Agregar validaciones
+    /// Preguntar que existan clientes, vendedores y autos antes de ingresar al menu!
     Menu menu;
     Venta venta;
     AutoUsado autoUsado;
@@ -200,16 +204,55 @@ bool Venta::cargarVentaAutoUsado()
                         return false;
                     }
 
+                    system("cls");
+                    menu.mostrarLogo();
                     /// Obtengo el monto
                     monto = autoUsado.getPrecioDeVenta();
                     cout << endl;
                     cout << "Monto a cobrar: $" << monto << endl;
+                    cout << endl;
 
                     /// Pido el ID al vendedor
                     while(true)
                     {
-                        cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
-                        cin >> idVendedor;
+                        while(true)
+                        {
+                            cout << "Ingrese ID de vendedor: ";
+                            cin >> idVendedor;
+                            if(cin.fail())
+                            {
+                                system("cls");
+                                menu.mostrarLogo();
+                                cin.clear();
+                                cin.ignore(1000,'\n');
+                                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                                system("pause");
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+                        /// Valido que el vendedor exista
+                        ArchivoVendedor archivoVendedor;
+                        if(archivoVendedor.buscarVendedorPorID(idVendedor) == -1)
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: No existe un vendedor con ese ID." << endl;
+
+                            cout << "Intente con un vendedor valido o cargue un nuevo vendedor." << endl;
+                            system("pause");
+                            return false;
+                        }
+                    }
+
+                    /// Pido el ID del cliente
+                    while(true)
+                    {
+                        cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID y corroborar que exista en el ingreso
+                        cin >> idCliente;
                         if(cin.fail())
                         {
                             system("cls");
@@ -223,13 +266,18 @@ bool Venta::cargarVentaAutoUsado()
                         {
                             break;
                         }
+
+                        /// Valido que el cliente exista
+                        ArchivoCliente archivoCliente;
+                        if(archivoCliente.buscarClientePorID(idCliente) <= 0)
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: No existe un cliente con ese ID." << endl;
+                            system("pause");
+                            return false;
+                        }
                     }
-
-
-
-                    /// Pido el ID del cliente
-                    cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID y corroborar que exista en el ingreso
-                    cin >> idCliente;
 
 
                     /// Ingresa la fecha de la venta
@@ -317,8 +365,11 @@ bool Venta::cargarVentaAutoNuevo()
     /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehículos vendidos se desactivan (estado: false)
     /// TODO: Validar que el auto a vender tenga estado true (para no vender un auto ya vendido)
 
+
     if(archivoAutoNuevo.CantidadRegistros() != 0)
     {
+        system("cls");
+        menu.mostrarLogo();
         cout << "=== LISTADO DE AUTOS NUEVOS DISPONIBLES ===" << endl;
         archivoAutoNuevo.mostrarAutosNuevos();
         cout << "===========================================" << endl;
@@ -341,7 +392,7 @@ bool Venta::cargarVentaAutoNuevo()
             {
                 system("cls");
                 menu.mostrarLogo();
-                cout << "Error: No existe un vehiculo con ese número de chasis." << endl;
+                cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
             }
             else
             {

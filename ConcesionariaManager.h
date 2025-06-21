@@ -10,7 +10,6 @@ public:
     void modificarCliente();
     void buscarClientePorDNI();
     void buscarClientePorID();
-    //void modificarPlanes();----------> ?
 
     /// Seccion Vendedores
     void modificarVendedor();

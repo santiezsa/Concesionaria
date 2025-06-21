@@ -379,7 +379,7 @@ bool AutoNuevo::cargarAutoNuevo()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
+            cout << "El precio de venta del auto ingresado es $" << fixed << setprecision(2) << precioVenta << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -387,7 +387,7 @@ bool AutoNuevo::cargarAutoNuevo()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
+                cout << "El precio de venta del auto ingresado es $" << fixed << setprecision(2) << precioVenta << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -430,14 +430,14 @@ bool AutoNuevo::cargarAutoNuevo()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese anios de garantia valida." << endl;
+            cout << "Error: Ingrese anios de garantia validos." << endl;
             system("pause");
         }
         else
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Los anios de garantia ingresados es " << garantia << ". Es correcto? (s/n) " << endl;
+            cout << "Los anios de garantia ingresados son: " << garantia << " anios. Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -445,7 +445,7 @@ bool AutoNuevo::cargarAutoNuevo()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Los anios de garantia ingresados es " << garantia << ". Es correcto? (s/n) " << endl;
+                cout << "Los anios de garantia ingresados es " << garantia << "anios. Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
