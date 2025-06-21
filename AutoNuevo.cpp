@@ -3,6 +3,7 @@
 #include "AutoNuevo.h"
 #include "ArchivoAutoNuevo.h"
 #include <cstring>
+#include <iomanip>
 using namespace std;
 
 
@@ -436,7 +437,7 @@ bool AutoNuevo::cargarAutoNuevo()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Los anios de garantia ingresados es " << anio << ". Es correcto? (s/n) " << endl;
+            cout << "Los anios de garantia ingresados es " << garantia << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -444,7 +445,7 @@ bool AutoNuevo::cargarAutoNuevo()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Los anios de garantia ingresados es " << anio << ". Es correcto? (s/n) " << endl;
+                cout << "Los anios de garantia ingresados es " << garantia << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -496,7 +497,7 @@ void AutoNuevo::mostrarAutoNuevo(AutoNuevo &autoNuevo)
     cout << "Version: " << autoNuevo.getVersion() << endl;
     cout << "Anio: " << autoNuevo.getAnio() << endl;
     cout << "Color: " << autoNuevo.getColor() << endl;
-    cout << "Precio de venta: $" << autoNuevo.getPrecioDeVenta() << endl;
+    cout << "Precio de venta: $" << fixed << setprecision(0) << autoNuevo.getPrecioDeVenta() << endl;
     cout << "Garantia: " << autoNuevo.getGarantia() << " anios" << endl;
 }
 
