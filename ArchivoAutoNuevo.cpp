@@ -116,7 +116,6 @@ void ArchivoAutoNuevo::mostrarAutosNuevos()
 
     AutoNuevo autoNuevo;
     int i = 0;
-    std::cout << "=== Listado de Autos Nuevos (0 km) ===" << std::endl;
     while (fread(&autoNuevo, sizeof(AutoNuevo), 1, pArchivo))
     {
         std::cout << "Registro #" << i + 1 << std::endl;

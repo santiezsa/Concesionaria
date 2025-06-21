@@ -2,6 +2,8 @@
 #include <cstring>
 #include <iostream>
 
+using namespace std;
+
 
 Auto::Auto()
 {
@@ -112,13 +114,14 @@ void Auto::setEstado(bool estado)
 
 void Auto::mostrar()
 {
-    Patente patente;
-    std::cout << "Marca: " << _marca << std::endl;
-    std::cout << "Modelo: " << _modelo << std::endl;
-    std::cout << "Version: " << _version << std::endl;
-    std::cout << "Año: " << _anio << std::endl;
-    std::cout << "Color: " << _color << std::endl;
-    std::cout << "Precio de Venta: $" << _precioDeVenta << std::endl;
-    std::cout << "Patente: " << patente.getNumeroPatente() << std::endl;
-    std::cout << "Numero de chasis: " << patente.getNumeroChasis() << std::endl;
+    cout << "Marca: " << _marca << endl;
+    cout << "Modelo: " << _modelo << endl;
+    cout << "Version: " << _version << endl;
+    cout << "Anio: " << _anio << endl;
+    cout << "Color: " << _color << endl;
+    cout << "Precio de Venta: $" << _precioDeVenta << endl;
+    cout << "Patente: " << _patente.getNumeroPatente() << endl;
+    cout << "Numero de chasis: " << _patente.getNumeroChasis() << endl;
 }
+
+

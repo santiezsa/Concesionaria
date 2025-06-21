@@ -435,7 +435,7 @@ bool AutoUsado::cargarAutoUsado()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
+            cout << "El precio de venta del auto ingresado es $" << fixed << setprecision(2) << precioVenta << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -443,7 +443,7 @@ bool AutoUsado::cargarAutoUsado()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "El precio de venta del auto ingresado es " << precioVenta << ". Es correcto? (s/n) " << endl;
+                cout << "El precio de venta del auto ingresado es $" << fixed << setprecision(2) << precioVenta << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -466,7 +466,7 @@ bool AutoUsado::cargarAutoUsado()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Ingrese los kilometros actual del auto: ";
+            cout << "Ingrese los kilometros actuales del auto: ";
             cin >> kilometraje;
             if (cin.fail()) // Si la entrada es inválida
             {
@@ -493,7 +493,7 @@ bool AutoUsado::cargarAutoUsado()
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Los kilometros ingresados es " << kilometraje << ". Es correcto? (s/n) " << endl;
+            cout << "El kilometraje ingresado es " << fixed << setprecision(2) << kilometraje << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
             while(confirmar != 's' && confirmar != 'n')
@@ -501,7 +501,7 @@ bool AutoUsado::cargarAutoUsado()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Los kilometros ingresados es " << kilometraje << ". Es correcto? (s/n) " << endl;
+                cout << "El kilometraje ingresado es " << fixed << setprecision(2) << kilometraje << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }

@@ -514,7 +514,7 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
             cin >> volverAtras;
             if(volverAtras == 'q')
             {
-                break;
+                return false;
             }
             else
             {
@@ -638,7 +638,7 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
             cin >> volverAtras;
             if(volverAtras == 'q')
             {
-                break;
+                return false;
             }
             else
             {
