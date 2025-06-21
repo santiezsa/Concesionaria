@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "ArchivoAutoUsado.h"
 #include <cstring>
+#include <iomanip>
 using namespace std;
 
 AutoUsado::AutoUsado() : Auto()
@@ -814,7 +815,7 @@ void AutoUsado::mostrarAutoUsado(AutoUsado &autoUsado)
     cout << "Version: " << autoUsado.getVersion() << endl;
     cout << "Anio: " << autoUsado.getAnio() << endl;
     cout << "Color: " << autoUsado.getColor() << endl;
-    cout << "Precio de venta: $" << autoUsado.getPrecioDeVenta() << endl;
+    cout << "Precio de venta: $" << fixed << setprecision(0) << autoUsado.getPrecioDeVenta() << endl;
     cout << "Kilometraje: " << autoUsado.getKilometraje() << " kilometros." << endl;
 }
 
