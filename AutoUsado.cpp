@@ -39,6 +39,17 @@ void AutoUsado::mostrar()
     cout << "Color: " << getColor() << endl;
     cout << "Precio de venta: $" << getPrecioDeVenta() << endl;
     cout << "Kilometraje: " << getKilometraje() << endl;
+    cout << "Estado: ";
+    if(getEstado())
+    {
+        cout << "Disponible";
+    }
+    else
+    {
+        cout << "Vendido";
+    }
+    cout << endl;
+
 
 }
 
@@ -817,6 +828,16 @@ void AutoUsado::mostrarAutoUsado(AutoUsado &autoUsado)
     cout << "Color: " << autoUsado.getColor() << endl;
     cout << "Precio de venta: $" << fixed << setprecision(0) << autoUsado.getPrecioDeVenta() << endl;
     cout << "Kilometraje: " << autoUsado.getKilometraje() << " kilometros." << endl;
+    cout << "Estado: ";
+    if(autoUsado.getEstado())
+    {
+        cout << "Disponible";
+    }
+    else
+    {
+        cout << "Vendido";
+    }
+    cout << endl;
 }
 
 

@@ -122,6 +122,16 @@ void Auto::mostrar()
     cout << "Precio de Venta: $" << _precioDeVenta << endl;
     cout << "Patente: " << _patente.getNumeroPatente() << endl;
     cout << "Numero de chasis: " << _patente.getNumeroChasis() << endl;
+    cout << "Estado: ";
+    if(_estado)
+    {
+        cout << "Disponible";
+    }
+    else
+    {
+        cout << "Vendido";
+    }
+    cout << endl;
 }
 
 

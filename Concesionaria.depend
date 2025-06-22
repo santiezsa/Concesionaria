@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 140717494949482 <<<<<<< HEAD
 
-1750537185 source:c:\0repos\concesionaria\archivoautonuevo.cpp
+1750622239 source:c:\0repos\concesionaria\archivoautonuevo.cpp
 	"ArchivoAutoNuevo.h"
 	<string>
 	<cstring>
@@ -65,11 +65,11 @@
 
 1749779266 D
 
-1749942569 c:\0repos\concesionaria\archivoautonuevo.h
+1750621684 c:\0repos\concesionaria\archivoautonuevo.h
 	<string>
 	"AutoNuevo.h"
 
-1750045524 c:\0repos\concesionaria\autonuevo.h
+1750622937 c:\0repos\concesionaria\autonuevo.h
 	"Auto.h"
 
 1749859802 c:\0repos\concesionaria\auto.h
@@ -77,7 +77,7 @@
 
 1748209515 c:\0repos\concesionaria\patente.h
 
-1750298639 source:c:\0repos\concesionaria\archivoautousado.cpp
+1750628436 source:c:\0repos\concesionaria\archivoautousado.cpp
 	"ArchivoAutoUsado.h"
 	<string>
 	<cstring>
@@ -97,7 +97,7 @@
 
 1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.cpp
 
-1750099810 c:\0repos\concesionaria\archivoautousado.h
+1750628436 c:\0repos\concesionaria\archivoautousado.h
 	<string>
 	"AutoUsado.h"
 
@@ -192,7 +192,7 @@
 	"Fecha.h"
 	"Patente.h"
 
-1750539033 source:c:\0repos\concesionaria\autonuevo.cpp
+1750622937 source:c:\0repos\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
@@ -203,7 +203,7 @@
 1750113624 c:\0repos\concesionaria\menu.h
 	"rlutil.h"
 
-1750538892 source:c:\0repos\concesionaria\autousado.cpp
+1750628436 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
@@ -217,7 +217,7 @@
 	"Menu.h"
 	<iostream>
 
-1750540976 source:c:\0repos\concesionaria\concesionariamanager.cpp
+1750628715 source:c:\0repos\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -230,6 +230,7 @@
 	"ArchivoAutoNuevo.h"
 	"ArchivoAutoUsado.h"
 	"Menu.h"
+	"iomanip"
 
 1749594576 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivovendedor.h
 	<string>
@@ -334,12 +335,12 @@
 
 1749596164 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
 
-1750537889 source:c:\0repos\concesionaria\auto.cpp
+1750622937 source:c:\0repos\concesionaria\auto.cpp
 	"Auto.h"
 	<cstring>
 	<iostream>
 
-1750541323 source:c:\0repos\concesionaria\venta.cpp
+1750622221 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"

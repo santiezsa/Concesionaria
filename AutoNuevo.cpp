@@ -18,12 +18,14 @@ AutoNuevo::AutoNuevo(Patente patente, const char* marca, const char* modelo, con
 }
 
 /// Getter
-int AutoNuevo::getGarantia() {
+int AutoNuevo::getGarantia()
+{
     return _garantia;
 }
 
 /// Setter
-void AutoNuevo::setGarantia(int garantia) {
+void AutoNuevo::setGarantia(int garantia)
+{
     _garantia = garantia;
 }
 
@@ -712,7 +714,7 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     break;
                 }
                 break;
-                case 8:
+            case 8:
                 while(true)
                 {
                     system("cls");
@@ -743,3 +745,5 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
     }
     return true;
 }
+
+
