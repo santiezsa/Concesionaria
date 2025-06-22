@@ -14,6 +14,7 @@ class ArchivoAutoNuevo
         int CantidadRegistros();
         void Leer(int CantidadRegistros, AutoNuevo *vec);
         void mostrarAutosNuevos();
+        void mostrarAutosNuevosDisponibles(); // Solo autos con estado = true
 
     private:
         std::string _nombreArchivo;

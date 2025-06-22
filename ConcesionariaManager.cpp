@@ -10,6 +10,7 @@
 #include "ArchivoAutoNuevo.h"
 #include "ArchivoAutoUsado.h"
 #include "Menu.h"
+#include "iomanip"
 
 using namespace std;
 
@@ -170,14 +171,14 @@ void ConcesionariaManager::buscarClientePorID()
     while(true)
     {
 
-        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        while (true) // Bucle infinito hasta que se ingrese un valor vï¿½lido
         {
             system("cls");
             menu.mostrarLogo();
             cout << "Ingrese ID del cliente: ";
             cin >> idCliente;
 
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -199,7 +200,7 @@ void ConcesionariaManager::buscarClientePorID()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
 
@@ -389,14 +390,14 @@ void ConcesionariaManager::buscarVendedorPorID()
     while(true)
     {
 
-        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        while (true) // Bucle infinito hasta que se ingrese un valor vï¿½lido
         {
             system("cls");
             menu.mostrarLogo();
             cout << "Ingrese ID del vendedor: ";
             cin >> idVendedor;
 
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -418,7 +419,7 @@ void ConcesionariaManager::buscarVendedorPorID()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
 
@@ -473,6 +474,7 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
     bool confirmarTodo = false;
     int idVenta;
     ArchivoVenta archivoVenta;
+    ArchivoAutoNuevo archivoAutoNuevo;
     Venta venta;
     char volverAtras;
     int pos;
@@ -564,24 +566,44 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
 
         if(opcion == 's')
         {
-            if(venta.getEstado() == true)
+            /// Busco el auto en el archivo usando el numero de chasis de la venta
+            char numeroDeChasis[10];
+            strcpy(numeroDeChasis, venta.getPatente().getNumeroChasis());
+            int posAuto = archivoAutoNuevo.Buscar(numeroDeChasis);
+
+            if(posAuto != -1)
             {
-                venta.setEstado(false);
-                cout << "Estado de la venta actualizado a: INACTIVA" << endl;
-                // Si la venta se desactiva, el auto vuelve a estar disponible
-                autoNuevo.setEstado(true);
+                /// Lee el auto nuevo del archivo
+                autoNuevo = archivoAutoNuevo.Leer(posAuto);
+
+                if(venta.getEstado())
+                {
+                    venta.setEstado(false);
+                    cout << "Estado de la venta actualizado a INACTIVA." << endl;
+                    // Se desactiva la venta -> El auto vuelve a estar disponible
+                    cout << "El auto involucrado en la venta vuelve a estar disponible." << endl;
+                    autoNuevo.setEstado(true);
+                }
+                else
+                {
+                    venta.setEstado(true);
+                    cout << "Estado de la venta actualizado a ACTIVA." << endl;
+                    // Se activa la venta -> El auto se marca como vendido
+                    autoNuevo.setEstado(false);
+                }
+
+                /// Guardo los cambios en los dos archivos
+                archivoVenta.Guardar(venta, pos);
+                archivoAutoNuevo.Guardar(autoNuevo, posAuto);
+                system("pause");
+                confirmarTodo = true;
             }
             else
             {
-                venta.setEstado(true);
-                cout << "Estado de la venta actualizado a: ACTIVA" << endl;
-                // Si la venta se activa, el auto se marca como vendido
-                autoNuevo.setEstado(false);
+                cout << "Error: No se pudo encontrar el auto asociado a esta venta." << endl;
+                system("pause");
+                confirmarTodo = true;
             }
-            // Guardar los cambios
-            archivoVenta.Guardar(venta, pos);
-            system("pause");
-            confirmarTodo = true;
         }
         else
         {
@@ -598,6 +620,7 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
     bool confirmarTodo = false;
     int idVenta;
     ArchivoVenta archivoVenta;
+    ArchivoAutoUsado archivoAutoUsado;
     Venta venta;
     char volverAtras;
     int pos;
@@ -658,7 +681,7 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
         menu.mostrarLogo();
         cout << "=== DATOS DE LA VENTA ===" << endl;
         cout << "ID Venta: " << venta.getIdVenta() << endl;
-        cout << "Monto: $" << venta.getMonto() << endl;
+        cout << "Monto: $" << fixed << setprecision(2) << venta.getMonto() << endl;
         cout << "Fecha: " << venta.getFechaDeVenta().toString() << endl;
         cout << "ID Cliente: " << venta.getIdCliente() << endl;
         cout << "ID Vendedor: " << venta.getIdVendedor() << endl;
@@ -688,24 +711,43 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
 
         if(opcion == 's')
         {
-            if(venta.getEstado() == true)
+            char numeroDeChasis[10];
+            strcpy(numeroDeChasis, venta.getPatente().getNumeroChasis());
+            int posAuto = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis);
+
+            if(posAuto != -1)
             {
-                venta.setEstado(false);
-                cout << "Estado de la venta actualizado a: INACTIVA" << endl;
-                // Si la venta se desactiva, el auto vuelve a estar disponible
-                autoUsado.setEstado(true);
+                /// Lee el auto usado del archivo
+                autoUsado = archivoAutoUsado.Leer(posAuto);
+
+                if(venta.getEstado())
+                {
+                    venta.setEstado(false);
+                    cout << "Estado de la venta actualizado a INACTIVA." << endl;
+                    // Se desactiva la venta -> El auto vuelve a estar disponible
+                    cout << "El auto involucrado en la venta vuelve a estar disponible." << endl;
+                    autoUsado.setEstado(true);
+                }
+                else
+                {
+                    venta.setEstado(true);
+                    cout << "Estado de la venta actualizado a ACTIVA" << endl;
+                    // Se activa la venta -> El auto se marca como vendido
+                    autoUsado.setEstado(false);
+                }
+
+                /// Guardo cambios en los dos archivos
+                archivoVenta.Guardar(venta, pos);
+                archivoAutoUsado.Guardar(autoUsado, posAuto);
+                system("pause");
+                confirmarTodo = true;
             }
             else
             {
-                venta.setEstado(true);
-                cout << "Estado de la venta actualizado a: ACTIVA" << endl;
-                // Si la venta se activa, el auto se marca como vendido
-                autoUsado.setEstado(false);
+                cout << "Error: No se pudo encontrar el auto asociado a esta venta." << endl;
+                system("pause");
+                confirmarTodo = true;
             }
-            // Guardar los cambios
-            archivoVenta.Guardar(venta, pos);
-            system("pause");
-            confirmarTodo = true;
         }
         else
         {

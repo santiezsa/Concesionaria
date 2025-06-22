@@ -167,7 +167,7 @@ bool Venta::cargarVentaAutoUsado()
         system("cls");
         menu.mostrarLogo();
         cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
-        archivoAutoUsado.mostrarAutosUsados();
+        archivoAutoUsado.mostrarAutosUsadosDisponibles();
         cout << "===========================================" << endl;
         cout << endl;
 
@@ -237,7 +237,9 @@ bool Venta::cargarVentaAutoUsado()
                     /// Obtengo el monto
                     monto = autoUsado.getPrecioDeVenta();
                     cout << endl;
+                    cout << "---------------------------" << endl;
                     cout << "Monto a cobrar: $" << monto << endl;
+                    cout << "---------------------------" << endl;
                     cout << endl;
 
                     /// Pido el ID al vendedor
@@ -245,6 +247,8 @@ bool Venta::cargarVentaAutoUsado()
                     {
                         while(true)
                         {
+                            system("cls");
+                            menu.mostrarLogo();
                             cout << "Ingrese ID de vendedor: ";
                             cin >> idVendedor;
                             if(cin.fail())
@@ -258,52 +262,64 @@ bool Venta::cargarVentaAutoUsado()
                             }
                             else
                             {
+                                /// Si valida la entrada salgo del while
                                 break;
                             }
                         }
 
                         /// Valido que el vendedor exista
-                        ArchivoVendedor archivoVendedor;
-                        if(archivoVendedor.buscarVendedorPorID(idVendedor) == -1)
+                        if(archivoVendedor.buscarVendedorPorID(idVendedor) == -1) /// No encuentra el registro
                         {
                             system("cls");
                             menu.mostrarLogo();
                             cout << "Error: No existe un vendedor con ese ID." << endl;
-
                             cout << "Intente con un vendedor valido o cargue un nuevo vendedor." << endl;
                             system("pause");
-                            return false;
+                        }
+                        else
+                        {
+                            // Si el vendedor existe, salgo del bucle
+                            break;
                         }
                     }
 
                     /// Pido el ID del cliente
                     while(true)
                     {
-                        cout << "Ingrese ID del cliente: ";  /// TODO: Mostrar todos los clientes cuando se pide el ID y corroborar que exista en el ingreso
-                        cin >> idCliente;
-                        if(cin.fail())
+                        while(true)
                         {
                             system("cls");
                             menu.mostrarLogo();
-                            cin.clear();
-                            cin.ignore(1000,'\n');
-                            cout << "Error: Entrada invalida. Intente nuevamente." << endl;
-                            system("pause");
-                        }
-                        else
-                        {
-                            break;
+                            cout << "Ingrese ID del cliente: ";
+                            cin >> idCliente;
+                            if(cin.fail())
+                            {
+                                system("cls");
+                                menu.mostrarLogo();
+                                cin.clear();
+                                cin.ignore(1000,'\n');
+                                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                                system("pause");
+                            }
+                            else
+                            {
+                                /// Si valida la entrada salgo del while
+                                break;
+                            }
                         }
 
                         /// Valido que el cliente exista
-                        ArchivoCliente archivoCliente;
-                        if(archivoCliente.buscarClientePorID(idCliente) <= 0)
+                        if(archivoCliente.buscarClientePorID(idCliente) == -1) /// No encuentra el registro
                         {
                             system("cls");
                             menu.mostrarLogo();
                             cout << "Error: No existe un cliente con ese ID." << endl;
                             system("pause");
-                            return false;
+                        }
+                        else
+                        {
+                            // Si el cliente existe, salgo del bucle
+                            break;
                         }
                     }
 
@@ -420,7 +436,7 @@ bool Venta::cargarVentaAutoNuevo()
     /// Genero ID de venta
     idVenta = archivoVenta.generarIdVenta();
 
-    /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehículos vendidos se desactivan (estado: false)
+    /// TODO: Verificar que no haya patentes iguales -> Tener en cuenta que los vehiculos vendidos se desactivan (estado: false)
     /// TODO: Validar que el auto a vender tenga estado true (para no vender un auto ya vendido)
 
 
@@ -429,7 +445,7 @@ bool Venta::cargarVentaAutoNuevo()
         system("cls");
         menu.mostrarLogo();
         cout << "=== LISTADO DE AUTOS NUEVOS DISPONIBLES ===" << endl;
-        archivoAutoNuevo.mostrarAutosNuevos();
+        archivoAutoNuevo.mostrarAutosNuevosDisponibles();
         cout << "===========================================" << endl;
         cout << endl;
 
@@ -456,7 +472,7 @@ bool Venta::cargarVentaAutoNuevo()
             {
                 system("cls");
                 menu.mostrarLogo();
-                cout << "El numero de chasis ingresado es: " << numeroChasis << ". ¿Es correcto? (s/n)" << endl;
+                cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
 
@@ -465,7 +481,7 @@ bool Venta::cargarVentaAutoNuevo()
                     system("cls");
                     menu.mostrarLogo();
                     cout << "Error: opcion incorrecta." << endl;
-                    cout << "El numero de chasis ingresado es: " << numeroChasis << ". ¿Es correcto? (s/n)" << endl;
+                    cout << "El numero de chasis ingresado es: " << numeroChasis << ". Es correcto? (s/n)" << endl;
                     cin >> confirmar;
                     confirmar = tolower(confirmar);
                 }
@@ -504,12 +520,82 @@ bool Venta::cargarVentaAutoNuevo()
                     cout << "Monto a cobrar: $" << monto << endl;
 
                     /// Pido el ID al vendedor
-                    cout << "Ingrese ID de vendedor: ";  /// TODO: Mostrar todos los vendedores cuando se pide el ID y corroborar que exista en el ingreso
-                    cin >> idVendedor;
+                    while(true)
+                    {
+                        while(true)
+                        {
+                            cout << "Ingrese ID de vendedor: ";
+                            cin >> idVendedor;
+                            if(cin.fail())
+                            {
+                                system("cls");
+                                menu.mostrarLogo();
+                                cin.clear();
+                                cin.ignore(1000,'\n');
+                                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                                system("pause");
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+                        /// Valido que el vendedor exista
+                        if(archivoVendedor.buscarVendedorPorID(idVendedor) == -1)
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: No existe un vendedor con ese ID." << endl;
+                            cout << "Intente con un vendedor valido o cargue un nuevo vendedor." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            // Si el vendedor existe, salir del bucle
+                            break;
+                        }
+                    }
 
                     /// Pido el ID del cliente
-                    cout << "Ingrese ID del cliente: "; /// TODO: Mostrar todos los CLIENTES cuando se pide el ID y corroborar que exista en el ingreso
-                    cin >> idCliente;
+                    while(true)
+                    {
+                        while(true)
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Ingrese ID del cliente: ";
+                            cin >> idCliente;
+                            if(cin.fail())
+                            {
+                                system("cls");
+                                menu.mostrarLogo();
+                                cin.clear();
+                                cin.ignore(1000,'\n');
+                                cout << "Error: Entrada invalida. Intente nuevamente." << endl;
+                                system("pause");
+                            }
+                            else
+                            {
+                                /// Si valida la entrada salgo del while
+                                break;
+                            }
+                        }
+
+                        /// Valido que el cliente exista
+                        if(archivoCliente.buscarClientePorID(idCliente) == -1) /// No encuentra el registro
+                        {
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: No existe un cliente con ese ID." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            // Si el cliente existe, salgo del bucle
+                            break;
+                        }
+                    }
 
                     /// Ingresa la fecha de la venta
                     while (true)
@@ -521,7 +607,7 @@ bool Venta::cargarVentaAutoNuevo()
                         cin >> dia;
                         cout << "Mes: ";
                         cin >> mes;
-                        cout << "Año: ";
+                        cout << "Ao: ";
                         cin >> anio;
 
                         fechaDeVenta = Fecha(dia, mes, anio);

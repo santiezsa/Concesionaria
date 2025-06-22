@@ -2,13 +2,14 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+using namespace std;
 
 ArchivoAutoUsado::ArchivoAutoUsado()
 {
     _nombreArchivo = "autousado.dat";
 }
 
-ArchivoAutoUsado::ArchivoAutoUsado(std::string nombreArchivo)
+ArchivoAutoUsado::ArchivoAutoUsado(string nombreArchivo)
 {
     _nombreArchivo = nombreArchivo;
 }
@@ -140,14 +141,45 @@ void ArchivoAutoUsado::mostrarAutosUsados()
     int i = 0;
     while (fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
     {
-        std::cout << "Registro #" << i + 1 << std::endl;
+        cout << "Registro #" << i + 1 << endl;
         autoUsado.mostrar();
-        std::cout << "-------------------------------" << std::endl;
+        cout << "-------------------------------" << endl;
         i++;
     }
 
     if (i == 0) {
-        std::cout << "No hay autos usados registrados en el archivo." << std::endl;
+        cout << "No hay autos usados registrados en el archivo." << endl;
+    }
+    fclose(pArchivo);
+}
+
+void ArchivoAutoUsado::mostrarAutosUsadosDisponibles()
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if(pArchivo == NULL)
+    {
+        return;
+    }
+
+    AutoUsado autoUsado;
+    int i = 0;
+    int contadorDisponibles = 0;
+
+    while(fread(&autoUsado, sizeof(AutoUsado), 1, pArchivo))
+    {
+        if(autoUsado.getEstado()) /// Si es "true" (entonces no fue vendido)
+        {
+            cout << "Registro #" << i + 1 << endl;
+            autoUsado.mostrar();
+            cout << "-------------------------------" << endl;
+            contadorDisponibles++;
+        }
+        i++;
+    }
+
+    if(contadorDisponibles == 0)
+    {
+        cout << "No hay autos usados disponibles para la venta." << endl;
     }
     fclose(pArchivo);
 }

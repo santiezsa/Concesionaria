@@ -17,6 +17,7 @@ class ArchivoAutoUsado
         void Leer(int CantidadRegistros, AutoUsado *vec);
 
         void mostrarAutosUsados();
+        void mostrarAutosUsadosDisponibles(); // Solo autos con estado = true
 
     private:
         std::string _nombreArchivo;

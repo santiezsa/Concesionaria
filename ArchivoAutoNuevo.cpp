@@ -2,6 +2,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+using namespace std;
 
 ArchivoAutoNuevo::ArchivoAutoNuevo()
 {
@@ -27,7 +28,7 @@ bool ArchivoAutoNuevo::Guardar(AutoNuevo autoNuevo)
 }
 
 
-/// Guarda un registro de Auto en una posición específica (sobrescribe)
+/// Guarda un registro de Auto en una posiciï¿½n especï¿½fica (sobrescribe)
 bool ArchivoAutoNuevo::Guardar(AutoNuevo autoNuevo, int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb+");
@@ -42,7 +43,7 @@ bool ArchivoAutoNuevo::Guardar(AutoNuevo autoNuevo, int posicion)
 }
 
 
-/// Busca un Auto por su ID y retorna la posición de su registro en el archivo
+/// Busca un Auto por su ID y retorna la posiciï¿½n de su registro en el archivo
 int ArchivoAutoNuevo::Buscar(char idChasisAutoNuevo[])/// IDAuto = NroChasis
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -55,7 +56,7 @@ int ArchivoAutoNuevo::Buscar(char idChasisAutoNuevo[])/// IDAuto = NroChasis
     while(fread(&autoNuevo, sizeof(AutoNuevo), 1, pArchivo))
     {
         if (strcmp(autoNuevo.getPatente().getNumeroChasis(), idChasisAutoNuevo) == 0)
-        //if(autoNuevo.getPatente().getNumeroChasis() == idAutoNuevo) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
+            //if(autoNuevo.getPatente().getNumeroChasis() == idAutoNuevo) /// TODO: IDAuto = NroChasis - VALIDAR QUE NO HAYAN DOS AUTOS CON NRO DE CHASIS IGUAL
         {
             fclose(pArchivo);
             return i;
@@ -66,7 +67,7 @@ int ArchivoAutoNuevo::Buscar(char idChasisAutoNuevo[])/// IDAuto = NroChasis
     return -1;
 }
 
-/// Lee un registro de Auto en una posición específica
+/// Lee un registro de Auto en una posiciï¿½n especï¿½fica
 AutoNuevo ArchivoAutoNuevo::Leer(int posicion)
 {
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
@@ -82,9 +83,11 @@ AutoNuevo ArchivoAutoNuevo::Leer(int posicion)
 }
 
 /// Calcula y retorna la cantidad total de registros de Auto en el archivo
-int ArchivoAutoNuevo::CantidadRegistros(){
+int ArchivoAutoNuevo::CantidadRegistros()
+{
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL){
+    if(pArchivo == NULL)
+    {
         return 0;
     }
     fseek(pArchivo, 0, SEEK_END);
@@ -93,13 +96,16 @@ int ArchivoAutoNuevo::CantidadRegistros(){
     return cantidadRegistros;
 }
 
-/// Lee una cantidad específica de registros en un vector de Auto
-void ArchivoAutoNuevo::Leer(int cantidadRegistros, AutoNuevo *vector){
+/// Lee una cantidad especï¿½fica de registros en un vector de Auto
+void ArchivoAutoNuevo::Leer(int cantidadRegistros, AutoNuevo *vector)
+{
     FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
-    if(pArchivo == NULL){
+    if(pArchivo == NULL)
+    {
         return;
     }
-    for(int i = 0; i < cantidadRegistros; i++){
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
         fread(&vector[i], sizeof(AutoNuevo), 1, pArchivo);
     }
     fclose(pArchivo);
@@ -124,8 +130,42 @@ void ArchivoAutoNuevo::mostrarAutosNuevos()
         i++;
     }
 
-    if (i == 0) {
+    if (i == 0)
+    {
         std::cout << "No hay autos nuevos (0 kilometro) registrados en el archivo." << std::endl;
     }
     fclose(pArchivo);
 }
+
+void ArchivoAutoNuevo::mostrarAutosNuevosDisponibles()
+{
+    FILE *pArchivo = fopen(_nombreArchivo.c_str(), "rb");
+    if(pArchivo == NULL)
+    {
+        return;
+    }
+
+    AutoNuevo autoNuevo;
+    int i = 0;
+    int contadorDisponibles = 0;
+
+    while(fread(&autoNuevo, sizeof(AutoNuevo), 1, pArchivo))
+    {
+        if(autoNuevo.getEstado()) /// Si es "true" (entonces no fue vendido)
+        {
+            cout << "Registro #" << i + 1 << endl;
+            autoNuevo.mostrar();
+            cout << "-------------------------------" << endl;
+            contadorDisponibles++;
+        }
+        i++;
+    }
+
+    if(contadorDisponibles == 0)
+    {
+        cout << "No hay autos nuevos disponibles para la venta." << endl;
+    }
+    fclose(pArchivo);
+}
+
+
