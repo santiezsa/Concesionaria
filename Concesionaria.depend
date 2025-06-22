@@ -203,7 +203,7 @@
 1750113624 c:\0repos\concesionaria\menu.h
 	"rlutil.h"
 
-1750628436 source:c:\0repos\concesionaria\autousado.cpp
+1750629578 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
@@ -217,7 +217,7 @@
 	"Menu.h"
 	<iostream>
 
-1750628715 source:c:\0repos\concesionaria\concesionariamanager.cpp
+1750629295 source:c:\0repos\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -340,7 +340,7 @@
 	<cstring>
 	<iostream>
 
-1750622221 source:c:\0repos\concesionaria\venta.cpp
+1750630284 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"

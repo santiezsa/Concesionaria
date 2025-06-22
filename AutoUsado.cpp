@@ -37,7 +37,7 @@ void AutoUsado::mostrar()
     cout << "Version: " << getVersion() << endl;
     cout << "Anio: " << getAnio() << endl;
     cout << "Color: " << getColor() << endl;
-    cout << "Precio de venta: $" << getPrecioDeVenta() << endl;
+    cout << "Precio de venta: $" << fixed << setprecision(2) << getPrecioDeVenta() << endl;
     cout << "Kilometraje: " << getKilometraje() << endl;
     cout << "Estado: ";
     if(getEstado())

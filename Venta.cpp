@@ -212,6 +212,16 @@ bool Venta::cargarVentaAutoUsado()
                     /// Busco informacion del auto en base al numero de chasis
                     int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis);
                     autoUsado = archivoAutoUsado.Leer(pos); /// Devuelve el objeto auto usado
+
+                    /// Valido que el auto este disponible para la venta
+                    if(!autoUsado.getEstado())
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Este vehiculo ya fue vendido y no esta disponible." << endl;
+                        system("pause");
+                        return false;
+                    }
                     autoUsado.mostrar();
                     cout << endl;
                     cout << "Confirma que este es el auto que desea vender? (s/n): ";
@@ -492,6 +502,17 @@ bool Venta::cargarVentaAutoNuevo()
                     /// Busco informacion del auto en base al numero de chasis
                     int pos = archivoAutoNuevo.Buscar(numeroChasis);
                     autoNuevo = archivoAutoNuevo.Leer(pos); /// Devuelve el objeto auto nuevo
+
+                    /// Valido que el auto este disponible para la venta
+                    if(!autoNuevo.getEstado())
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Este vehiculo ya fue vendido y no esta disponible." << endl;
+                        system("pause");
+                        return false;
+                    }
+
                     autoNuevo.mostrar();
                     cout << endl;
 
