@@ -109,7 +109,6 @@ void Venta::setEstado(bool estado)
 bool Venta::cargarVentaAutoUsado()
 {
     /// TODO: Agregar validaciones
-    /// Preguntar que existan clientes, vendedores y autos antes de ingresar al menu!
     Menu menu;
     Venta venta;
     AutoUsado autoUsado;
@@ -127,6 +126,35 @@ bool Venta::cargarVentaAutoUsado()
 
     ArchivoVenta archivoVenta;
     ArchivoAutoUsado archivoAutoUsado;
+    ArchivoVendedor archivoVendedor;
+    ArchivoCliente archivoCliente;
+
+    /// Preguntar que existan clientes, vendedores y autos antes de realizar la carga
+    if(archivoAutoUsado.CantidadRegistros() == 0)
+    {
+
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un auto antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
+    else if(archivoVendedor.CantidadRegistros() == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un vendedor antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
+    else if(archivoCliente.CantidadRegistros() == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un cliente antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
 
     /// Genero ID de venta
     idVenta = archivoVenta.generarIdVenta();
@@ -358,6 +386,36 @@ bool Venta::cargarVentaAutoNuevo()
 
     ArchivoVenta archivoVenta;
     ArchivoAutoNuevo archivoAutoNuevo;
+    ArchivoVendedor archivoVendedor;
+    ArchivoCliente archivoCliente;
+
+
+    /// Preguntar que existan clientes, vendedores y autos antes de realizar la carga
+    if(archivoAutoNuevo.CantidadRegistros() == 0)
+    {
+
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un auto antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
+    else if(archivoVendedor.CantidadRegistros() == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un vendedor antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
+    else if(archivoCliente.CantidadRegistros() == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Por favor, cargue un cliente antes de realizar una venta." << endl;
+        system("pause");
+        return false;
+    }
 
     /// Genero ID de venta
     idVenta = archivoVenta.generarIdVenta();
