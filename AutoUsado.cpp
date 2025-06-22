@@ -89,33 +89,65 @@ bool AutoUsado::cargarAutoUsado()
         }
         else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0)  /// si encuentra el registro
         {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Error: Ya existe un auto con ese numero de chasis." << endl;
-            cout << "Desea cargar un auto usado? (s/n)" << endl;
-            cin >> cargarOtro;
-            cargarOtro = tolower(cargarOtro);
-            while(cargarOtro != 's' && cargarOtro != 'n')
+            /// Verifico si el auto encontrado esta vendido o disponible
+            int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis);
+            AutoUsado autoExistente = archivoAutoUsado.Leer(pos);
+
+            if(autoExistente.getEstado())   /// Si esta disponible
             {
                 system("cls");
                 menu.mostrarLogo();
-                cout << "Error: Opcion incorrecta." << endl;
+                cout << "Error: Ya existe un auto con ese numero de chasis." << endl;
                 cout << "Desea cargar un auto usado? (s/n)" << endl;
                 cin >> cargarOtro;
                 cargarOtro = tolower(cargarOtro);
-            }
+                while(cargarOtro != 's' && cargarOtro != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: Opcion incorrecta." << endl;
+                    cout << "Desea cargar un auto usado? (s/n)" << endl;
+                    cin >> cargarOtro;
+                    cargarOtro = tolower(cargarOtro);
+                }
 
-            switch(cargarOtro)
+                switch(cargarOtro)
+                {
+                case 's':
+                    break;
+                case 'n':
+                    return false;
+
+                default:
+                    cout << "No deberia esta aca." << endl;
+                    system("pause");
+                }
+            }
+            else  /// Si el auto esta vendido, permito reingreso
             {
-            case 's':
-                break;
-            case 'n':
-                return false;
-
-            default:
-                cout << "No deberia esta aca." << endl;
-                system("pause");
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Se encontro un auto con ese numero de chasis que fue vendido anteriormente." << endl;
+                cout << "Se permitira reingresar el auto al sistema." << endl;
+                cout << "El chasis ingresado es " << numeroChasis << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+                while(confirmar != 's' && confirmar != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: Opcion incorrecta." << endl;
+                    cout << "El chasis ingresado es " << numeroChasis << ". Es correcto? (s/n) " << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if (confirmar == 's')
+                {
+                    cin.ignore();
+                    break;
+                }
             }
+
         }
         else
         {
