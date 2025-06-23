@@ -7,7 +7,11 @@
 	<cstring>
 	<iostream>
 
-1749001299 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.cpp
+	"ArchivoAutoNuevo.h"
+	<string>
+	<cstring>
+	<iostream>
 
 1749857133 5311ab1ed5c1b37074f48cc727a09eaa8dfe6
 	"ArchivoAutoNuevo.h"
@@ -83,19 +87,23 @@
 	<cstring>
 	<iostream>
 
-1749001299 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.h
+1750718701 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautonuevo.h
 	<string>
 	"AutoNuevo.h"
 
 1749859881 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autonuevo.h
 	"Auto.h"
 
-1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\auto.h
+1750032961 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\auto.h
 	"Patente.h"
 
 1748294554 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\patente.h
 
-1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.cpp
+	"ArchivoAutoUsado.h"
+	<string>
+	<cstring>
+	<iostream>
 
 1750628436 c:\0repos\concesionaria\archivoautousado.h
 	<string>
@@ -126,11 +134,11 @@
 
 1749605308 source:c:\0repos\concesionaria\archivopago.cpp
 
-1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.h
+1750718701 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivoautousado.h
 	<string>
 	"AutoUsado.h"
 
-1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.h
+1750032961 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.h
 	"Auto.h"
 
 1749596431 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\archivocliente.cpp
@@ -247,20 +255,37 @@
 	<string>
 	"Venta.h"
 
-1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.h
+1750104581 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.h
 	"Fecha.h"
 	"Patente.h"
 
-1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\auto.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\auto.cpp
 	"Auto.h"
 	<cstring>
 	<iostream>
 
-1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
+	"Menu.h"
+	"ArchivoAutoUsado.h"
+	<cstring>
+	<iomanip>
 
-1749597134 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.cpp
+	<iostream>
+	<string>
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"Venta.h"
+	"ArchivoVenta.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"Menu.h"
+	"iomanip"
 
 1750534898 c:\0repos\concesionaria\concesionariamanager.h
 	"AutoNuevo.h"
@@ -278,9 +303,12 @@
 	<string>
 	"Menu.h"
 
-1749779266 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
+1750569577 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\concesionariamanager.h
+	"AutoNuevo.h"
+	"AutoUsado.h"
 
-1749688683 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
+1750720637 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.h
+	"rlutil.h"
 
 1748114981 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\direccion.cpp
 	"Direccion.h"
@@ -289,7 +317,10 @@
 1748114981 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\fecha.cpp
 	"Fecha.h"
 
-1748299170 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\main.cpp
+1750721825 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\main.cpp
+	<iostream>
+	<string>
+	"Menu.h"
 
 1750540152 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
@@ -307,7 +338,21 @@
 	"rlutil.h"
 	<iomanip>
 
-1749853974 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+1750721984 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+	<iostream>
+	<string>
+	"Venta.h"
+	"Menu.h"
+	"ConcesionariaManager.h"
+	"Cliente.h"
+	"Vendedor.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	"rlutil.h"
+	<iomanip>
 
 1748903763 source:c:\0repos\concesionaria\pago.cpp
 	"Pago.h"
@@ -325,7 +370,7 @@
 1748987080 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\pago.cpp
 	"Pago.h"
 
-1748294554 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\patente.cpp
+1750294830 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\patente.cpp
 	"Patente.h"
 	<cstring>
 
@@ -351,7 +396,16 @@
 	<iostream>
 	<cstring>
 
-1749779266 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
+	"Venta.h"
+	"Menu.h"
+	"ArchivoVenta.h"
+	"ArchivoAutoUsado.h"
+	"ArchivoAutoNuevo.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
+	<iostream>
+	<cstring>
 
 1749857133 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
 	"Cliente.h"
@@ -754,6 +808,28 @@
 	<sys/time.h>
 
 1749991102 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1750718701 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\autonuevo.cpp
+	<iostream>
+	"Menu.h"
+	"AutoNuevo.h"
+	"ArchivoAutoNuevo.h"
+	<cstring>
+	<iomanip>
+
+1750032961 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
