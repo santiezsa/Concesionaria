@@ -8,6 +8,7 @@ class Menu
         void mostrarMenuPrincipal();
         void mostrarLogo();
         void mostrarLogoAnimado();
+        void mostrarLogoSalida();
         void mostrarMenuClientes();
         void mostrarMenuVendedores();
         void mostrarMenuVentas();

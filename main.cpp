@@ -12,6 +12,7 @@ int main()
     //rlutil::setColor(rlutil::WHITE);
 
     rlutil::cls();
+    menu.mostrarLogoAnimado();
     menu.mostrarMenuPrincipal();
     return 0;
 }

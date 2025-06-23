@@ -198,9 +198,10 @@ void Menu::mostrarMenuPrincipal()
             break;
         case 0:
             system("cls");
-            mostrarLogo();
+            mostrarLogoSalida();
+            //mostrarLogo();
             rlutil::setColor(rlutil::LIGHTGREEN);
-            rlutil::locate(35, 25);
+            rlutil::locate(35, 12);
             cout << "Gracias por usar el sistema!" << endl;
             rlutil::setColor(rlutil::WHITE);
             exit(0);
@@ -237,16 +238,18 @@ void Menu::mostrarLogo()
 void Menu::mostrarLogoAnimado()
 {
     system("cls");
+rlutil::hidecursor();
+
 
     // Posición inicial del auto
     int x = 5;
     int y = 3;
 
     // Animación del auto moviéndose
-    for(int i = 0; i < 40; i++)
+    for(int i = 0; i < 60; i++)
     {
         rlutil::locate(x + i, y);
-        cout << "    ______       ";
+        cout << "     _____       ";
         rlutil::locate(x + i, y + 1);
         cout << " ___/__|__\\_____";
         rlutil::locate(x + i, y + 2);
@@ -285,6 +288,72 @@ void Menu::mostrarLogoAnimado()
     cout << "                                                                     \t\t L___J==============L___J " << endl;
     cout << "                                                                     \t\t  !_!                !_! " << endl;
     cout << endl;
+    rlutil::showcursor();
+}
+
+void Menu::mostrarLogoSalida()
+{
+    system("cls");
+rlutil::hidecursor();
+
+
+    // Posición inicial del auto
+    int x = 40;
+    int y = 3;
+
+    // Animación del auto moviéndose
+    for(int i = 0; i < 15; i++)
+    {
+        rlutil::locate(x, y + i);
+        cout << "      ______________      " << endl;
+        rlutil::locate(x, y + 1 + i);
+        cout << "     /              \\    " << endl;
+        rlutil::locate(x, y + 2 + i);
+        cout << "    /                \\   " << endl;
+        rlutil::locate(x, y + 3 + i);
+        cout << " __|__________________|__ " << endl;
+        rlutil::locate(x, y + 4 + i);
+        cout << " | _ |              | _ | " << endl;
+        rlutil::locate(x, y + 5 + i);
+        cout << " |(_)|   |AUT001|   |(_)| " << endl;
+        rlutil::locate(x, y + 6 + i);
+        cout << " L___J==============L___J " << endl;
+        rlutil::locate(x, y + 7 + i);
+        cout << "  !_!                !_!  " << endl;
+
+
+        // Pequeña pausa para la animación
+        rlutil::msleep(50);
+
+        // Borrar el auto en la posición actual
+        rlutil::locate(x, y + i);
+        cout << "                              ";
+        rlutil::locate(x, y + i);
+        cout << "                              ";
+        rlutil::locate(x, y + i);
+        cout << "                              ";
+        rlutil::locate(x, y + i);
+        cout << "                              ";
+    }
+
+    // Limpiar la pantalla antes de mostrar el logo final
+    system("cls");
+
+    // Pequeña pausa antes de mostrar el logo
+    rlutil::msleep(200);
+
+    // Mostrar el logo completo
+    cout << endl;
+    cout << "                                                                     \t\t      ______________ " << endl;
+    cout << "      _____         \t *****  *   *  *****  *****  *   *  *   *  ***** \t     /              \\ " << endl;
+    cout << "  ___/__|__\\_____  \t |   |  |   |    |    |   |  |   |  |*  |  |   | \t    /                \\ " << endl;
+    cout << " |  _     1   _  `. \t *****  *   *    *    *   *  *   *  * * *  *   * \t __|__________________|__ " << endl;
+    cout << " '-(_)-------(_)-^  \t |   |  |   |    |    |   |  |   |  |  *|  |   | \t | _ |              | _ | " << endl;
+    cout << "                    \t *   *  *****    *    *****  *****  *   *  ***** \t |(_)|   |AUT001|   |(_)| " << endl;
+    cout << "                                                                     \t\t L___J==============L___J " << endl;
+    cout << "                                                                     \t\t  !_!                !_! " << endl;
+    cout << endl;
+    rlutil::showcursor();
 }
 
 void Menu::mostrarMenuVentas()
