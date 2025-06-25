@@ -200,10 +200,6 @@ void Menu::mostrarMenuPrincipal()
             system("cls");
             mostrarLogoSalida();
             //mostrarLogo();
-            rlutil::setColor(rlutil::LIGHTGREEN);
-            rlutil::locate(35, 12);
-            cout << "Gracias por usar el sistema!" << endl;
-            rlutil::setColor(rlutil::WHITE);
             exit(0);
             break;
         default:
@@ -238,7 +234,7 @@ void Menu::mostrarLogo()
 void Menu::mostrarLogoAnimado()
 {
     system("cls");
-rlutil::hidecursor();
+    rlutil::hidecursor();
 
 
     // Posición inicial del auto
@@ -294,7 +290,7 @@ rlutil::hidecursor();
 void Menu::mostrarLogoSalida()
 {
     system("cls");
-rlutil::hidecursor();
+    rlutil::hidecursor();
 
 
     // Posición inicial del auto
@@ -302,7 +298,7 @@ rlutil::hidecursor();
     int y = 3;
 
     // Animación del auto moviéndose
-    for(int i = 0; i < 15; i++)
+    for(int i = 0; i < 10; i++)
     {
         rlutil::locate(x, y + i);
         cout << "      ______________      " << endl;
@@ -340,7 +336,7 @@ rlutil::hidecursor();
     system("cls");
 
     // Pequeña pausa antes de mostrar el logo
-    rlutil::msleep(200);
+    rlutil::msleep(50);
 
     // Mostrar el logo completo
     cout << endl;
@@ -353,7 +349,49 @@ rlutil::hidecursor();
     cout << "                                                                     \t\t L___J==============L___J " << endl;
     cout << "                                                                     \t\t  !_!                !_! " << endl;
     cout << endl;
+
+    rlutil::locate(40, 12);
+    cout << "      ______________      " << endl;
+    rlutil::locate(40, 13);
+    cout << "     /              \\    " << endl;
+    rlutil::locate(40, 14);
+    cout << "    /                \\   " << endl;
+    rlutil::locate(40, 15);
+    cout << " __|__________________|__ " << endl;
+    rlutil::locate(40, 16);
+    cout << " | _ |              | _ | " << endl;
+    rlutil::locate(40, 17);
+    cout << " |(_)|   |AUT001|   |(_)| " << endl;
+    rlutil::locate(40, 18);
+    cout << " L___J==============L___J " << endl;
+    rlutil::locate(40, 19);
+    cout << "  !_!                !_!  " << endl;
+
+    for(int j = 0; j < 8; j++)
+    {
+        if(j%2==0)
+        {
+            rlutil::msleep(200);
+            rlutil::setColor(rlutil::YELLOW);
+            rlutil::locate(42, 17);
+            cout << "(O)" << endl;
+            rlutil::locate(61, 17);
+            cout << "(O)" << endl;
+        }
+        else
+        {
+            rlutil::msleep(200);
+            rlutil::setColor(rlutil::WHITE);
+            rlutil::locate(40, 17);
+            cout << " |(_)|   |AUT001|   |(_)| " << endl;
+        }
+    }
     rlutil::showcursor();
+
+    rlutil::setColor(rlutil::LIGHTGREEN);
+    rlutil::locate(40, 22);
+    cout << "Gracias por usar el sistema!" << endl;
+    rlutil::setColor(rlutil::WHITE);
 }
 
 void Menu::mostrarMenuVentas()
