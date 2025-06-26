@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Menu.h"
 #include "ArchivoAutoUsado.h"
+#include "ArchivoAutoNuevo.h"
 #include <cstring>
 #include <iomanip>
 using namespace std;
@@ -69,6 +70,7 @@ bool AutoUsado::cargarAutoUsado()
     int kilometraje;
 
     ArchivoAutoUsado archivoAutoUsado;
+    ArchivoAutoNuevo archivoAutoNuevo;
 
     /// Carga NUMERO CHASIS (id)
     while(true)
@@ -87,7 +89,7 @@ bool AutoUsado::cargarAutoUsado()
             cout << "Error. Ingrese un numero de chasis valido." << endl;
             system("pause");
         }
-        else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0)  /// si encuentra el registro
+        else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0 || archivoAutoNuevo.Buscar(numeroChasis) >= 0)  /// Valida chasis tanto en archivo auto nuevo y archivo auto usado
         {
             /// Verifico si el auto encontrado esta vendido o disponible
             int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis);
