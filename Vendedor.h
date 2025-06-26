@@ -13,6 +13,7 @@ public:
     /// Getters
     int getIdVendedor();
     Fecha getFechaDeIngreso();
+    bool esMayor(Fecha fechaIngreso, Fecha fechaNacimiento);
 
     /// Setters
     void setIdVendedor(int idVendedor);
