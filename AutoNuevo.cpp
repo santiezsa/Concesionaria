@@ -4,6 +4,7 @@
 #include "ArchivoAutoNuevo.h"
 #include <cstring>
 #include <iomanip>
+#include <limits>
 using namespace std;
 
 
@@ -55,10 +56,23 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese el numero de chasis del auto 0km: ";
-        cin.ignore();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // limpiar por si quedó algo antes
         cin.getline(numeroChasis, sizeof(numeroChasis));
 
-        if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+        if (cin.fail())
+        {
+            // Si se pasó del límite y hay basura en el buffer
+            cin.clear(); // limpia el failbit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+            continue;
+        }
+
+
+        if(strlen(numeroChasis) == 0)
         {
             system("cls");
             menu.mostrarLogo();
