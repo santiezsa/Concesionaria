@@ -69,7 +69,7 @@ bool Fecha::esBisiesto(int anio)
 
 bool Fecha::esValida()
 {
-    if(_anio < 1900 || _anio > 2200)
+    if(_anio < 1900 || _anio > 2026)
     {
         return false;
     }
@@ -98,8 +98,3 @@ bool Fecha::esValida()
         return _dia <= 31;
     }
 }
-
-
-
-
-

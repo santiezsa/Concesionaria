@@ -450,55 +450,63 @@ bool Vendedor::cargarVendedor()
     /// Carga fecha de nacimiento
     while(true)
     {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "== Fecha de nacimiento ===" << endl;
-        cout << "Dia: ";
-        cin >> dia;
-        cout << "Mes: ";
-        cin >> mes;
-        cout << "Anio: ";
-        cin >> anio;
-
-        fechaNacimiento = Fecha(dia, mes, anio);
-        if(!fechaNacimiento.esValida())
+        while(true)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Fecha de nacimiento invalida" << endl;
-            system("pause");
-        }
-        else
-        {
-            break;
-        }
-    }
+            cout << "== Fecha de nacimiento ===" << endl;
+            cout << "Dia: ";
+            cin >> dia;
+            cout << "Mes: ";
+            cin >> mes;
+            cout << "Anio: ";
+            cin >> anio;
 
-    /// Carga fecha de ingreso
-    while(true)
-    {
-        system("cls");
-        menu.mostrarLogo();
-        cout << "== Fecha de ingreso ===" << endl;
-        cout << "Dia: ";
-        cin >> dia;
-        cout << "Mes: ";
-        cin >> mes;
-        cout << "Anio: ";
-        cin >> anio;
+            fechaNacimiento = Fecha(dia, mes, anio);
+            if(!fechaNacimiento.esValida())
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Fecha de nacimiento invalida" << endl;
+                system("pause");
+            }
+            else
+            {
+                break;
+            }
+        }
 
-        fechaDeIngreso = Fecha(dia, mes, anio);
-        if(!fechaDeIngreso.esValida())
+        /// Carga fecha de ingreso
+        while(true)
         {
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Fecha de ingreso invalida" << endl;
-            system("pause");
+            cout << "== Fecha de ingreso ===" << endl;
+            cout << "Dia: ";
+            cin >> dia;
+            cout << "Mes: ";
+            cin >> mes;
+            cout << "Anio: ";
+            cin >> anio;
+
+            fechaDeIngreso = Fecha(dia, mes, anio);
+            if(!fechaDeIngreso.esValida())
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Fecha de ingreso invalida" << endl;
+                system("pause");
+            }
+            else
+            {
+                break;
+            }
         }
-        else
+        if(esMayor(fechaDeIngreso, fechaNacimiento)==true)
         {
             break;
         }
+
     }
 
     /// Genero ID del vendedor (automatico)
@@ -819,6 +827,37 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
     return true;
 }
 
+bool Vendedor::esMayor(Fecha fechaIngreso, Fecha fechaNacimiento)
+{
+    //Vendedor vendedor;
+    int edad = fechaIngreso.getAnio()-fechaNacimiento.getAnio();
+    cout << edad;
 
+    if(edad<18)
+    {
+        cout << "Error: El ingresante es menor de edad." << endl;
+        system("pause");
+        return false;
+    }
+    else if(edad == 18)
+    {
+        if(fechaIngreso.getMes() == fechaNacimiento.getMes())
+        {
+            if(fechaIngreso.getDia() < fechaNacimiento.getDia())
+            {
+                cout << "Error: El ingresante es menor de edad." << endl;
+                system("pause");
+                return false;
+            }
+        }
+        else if ((fechaIngreso.getMes() < fechaNacimiento.getMes()))
+        {
+            cout << "Error: El ingresante es menor de edad." << endl;
+            system("pause");
+            return false;
+        }
+    }
+    return true;
+}
 
 
