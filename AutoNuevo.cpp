@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "AutoNuevo.h"
 #include "ArchivoAutoNuevo.h"
+#include "ArchivoAutoUsado.h"
 #include <cstring>
 #include <iomanip>
 #include <limits>
@@ -48,6 +49,7 @@ bool AutoNuevo::cargarAutoNuevo()
     int garantia;
 
     ArchivoAutoNuevo archivoAutoNuevo;
+    ArchivoAutoUsado archivoAutoUsado;
 
     /// Carga NUMERO CHASIS (id)
     while(true)
@@ -79,7 +81,7 @@ bool AutoNuevo::cargarAutoNuevo()
             cout << "Error. Ingrese un numero de chasis valido." << endl;
             system("pause");
         }
-        else if(archivoAutoNuevo.Buscar(numeroChasis) >= 0)  /// si encuentra el registro
+        else if(archivoAutoNuevo.Buscar(numeroChasis) >= 0 || archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroChasis) >= 0)  /// Valida chasis tanto en archivo auto nuevo y archivo auto usado
         {
             system("cls");
             menu.mostrarLogo();
