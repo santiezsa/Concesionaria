@@ -28,7 +28,12 @@ class Menu
         void menuAutosUsados();
         void subMenuBuscarAutoUsado();
 
-    protected:
+        /// Consultas
+        void mostrarMenuListadosVentas();
+        void mostrarMenuListadosClientes();
+        void mostrarMenuListadosVendedores();
+        void mostrarMenuListadosAutosNuevos();
+        void mostrarMenuListadosAutosUsados();
 
     private:
 };
