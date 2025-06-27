@@ -1016,8 +1016,375 @@ void Menu::subMenuBuscarAutoUsado()
 
 void Menu::mostrarMenuListados()
 {
+    int opcionListados;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de ventas" << endl;
+            cout << "2 - Listado de clientes" << endl;
+            cout << "3 - Listado de vendedores" << endl;
+            cout << "4 - Listado de autos nuevos" << endl;
+            cout << "5 - Listado de autos usados" << endl;
+            cout << "6 - Volver al menu anterior" << endl;
 
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListados;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListados)
+        {
+        case 1:
+            mostrarMenuListadosVentas();
+            break;
+        case 2:
+            mostrarMenuListadosClientes();
+            break;
+        case 3:
+            mostrarMenuListadosVendedores();
+            break;
+        case 4:
+            mostrarMenuListadosAutosNuevos();
+            break;
+        case 5:
+            mostrarMenuListadosAutosUsados();
+            break;
+        case 6:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListados != 6);
 }
+
+void Menu::mostrarMenuListadosVentas()
+{
+    int opcionListadosVentas;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de ventas por fecha" << endl;
+            cout << "2 - Listado de ventas por vendedor" << endl;
+            cout << "3 - Listado de ventas por marca" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListadosVentas;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListadosVentas)
+        {
+        case 1:
+            ///Listado por fecha
+            break;
+        case 2:
+            ///Listado por vendedor
+            break;
+        case 3:
+            ///Listado por marca
+            break;
+        case 4:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListadosVentas != 4);
+}
+
+void Menu::mostrarMenuListadosClientes()
+{
+    int opcionListadosClientes;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de clientes por DNI" << endl;
+            cout << "2 - Listado de clientes por apellido" << endl;
+            cout << "3 - Listado de clientes por fecha de nacimiento" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListadosClientes;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListadosClientes)
+        {
+        case 1:
+            ///DNI
+            break;
+        case 2:
+            ///Apellido
+            break;
+        case 3:
+            ///Fecha de nacimiento
+            break;
+        case 4:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListadosClientes != 4);
+}
+
+void Menu::mostrarMenuListadosVendedores()
+{
+    int opcionListadosVendedores;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de vendedores por DNI" << endl;
+            cout << "2 - Listado de vendedores por apellido" << endl;
+            cout << "3 - Listado de vendedores por fecha de nacimiento" << endl;
+            cout << "4 - Listado de vendedores por fecha de ingreso" << endl;
+            cout << "5 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListadosVendedores;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListadosVendedores)
+        {
+        case 1:
+            ///DNI
+            break;
+        case 2:
+            ///Apellido
+            break;
+        case 3:
+            ///Fecha de nacimiento
+            break;
+        case 4:
+            ///Fecha de ingreso
+            break;
+        case 5:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListadosVendedores != 5);
+}
+
+void Menu::mostrarMenuListadosAutosNuevos()
+{
+    int opcionListadosAutosNuevos;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de auto por marca" << endl;
+            cout << "2 - Listado de auto por modelo" << endl;
+            cout << "3 - Listado de auto por anio" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListadosAutosNuevos;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListadosAutosNuevos)
+        {
+        case 1:
+            ///Marca
+            break;
+        case 2:
+            ///Modelo
+            break;
+        case 3:
+            ///Anio
+            break;
+        case 4:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListadosAutosNuevos != 4);
+}
+
+void Menu::mostrarMenuListadosAutosUsados()
+{
+    int opcionListadosAutosUsados;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Listado de auto por marca" << endl;
+            cout << "2 - Listado de auto por modelo" << endl;
+            cout << "3 - Listado de auto por anio" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionListadosAutosUsados;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionListadosAutosUsados)
+        {
+        case 1:
+            ///Marca
+            /*ArchivoAutoUsado archivoAutoUsado;
+    system("cls");
+    mostrarLogo();
+    cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
+    archivoAutoUsado.mostrarAutosUsadosDisponibles();
+    cout << "===========================================" << endl;
+    cout << endl;
+    system ("pause");*/
+
+            break;
+        case 2:
+            ///Modelo
+            break;
+        case 3:
+            ///Anio
+            break;
+        case 4:
+            break;
+
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionListadosAutosUsados != 4);
+}
+
+
 
 void Menu::mostrarMenuConsultas()
 {
