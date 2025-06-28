@@ -119,7 +119,7 @@
 	<cstring>
 	"Cliente.h"
 
-1749605168 c:\0repos\concesionaria\cliente.h
+1751134211 c:\0repos\concesionaria\cliente.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -200,7 +200,7 @@
 	"Fecha.h"
 	"Patente.h"
 
-1751076543 source:c:\0repos\concesionaria\autonuevo.cpp
+1751131434 source:c:\0repos\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
@@ -213,7 +213,7 @@
 1751066614 c:\0repos\concesionaria\menu.h
 	"rlutil.h"
 
-1750974753 source:c:\0repos\concesionaria\autousado.cpp
+1751131434 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
@@ -221,12 +221,16 @@
 	"ArchivoAutoNuevo.h"
 	<cstring>
 	<iomanip>
+	<limits>
 
-1749860109 source:c:\0repos\concesionaria\cliente.cpp
+1751134423 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
 	<iostream>
+	<cstring>
+	<iomanip>
+	"rlutil.h"
 
 1751123178 source:c:\0repos\concesionaria\concesionariamanager.cpp
 	<iostream>
@@ -329,7 +333,7 @@
 	<string>
 	"Menu.h"
 
-1751124899 source:c:\0repos\concesionaria\menu.cpp
+1751126439 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
@@ -404,7 +408,7 @@
 	<cstring>
 	<iostream>
 
-1751125622 source:c:\0repos\concesionaria\venta.cpp
+1751131595 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
