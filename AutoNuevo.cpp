@@ -71,11 +71,9 @@ bool AutoNuevo::cargarAutoNuevo()
             menu.mostrarLogo();
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
-            continue;
+            //continue;
         }
-
-
-        if(strlen(numeroChasis) == 0)
+        else if(strlen(numeroChasis) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -132,6 +130,10 @@ bool AutoNuevo::cargarAutoNuevo()
             {
                 cin.ignore();
                 break;
+            }
+            else
+            {
+                cin.ignore();
             }
         }
     }
