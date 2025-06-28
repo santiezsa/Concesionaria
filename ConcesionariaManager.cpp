@@ -11,6 +11,7 @@
 #include "ArchivoAutoUsado.h"
 #include "Menu.h"
 #include "iomanip"
+#include <limits>
 
 using namespace std;
 
@@ -850,7 +851,9 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
     char volverAtras;
     ArchivoAutoNuevo archivoAutoNuevo;
     AutoNuevo autoNuevo;
+
     cin.ignore();
+
     while(true)
     {
         system("cls");
@@ -858,7 +861,21 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
         cout << "Ingrese numero de chasis del vehiculo: ";
         cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
 
-        if(!(archivoAutoNuevo.Buscar(numeroDeChasis) >= 0))
+        if (cin.fail())
+        {
+            // Si se pasó del límite y hay basura en el buffer
+            cin.clear(); // limpia el failbit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            system("cls");
+            menu.mostrarLogo();
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            rlutil::setColor(rlutil::WHITE);
+            system("pause");
+            break;
+        }
+
+        if((archivoAutoNuevo.Buscar(numeroDeChasis) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -867,6 +884,7 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
             cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
             rlutil::setColor(rlutil::WHITE);
             cin >> volverAtras;
+
             if(volverAtras == 'q')
             {
                 break;
@@ -883,6 +901,7 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
             cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -892,6 +911,7 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -906,7 +926,6 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
                 cin.ignore();
             }
         }
-        break;
     }
 
 }
@@ -995,7 +1014,9 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
     char volverAtras;
     ArchivoAutoUsado archivoAutoUsado;
     AutoUsado autoUsado;
+
     cin.ignore();
+
     while(true)
     {
         system("cls");
@@ -1003,7 +1024,21 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
         cout << "Ingrese numero de chasis del vehiculo: ";
         cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
 
-        if(!(archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) >= 0))
+        if (cin.fail())
+        {
+            // Si se pasó del límite y hay basura en el buffer
+            cin.clear(); // limpia el failbit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            system("cls");
+            menu.mostrarLogo();
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            rlutil::setColor(rlutil::WHITE);
+            system("pause");
+            break;
+        }
+
+        if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -1012,6 +1047,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
             cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
             rlutil::setColor(rlutil::WHITE);
             cin >> volverAtras;
+
             if(volverAtras == 'q')
             {
                 break;
@@ -1028,6 +1064,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
             cout << "El numero de chasis ingresado es " << numeroDeChasis << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -1037,6 +1074,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -1051,7 +1089,6 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
                 cin.ignore();
             }
         }
-        break;
     }
 
 }
@@ -1064,6 +1101,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
     AutoUsado autoUsado;
     char volverAtras;
     cin.ignore();
+
     while(true)
     {
         system("cls");
@@ -1071,7 +1109,21 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
         cout << "Ingrese numero de patente del vehiculo: ";
         cin.getline(numeroDePatente, sizeof(numeroDePatente));
 
-        if(!(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente) >= 0))
+        if (cin.fail())
+        {
+            // Si se pasó del límite y hay basura en el buffer
+            cin.clear(); // limpia el failbit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            system("cls");
+            menu.mostrarLogo();
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            rlutil::setColor(rlutil::WHITE);
+            system("pause");
+            break;
+        }
+
+        if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -1080,6 +1132,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
             cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
             rlutil::setColor(rlutil::WHITE);
             cin >> volverAtras;
+
             if(volverAtras == 'q')
             {
                 break;
@@ -1096,6 +1149,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
             cout << "El numero de pantente ingresado es " << numeroDePatente << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -1105,6 +1159,7 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -1119,7 +1174,6 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
                 cin.ignore();
             }
         }
-        break;
     }
 
 }
