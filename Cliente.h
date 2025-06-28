@@ -27,5 +27,6 @@ public:
 
 private:
     int _idCliente;
+    bool fechaMayorQue(Fecha fecha1, Fecha fecha2);
 };
 
