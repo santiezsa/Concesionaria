@@ -907,7 +907,7 @@ void Venta::listadoVentasPorFecha()
         fila++;
     }
 
-    // Lnea final de la tabla
+    // LÃ­nea final de la tabla
     rlutil::locate(5, fila);
     rlutil::setColor(rlutil::WHITE);
     cout << "--------------------------------------------------------------------------------";
@@ -1076,7 +1076,7 @@ void Venta::listadoVentasPorVendedor()
         fila++;
     }
 
-    // Línea final de la tabla
+    // LÃ­nea final de la tabla
     rlutil::locate(5, fila);
     rlutil::setColor(rlutil::WHITE);
     cout << "---------------------------------------------------------------------------------------";
@@ -1094,7 +1094,6 @@ void Venta::listadoVentasPorVendedor()
     rlutil::setColor(rlutil::WHITE);
 
     delete[] vecVentas;
-
 }
 
 void Venta::listadoVentasPorMarca()
@@ -1155,18 +1154,18 @@ void Venta::listadoVentasPorMarca()
     cout << "Marca";
     rlutil::locate(40, 11);
     cout << "Monto";
-    rlutil::locate(55, 11);
+    rlutil::locate(57, 11);
     cout << "Fecha";
     rlutil::locate(70, 11);
     cout << "Cliente";
     rlutil::locate(80, 11);
     cout << "Vendedor";
-    rlutil::locate(95, 11);
+    rlutil::locate(90, 11);
     cout << "Estado";
 
     rlutil::locate(5, 12);
     rlutil::setColor(rlutil::WHITE);
-    cout << "-------------------------------------------------------------------------------------------------";
+    cout << "-------------------------------------------------------------------------------------------";
 
     // Mostrar las ventas
     int fila = 13;
@@ -1194,7 +1193,7 @@ void Venta::listadoVentasPorMarca()
         const char* marca = nullptr;
         char numeroPatente[10];
         strcpy(numeroPatente, vecVentas[i].getPatente().getNumeroPatente());
-
+        
         int pos = archivoAutoNuevo.Buscar(numeroPatente);
         if(pos >= 0)
         {
@@ -1210,7 +1209,7 @@ void Venta::listadoVentasPorMarca()
                 marca = autoUsado.getMarca();
             }
         }
-
+        
         if(marca)
         {
             cout << marca;
@@ -1224,7 +1223,7 @@ void Venta::listadoVentasPorMarca()
         rlutil::setColor(rlutil::LIGHTGREEN);
         cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
 
-        rlutil::locate(55, fila);
+        rlutil::locate(57, fila);
         // Volver al color de la fila
         if(i % 2 == 0)
         {
@@ -1242,7 +1241,7 @@ void Venta::listadoVentasPorMarca()
         rlutil::locate(80, fila);
         cout << vecVentas[i].getIdVendedor();
 
-        rlutil::locate(95, fila);
+        rlutil::locate(90, fila);
         // Color especial para el estado
         if(vecVentas[i].getEstado())
         {
@@ -1258,10 +1257,10 @@ void Venta::listadoVentasPorMarca()
         fila++;
     }
 
-    // Línea final de la tabla
+    // LÃ­nea final de la tabla
     rlutil::locate(5, fila);
     rlutil::setColor(rlutil::WHITE);
-    cout << "-------------------------------------------------------------------------------------------------";
+    cout << "-------------------------------------------------------------------------------------------";
 
     // Total de ventas
     rlutil::locate(5, fila + 2);
