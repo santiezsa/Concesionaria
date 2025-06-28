@@ -34,6 +34,12 @@ public:
     void cancelarVenta();
     void mostrarVenta(Venta &venta);
 
+    /// Listados
+    void listadoVentasPorFecha();
+    bool fechaMayorQue(Fecha fecha1, Fecha fecha2);
+    void listadoVentasPorVendedor();
+    void listadoVentasPorMarca();
+
 
 private:
     int _idVenta;

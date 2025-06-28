@@ -1084,6 +1084,7 @@ void Menu::mostrarMenuListados()
 void Menu::mostrarMenuListadosVentas()
 {
     int opcionListadosVentas;
+    Venta venta;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -1117,6 +1118,7 @@ void Menu::mostrarMenuListadosVentas()
         {
         case 1:
             ///Listado por fecha
+            venta.listadoVentasPorFecha();
             break;
         case 2:
             ///Listado por vendedor

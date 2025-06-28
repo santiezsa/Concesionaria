@@ -52,13 +52,14 @@ bool AutoNuevo::cargarAutoNuevo()
     ArchivoAutoUsado archivoAutoUsado;
 
     /// Carga NUMERO CHASIS (id)
+    cin.ignore();
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese el numero de chasis del auto 0km: ";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // limpiar por si quedó algo antes
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n'); // limpiar por si quedó algo antes
         cin.getline(numeroChasis, sizeof(numeroChasis));
 
         if (cin.fail())

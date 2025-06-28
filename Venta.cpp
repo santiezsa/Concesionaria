@@ -5,8 +5,10 @@
 #include "ArchivoAutoNuevo.h"
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
+#include "ArchivoVenta.h"
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
 
@@ -732,5 +734,210 @@ void Venta::mostrarVenta(Venta &venta)
         cout << "Estado actual de la venta: INACTIVA" << endl;
     }
 }
+
+bool Venta::fechaMayorQue(Fecha fecha1, Fecha fecha2) // si fecha1 es mayor que fecha2 = true
+{
+    /// Comparo anios
+    if(fecha1.getAnio() > fecha2.getAnio())
+    {
+        return true;
+    }
+    if(fecha1.getAnio() < fecha2.getAnio())
+    {
+        return false;
+    }
+
+    /// Comparo meses
+    if(fecha1.getMes() > fecha2.getMes())
+    {
+        return true;
+    }
+    if(fecha1.getMes() < fecha2.getMes())
+    {
+        return false;
+    }
+
+    /// Comparo dias
+    if(fecha1.getDia() > fecha2.getDia())
+    {
+        return true;
+    }
+    if(fecha1.getDia() < fecha2.getDia())
+    {
+        return false;
+    }
+}
+
+void Venta::listadoVentasPorFecha()
+{
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    Venta aux;
+    Venta *vecVentas = nullptr;
+
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para mostrar." << endl;
+        system("pause");
+        return;
+    }
+
+    vecVentas = new Venta[cantidadRegistros];
+
+    if(vecVentas == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo las ventas en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoVenta.Leer(i);
+        vecVentas[i] = aux;
+    }
+
+    /// Bubble sort (menor a mayor fecha)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(fechaMayorQue(vecVentas[j].getFechaDeVenta(), vecVentas[j+1].getFechaDeVenta()))
+            {
+                aux = vecVentas[j];
+                vecVentas[j] = vecVentas[j+1];
+                vecVentas[j+1] = aux;
+            }
+        }
+    }
+
+   /// Muestro las ventas ya ordenadas
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    // Posicionar el titulo
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== LISTADO DE VENTAS ORDENADAS POR FECHA ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "=============================================";
+
+    // Encabezado de la tabla con colores
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 11);
+    cout << "Patente";
+    rlutil::locate(25, 11);
+    cout << "Monto";
+    rlutil::locate(42, 11);
+    cout << "Fecha";
+    rlutil::locate(55, 11);
+    cout << "Cliente";
+    rlutil::locate(65, 11);
+    cout << "Vendedor";
+    rlutil::locate(75, 11);
+    cout << "Estado";
+
+    rlutil::locate(5, 12);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    // Mostrar las ventas
+    int fila = 13;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+
+        rlutil::locate(42, fila);
+        // Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(55, fila);
+        cout << vecVentas[i].getIdCliente();
+
+        rlutil::locate(65, fila);
+        cout << vecVentas[i].getIdVendedor();
+
+        rlutil::locate(75, fila);
+        // Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    // Lnea final de la tabla
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    // Total de ventas
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas: " << cantidadRegistros;
+
+    // Mensaje de espera
+    rlutil::locate(5, fila + 4);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
+}
+
+void Venta::listadoVentasPorVendedor()
+{
+
+}
+
+void Venta::listadoVentasPorMarca()
+{
+
+}
+
+
+
 
 
