@@ -507,7 +507,7 @@
 	<string>
 	"Vendedor.h"
 
-1749513494 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.h
+1751111722 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -518,7 +518,7 @@
 	<string>
 	"Venta.h"
 
-1750108788 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.h
+1751111722 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.h
 	"Fecha.h"
 	"Patente.h"
 
@@ -527,23 +527,25 @@
 	<cstring>
 	<iostream>
 
-1750946544 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.cpp
+1751111722 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
 	"ArchivoAutoNuevo.h"
+	"ArchivoAutoUsado.h"
 	<cstring>
 	<iomanip>
 	<limits>
 
-1750725558 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.h
+1751111722 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.h
 	"rlutil.h"
 
-1750725558 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autousado.cpp
+1750974079 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
 	"ArchivoAutoUsado.h"
+	"ArchivoAutoNuevo.h"
 	<cstring>
 	<iomanip>
 
@@ -553,7 +555,7 @@
 	"Menu.h"
 	<iostream>
 
-1750725558 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
+1751118269 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -567,6 +569,7 @@
 	"ArchivoAutoUsado.h"
 	"Menu.h"
 	"iomanip"
+	<limits>
 
 1750725558 c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.h
 	"AutoNuevo.h"
@@ -576,7 +579,7 @@
 	"Direccion.h"
 	<cstring>
 
-1748551013 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\fecha.cpp
+1751111722 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\fecha.cpp
 	"Fecha.h"
 
 1750725558 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\main.cpp
@@ -584,7 +587,7 @@
 	<string>
 	"Menu.h"
 
-1750940298 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.cpp
+1751115710 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
@@ -611,7 +614,7 @@
 	"Persona.h"
 	<cstring>
 
-1749599736 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.cpp
+1751111722 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
@@ -619,7 +622,7 @@
 	<cctype>
 	"Menu.h"
 
-1750725558 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.cpp
+1751111722 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
@@ -627,8 +630,10 @@
 	"ArchivoAutoNuevo.h"
 	"ArchivoVendedor.h"
 	"ArchivoCliente.h"
+	"ArchivoVenta.h"
 	<iostream>
 	<cstring>
+	<iomanip>
 
 1750032961 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria2\archivoautonuevo.cpp
 	"ArchivoAutoNuevo.h"
