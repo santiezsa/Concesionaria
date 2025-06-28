@@ -1193,7 +1193,7 @@ void Venta::listadoVentasPorMarca()
         const char* marca = nullptr;
         char numeroPatente[10];
         strcpy(numeroPatente, vecVentas[i].getPatente().getNumeroPatente());
-        
+
         int pos = archivoAutoNuevo.Buscar(numeroPatente);
         if(pos >= 0)
         {
@@ -1209,7 +1209,7 @@ void Venta::listadoVentasPorMarca()
                 marca = autoUsado.getMarca();
             }
         }
-        
+
         if(marca)
         {
             cout << marca;
@@ -1276,6 +1276,7 @@ void Venta::listadoVentasPorMarca()
 
     delete[] vecVentas;
 }
+
 
 
 
