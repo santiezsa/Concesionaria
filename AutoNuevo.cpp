@@ -607,20 +607,39 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
         }
         else if(opcion == 'n')
         {
-            cout << endl;
-            cout << "Que campo desea modificar?" << endl;
-            cout << "1 - Numero de chasis" << endl;
-            cout << "2 - Marca" << endl;
-            cout << "3 - Modelo" << endl;
-            cout << "4 - Version" << endl;
-            cout << "5 - Anio" << endl;
-            cout << "6 - Color" << endl;
-            cout << "7 - Precio de venta" << endl;
-            cout << "8 - Garantia" << endl;
-            cout << "9 - Cancelar y volver a cargar todo" << endl;
-
             int opcionModificar;
-            cin >> opcionModificar;
+            while(true)
+            {
+                cout << endl;
+                cout << "Que campo desea modificar?" << endl;
+                cout << "1 - Numero de chasis" << endl;
+                cout << "2 - Marca" << endl;
+                cout << "3 - Modelo" << endl;
+                cout << "4 - Version" << endl;
+                cout << "5 - Anio" << endl;
+                cout << "6 - Color" << endl;
+                cout << "7 - Precio de venta" << endl;
+                cout << "8 - Garantia" << endl;
+                cout << "9 - Cancelar y volver a cargar todo" << endl;
+
+                cin >> opcionModificar;
+                if (cin.fail())
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "=== DATOS DEL AUTO ===" << endl;
+                    mostrarAutoNuevo(autoNuevo);
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Entrada invalida. Intente nuevamente." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             cin.ignore();
 
             switch(opcionModificar)

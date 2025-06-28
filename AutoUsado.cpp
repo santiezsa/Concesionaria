@@ -5,6 +5,7 @@
 #include "ArchivoAutoNuevo.h"
 #include <cstring>
 #include <iomanip>
+#include <limits>
 using namespace std;
 
 AutoUsado::AutoUsado() : Auto()
@@ -73,16 +74,25 @@ bool AutoUsado::cargarAutoUsado()
     ArchivoAutoNuevo archivoAutoNuevo;
 
     /// Carga NUMERO CHASIS (id)
+    cin.ignore();
     while(true)
     {
         system("cls");
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese el numero de chasis del auto usado: ";
-        cin.ignore();
         cin.getline(numeroChasis, sizeof(numeroChasis));
 
-        if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(numeroChasis) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -116,6 +126,7 @@ bool AutoUsado::cargarAutoUsado()
                 switch(cargarOtro)
                 {
                 case 's':
+                    cin.ignore();
                     break;
                 case 'n':
                     return false;
@@ -148,6 +159,10 @@ bool AutoUsado::cargarAutoUsado()
                     cin.ignore();
                     break;
                 }
+                else
+                {
+                    cin.ignore();
+                }
             }
 
         }
@@ -172,6 +187,10 @@ bool AutoUsado::cargarAutoUsado()
                 cin.ignore();
                 break;
             }
+            else
+            {
+                cin.ignore();
+            }
         }
     }
 
@@ -183,7 +202,16 @@ bool AutoUsado::cargarAutoUsado()
         cout << "Ingrese numero de patente: ";
         cin.getline(numeroPatente, sizeof(numeroPatente));
 
-        if(strlen(numeroPatente) == 0 || strlen(numeroPatente) > 49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(numeroPatente) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -227,7 +255,16 @@ bool AutoUsado::cargarAutoUsado()
         cout << "Ingrese marca: ";
         cin.getline(marca, sizeof(marca));
 
-        if(strlen(marca) == 0 || strlen(marca) > 49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(marca) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -269,7 +306,17 @@ bool AutoUsado::cargarAutoUsado()
         menu.mostrarLogo();
         cout << "Ingrese modelo: ";
         cin.getline(modelo, sizeof(modelo));
-        if(strlen(modelo) == 0 || strlen(modelo) > 49)
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(modelo) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -311,7 +358,17 @@ bool AutoUsado::cargarAutoUsado()
         menu.mostrarLogo();
         cout << "Ingrese version: ";
         cin.getline(version, sizeof(version));
-        if(strlen(version) == 0 || strlen(version) > 49)
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(version) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -411,7 +468,17 @@ bool AutoUsado::cargarAutoUsado()
         menu.mostrarLogo();
         cout << "Ingrese color: ";
         cin.getline(color, sizeof(color));
-        if(strlen(color) == 0 || strlen(color) >49)
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(color) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -455,18 +522,18 @@ bool AutoUsado::cargarAutoUsado()
             menu.mostrarLogo();
             cout << "Ingrese el precio de venta: ";
             cin >> precioVenta;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail())
             {
                 system("cls");
                 menu.mostrarLogo();
-                cin.clear(); // Limpia el estado de error
-                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cout << "Entrada invalida. Intente nuevamente." << endl;
                 system("pause");
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break;
             }
         }
         if(precioVenta < 0)
@@ -504,7 +571,7 @@ bool AutoUsado::cargarAutoUsado()
         }
     }
 
-    /// Carga kilometraje
+/// Carga kilometraje
     while(true)
     {
         while (true)
@@ -562,11 +629,11 @@ bool AutoUsado::cargarAutoUsado()
         }
     }
 
-    /// Guardo datos
+/// Guardo datos
     AutoUsado autoUsado(patente, marca, modelo, version, anio, color, precioVenta, kilometraje);
 
 
-    /// Valido datos con el usuario
+/// Valido datos con el usuario
     if(!modificarAutoUsado(autoUsado))
     {
         return false;
@@ -633,21 +700,39 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
         }
         else if(opcion == 'n')
         {
-            cout << endl;
-            cout << "Que campo desea modificar?" << endl;
-            cout << "1 - Numero de chasis" << endl;
-            cout << "2 - Patente" << endl;
-            cout << "3 - Marca" << endl;
-            cout << "4 - Modelo" << endl;
-            cout << "5 - Version" << endl;
-            cout << "6 - Anio" << endl;
-            cout << "7 - Color" << endl;
-            cout << "8 - Precio de venta" << endl;
-            cout << "9 - Kilometraje" << endl;
-            cout << "10 - Cancelar y volver a cargar todo" << endl;
-
             int opcionModificar;
-            cin >> opcionModificar;
+            while(true)
+            {
+                cout << endl;
+                cout << "Que campo desea modificar?" << endl;
+                cout << "1 - Numero de chasis" << endl;
+                cout << "2 - Patente" << endl;
+                cout << "3 - Marca" << endl;
+                cout << "4 - Modelo" << endl;
+                cout << "5 - Version" << endl;
+                cout << "6 - Anio" << endl;
+                cout << "7 - Color" << endl;
+                cout << "8 - Precio de venta" << endl;
+                cout << "9 - Kilometraje" << endl;
+                cout << "10 - Cancelar y volver a cargar todo" << endl;
+
+                cin >> opcionModificar;
+                if (cin.fail())
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "=== DATOS DEL AUTO ===" << endl;
+                    mostrarAutoUsado(autoUsado);
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Entrada invalida. Intente nuevamente." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    break;
+                }
+            }
             cin.ignore();
 
             switch(opcionModificar)
@@ -659,7 +744,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo numero de chasis: ";
                     cin.getline(numeroChasis, sizeof(numeroChasis));
-                    if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(numeroChasis) == 0)
                     {
                         cout << "Error: Ingrese un Numero de chasis valido." << endl;
                         system("pause");
@@ -684,7 +779,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo numero de patente: ";
                     cin.getline(numeroPatente, sizeof(numeroPatente));
-                    if(strlen(numeroPatente) == 0 || strlen(numeroPatente) > 9)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(numeroPatente) == 0)
                     {
                         cout << "Error: Ingrese un numero de patente valido." << endl;
                         system("pause");
@@ -705,7 +810,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nueva Marca: ";
                     cin.getline(marca, sizeof(marca));
-                    if(strlen(marca) == 0 || strlen(marca) > 49)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(marca) == 0)
                     {
                         cout << "Error: Ingrese una marca valida." << endl;
                         system("pause");
@@ -724,7 +839,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo modelo: ";
                     cin.getline(modelo, sizeof(modelo));
-                    if(strlen(modelo) == 0 || strlen(modelo) > 49)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(modelo) == 0)
                     {
                         cout << "Error: Ingrese un modelo valido." << endl;
                         system("pause");
@@ -743,7 +868,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nueva version: ";
                     cin.getline(version, sizeof(version));
-                    if(strlen(version) == 0 || strlen(version) > 49)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(version) == 0)
                     {
                         cout << "Error: Ingrese una version valida." << endl;
                         system("pause");
@@ -783,7 +918,17 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo color: ";
                     cin.getline(color, sizeof(color));
-                    if(strlen(color) == 0 || strlen(color) > 49)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(color) == 0)
                     {
                         cout << "Error: Ingrese un color valido." << endl;
                         system("pause");
