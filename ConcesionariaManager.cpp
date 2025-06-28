@@ -38,12 +38,21 @@ void ConcesionariaManager::modificarCliente()
         cout << "Ingrese DNI del cliente: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+
+        else if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
         {
             system("cls");
             menu.mostrarLogo();
             cout << "Error: No existe un cliente con ese DNI." << endl;
-            rlutil::setColor(rlutil::LIGHTRED);
             rlutil::setColor(rlutil::LIGHTRED);
             cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
             rlutil::setColor(rlutil::WHITE);
@@ -56,7 +65,6 @@ void ConcesionariaManager::modificarCliente()
             {
                 cin.ignore();
             }
-            //system("pause");
         }
         else
         {
@@ -70,7 +78,7 @@ void ConcesionariaManager::modificarCliente()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta. " << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -113,7 +121,16 @@ void ConcesionariaManager::buscarClientePorDNI()
         cout << "Ingrese DNI del cliente: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(!(archivoCliente.buscarClientePorDNI(dni) >= 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -143,7 +160,7 @@ void ConcesionariaManager::buscarClientePorDNI()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -172,19 +189,19 @@ void ConcesionariaManager::buscarClientePorID()
     while(true)
     {
 
-        while (true) // Bucle infinito hasta que se ingrese un valor v�lido
+        while (true)
         {
             system("cls");
             menu.mostrarLogo();
             cout << "Ingrese ID del cliente: ";
             cin >> idCliente;
 
-            if (cin.fail()) // Si la entrada es inv�lida
+            if (cin.fail())
             {
                 system("cls");
                 menu.mostrarLogo();
-                cin.clear(); // Limpia el estado de error
-                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cout << "Entrada invalida. Intente nuevamente." << endl;
                 rlutil::setColor(rlutil::LIGHTRED);
                 cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
@@ -201,7 +218,7 @@ void ConcesionariaManager::buscarClientePorID()
             }
             else
             {
-                break; // Si la entrada es v�lida, salir del bucle
+                break;
             }
         }
 
@@ -224,7 +241,8 @@ void ConcesionariaManager::buscarClientePorID()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El ID ingresado es " << idCliente << ". Es correcto? (s/n) " << endl;
+                //cout << "Desea confirmar? (s/n)" << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -259,7 +277,16 @@ void ConcesionariaManager::modificarVendedor()
         cout << "Ingrese DNI del vendedor: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -289,7 +316,7 @@ void ConcesionariaManager::modificarVendedor()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -331,7 +358,16 @@ void ConcesionariaManager::buscarVendedorPorDNI()
         cout << "Ingrese DNI del vendedor: ";
         cin.getline(dni, sizeof(dni));
 
-        if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(!(archivoVendedor.buscarVendedorPorDNI(dni) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -361,7 +397,7 @@ void ConcesionariaManager::buscarVendedorPorDNI()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -391,19 +427,19 @@ void ConcesionariaManager::buscarVendedorPorID()
     while(true)
     {
 
-        while (true) // Bucle infinito hasta que se ingrese un valor v�lido
+        while (true)
         {
             system("cls");
             menu.mostrarLogo();
             cout << "Ingrese ID del vendedor: ";
             cin >> idVendedor;
 
-            if (cin.fail()) // Si la entrada es inv�lida
+            if (cin.fail())
             {
                 system("cls");
                 menu.mostrarLogo();
-                cin.clear(); // Limpia el estado de error
-                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cin.clear();
+                cin.ignore(1000, '\n');
                 cout << "Entrada invalida. Intente nuevamente." << endl;
                 rlutil::setColor(rlutil::LIGHTRED);
                 cout << "\nSi desea volver atras ingrese la tecla 'q'" << endl;
@@ -420,7 +456,7 @@ void ConcesionariaManager::buscarVendedorPorID()
             }
             else
             {
-                break; // Si la entrada es v�lida, salir del bucle
+                break;
             }
         }
 
@@ -443,7 +479,7 @@ void ConcesionariaManager::buscarVendedorPorID()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: Opcion incorrecta." << endl;
-                cout << "Desea confirmar? (s/n)" << endl;
+                cout << "El ID ingresado es " << idVendedor << ". Es correcto? (s/n) " << endl;
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
@@ -784,7 +820,16 @@ void ConcesionariaManager::modificarAutoNuevo()
         cout << "Ingrese numero de chasis del auto a modificar: ";
         cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
 
-        if(!(archivoAutoNuevo.Buscar(numeroDeChasis) >= 0))  /// si cuenta y NO encuentra el registro
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(!(archivoAutoNuevo.Buscar(numeroDeChasis) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -863,19 +908,15 @@ void ConcesionariaManager::buscarAutoNuevoPorNumeroDeChasis()
 
         if (cin.fail())
         {
-            // Si se pasó del límite y hay basura en el buffer
-            cin.clear(); // limpia el failbit
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            rlutil::setColor(rlutil::LIGHTRED);
             cout << "Error: Ingreso demasiados caracteres." << endl;
-            rlutil::setColor(rlutil::WHITE);
             system("pause");
-            break;
         }
 
-        if((archivoAutoNuevo.Buscar(numeroDeChasis) < 0))
+        else if((archivoAutoNuevo.Buscar(numeroDeChasis) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -948,7 +989,16 @@ void ConcesionariaManager::modificarAutoUsado()
         cout << "Ingrese numero de chasis del auto a modificar: ";
         cin.getline(numeroDeChasis, sizeof(numeroDeChasis));
 
-        if(!(ArchivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) >= 0))  /// si cuenta y NO encuentra el registro
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(!(ArchivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) >= 0))  /// si cuenta y NO encuentra el registro
         {
             system("cls");
             menu.mostrarLogo();
@@ -1026,19 +1076,14 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDeChasis()
 
         if (cin.fail())
         {
-            // Si se pasó del límite y hay basura en el buffer
-            cin.clear(); // limpia el failbit
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            rlutil::setColor(rlutil::LIGHTRED);
             cout << "Error: Ingreso demasiados caracteres." << endl;
-            rlutil::setColor(rlutil::WHITE);
             system("pause");
-            break;
         }
-
-        if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) < 0))
+        else if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDeChasis(numeroDeChasis) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -1111,19 +1156,15 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
 
         if (cin.fail())
         {
-            // Si se pasó del límite y hay basura en el buffer
-            cin.clear(); // limpia el failbit
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            rlutil::setColor(rlutil::LIGHTRED);
             cout << "Error: Ingreso demasiados caracteres." << endl;
-            rlutil::setColor(rlutil::WHITE);
             system("pause");
-            break;
         }
 
-        if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente) < 0))
+        else if((archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroDePatente) < 0))
         {
             system("cls");
             menu.mostrarLogo();
@@ -1187,17 +1228,3 @@ void ConcesionariaManager::buscarVentaAutoUsadoPorIDVenta()
 {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
