@@ -5,6 +5,7 @@
 #include <cctype>
 #include "Menu.h"
 #include <limits>
+#include "rlutil.h"
 using namespace std;
 
 Vendedor::Vendedor()
@@ -985,9 +986,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
 
 bool Vendedor::esMayor(Fecha fechaIngreso, Fecha fechaNacimiento)
 {
-    //Vendedor vendedor;
     int edad = fechaIngreso.getAnio()-fechaNacimiento.getAnio();
-    cout << edad;
 
     if(edad<18)
     {
@@ -1016,4 +1015,418 @@ bool Vendedor::esMayor(Fecha fechaIngreso, Fecha fechaNacimiento)
     return true;
 }
 
+void Vendedor::listadoVendedoresPorDNI()
+{
+    Menu menu;
+    ArchivoVendedor archivoVendedor("vendedor.dat");
+    Vendedor aux;
+    Vendedor *vecVendedores = nullptr;
 
+    int cantidadRegistros = archivoVendedor.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay vendedores registrados para mostrar." << endl;
+        system("pause");
+        return;
+    }
+
+    vecVendedores = new Vendedor[cantidadRegistros];
+
+    if(vecVendedores == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los vendedores en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoVendedor.Leer(i);
+        vecVendedores[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por DNI)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecVendedores[j].getDni(), vecVendedores[j+1].getDni()) > 0)
+            {
+                aux = vecVendedores[j];
+                vecVendedores[j] = vecVendedores[j+1];
+                vecVendedores[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los vendedores ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE VENDEDORES ORDENADOS POR DNI ===" << endl;
+    cout << "=============================================" << endl;
+    cout << endl;
+
+    // Mostrar los vendedores
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada vendedor con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Vendedor #" << vecVendedores[i].getIdVendedor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "DNI: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDni() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Nombre: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNombre() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Apellido: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getApellido() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Email: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getEmail() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Telefono: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNumeroTelefono() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Ingreso: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getFechaDeIngreso().toString() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Direccion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDireccion().getCalle() << " " << vecVendedores[i].getDireccion().getAltura() << ", " << vecVendedores[i].getDireccion().getLocalidad() << endl;
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de vendedores
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de vendedores: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVendedores;
+}
+
+void Vendedor::listadoVendedoresPorApellido()
+{
+    Menu menu;
+    ArchivoVendedor archivoVendedor("vendedor.dat");
+    Vendedor aux;
+    Vendedor *vecVendedores = nullptr;
+
+    int cantidadRegistros = archivoVendedor.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay vendedores registrados para mostrar." << endl;
+        system("pause");
+        return;
+    }
+
+    vecVendedores = new Vendedor[cantidadRegistros];
+
+    if(vecVendedores == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los vendedores en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoVendedor.Leer(i);
+        vecVendedores[i] = aux;
+    }
+
+    /// Bubble sort (ordenar alfabéticamente por apellido)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecVendedores[j].getApellido(), vecVendedores[j+1].getApellido()) > 0)
+            {
+                aux = vecVendedores[j];
+                vecVendedores[j] = vecVendedores[j+1];
+                vecVendedores[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los vendedores ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE VENDEDORES ORDENADOS POR APELLIDO ===" << endl;
+    cout << "===================================================" << endl;
+    cout << endl;
+
+    // Mostrar los vendedores
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada vendedor con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Vendedor #" << vecVendedores[i].getIdVendedor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "DNI: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDni() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Nombre: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNombre() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Apellido: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getApellido() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Email: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getEmail() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Telefono: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNumeroTelefono() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Ingreso: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getFechaDeIngreso().toString() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Direccion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDireccion().getCalle() << " " << vecVendedores[i].getDireccion().getAltura() << ", " << vecVendedores[i].getDireccion().getLocalidad() << endl;
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de vendedores
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de vendedores: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVendedores;
+}
+
+void Vendedor::listadoVendedoresPorFechaIngreso()
+{
+    Menu menu;
+    ArchivoVendedor archivoVendedor("vendedor.dat");
+    Vendedor aux;
+    Vendedor *vecVendedores = nullptr;
+
+    int cantidadRegistros = archivoVendedor.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay vendedores registrados para mostrar." << endl;
+        system("pause");
+        return;
+    }
+
+    vecVendedores = new Vendedor[cantidadRegistros];
+
+    if(vecVendedores == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los vendedores en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoVendedor.Leer(i);
+        vecVendedores[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por fecha de ingreso)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(fechaMayorQue(vecVendedores[j].getFechaDeIngreso(), vecVendedores[j+1].getFechaDeIngreso()))
+            {
+                aux = vecVendedores[j];
+                vecVendedores[j] = vecVendedores[j+1];
+                vecVendedores[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los vendedores ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE VENDEDORES ORDENADOS POR FECHA DE INGRESO ===" << endl;
+    cout << "===========================================================" << endl;
+    cout << endl;
+
+    // Mostrar los vendedores
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada vendedor con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Vendedor #" << vecVendedores[i].getIdVendedor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "DNI: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDni() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Nombre: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNombre() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Apellido: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getApellido() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Email: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getEmail() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Telefono: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getNumeroTelefono() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Ingreso: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getFechaDeIngreso().toString() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Direccion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecVendedores[i].getDireccion().getCalle() << " " << vecVendedores[i].getDireccion().getAltura() << ", " << vecVendedores[i].getDireccion().getLocalidad() << endl;
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de vendedores
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de vendedores: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVendedores;
+}
+
+bool Vendedor::fechaMayorQue(Fecha fecha1, Fecha fecha2) // si fecha1 es mayor que fecha2 = true
+{
+    /// Comparo anios
+    if(fecha1.getAnio() > fecha2.getAnio())
+    {
+        return true;
+    }
+    if(fecha1.getAnio() < fecha2.getAnio())
+    {
+        return false;
+    }
+
+    /// Comparo meses
+    if(fecha1.getMes() > fecha2.getMes())
+    {
+        return true;
+    }
+    if(fecha1.getMes() < fecha2.getMes())
+    {
+        return false;
+    }
+
+    /// Comparo dias
+    if(fecha1.getDia() > fecha2.getDia())
+    {
+        return true;
+    }
+    if(fecha1.getDia() < fecha2.getDia())
+    {
+        return false;
+    }
+
+    return false; // Si son iguales
+}

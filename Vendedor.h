@@ -23,6 +23,12 @@ public:
     void mostrarVendedor(Vendedor &vendedor);
     bool modificarVendedor(Vendedor &vendedor);
 
+    /// Listados
+    void listadoVendedoresPorDNI();
+    void listadoVendedoresPorApellido();
+    bool fechaMayorQue(Fecha fecha1, Fecha fecha2);
+    void listadoVendedoresPorFechaIngreso();
+
 private:
     int _idVendedor;
     Fecha _fechaDeIngreso;
