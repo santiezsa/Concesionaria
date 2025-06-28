@@ -59,19 +59,16 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         char cargarOtro;
         cout << "Ingrese el numero de chasis del auto 0km: ";
-        //cin.ignore(numeric_limits<streamsize>::max(), '\n'); // limpiar por si quedó algo antes
         cin.getline(numeroChasis, sizeof(numeroChasis));
 
         if (cin.fail())
         {
-            // Si se pasó del límite y hay basura en el buffer
-            cin.clear(); // limpia el failbit
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // descarta lo que quedó
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
-            //continue;
         }
         else if(strlen(numeroChasis) == 0)
         {
@@ -101,6 +98,7 @@ bool AutoNuevo::cargarAutoNuevo()
             switch(cargarOtro)
             {
             case 's':
+                cin.ignore();
                 break;
             case 'n':
                 return false;
@@ -146,8 +144,16 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         cout << "Ingrese marca: ";
         cin.getline(marca, sizeof(marca));
-
-        if(strlen(marca) == 0 || strlen(marca) > 49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(marca) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -189,7 +195,17 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         cout << "Ingrese modelo: ";
         cin.getline(modelo, sizeof(modelo));
-        if(strlen(modelo) == 0 || strlen(modelo) > 49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+
+        else if(strlen(modelo) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -231,7 +247,17 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         cout << "Ingrese version: ";
         cin.getline(version, sizeof(version));
-        if(strlen(version) == 0 || strlen(version) > 49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+
+        else if(strlen(version) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -331,7 +357,17 @@ bool AutoNuevo::cargarAutoNuevo()
         menu.mostrarLogo();
         cout << "Ingrese color: ";
         cin.getline(color, sizeof(color));
-        if(strlen(color) == 0 || strlen(color) >49)
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+
+        else if(strlen(color) == 0)
         {
             system("cls");
             menu.mostrarLogo();
@@ -596,7 +632,17 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo Numero de chasis: ";
                     cin.getline(numeroChasis, sizeof(numeroChasis));
-                    if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 9)
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+
+                    else if(strlen(numeroChasis) == 0)
                     {
                         cout << "Error: Ingrese un Numero de chasis valido." << endl;
                         system("pause");
@@ -622,7 +668,16 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     menu.mostrarLogo();
                     cout << "Ingrese nueva Marca: ";
                     cin.getline(marca, sizeof(marca));
-                    if(strlen(marca) == 0 || strlen(marca) > 49)
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(marca) == 0)
                     {
                         cout << "Error: Ingrese una marca valida." << endl;
                         system("pause");
@@ -641,7 +696,16 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo modelo: ";
                     cin.getline(modelo, sizeof(modelo));
-                    if(strlen(modelo) == 0 || strlen(modelo) > 49)
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    if(strlen(modelo) == 0)
                     {
                         cout << "Error: Ingrese un modelo valido." << endl;
                         system("pause");
@@ -660,7 +724,16 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     menu.mostrarLogo();
                     cout << "Ingrese nueva version: ";
                     cin.getline(version, sizeof(version));
-                    if(strlen(version) == 0 || strlen(version) > 49)
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    if(strlen(version) == 0)
                     {
                         cout << "Error: Ingrese una version valida." << endl;
                         system("pause");
@@ -680,6 +753,7 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
 
                     cout << "Ingrese nuevo anio: ";
                     cin >> anio;
+
                     if(cin.fail() || anio < 1900 || anio > 2025)
                     {
                         cin.clear();
@@ -700,7 +774,16 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo color: ";
                     cin.getline(color, sizeof(color));
-                    if(strlen(color) == 0 || strlen(color) > 49)
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    if(strlen(color) == 0)
                     {
                         cout << "Error: Ingrese un color valido." << endl;
                         system("pause");
