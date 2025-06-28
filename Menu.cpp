@@ -1117,14 +1117,13 @@ void Menu::mostrarMenuListadosVentas()
         switch(opcionListadosVentas)
         {
         case 1:
-            ///Listado por fecha
             venta.listadoVentasPorFecha();
             break;
         case 2:
-            ///Listado por vendedor
+            venta.listadoVentasPorVendedor();
             break;
         case 3:
-            ///Listado por marca
+            venta.listadoVentasPorMarca();
             break;
         case 4:
             break;
@@ -1143,6 +1142,7 @@ void Menu::mostrarMenuListadosVentas()
 
 void Menu::mostrarMenuListadosClientes()
 {
+    Cliente cliente;
     int opcionListadosClientes;
     do
     {
@@ -1176,13 +1176,13 @@ void Menu::mostrarMenuListadosClientes()
         switch(opcionListadosClientes)
         {
         case 1:
-            ///DNI
+            cliente.listadoClientesPorDNI();
             break;
         case 2:
-            ///Apellido
+            cliente.listadoClientesPorApellido();
             break;
         case 3:
-            ///Fecha de nacimiento
+            cliente.listadoClientesPorFecha();
             break;
         case 4:
             break;

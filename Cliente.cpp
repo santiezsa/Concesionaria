@@ -732,3 +732,19 @@ bool Cliente::modificarCliente(Cliente &cliente)
     }
     return true;
 }
+
+
+void listadoClientesPorDNI()
+{
+
+}
+
+void listadoClientesPorApellido()
+{
+
+}
+
+void listadoClientesPorFecha()
+{
+
+}
