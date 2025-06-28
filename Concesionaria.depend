@@ -200,7 +200,7 @@
 	"Fecha.h"
 	"Patente.h"
 
-1751075872 source:c:\0repos\concesionaria\autonuevo.cpp
+1751076468 source:c:\0repos\concesionaria\autonuevo.cpp
 	<iostream>
 	"Menu.h"
 	"AutoNuevo.h"
@@ -401,7 +401,7 @@
 	<cstring>
 	<iostream>
 
-1751075833 source:c:\0repos\concesionaria\venta.cpp
+1751076442 source:c:\0repos\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
