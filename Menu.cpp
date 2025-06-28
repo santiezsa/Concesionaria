@@ -374,9 +374,9 @@ void Menu::mostrarLogoSalida()
             rlutil::msleep(200);
             rlutil::setColor(rlutil::YELLOW);
             rlutil::locate(42, 17);
-            cout << "(O)" << endl;
+            cout << "(0)" << endl;
             rlutil::locate(61, 17);
-            cout << "(O)" << endl;
+            cout << "(0)" << endl;
         }
         else
         {
@@ -1176,13 +1176,13 @@ void Menu::mostrarMenuListadosClientes()
         switch(opcionListadosClientes)
         {
         case 1:
-            cliente.listadoClientesPorDNI();
+            //cliente.listadoClientesPorDNI();
             break;
         case 2:
-            cliente.listadoClientesPorApellido();
+            //cliente.listadoClientesPorApellido();
             break;
         case 3:
-            cliente.listadoClientesPorFecha();
+            //cliente.listadoClientesPorFecha();
             break;
         case 4:
             break;
