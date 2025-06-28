@@ -1176,13 +1176,13 @@ void Menu::mostrarMenuListadosClientes()
         switch(opcionListadosClientes)
         {
         case 1:
-            //cliente.listadoClientesPorDNI();
+            cliente.listadoClientesPorDNI();
             break;
         case 2:
-            //cliente.listadoClientesPorApellido();
+            cliente.listadoClientesPorApellido();
             break;
         case 3:
-            //cliente.listadoClientesPorFecha();
+            cliente.listadoClientesPorFecha();
             break;
         case 4:
             break;
@@ -1202,6 +1202,7 @@ void Menu::mostrarMenuListadosClientes()
 void Menu::mostrarMenuListadosVendedores()
 {
     int opcionListadosVendedores;
+    Vendedor vendedor;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -1210,9 +1211,8 @@ void Menu::mostrarMenuListadosVendedores()
             mostrarLogo();
             cout << "1 - Listado de vendedores por DNI" << endl;
             cout << "2 - Listado de vendedores por apellido" << endl;
-            cout << "3 - Listado de vendedores por fecha de nacimiento" << endl;
-            cout << "4 - Listado de vendedores por fecha de ingreso" << endl;
-            cout << "5 - Volver al menu anterior" << endl;
+            cout << "3 - Listado de vendedores por fecha de ingreso" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
             cin >> opcionListadosVendedores;
@@ -1235,18 +1235,15 @@ void Menu::mostrarMenuListadosVendedores()
         switch(opcionListadosVendedores)
         {
         case 1:
-            ///DNI
+            vendedor.listadoVendedoresPorDNI();
             break;
         case 2:
-            ///Apellido
+            vendedor.listadoVendedoresPorApellido();
             break;
         case 3:
-            ///Fecha de nacimiento
+            vendedor.listadoVendedoresPorFechaIngreso();
             break;
         case 4:
-            ///Fecha de ingreso
-            break;
-        case 5:
             break;
 
         default:
@@ -1258,7 +1255,7 @@ void Menu::mostrarMenuListadosVendedores()
             break;
         }
     }
-    while (opcionListadosVendedores != 5);
+    while (opcionListadosVendedores != 4);
 }
 
 void Menu::mostrarMenuListadosAutosNuevos()

@@ -784,19 +784,15 @@ void Cliente::listadoClientesPorDNI()
     }
 
     /// Muestro los clientes ya ordenados
-    rlutil::cls();
+    system("cls");
     menu.mostrarLogo();
 
-    // Posicionar el titulo
-    rlutil::locate(5, 8);
-    rlutil::setColor(rlutil::LIGHTBLUE);
-    cout << "=== LISTADO DE CLIENTES ORDENADOS POR DNI ===";
-    rlutil::locate(5, 9);
-    rlutil::setColor(rlutil::WHITE);
-    cout << "=============================================";
+    cout << endl;
+    cout << "=== LISTADO DE CLIENTES ORDENADOS POR DNI ===" << endl;
+    cout << "=============================================" << endl;
+    cout << endl;
 
     // Mostrar los clientes
-    int fila = 11;
     for(int i = 0; i < cantidadRegistros; i++)
     {
         // Alternar colores para las filas
@@ -810,61 +806,50 @@ void Cliente::listadoClientesPorDNI()
         }
 
         // Mostrar cada cliente con sus datos uno abajo del otro
-        rlutil::locate(5, fila);
         rlutil::setColor(rlutil::YELLOW);
-        cout << "Cliente #" << vecClientes[i].getIdCliente();
+        cout << "Cliente #" << vecClientes[i].getIdCliente() << endl;
 
-        rlutil::locate(5, fila + 1);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "DNI: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDni();
+        cout << vecClientes[i].getDni() << endl;
 
-        rlutil::locate(5, fila + 2);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Nombre: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNombre();
+        cout << vecClientes[i].getNombre() << endl;
 
-        rlutil::locate(5, fila + 3);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Apellido: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getApellido();
+        cout << vecClientes[i].getApellido() << endl;
 
-        rlutil::locate(5, fila + 4);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Email: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getEmail();
+        cout << vecClientes[i].getEmail() << endl;
 
-        rlutil::locate(5, fila + 5);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Telefono: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNumeroTelefono();
+        cout << vecClientes[i].getNumeroTelefono() << endl;
 
-        rlutil::locate(5, fila + 6);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Direccion: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad();
+        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad() << endl;
 
         // Línea separadora
-        rlutil::locate(5, fila + 7);
         rlutil::setColor(rlutil::GREY);
-        cout << "-----------------------------------------------------------------------------------------------------------------";
-
-        fila += 9; // Espacio entre clientes
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
     }
 
     // Total de clientes
-    rlutil::locate(5, fila);
     rlutil::setColor(rlutil::LIGHTCYAN);
-    cout << "Total de clientes: " << cantidadRegistros;
+    cout << "Total de clientes: " << cantidadRegistros << endl;
 
     // Mensaje de espera
-    rlutil::locate(5, fila + 2);
     rlutil::setColor(rlutil::WHITE);
     cout << endl;
     system("pause");
@@ -921,19 +906,15 @@ void Cliente::listadoClientesPorApellido()
     }
 
     /// Muestro los clientes ya ordenados
-    rlutil::cls();
+    system("cls");
     menu.mostrarLogo();
 
-    // Posicionar el titulo
-    rlutil::locate(5, 8);
-    rlutil::setColor(rlutil::LIGHTBLUE);
-    cout << "=== LISTADO DE CLIENTES ORDENADOS POR APELLIDO ===";
-    rlutil::locate(5, 9);
-    rlutil::setColor(rlutil::WHITE);
-    cout << "=================================================";
+    cout << endl;
+    cout << "=== LISTADO DE CLIENTES ORDENADOS POR APELLIDO ===" << endl;
+    cout << "=================================================" << endl;
+    cout << endl;
 
     // Mostrar los clientes
-    int fila = 11;
     for(int i = 0; i < cantidadRegistros; i++)
     {
         // Alternar colores para las filas
@@ -947,61 +928,50 @@ void Cliente::listadoClientesPorApellido()
         }
 
         // Mostrar cada cliente con sus datos uno abajo del otro
-        rlutil::locate(5, fila);
         rlutil::setColor(rlutil::YELLOW);
-        cout << "Cliente #" << vecClientes[i].getIdCliente();
+        cout << "Cliente #" << vecClientes[i].getIdCliente() << endl;
 
-        rlutil::locate(5, fila + 1);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "DNI: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDni();
+        cout << vecClientes[i].getDni() << endl;
 
-        rlutil::locate(5, fila + 2);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Nombre: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNombre();
+        cout << vecClientes[i].getNombre() << endl;
 
-        rlutil::locate(5, fila + 3);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Apellido: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getApellido();
+        cout << vecClientes[i].getApellido() << endl;
 
-        rlutil::locate(5, fila + 4);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Email: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getEmail();
+        cout << vecClientes[i].getEmail() << endl;
 
-        rlutil::locate(5, fila + 5);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Telefono: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNumeroTelefono();
+        cout << vecClientes[i].getNumeroTelefono() << endl;
 
-        rlutil::locate(5, fila + 6);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Direccion: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad();
+        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad() << endl;
 
         // Línea separadora
-        rlutil::locate(5, fila + 7);
         rlutil::setColor(rlutil::GREY);
-        cout << "-----------------------------------------------------------------------------------------------------------------";
-
-        fila += 9; // Espacio entre clientes
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
     }
 
     // Total de clientes
-    rlutil::locate(5, fila);
     rlutil::setColor(rlutil::LIGHTCYAN);
-    cout << "Total de clientes: " << cantidadRegistros;
+    cout << "Total de clientes: " << cantidadRegistros << endl;
 
     // Mensaje de espera
-    rlutil::locate(5, fila + 2);
     rlutil::setColor(rlutil::WHITE);
     cout << endl;
     system("pause");
@@ -1093,19 +1063,15 @@ void Cliente::listadoClientesPorFecha()
     }
 
     /// Muestro los clientes ya ordenados
-    rlutil::cls();
+    system("cls");
     menu.mostrarLogo();
 
-    // Posicionar el titulo
-    rlutil::locate(5, 8);
-    rlutil::setColor(rlutil::LIGHTBLUE);
-    cout << "=== LISTADO DE CLIENTES ORDENADOS POR FECHA DE NACIMIENTO ===";
-    rlutil::locate(5, 9);
-    rlutil::setColor(rlutil::WHITE);
-    cout << "============================================================";
+    cout << endl;
+    cout << "=== LISTADO DE CLIENTES ORDENADOS POR FECHA DE NACIMIENTO ===" << endl;
+    cout << "============================================================" << endl;
+    cout << endl;
 
     // Mostrar los clientes
-    int fila = 11;
     for(int i = 0; i < cantidadRegistros; i++)
     {
         // Alternar colores para las filas
@@ -1119,68 +1085,55 @@ void Cliente::listadoClientesPorFecha()
         }
 
         // Mostrar cada cliente con sus datos uno abajo del otro
-        rlutil::locate(5, fila);
         rlutil::setColor(rlutil::YELLOW);
-        cout << "Cliente #" << vecClientes[i].getIdCliente();
+        cout << "Cliente #" << vecClientes[i].getIdCliente() << endl;
 
-        rlutil::locate(5, fila + 1);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "DNI: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDni();
+        cout << vecClientes[i].getDni() << endl;
 
-        rlutil::locate(5, fila + 2);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Nombre: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNombre();
+        cout << vecClientes[i].getNombre() << endl;
 
-        rlutil::locate(5, fila + 3);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Apellido: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getApellido();
+        cout << vecClientes[i].getApellido() << endl;
 
-        rlutil::locate(5, fila + 4);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Fecha de Nacimiento: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getFechaNacimiento().toString();
+        cout << vecClientes[i].getFechaNacimiento().toString() << endl;
 
-        rlutil::locate(5, fila + 5);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Email: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getEmail();
+        cout << vecClientes[i].getEmail() << endl;
 
-        rlutil::locate(5, fila + 6);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Telefono: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getNumeroTelefono();
+        cout << vecClientes[i].getNumeroTelefono() << endl;
 
-        rlutil::locate(5, fila + 7);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout << "Direccion: ";
         rlutil::setColor(rlutil::WHITE);
-        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad();
+        cout << vecClientes[i].getDireccion().getCalle() << " " << vecClientes[i].getDireccion().getAltura() << ", " << vecClientes[i].getDireccion().getLocalidad() << endl;
 
         // Línea separadora
-        rlutil::locate(5, fila + 8);
         rlutil::setColor(rlutil::GREY);
-        cout << "-----------------------------------------------------------------------------------------------------------------";
-
-        fila += 10; // Espacio entre clientes
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
     }
 
     // Total de clientes
-    rlutil::locate(5, fila);
     rlutil::setColor(rlutil::LIGHTCYAN);
-    cout << endl;
-    cout << "Total de clientes: " << cantidadRegistros;
+    cout << "Total de clientes: " << cantidadRegistros << endl;
 
     // Mensaje de espera
-    rlutil::locate(5, fila + 2);
     rlutil::setColor(rlutil::WHITE);
     cout << endl;
     system("pause");
@@ -1189,5 +1142,6 @@ void Cliente::listadoClientesPorFecha()
 
     delete[] vecClientes;
 }
+
 
 
