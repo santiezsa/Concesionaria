@@ -149,6 +149,13 @@ bool Cliente::cargarCliente()
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
+        else if(strlen(nombre) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese un nombre valido." << endl;
+            system("pause");
+        }
         else
         {
             system("cls");
@@ -194,6 +201,13 @@ bool Cliente::cargarCliente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(apellido) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese un apellido valido." << endl;
             system("pause");
         }
         else
@@ -243,6 +257,13 @@ bool Cliente::cargarCliente()
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
+        else if(strlen(email) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese un email valido." << endl;
+            system("pause");
+        }
         else
         {
             system("cls");
@@ -288,6 +309,13 @@ bool Cliente::cargarCliente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(calle) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese una calle valida." << endl;
             system("pause");
         }
         else
@@ -382,6 +410,13 @@ bool Cliente::cargarCliente()
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
+        else if(strlen(localidad) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese una localidad valida." << endl;
+            system("pause");
+        }
         else
         {
             system("cls");
@@ -429,6 +464,13 @@ bool Cliente::cargarCliente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Ingreso demasiados caracteres." << endl;
+            system("pause");
+        }
+        else if(strlen(numeroTelefono) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese un numero de telefono valido." << endl;
             system("pause");
         }
         else
