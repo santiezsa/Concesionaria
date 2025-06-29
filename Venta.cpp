@@ -800,6 +800,9 @@ bool Venta::fechaMayorQue(Fecha fecha1, Fecha fecha2) // si fecha1 es mayor que 
     }
 }
 
+
+/// --------------------------------------------------------- LISTADOS --------------------------------------------------------- ///
+
 void Venta::listadoVentasPorFecha()
 {
     Menu menu;
@@ -1310,6 +1313,34 @@ void Venta::listadoVentasPorMarca()
 }
 
 
+/// --------------------------------------------------------- CONSULTAS --------------------------------------------------------- ///
+
+
+void Venta::consultaVentasPorCliente()
+{
+
+}
+
+
+void Venta::consultaVentasPorVendedor()
+{
+
+}
+
+void Venta::consultaVentasPorFecha()
+{
+
+}
+
+void Venta::consultaVentasPorMarca()
+{
+
+}
+
+void Venta::consultaVentasPorRangoDePrecios()
+{
+
+}
 
 
 

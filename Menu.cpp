@@ -1127,7 +1127,6 @@ void Menu::mostrarMenuListadosVentas()
             break;
         case 4:
             break;
-
         default:
             system("cls");
             mostrarLogo();
@@ -1383,10 +1382,184 @@ void Menu::mostrarMenuListadosAutosUsados()
 }
 
 
-
 void Menu::mostrarMenuConsultas()
 {
+    int opcionConsultas;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Consulta de ventas" << endl;
+            cout << "2 - Consulta de autos" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
 
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionConsultas;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionConsultas)
+        {
+        case 1:
+            mostrarMenuConsultasVentas();
+            break;
+        case 2:
+            mostrarMenuConsultasAutos();
+            break;
+        case 3:
+            break;
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionConsultas != 3);
 }
+
+void Menu::mostrarMenuConsultasVentas()
+{
+    Venta venta;
+    int opcionConsultasVentas;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Consulta de ventas por cliente" << endl;
+            cout << "2 - Consulta de ventas por vendedor" << endl;
+            cout << "3 - Consulta de ventas por fecha" << endl;
+            cout << "4 - Consulta de ventas por marca" << endl;
+            cout << "5 - Consulta de ventas por rango de precios" << endl;
+            cout << "6 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionConsultasVentas;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionConsultasVentas)
+        {
+        case 1:
+            venta.consultaVentasPorCliente();
+            break;
+        case 2:
+            venta.consultaVentasPorVendedor();
+            break;
+        case 3:
+            venta.consultaVentasPorFecha();
+            break;
+        case 4:
+            venta.consultaVentasPorMarca();
+            break;
+        case 5:
+            venta.consultaVentasPorRangoDePrecios();
+            break;
+        case 6:
+            break;
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionConsultasVentas != 6);
+}
+
+
+void Menu::mostrarMenuConsultasAutos()
+{
+    int opcionConsultasAutos;
+    do
+    {
+        while (true) // Bucle infinito hasta que se ingrese un valor válido
+        {
+            system("cls");
+            mostrarLogo();
+            cout << "1 - Consulta de autos por patente" << endl;
+            cout << "2 - Consulta de autos por marca" << endl;
+            cout << "3 - Consulta de autos por rango de precios" << endl;
+            cout << "4 - Volver al menu anterior" << endl;
+
+            cout << "Ingrese una opcion: " << endl;
+            cin >> opcionConsultasAutos;
+
+            if (cin.fail()) // Si la entrada es inválida
+            {
+                system("cls");
+                mostrarLogo();
+                cin.clear(); // Limpia el estado de error
+                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
+                cout << "Entrada invalida. Intente nuevamente." << endl;
+                system("pause");
+            }
+            else
+            {
+                break; // Si la entrada es válida, salir del bucle
+            }
+        }
+
+        switch(opcionConsultasAutos)
+        {
+        case 1:
+            //
+            break;
+        case 2:
+            //
+            break;
+        case 3:
+            //
+            break;
+        case 4:
+            //
+            break;
+        default:
+            system("cls");
+            mostrarLogo();
+            cout << "Entrada invalida. Intente nuevamente." << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
+    while (opcionConsultasAutos != 4);
+}
+
 
 
