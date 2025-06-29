@@ -573,7 +573,7 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
         menu.mostrarLogo();
         cout << "=== DATOS DE LA VENTA ===" << endl;   /// TODO: Funcion para mostrarVenta
         cout << "ID Venta: " << venta.getIdVenta() << endl;
-        cout << "Monto: $" << venta.getMonto() << endl;
+        cout << "Monto: $" << fixed << setprecision(2) << venta.getMonto() << endl;
         cout << "Fecha: " << venta.getFechaDeVenta().toString() << endl;
         cout << "ID Cliente: " << venta.getIdCliente() << endl;
         cout << "ID Vendedor: " << venta.getIdVendedor() << endl;
@@ -637,7 +637,9 @@ bool ConcesionariaManager::modificarVentaAutoNuevo()
             }
             else
             {
-                cout << "Error: No se pudo encontrar el auto asociado a esta venta." << endl;
+                rlutil::setColor(rlutil::RED);
+                cout << "Error: No se pudo encontrar el auto asociado a esta venta. Verifique que quiera modificar la venta de un auto nuevo." << endl;
+                rlutil::setColor(rlutil::WHITE);
                 system("pause");
                 confirmarTodo = true;
             }
@@ -781,7 +783,9 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
             }
             else
             {
-                cout << "Error: No se pudo encontrar el auto asociado a esta venta." << endl;
+                rlutil::setColor(rlutil::RED);
+                cout << "Error: No se pudo encontrar el auto asociado a esta venta. Verifique que quiera modificar la venta de un auto nuevo." << endl;
+                rlutil::setColor(rlutil::WHITE);
                 system("pause");
                 confirmarTodo = true;
             }
