@@ -867,4 +867,448 @@ bool AutoNuevo::modificarAutoNuevo(AutoNuevo &autoNuevo)
     return true;
 }
 
+void AutoNuevo::listadoAutosNuevosPorMarca()
+{
+    Menu menu;
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    AutoNuevo aux;
+    AutoNuevo *vecAutosNuevos = nullptr;
+
+    int cantidadRegistros = archivoAutoNuevo.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos nuevos registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosNuevos = new AutoNuevo[cantidadRegistros];
+
+    if(vecAutosNuevos == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos nuevos en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoNuevo.Leer(i);
+        vecAutosNuevos[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por marca)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecAutosNuevos[j].getMarca(), vecAutosNuevos[j+1].getMarca()) > 0)
+            {
+                aux = vecAutosNuevos[j];
+                vecAutosNuevos[j] = vecAutosNuevos[j+1];
+                vecAutosNuevos[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos nuevos ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS NUEVOS ORDENADOS POR MARCA ===" << endl;
+    cout << "==================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos nuevos
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto nuevo con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosNuevos[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Garantia: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getGarantia() << " anios" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosNuevos[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos nuevos
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos nuevos: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosNuevos;
+}
+
+void AutoNuevo::listadoAutosNuevosPorModelo()
+{
+    Menu menu;
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    AutoNuevo aux;
+    AutoNuevo *vecAutosNuevos = nullptr;
+
+    int cantidadRegistros = archivoAutoNuevo.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos nuevos registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosNuevos = new AutoNuevo[cantidadRegistros];
+
+    if(vecAutosNuevos == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos nuevos en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoNuevo.Leer(i);
+        vecAutosNuevos[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por modelo)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecAutosNuevos[j].getModelo(), vecAutosNuevos[j+1].getModelo()) > 0)
+            {
+                aux = vecAutosNuevos[j];
+                vecAutosNuevos[j] = vecAutosNuevos[j+1];
+                vecAutosNuevos[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos nuevos ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS NUEVOS ORDENADOS POR MODELO ===" << endl;
+    cout << "===================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos nuevos
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto nuevo con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosNuevos[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Garantia: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getGarantia() << " anios" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosNuevos[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos nuevos
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos nuevos: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosNuevos;
+}
+
+void AutoNuevo::listadoAutosNuevosPorAnio()
+{
+    Menu menu;
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    AutoNuevo aux;
+    AutoNuevo *vecAutosNuevos = nullptr;
+
+    int cantidadRegistros = archivoAutoNuevo.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos nuevos registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosNuevos = new AutoNuevo[cantidadRegistros];
+
+    if(vecAutosNuevos == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos nuevos en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoNuevo.Leer(i);
+        vecAutosNuevos[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por año)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(vecAutosNuevos[j].getAnio() > vecAutosNuevos[j+1].getAnio())
+            {
+                aux = vecAutosNuevos[j];
+                vecAutosNuevos[j] = vecAutosNuevos[j+1];
+                vecAutosNuevos[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos nuevos ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS NUEVOS ORDENADOS POR ANIO ===" << endl;
+    cout << "==================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos nuevos
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto nuevo con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosNuevos[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Garantia: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosNuevos[i].getGarantia() << " anios" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosNuevos[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos nuevos
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos nuevos: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosNuevos;
+}
+
+
+
+
 

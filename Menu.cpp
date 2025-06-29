@@ -1261,6 +1261,7 @@ void Menu::mostrarMenuListadosVendedores()
 void Menu::mostrarMenuListadosAutosNuevos()
 {
     int opcionListadosAutosNuevos;
+    AutoNuevo autoNuevo;
     do
     {
         while (true) // Bucle infinito hasta que se ingrese un valor válido
@@ -1294,12 +1295,15 @@ void Menu::mostrarMenuListadosAutosNuevos()
         {
         case 1:
             ///Marca
+            autoNuevo.listadoAutosNuevosPorMarca();
             break;
         case 2:
             ///Modelo
+            autoNuevo.listadoAutosNuevosPorModelo();
             break;
         case 3:
             ///Anio
+            autoNuevo.listadoAutosNuevosPorAnio();
             break;
         case 4:
             break;
@@ -1318,6 +1322,7 @@ void Menu::mostrarMenuListadosAutosNuevos()
 
 void Menu::mostrarMenuListadosAutosUsados()
 {
+    AutoUsado autoUsado;
     int opcionListadosAutosUsados;
     do
     {
@@ -1352,21 +1357,15 @@ void Menu::mostrarMenuListadosAutosUsados()
         {
         case 1:
             ///Marca
-            /*ArchivoAutoUsado archivoAutoUsado;
-    system("cls");
-    mostrarLogo();
-    cout << "=== LISTADO DE AUTOS USADOS DISPONIBLES ===" << endl;
-    archivoAutoUsado.mostrarAutosUsadosDisponibles();
-    cout << "===========================================" << endl;
-    cout << endl;
-    system ("pause");*/
-
+            autoUsado.listadoAutosUsadosPorMarca();
             break;
         case 2:
             ///Modelo
+            autoUsado.listadoAutosUsadosPorModelo();
             break;
         case 3:
             ///Anio
+            autoUsado.listadoAutosUsadosPorAnio();
             break;
         case 4:
             break;
