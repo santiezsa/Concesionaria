@@ -537,19 +537,33 @@ bool Cliente::cargarCliente()
     Cliente cliente(idCliente, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento);
 
     /// Valido datos con el usuario
-    if(!modificarCliente(cliente))
-    {
-        return false;
-    }
+    bool confirmacionUser = modificarCliente(cliente);
 
-    if(archivoCliente.Guardar(cliente))
+    if(confirmacionUser)
     {
-        cout << "Cliente guardado exitosamente." << endl;
-        return true;
+        if(archivoCliente.Guardar(cliente))
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Cliente guardado exitosamente." << endl;
+            system("pause");
+            return true;
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "No se pudo guardar el cliente." << endl;
+            system("pause");
+            return false;
+        }
     }
     else
     {
-        cout << "No se pudo guardar el cliente." << endl;
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Modificacion cancelada. No se realizaron cambios." << endl;
+        system("pause");
         return false;
     }
 }
