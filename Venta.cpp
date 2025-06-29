@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <limits>
 
 using namespace std;
 
@@ -125,6 +126,7 @@ bool Venta::cargarVentaAutoUsado()
     int idVendedor;
 
     char confirmar;
+    char confirmarCarga;
 
     ArchivoVenta archivoVenta;
     ArchivoAutoUsado archivoAutoUsado;
@@ -179,7 +181,16 @@ bool Venta::cargarVentaAutoUsado()
             cout << "Ingrese el numero de chasis deseado: ";
             cin.getline(numeroChasis, sizeof(numeroChasis));
 
-            if(strlen(numeroChasis) == 0 || strlen(numeroChasis) > 11)
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Ingreso demasiados caracteres." << endl;
+                system("pause");
+            }
+            else if(strlen(numeroChasis) == 0)
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -191,6 +202,27 @@ bool Venta::cargarVentaAutoUsado()
                 system("cls");
                 menu.mostrarLogo();
                 cout << "Error: No existe un vehiculo con ese numero de chasis." << endl;
+                cout << "Desea cargar un auto nuevo? (s/n)" << endl;
+                cin >> confirmarCarga;
+                confirmarCarga = tolower(confirmarCarga);
+                while(confirmarCarga != 's' && confirmarCarga != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: opcion incorrecta." << endl;
+                    cout << "Desea cargar un auto nuevo? (s/n)" << endl;
+                    cin >> confirmarCarga;
+                    confirmarCarga = tolower(confirmarCarga);
+                }
+                if(confirmarCarga == 's')
+                {
+                    autoUsado.cargarAutoUsado();
+                    cin.ignore();
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
