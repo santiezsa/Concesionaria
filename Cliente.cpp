@@ -542,7 +542,6 @@ bool Cliente::cargarCliente()
         return false;
     }
 
-
     if(archivoCliente.Guardar(cliente))
     {
         cout << "Cliente guardado exitosamente." << endl;
@@ -632,7 +631,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                 cout << "5 - Direccion" << endl;
                 cout << "6 - Telefono" << endl;
                 cout << "7 - Fecha de Nacimiento" << endl;
-                cout << "8 - Cancelar y volver a cargar todo" << endl;
+                cout << "8 - Cancelar y regresar al menu anterior" << endl;
 
                 cin >> opcionModificar;
                 if (cin.fail())
