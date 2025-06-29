@@ -88,15 +88,32 @@ void ConcesionariaManager::modificarCliente()
                 int pos = archivoCliente.buscarClientePorDNI(dni);
                 Cliente cliente;
                 cliente = archivoCliente.Leer(pos);
-                cliente.modificarCliente(cliente);
-                if(archivoCliente.Guardar(cliente, pos))
+
+                // Capturo el resultado de la modificación
+                bool modificado = cliente.modificarCliente(cliente);
+
+                if(modificado)
                 {
-                    cout << "Cliente modificado exitosamente." << endl;
+                    if(archivoCliente.Guardar(cliente, pos))
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Cliente modificado exitosamente." << endl;
+                    }
+                    else
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "No se pudo modificar el cliente. Intente nuevamente." << endl;
+                    }
                 }
                 else
                 {
-                    cout << "No se pudo modificar el cliente." << endl;
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Modificacion cancelada. No se realizaron cambios." << endl;
                 }
+
                 system("pause");
                 break;
             }
@@ -325,15 +342,32 @@ void ConcesionariaManager::modificarVendedor()
                 cin.ignore();
                 int pos = archivoVendedor.buscarVendedorPorDNI(dni); /// Busco la posicion del vendedor en base al DNI
                 vendedor = archivoVendedor.Leer(pos);
-                vendedor.modificarVendedor(vendedor);
-                if(archivoVendedor.Guardar(vendedor, pos))
+
+                // Capturo el resultado de la modificación
+                bool modificado = vendedor.modificarVendedor(vendedor);
+
+                if(modificado)
                 {
-                    cout << "Vendedor modificado exitosamente." << endl;
+                    if(archivoVendedor.Guardar(vendedor, pos))
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Vendedor modificado exitosamente." << endl;
+                    }
+                    else
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "No se pudo modificar el vendedor. Intente nuevamente." << endl;
+                    }
                 }
                 else
                 {
-                    cout << "No se pudo modificar el vendedor." << endl;
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Modificacion cancelada. No se realizaron cambios." << endl;
                 }
+
                 system("pause");
                 break;
             }
