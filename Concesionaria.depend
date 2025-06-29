@@ -233,7 +233,7 @@
 	"rlutil.h"
 	"limits"
 
-1751229713 source:c:\0repos\concesionaria\concesionariamanager.cpp
+1751238416 source:c:\0repos\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -299,7 +299,7 @@
 	"iomanip"
 	<limits>
 
-1750534898 c:\0repos\concesionaria\concesionariamanager.h
+1751239107 c:\0repos\concesionaria\concesionariamanager.h
 	"AutoNuevo.h"
 	"AutoUsado.h"
 
@@ -334,7 +334,7 @@
 	<string>
 	"Menu.h"
 
-1751224613 source:c:\0repos\concesionaria\menu.cpp
+1751239132 source:c:\0repos\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"

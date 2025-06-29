@@ -832,15 +832,7 @@ bool ConcesionariaManager::modificarVentaAutoUsado()
     return true;
 }
 
-void ConcesionariaManager::buscarVentaAutoNuevoPorNumeroChasis()
-{
 
-}
-
-void ConcesionariaManager::buscarVentaAutoNuevoPorIDVenta()
-{
-
-}
 
 void ConcesionariaManager::modificarAutoNuevo()
 {
@@ -1254,17 +1246,6 @@ void ConcesionariaManager::buscarAutoUsadoPorNumeroDePatente()
             }
         }
     }
-
-}
-
-void ConcesionariaManager::buscarVentaAutoUsadoPorNumeroChasis()
-{
-
-}
-
-void ConcesionariaManager::buscarVentaAutoUsadoPorIDVenta()
-{
-
 }
 
 /* ------------------ Seccion CONSULTAS ------------------ */
