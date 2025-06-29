@@ -1266,3 +1266,507 @@ void ConcesionariaManager::buscarVentaAutoUsadoPorIDVenta()
 {
 
 }
+
+/* ------------------ Seccion CONSULTAS ------------------ */
+
+void ConcesionariaManager::consultaAutosPorMarca()
+{
+    Menu menu;
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    AutoNuevo autoNuevo;
+    AutoUsado autoUsado;
+    AutoNuevo *vecAutosNuevos = nullptr;
+    AutoUsado *vecAutosUsados = nullptr;
+
+    char marcaConsulta[50];
+    int cantidadAutosNuevos = 0;
+    int cantidadAutosUsados = 0;
+    int cantidadRegistrosNuevos = archivoAutoNuevo.CantidadRegistros();
+    int cantidadRegistrosUsados = archivoAutoUsado.CantidadRegistros();
+
+    if(cantidadRegistrosNuevos == 0 && cantidadRegistrosUsados == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos registrados para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar marca de consulta
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE AUTOS POR MARCA ===" << endl;
+    cout << "===================================" << endl;
+    cout << endl;
+
+    cin.ignore();
+    cout << "Ingrese la marca para consultar los autos: ";
+    cin.getline(marcaConsulta, sizeof(marcaConsulta));
+    if (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: Ingreso demasiados caracteres." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Contar cuantos autos nuevos hay de esa marca
+    for(int i = 0; i < cantidadRegistrosNuevos; i++)
+    {
+        autoNuevo = archivoAutoNuevo.Leer(i);
+        if(strcmp(autoNuevo.getMarca(), marcaConsulta) == 0)
+        {
+            cantidadAutosNuevos++;
+        }
+    }
+
+    /// Contar cuantos autos usados hay de esa marca
+    for(int i = 0; i < cantidadRegistrosUsados; i++)
+    {
+        autoUsado = archivoAutoUsado.Leer(i);
+        if(strcmp(autoUsado.getMarca(), marcaConsulta) == 0)
+        {
+            cantidadAutosUsados++;
+        }
+    }
+
+    if(cantidadAutosNuevos == 0 && cantidadAutosUsados == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se encontraron autos registrados de la marca " << marcaConsulta << "." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vectores para almacenar los autos de esa marca
+    if(cantidadAutosNuevos > 0)
+    {
+        vecAutosNuevos = new AutoNuevo[cantidadAutosNuevos];
+        if(vecAutosNuevos == nullptr)
+        {
+            cout << "Error: No se pudo asignar memoria." << endl;
+            system("pause");
+            return;
+        }
+    }
+
+    if(cantidadAutosUsados > 0)
+    {
+        vecAutosUsados = new AutoUsado[cantidadAutosUsados];
+        if(vecAutosUsados == nullptr)
+        {
+            cout << "Error: No se pudo asignar memoria." << endl;
+            if(vecAutosNuevos) delete[] vecAutosNuevos;
+            system("pause");
+            return;
+        }
+    }
+
+    /// Cargar los autos nuevos de esa marca en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistrosNuevos; i++)
+    {
+        autoNuevo = archivoAutoNuevo.Leer(i);
+        if(strcmp(autoNuevo.getMarca(), marcaConsulta) == 0)
+        {
+            vecAutosNuevos[j] = autoNuevo;
+            j++;
+        }
+    }
+
+    /// Cargar los autos usados de esa marca en el vector
+    int k = 0;
+    for(int i = 0; i < cantidadRegistrosUsados; i++)
+    {
+        autoUsado = archivoAutoUsado.Leer(i);
+        if(strcmp(autoUsado.getMarca(), marcaConsulta) == 0)
+        {
+            vecAutosUsados[k] = autoUsado;
+            k++;
+        }
+    }
+
+    /// Mostrar los autos de esa marca
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion de la consulta
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== AUTOS DE LA MARCA " << marcaConsulta << " ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "===============================";
+
+    int fila = 11;
+    float totalPrecioNuevos = 0.0f;
+    float totalPrecioUsados = 0.0f;
+
+    /// Mostrar autos nuevos
+    if(cantidadAutosNuevos > 0)
+    {
+        rlutil::locate(5, fila);
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "AUTOS NUEVOS:";
+        fila++;
+
+        for(int i = 0; i < cantidadAutosNuevos; i++)
+        {
+            /// Alternar colores para las filas
+            if(i % 2 == 0)
+            {
+                rlutil::setColor(rlutil::WHITE);
+            }
+            else
+            {
+                rlutil::setColor(rlutil::GREY);
+            }
+
+            rlutil::locate(5, fila);
+            cout << "Chasis: " << vecAutosNuevos[i].getPatente().getNumeroChasis();
+            rlutil::locate(25, fila);
+            cout << "Patente: " << vecAutosNuevos[i].getPatente().getNumeroPatente();
+            rlutil::locate(45, fila);
+            cout << "Modelo: " << vecAutosNuevos[i].getModelo();
+            rlutil::locate(65, fila);
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "$" << fixed << setprecision(2) << vecAutosNuevos[i].getPrecioDeVenta();
+            totalPrecioNuevos += vecAutosNuevos[i].getPrecioDeVenta();
+
+            fila++;
+        }
+        fila++;
+    }
+
+    /// Mostrar autos usados
+    if(cantidadAutosUsados > 0)
+    {
+        rlutil::locate(5, fila);
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "AUTOS USADOS:";
+        fila++;
+
+        for(int i = 0; i < cantidadAutosUsados; i++)
+        {
+            /// Alternar colores para las filas
+            if(i % 2 == 0)
+            {
+                rlutil::setColor(rlutil::WHITE);
+            }
+            else
+            {
+                rlutil::setColor(rlutil::GREY);
+            }
+
+            rlutil::locate(5, fila);
+            cout << "Chasis: " << vecAutosUsados[i].getPatente().getNumeroChasis();
+            rlutil::locate(25, fila);
+            cout << "Patente: " << vecAutosUsados[i].getPatente().getNumeroPatente();
+            rlutil::locate(45, fila);
+            cout << "Modelo: " << vecAutosUsados[i].getModelo();
+            rlutil::locate(65, fila);
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "$" << fixed << setprecision(2) << vecAutosUsados[i].getPrecioDeVenta();
+            totalPrecioUsados += vecAutosUsados[i].getPrecioDeVenta();
+
+            fila++;
+        }
+        fila++;
+    }
+
+    /// Resumen
+    rlutil::locate(5, fila + 1);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos de " << marcaConsulta << ": " << (cantidadAutosNuevos + cantidadAutosUsados);
+
+    rlutil::locate(5, fila + 2);
+    cout << "Autos nuevos: " << cantidadAutosNuevos << " - Total: $" << fixed << setprecision(2) << totalPrecioNuevos;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Autos usados: " << cantidadAutosUsados << " - Total: $" << fixed << setprecision(2) << totalPrecioUsados;
+
+    rlutil::locate(5, fila + 4);
+    cout << "Precio total: $" << fixed << setprecision(2) << (totalPrecioNuevos + totalPrecioUsados);
+
+    /// Mensaje de espera
+    rlutil::locate(5, fila + 6);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    /// Liberar memoria
+    if(vecAutosNuevos) delete[] vecAutosNuevos;
+    if(vecAutosUsados) delete[] vecAutosUsados;
+}
+
+void ConcesionariaManager::consultaAutosPorRangoDePrecios()
+{
+    Menu menu;
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    AutoNuevo autoNuevo;
+    AutoUsado autoUsado;
+    AutoNuevo *vecAutosNuevos = nullptr;
+    AutoUsado *vecAutosUsados = nullptr;
+
+    float precioMinimo, precioMaximo;
+    int cantidadAutosNuevos = 0;
+    int cantidadAutosUsados = 0;
+    int cantidadRegistrosNuevos = archivoAutoNuevo.CantidadRegistros();
+    int cantidadRegistrosUsados = archivoAutoUsado.CantidadRegistros();
+
+    if(cantidadRegistrosNuevos == 0 && cantidadRegistrosUsados == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos registrados para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar rango de precios
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE AUTOS POR RANGO DE PRECIOS ===" << endl;
+    cout << "==============================================" << endl;
+    cout << endl;
+
+    /// Solicitar precio minimo
+    cout << "Ingrese el precio minimo: $";
+    cin >> precioMinimo;
+    if(cin.fail() || precioMinimo < 0)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Error: Ingrese un precio minimo valido." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar precio maximo
+    cout << "Ingrese el precio maximo: $";
+    cin >> precioMaximo;
+    if(cin.fail() || precioMaximo < 0)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Error: Ingrese un precio maximo valido." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Validar que el precio maximo sea mayor al minimo
+    if(precioMaximo < precioMinimo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: El precio maximo debe ser mayor o igual al precio minimo." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Contar cuantos autos nuevos hay en ese rango
+    for(int i = 0; i < cantidadRegistrosNuevos; i++)
+    {
+        autoNuevo = archivoAutoNuevo.Leer(i);
+        if(autoNuevo.getPrecioDeVenta() >= precioMinimo && autoNuevo.getPrecioDeVenta() <= precioMaximo)
+        {
+            cantidadAutosNuevos++;
+        }
+    }
+
+    /// Contar cuantos autos usados hay en ese rango
+    for(int i = 0; i < cantidadRegistrosUsados; i++)
+    {
+        autoUsado = archivoAutoUsado.Leer(i);
+        if(autoUsado.getPrecioDeVenta() >= precioMinimo && autoUsado.getPrecioDeVenta() <= precioMaximo)
+        {
+            cantidadAutosUsados++;
+        }
+    }
+
+    if(cantidadAutosNuevos == 0 && cantidadAutosUsados == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se encontraron autos registrados entre $" << fixed << setprecision(2) << precioMinimo << " y $" << precioMaximo << "." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vectores para almacenar los autos del rango
+    if(cantidadAutosNuevos > 0)
+    {
+        vecAutosNuevos = new AutoNuevo[cantidadAutosNuevos];
+        if(vecAutosNuevos == nullptr)
+        {
+            cout << "Error: No se pudo asignar memoria." << endl;
+            system("pause");
+            return;
+        }
+    }
+
+    if(cantidadAutosUsados > 0)
+    {
+        vecAutosUsados = new AutoUsado[cantidadAutosUsados];
+        if(vecAutosUsados == nullptr)
+        {
+            cout << "Error: No se pudo asignar memoria." << endl;
+            if(vecAutosNuevos) delete[] vecAutosNuevos;
+            system("pause");
+            return;
+        }
+    }
+
+    /// Cargar los autos nuevos del rango en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistrosNuevos; i++)
+    {
+        autoNuevo = archivoAutoNuevo.Leer(i);
+        if(autoNuevo.getPrecioDeVenta() >= precioMinimo && autoNuevo.getPrecioDeVenta() <= precioMaximo)
+        {
+            vecAutosNuevos[j] = autoNuevo;
+            j++;
+        }
+    }
+
+    /// Cargar los autos usados del rango en el vector
+    int k = 0;
+    for(int i = 0; i < cantidadRegistrosUsados; i++)
+    {
+        autoUsado = archivoAutoUsado.Leer(i);
+        if(autoUsado.getPrecioDeVenta() >= precioMinimo && autoUsado.getPrecioDeVenta() <= precioMaximo)
+        {
+            vecAutosUsados[k] = autoUsado;
+            k++;
+        }
+    }
+
+    /// Mostrar los autos del rango
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion de la consulta
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== AUTOS ENTRE $" << fixed << setprecision(2) << precioMinimo << " Y $" << precioMaximo << " ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "=============================================";
+
+    int fila = 11;
+    float totalPrecioNuevos = 0.0f;
+    float totalPrecioUsados = 0.0f;
+
+    /// Mostrar autos nuevos
+    if(cantidadAutosNuevos > 0)
+    {
+        rlutil::locate(5, fila);
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "AUTOS NUEVOS:";
+        fila++;
+
+        for(int i = 0; i < cantidadAutosNuevos; i++)
+        {
+            /// Alternar colores para las filas
+            if(i % 2 == 0)
+            {
+                rlutil::setColor(rlutil::WHITE);
+            }
+            else
+            {
+                rlutil::setColor(rlutil::GREY);
+            }
+
+            rlutil::locate(5, fila);
+            cout << "Chasis: " << vecAutosNuevos[i].getPatente().getNumeroChasis();
+            rlutil::locate(25, fila);
+            cout << "Patente: " << vecAutosNuevos[i].getPatente().getNumeroPatente();
+            rlutil::locate(45, fila);
+            cout << "Marca: " << vecAutosNuevos[i].getMarca();
+            rlutil::locate(65, fila);
+            cout << "Modelo: " << vecAutosNuevos[i].getModelo();
+            rlutil::locate(85, fila);
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "$" << fixed << setprecision(2) << vecAutosNuevos[i].getPrecioDeVenta();
+            totalPrecioNuevos += vecAutosNuevos[i].getPrecioDeVenta();
+
+            fila++;
+        }
+        fila++;
+    }
+
+    /// Mostrar autos usados
+    if(cantidadAutosUsados > 0)
+    {
+        rlutil::locate(5, fila);
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "AUTOS USADOS:";
+        fila++;
+
+        for(int i = 0; i < cantidadAutosUsados; i++)
+        {
+            /// Alternar colores para las filas
+            if(i % 2 == 0)
+            {
+                rlutil::setColor(rlutil::WHITE);
+            }
+            else
+            {
+                rlutil::setColor(rlutil::GREY);
+            }
+
+            rlutil::locate(5, fila);
+            cout << "Chasis: " << vecAutosUsados[i].getPatente().getNumeroChasis();
+            rlutil::locate(25, fila);
+            cout << "Patente: " << vecAutosUsados[i].getPatente().getNumeroPatente();
+            rlutil::locate(45, fila);
+            cout << "Marca: " << vecAutosUsados[i].getMarca();
+            rlutil::locate(65, fila);
+            cout << "Modelo: " << vecAutosUsados[i].getModelo();
+            rlutil::locate(85, fila);
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "$" << fixed << setprecision(2) << vecAutosUsados[i].getPrecioDeVenta();
+            totalPrecioUsados += vecAutosUsados[i].getPrecioDeVenta();
+
+            fila++;
+        }
+        fila++;
+    }
+
+    /// Resumen
+    rlutil::locate(5, fila + 1);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos en el rango: " << (cantidadAutosNuevos + cantidadAutosUsados);
+
+    rlutil::locate(5, fila + 2);
+    cout << "Autos nuevos: " << cantidadAutosNuevos << " - Total: $" << fixed << setprecision(2) << totalPrecioNuevos;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Autos usados: " << cantidadAutosUsados << " - Total: $" << fixed << setprecision(2) << totalPrecioUsados;
+
+    rlutil::locate(5, fila + 4);
+    cout << "Precio total: $" << fixed << setprecision(2) << (totalPrecioNuevos + totalPrecioUsados);
+
+    /// Mensaje de espera
+    rlutil::locate(5, fila + 6);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    /// Liberar memoria
+    if(vecAutosNuevos) delete[] vecAutosNuevos;
+    if(vecAutosUsados) delete[] vecAutosUsados;
+}
+
+

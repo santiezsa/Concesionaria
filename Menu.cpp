@@ -1505,6 +1505,7 @@ void Menu::mostrarMenuConsultasVentas()
 
 void Menu::mostrarMenuConsultasAutos()
 {
+    ConcesionariaManager concesionariaManager;
     int opcionConsultasAutos;
     do
     {
@@ -1512,10 +1513,9 @@ void Menu::mostrarMenuConsultasAutos()
         {
             system("cls");
             mostrarLogo();
-            cout << "1 - Consulta de autos por patente" << endl;
-            cout << "2 - Consulta de autos por marca" << endl;
-            cout << "3 - Consulta de autos por rango de precios" << endl;
-            cout << "4 - Volver al menu anterior" << endl;
+            cout << "1 - Consulta de autos por marca" << endl;
+            cout << "2 - Consulta de autos por rango de precios" << endl;
+            cout << "3 - Volver al menu anterior" << endl;
 
             cout << "Ingrese una opcion: " << endl;
             cin >> opcionConsultasAutos;
@@ -1538,16 +1538,12 @@ void Menu::mostrarMenuConsultasAutos()
         switch(opcionConsultasAutos)
         {
         case 1:
-            //
+            concesionariaManager.consultaAutosPorMarca();
             break;
         case 2:
-            //
+            concesionariaManager.consultaAutosPorRangoDePrecios();
             break;
         case 3:
-            //
-            break;
-        case 4:
-            //
             break;
         default:
             system("cls");
@@ -1558,7 +1554,7 @@ void Menu::mostrarMenuConsultasAutos()
             break;
         }
     }
-    while (opcionConsultasAutos != 4);
+    while (opcionConsultasAutos != 3);
 }
 
 
