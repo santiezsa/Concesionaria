@@ -33,5 +33,9 @@ public:
     void buscarAutoUsadoPorNumeroDePatente();
     void modificarAutoUsado();
 
+    /// Consultas
+    void consultaAutosPorMarca();
+    void consultaAutosPorRangoDePrecios();
+
 private:
 };
