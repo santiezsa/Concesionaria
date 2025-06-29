@@ -579,7 +579,7 @@
 	"rlutil.h"
 	"limits"
 
-1751226133 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
+1751236345 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\concesionariamanager.cpp
 	<iostream>
 	<string>
 	"ConcesionariaManager.h"
@@ -648,7 +648,7 @@
 	<limits>
 	"rlutil.h"
 
-1751224947 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.cpp
+1751236345 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
@@ -661,6 +661,7 @@
 	<cstring>
 	<iomanip>
 	<limits>
+	"rlutil.h"
 
 1750032961 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria2\archivoautonuevo.cpp
 	"ArchivoAutoNuevo.h"

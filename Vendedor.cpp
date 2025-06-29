@@ -660,7 +660,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
         menu.mostrarLogo();
         mostrarVendedor(vendedorTemporal);
         cout << endl;
-        cout << "Los datos son correctos? (s/n)";
+        cout << "Los datos son correctos? (s/n): ";
         cin >> opcion;
         opcion = tolower(opcion);
 
@@ -672,7 +672,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
             cout << "Error: Opcion incorrecta." << endl;
             cout << endl;
             mostrarVendedor(vendedorTemporal);
-            cout << "Los datos son correctos? (s/n)" << endl;
+            cout << "Los datos son correctos? (s/n): " << endl;
             cin >> opcion;
             opcion = tolower(opcion);
         }
@@ -697,9 +697,10 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                 cout << "6 - Telefono" << endl;
                 cout << "7 - Fecha de Nacimiento" << endl;
                 cout << "8 - Fecha de Ingreso" << endl;
-                cout << "9 - Cancelar y volver a cargar todo" << endl;
+                cout << "9 - Cancelar y regresar al menu anterior" << endl;
 
                 cin >> opcionModificar;
+
                 if (cin.fail())
                 {
                     system("cls");
