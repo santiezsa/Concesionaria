@@ -5,6 +5,7 @@
 #include <cstring>
 #include <iomanip>
 #include "rlutil.h"
+#include "limits"
 using namespace std;
 
 Cliente::Cliente() : Persona()
@@ -58,11 +59,13 @@ bool Cliente::cargarCliente()
         cin.ignore();
         cin.getline(dni, sizeof(dni));
 
-        if(strlen(dni) == 0 || strlen(dni) > 11)
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error. Ingrese un DNI valido." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else if(archivoCliente.buscarClientePorDNI(dni) >= 0)  /// si busca y encuentra el registro
@@ -73,6 +76,7 @@ bool Cliente::cargarCliente()
             cout << "Desea cargar un cliente nuevo? (s/n)" << endl;
             cin >> cargarOtro;
             cargarOtro = tolower(cargarOtro);
+
             while(cargarOtro != 's' && cargarOtro != 'n')
             {
                 system("cls");
@@ -82,6 +86,7 @@ bool Cliente::cargarCliente()
                 cin >> cargarOtro;
                 cargarOtro = tolower(cargarOtro);
             }
+
             switch(cargarOtro)
             {
             case 's':
@@ -101,6 +106,7 @@ bool Cliente::cargarCliente()
             cout << "El DNI ingresado es " << dni << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -110,6 +116,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -125,11 +132,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese nombre: ";
         cin.getline(nombre, sizeof(nombre));
-        if(strlen(nombre) == 0 || strlen(nombre) > 49)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un nombre valido." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -139,6 +149,7 @@ bool Cliente::cargarCliente()
             cout << "El nombre ingresado es " << nombre << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -148,6 +159,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -167,11 +179,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese apellido: ";
         cin.getline(apellido, sizeof(apellido));
-        if(strlen(apellido) == 0 || strlen(apellido) > 49)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un apellido valido." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -181,6 +196,7 @@ bool Cliente::cargarCliente()
             cout << "El apellido ingresado es " << apellido << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -190,6 +206,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -209,11 +226,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese email: ";
         cin.getline(email, sizeof(email));
-        if(strlen(email) == 0 || strlen(email) > 49)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un email valido." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -223,6 +243,7 @@ bool Cliente::cargarCliente()
             cout << "El email ingresado es " << email << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -232,6 +253,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -251,11 +273,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese calle: ";
         cin.getline(calle, sizeof(calle));
-        if(strlen(calle) == 0 || strlen(calle) > 49)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese una calle valida." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -265,6 +290,7 @@ bool Cliente::cargarCliente()
             cout << "La calle ingresada es " << calle << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -274,6 +300,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -294,6 +321,7 @@ bool Cliente::cargarCliente()
             menu.mostrarLogo();
             cout << "Ingrese altura: ";
             cin >> altura;
+
             if (cin.fail()) // Si la entrada es invalida
             {
                 system("cls");
@@ -308,6 +336,7 @@ bool Cliente::cargarCliente()
                 break; // Si la entrada es valida, salir del bucle
             }
         }
+
         if(altura <= 0)
         {
             system("cls");
@@ -322,6 +351,7 @@ bool Cliente::cargarCliente()
             cout << "La altura ingresada es " << altura << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -331,6 +361,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -349,11 +380,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese localidad: ";
         cin.getline(localidad, sizeof(localidad));
-        if(strlen(localidad) == 0 || strlen(localidad) > 49)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese una localidad valida." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -363,6 +397,7 @@ bool Cliente::cargarCliente()
             cout << "La localidad ingresada es " << localidad << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -372,6 +407,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
@@ -393,11 +429,14 @@ bool Cliente::cargarCliente()
         menu.mostrarLogo();
         cout << "Ingrese numero de telefono: ";
         cin.getline(numeroTelefono, sizeof(numeroTelefono));
-        if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
+
+        if (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("cls");
             menu.mostrarLogo();
-            cout << "Error: Ingrese un numero de telefono valido." << endl;
+            cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
         else
@@ -407,6 +446,7 @@ bool Cliente::cargarCliente()
             cout << "El numero de telefono ingresado es " << numeroTelefono << ". Es correcto? (s/n) " << endl;
             cin >> confirmar;
             confirmar = tolower(confirmar);
+
             while(confirmar != 's' && confirmar != 'n')
             {
                 system("cls");
@@ -416,6 +456,7 @@ bool Cliente::cargarCliente()
                 cin >> confirmar;
                 confirmar = tolower(confirmar);
             }
+
             if (confirmar == 's')
             {
                 cin.ignore();
