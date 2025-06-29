@@ -588,12 +588,14 @@ bool Cliente::modificarCliente(Cliente &cliente)
 
     ArchivoCliente archivoCliente;
 
+    Cliente clienteTemporal = cliente;  /// Copia temporal del cliente para modificar
+
     while(!confirmarTodo)
     {
         system("cls");
         menu.mostrarLogo();
         cout << "=== DATOS DEL CLIENTE ===" << endl;
-        mostrarCliente(cliente);
+        mostrarCliente(clienteTemporal);
         cout << endl;
         cout << "Los datos son correctos? (s/n): ";
         cin >> opcion;
@@ -611,6 +613,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
 
         if(opcion == 's')
         {
+            cliente = clienteTemporal; // <-- Copio los datos modificados al cliente original
             confirmarTodo = true;
         }
         else if(opcion == 'n')
@@ -663,7 +666,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setDni(dni);
+                        clienteTemporal.setDni(dni);
                         break;
                     }
                 }
@@ -694,7 +697,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setNombre(nombre);
+                        clienteTemporal.setNombre(nombre);
                         break;
                     }
                 }
@@ -725,7 +728,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setApellido(apellido);
+                        clienteTemporal.setApellido(apellido);
                         break;
                     }
                 }
@@ -756,7 +759,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setEmail(email);
+                        clienteTemporal.setEmail(email);
                         break;
                     }
                 }
@@ -836,7 +839,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
 
                     Direccion nuevaDireccion(calle, altura, localidad);
-                    cliente.setDireccion(nuevaDireccion);
+                    clienteTemporal.setDireccion(nuevaDireccion);
                     break;
                 }
                 break;
@@ -864,7 +867,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setNumeroTelefono(numeroTelefono);
+                        clienteTemporal.setNumeroTelefono(numeroTelefono);
                         break;
                     }
                 }
@@ -889,7 +892,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     }
                     else
                     {
-                        cliente.setFechaNacimiento(nuevaFechaNacimiento);
+                        clienteTemporal.setFechaNacimiento(nuevaFechaNacimiento);
                         break;
                     }
                 }
