@@ -68,6 +68,13 @@ bool Cliente::cargarCliente()
             cout << "Error: Ingreso demasiados caracteres." << endl;
             system("pause");
         }
+        else if(strlen(dni) == 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Ingrese un DNI valido." << endl;
+            system("pause");
+        }
         else if(archivoCliente.buscarClientePorDNI(dni) >= 0)  /// si busca y encuentra el registro
         {
             system("cls");
@@ -315,37 +322,6 @@ bool Cliente::cargarCliente()
 
     while(true)
     {
-        /*
-        while (true)
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Ingrese altura: ";
-            cin >> altura;
-
-            if (cin.fail()) // Si la entrada es invalida
-            {
-                system("cls");
-                menu.mostrarLogo();
-                cin.clear(); // Limpia el estado de error
-                cin.ignore(1000, '\n'); // Descartar caracteres incorrectos
-                cout << "Entrada invalida. Intente nuevamente." << endl;
-                system("pause");
-            }
-            else
-            {
-                break; // Si la entrada es valida, salir del bucle
-            }
-        }
-
-        if(altura <= 0)
-        {
-            system("cls");
-            menu.mostrarLogo();
-            cout << "Error: La altura debe ser mayor a cero." << endl;
-            system("pause");
-        }
-        */
         system("cls");
         menu.mostrarLogo();
         cout << "Ingrese altura: ";
