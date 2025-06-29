@@ -35,6 +35,10 @@ class Menu
         void mostrarMenuListadosAutosNuevos();
         void mostrarMenuListadosAutosUsados();
 
+        /// Consultas
+        void mostrarMenuConsultasVentas();
+        void mostrarMenuConsultasAutos();
+
     private:
 };
 

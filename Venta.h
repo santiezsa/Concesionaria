@@ -40,6 +40,13 @@ public:
     void listadoVentasPorVendedor();
     void listadoVentasPorMarca();
 
+    /// Consultas
+    void consultaVentasPorCliente();
+    void consultaVentasPorVendedor();
+    void consultaVentasPorFecha();
+    void consultaVentasPorMarca();
+    void consultaVentasPorRangoDePrecios();
+
 
 private:
     int _idVenta;
