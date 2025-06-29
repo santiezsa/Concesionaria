@@ -252,7 +252,7 @@
 	<string>
 	"Vendedor.h"
 
-1750977699 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
+1751138875 c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -349,7 +349,7 @@
 	"rlutil.h"
 	<iomanip>
 
-1751135342 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
+1751138875 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\menu.cpp
 	<iostream>
 	<string>
 	"Venta.h"
@@ -397,7 +397,7 @@
 	"Persona.h"
 	<cstring>
 
-1751134933 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
+1751138875 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
@@ -405,6 +405,7 @@
 	<cctype>
 	"Menu.h"
 	<limits>
+	"rlutil.h"
 
 1750974747 source:c:\0repos\concesionaria\auto.cpp
 	"Auto.h"
@@ -424,7 +425,7 @@
 	<cstring>
 	<iomanip>
 
-1751135389 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
+1751155728 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\venta.cpp
 	"Venta.h"
 	"Menu.h"
 	"ArchivoVenta.h"
@@ -436,8 +437,9 @@
 	<iostream>
 	<cstring>
 	<iomanip>
+	<limits>
 
-1751135389 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
+1751138875 source:c:\users\serr\onedrive\documentos\programación\progra 2\github\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
