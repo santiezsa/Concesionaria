@@ -409,9 +409,7 @@ void Menu::mostrarMenuVentas()
             cout << "2 - Cargar venta auto usado" << endl;
             cout << "3 - Modificar venta auto nuevo existente " << endl;
             cout << "4 - Modificar venta auto usado existente " << endl;
-            cout << "5 - Buscar venta de auto nuevo" << endl;
-            cout << "6 - Buscar venta de auto usado" << endl;
-            cout << "7 - Volver al menu anterior" << endl;
+            cout << "5 - Volver al menu anterior" << endl;
 
             cout << "\nIngrese una opcion: ";
             cin >> opcionVentas;
@@ -446,26 +444,17 @@ void Menu::mostrarMenuVentas()
             concesionariaManager.modificarVentaAutoUsado();
             break;
         case 5:
-            ///concesionariaManager.buscarVentaAutoNuevo();
-            break;
-        case 6:
-            ///concesionariaManager.buscarVentaAutoUsado();
-            break;
-        case 7:
             ///Break solo para terminar el ciclo
-
             break;
-
         default:
             system("cls");
             mostrarLogo();
             cout << "Entrada invalida. Intente nuevamente." << endl;
             system("pause");
             system("cls");
-
         }
     }
-    while (opcionVentas != 7);
+    while (opcionVentas != 5);
 }
 
 void Menu::mostrarMenuClientes()

@@ -20,11 +20,6 @@ public:
     bool modificarVentaAutoNuevo();
     bool modificarVentaAutoUsado();
 
-    void buscarVentaAutoNuevoPorNumeroChasis();
-    void buscarVentaAutoNuevoPorIDVenta();
-    void buscarVentaAutoUsadoPorNumeroChasis();
-    void buscarVentaAutoUsadoPorIDVenta();
-
     /// Seccion Autos
     void buscarAutoNuevoPorNumeroDeChasis();
     void modificarAutoNuevo();
