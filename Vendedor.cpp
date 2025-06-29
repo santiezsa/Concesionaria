@@ -585,21 +585,34 @@ bool Vendedor::cargarVendedor()
     /// Guardo datos
     Vendedor vendedor(idVendedor, dni, nombre, apellido, direccion, numeroTelefono, email, fechaNacimiento, fechaDeIngreso);
 
-
     /// Valido datos con el usuario
-    if(!modificarVendedor(vendedor))
-    {
-        return false;
-    }
+    bool confirmacionUser = modificarVendedor(vendedor);
 
-    if(archivoVendedor.Guardar(vendedor))
+    if(confirmacionUser)
     {
-        cout << "Vendedor guardado exitosamente." << endl;
-        return true;
+        if(archivoVendedor.Guardar(vendedor))
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Vendedor guardado exitosamente." << endl;
+            system("pause");
+            return true;
+        }
+        else
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cout << "No se pudo guardar el vendedor." << endl;
+            system("pause");
+            return false;
+        }
     }
     else
     {
-        cout << "No se pudo guardar el vendedor." << endl;
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Modificacion cancelada. No se realizaron cambios." << endl;
+        system("pause");
         return false;
     }
 }
