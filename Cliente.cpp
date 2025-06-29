@@ -560,6 +560,7 @@ void Cliente::mostrarCliente(Cliente &cliente)
     Menu menu;
     system("cls");
     menu.mostrarLogo();
+    cout << "=== DATOS DEL CLIENTE ===" << endl;
     cout << "ID Cliente: " << cliente.getIdCliente() << endl;
     cout << "DNI: " << cliente.getDni() << endl;
     cout << "Nombre: " << cliente.getNombre() << endl;
@@ -594,7 +595,6 @@ bool Cliente::modificarCliente(Cliente &cliente)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "=== DATOS DEL CLIENTE ===" << endl;
         mostrarCliente(clienteTemporal);
         cout << endl;
         cout << "Los datos son correctos? (s/n): ";
@@ -606,6 +606,8 @@ bool Cliente::modificarCliente(Cliente &cliente)
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Opcion incorrecta." << endl;
+            cout << endl;
+            mostrarCliente(clienteTemporal);
             cout << "Desea confirmar? (s/n): " << endl;
             cin >> opcion;
             opcion = tolower(opcion);
@@ -618,20 +620,38 @@ bool Cliente::modificarCliente(Cliente &cliente)
         }
         else if(opcion == 'n')
         {
-            cout << endl;
-            cout << "Que campo desea modificar?" << endl;
-            cout << "1 - DNI" << endl;
-            cout << "2 - Nombre" << endl;
-            cout << "3 - Apellido" << endl;
-            cout << "4 - Email" << endl;
-            cout << "5 - Direccion" << endl;
-            cout << "6 - Telefono" << endl;
-            cout << "7 - Fecha de Nacimiento" << endl;
-            cout << "8 - Cancelar y volver a cargar todo" << endl;
-
             int opcionModificar;
-            cin >> opcionModificar;
+            while (true)
+            {
+                cout << endl;
+                cout << "Que campo desea modificar?" << endl;
+                cout << "1 - DNI" << endl;
+                cout << "2 - Nombre" << endl;
+                cout << "3 - Apellido" << endl;
+                cout << "4 - Email" << endl;
+                cout << "5 - Direccion" << endl;
+                cout << "6 - Telefono" << endl;
+                cout << "7 - Fecha de Nacimiento" << endl;
+                cout << "8 - Cancelar y volver a cargar todo" << endl;
+
+                cin >> opcionModificar;
+                if (cin.fail())
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Entrada invalida. Intente nuevamente." << endl;
+                    system("pause");
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             cin.ignore();
+
 
             switch(opcionModificar)
             {
