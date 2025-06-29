@@ -903,14 +903,14 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     cin.getline(numeroTelefono, sizeof(numeroTelefono));
 
                     if (cin.fail())
-                        {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            system("cls");
-                            menu.mostrarLogo();
-                            cout << "Error: Ingreso demasiados caracteres." << endl;
-                            system("pause");
-                        }
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
                     else if(strlen(numeroTelefono) == 0)
                     {
                         cout << "Error: Ingrese un numero de telefono valido." << endl;

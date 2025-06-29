@@ -565,7 +565,7 @@
 	<iomanip>
 	<limits>
 
-1751164259 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\cliente.cpp
+1751200463 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
@@ -634,7 +634,7 @@
 	"Persona.h"
 	<cstring>
 
-1751158420 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.cpp
+1751201339 source:c:\users\lauta\onedrive\documentos\utn\2025\primer-cuatrimestre\programacion2\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>

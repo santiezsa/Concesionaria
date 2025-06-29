@@ -555,8 +555,6 @@ bool Cliente::cargarCliente()
     }
 }
 
-
-
 void Cliente::mostrarCliente(Cliente &cliente)
 {
     Menu menu;
@@ -641,8 +639,20 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo DNI: ";
                     cin.getline(dni, sizeof(dni));
-                    if(strlen(dni) == 0 || strlen(dni) > 11)
+
+                    if (cin.fail())
                     {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(dni) == 0)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
                         cout << "Error: Ingrese un DNI valido." << endl;
                         system("pause");
                     }
@@ -659,15 +669,26 @@ bool Cliente::modificarCliente(Cliente &cliente)
                 }
                 break;
             case 2:
-
                 while(true)
                 {
                     system("cls");
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo nombre: ";
                     cin.getline(nombre, sizeof(nombre));
-                    if(strlen(nombre) == 0 || strlen(nombre) > 49)
+
+                    if (cin.fail())
                     {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(nombre) == 0)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
                         cout << "Error: Ingrese un nombre valido." << endl;
                         system("pause");
                     }
@@ -685,8 +706,20 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo apellido: ";
                     cin.getline(apellido, sizeof(apellido));
-                    if(strlen(apellido) == 0 || strlen(apellido) > 49)
+
+                    if (cin.fail())
                     {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(apellido) == 0)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
                         cout << "Error: Ingrese un apellido valido." << endl;
                         system("pause");
                     }
@@ -704,8 +737,20 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo email: ";
                     cin.getline(email, sizeof(email));
-                    if(strlen(email) == 0 || strlen(email) > 49)
+
+                    if (cin.fail())
                     {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(email) == 0)
+                    {
+                        system("cls");
+                        menu.mostrarLogo();
                         cout << "Error: Ingrese un email valido." << endl;
                         system("pause");
                     }
@@ -719,36 +764,75 @@ bool Cliente::modificarCliente(Cliente &cliente)
             case 5:
                 while(true)
                 {
-                    system("cls");
-                    menu.mostrarLogo();
-                    cout << "Ingrese nueva calle: ";
-                    cin.getline(calle, sizeof(calle));
-                    if(strlen(calle) == 0 || strlen(calle) > 49)
+                    while(true)
                     {
-                        cout << "Error: Ingrese una calle valida." << endl;
-                        system("pause");
-                        continue;
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Ingrese nueva calle: ";
+                        cin.getline(calle, sizeof(calle));
+
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Ingreso demasiados caracteres." << endl;
+                            system("pause");
+                        }
+                        else if(strlen(calle) == 0)
+                        {
+                            cout << "Error: Ingrese una calle valida." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
 
-                    cout << "Ingrese nueva altura: ";
-                    cin >> altura;
-                    if(cin.fail() || altura <= 0)
+                    while(true)
                     {
-                        cin.clear();
-                        cin.ignore(1000, '\n');
-                        cout << "Error: La altura debe ser un numero positivo." << endl;
-                        system("pause");
-                        continue;
+                        cout << "Ingrese nueva altura: ";
+                        cin >> altura;
+
+                        if(cin.fail() || altura <= 0)
+                        {
+                            cin.clear();
+                            cin.ignore(1000, '\n');
+                            cout << "Error: La altura debe ser un numero positivo." << endl;
+                            system("pause");
+                        }
+                        else{
+                            break;
+                        }
+
                     }
                     cin.ignore();
 
-                    cout << "Ingrese nueva localidad: ";
-                    cin.getline(localidad, sizeof(localidad));
-                    if(strlen(localidad) == 0 || strlen(localidad) > 49)
+                    while(true)
                     {
-                        cout << "Error: Ingrese una localidad valida." << endl;
-                        system("pause");
-                        continue;
+                        cout << "Ingrese nueva localidad: ";
+                        cin.getline(localidad, sizeof(localidad));
+
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Ingreso demasiados caracteres." << endl;
+                            system("pause");
+                        }
+                        else if(strlen(localidad) == 0)
+                        {
+                            cout << "Error: Ingrese una localidad valida." << endl;
+                            system("pause");
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
 
                     Direccion nuevaDireccion(calle, altura, localidad);
@@ -763,7 +847,17 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     menu.mostrarLogo();
                     cout << "Ingrese nuevo telefono: ";
                     cin.getline(numeroTelefono, sizeof(numeroTelefono));
-                    if(strlen(numeroTelefono) == 0 || strlen(numeroTelefono) > 19)
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Ingreso demasiados caracteres." << endl;
+                        system("pause");
+                    }
+                    else if(strlen(numeroTelefono) == 0)
                     {
                         cout << "Error: Ingrese un numero de telefono valido." << endl;
                         system("pause");
