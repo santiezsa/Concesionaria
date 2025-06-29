@@ -609,6 +609,7 @@ void Vendedor::mostrarVendedor(Vendedor &vendedor)
     Menu menu;
     system("cls");
     menu.mostrarLogo();
+    cout << "=== DATOS DEL VENDEDOR ===" << endl;
     cout << "ID Vendedor: " << vendedor.getIdVendedor() << endl;
     cout << "DNI: " << vendedor.getDni() << endl;
     cout << "Nombre: " << vendedor.getNombre() << endl;
@@ -644,7 +645,6 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
     {
         system("cls");
         menu.mostrarLogo();
-        cout << "=== DATOS DEL VENDEDOR ===" << endl;
         mostrarVendedor(vendedorTemporal);
         cout << endl;
         cout << "Los datos son correctos? (s/n)";
@@ -657,6 +657,8 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
             system("cls");
             menu.mostrarLogo();
             cout << "Error: Opcion incorrecta." << endl;
+            cout << endl;
+            mostrarVendedor(vendedorTemporal);
             cout << "Los datos son correctos? (s/n)" << endl;
             cin >> opcion;
             opcion = tolower(opcion);
