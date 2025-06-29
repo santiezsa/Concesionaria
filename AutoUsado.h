@@ -22,6 +22,10 @@ public:
 
     bool modificarAutoUsado(AutoUsado &autoUsado);
 
+    /// Listados
+    void listadoAutosUsadosPorMarca();
+    void listadoAutosUsadosPorModelo();
+    void listadoAutosUsadosPorAnio();
 
 private:
     int _kilometraje;

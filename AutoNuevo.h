@@ -20,6 +20,11 @@ public:
 
     bool modificarAutoNuevo(AutoNuevo &autoNuevo);
 
+    /// Listados
+    void listadoAutosNuevosPorMarca();
+    void listadoAutosNuevosPorModelo();
+    void listadoAutosNuevosPorAnio();
+
 private:
     int _garantia;
 };

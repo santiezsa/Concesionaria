@@ -1019,4 +1019,445 @@ void AutoUsado::mostrarAutoUsado(AutoUsado &autoUsado)
     cout << endl;
 }
 
+void AutoUsado::listadoAutosUsadosPorMarca()
+{
+    Menu menu;
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    AutoUsado aux;
+    AutoUsado *vecAutosUsados = nullptr;
+
+    int cantidadRegistros = archivoAutoUsado.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos usados registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosUsados = new AutoUsado[cantidadRegistros];
+
+    if(vecAutosUsados == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos usados en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoUsado.Leer(i);
+        vecAutosUsados[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por marca)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecAutosUsados[j].getMarca(), vecAutosUsados[j+1].getMarca()) > 0)
+            {
+                aux = vecAutosUsados[j];
+                vecAutosUsados[j] = vecAutosUsados[j+1];
+                vecAutosUsados[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos usados ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS USADOS ORDENADOS POR MARCA ===" << endl;
+    cout << "==================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos usados
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto usado con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosUsados[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Kilometraje: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getKilometraje() << " km" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosUsados[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos usados
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos usados: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosUsados;
+}
+
+void AutoUsado::listadoAutosUsadosPorModelo()
+{
+    Menu menu;
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    AutoUsado aux;
+    AutoUsado *vecAutosUsados = nullptr;
+
+    int cantidadRegistros = archivoAutoUsado.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos usados registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosUsados = new AutoUsado[cantidadRegistros];
+
+    if(vecAutosUsados == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos usados en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoUsado.Leer(i);
+        vecAutosUsados[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por modelo)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(strcmp(vecAutosUsados[j].getModelo(), vecAutosUsados[j+1].getModelo()) > 0)
+            {
+                aux = vecAutosUsados[j];
+                vecAutosUsados[j] = vecAutosUsados[j+1];
+                vecAutosUsados[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos usados ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS USADOS ORDENADOS POR MODELO ===" << endl;
+    cout << "===================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos usados
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto usado con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosUsados[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Kilometraje: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getKilometraje() << " km" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosUsados[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos usados
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos usados: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosUsados;
+}
+
+void AutoUsado::listadoAutosUsadosPorAnio()
+{
+    Menu menu;
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    AutoUsado aux;
+    AutoUsado *vecAutosUsados = nullptr;
+
+    int cantidadRegistros = archivoAutoUsado.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay autos usados registrados para mostrar" << endl;
+        system("pause");
+        return;
+    }
+
+    vecAutosUsados = new AutoUsado[cantidadRegistros];
+
+    if(vecAutosUsados == nullptr)
+    {
+        return;
+    }
+
+    /// Cargo los autos usados en el vector
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        aux = archivoAutoUsado.Leer(i);
+        vecAutosUsados[i] = aux;
+    }
+
+    /// Bubble sort (ordenar por año)
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        for(int j = 0; j < cantidadRegistros - i - 1; j++)
+        {
+            if(vecAutosUsados[j].getAnio() > vecAutosUsados[j+1].getAnio())
+            {
+                aux = vecAutosUsados[j];
+                vecAutosUsados[j] = vecAutosUsados[j+1];
+                vecAutosUsados[j+1] = aux;
+            }
+        }
+    }
+
+    /// Muestro los autos usados ya ordenados
+    system("cls");
+    menu.mostrarLogo();
+
+    cout << endl;
+    cout << "=== LISTADO DE AUTOS USADOS ORDENADOS POR ANIO ===" << endl;
+    cout << "=================================================" << endl;
+    cout << endl;
+
+    // Mostrar los autos usados
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        // Mostrar cada auto usado con sus datos uno abajo del otro
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Numero de Chasis: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroChasis() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Patente: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getPatente().getNumeroPatente() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Marca: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getMarca() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Modelo: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getModelo() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Version: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getVersion() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Anio: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getAnio() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Color: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getColor() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Precio: ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecAutosUsados[i].getPrecioDeVenta() << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Kilometraje: ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << vecAutosUsados[i].getKilometraje() << " km" << endl;
+
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "Estado: ";
+        if(vecAutosUsados[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "DISPONIBLE" << endl;
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "VENDIDO" << endl;
+        }
+
+        // Línea separadora
+        rlutil::setColor(rlutil::GREY);
+        cout << "--------------------------------------------------------" << endl;
+        cout << endl;
+    }
+
+    // Total de autos usados
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de autos usados: " << cantidadRegistros << endl;
+
+    // Mensaje de espera
+    rlutil::setColor(rlutil::WHITE);
+    cout << endl;
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecAutosUsados;
+}
+
 
