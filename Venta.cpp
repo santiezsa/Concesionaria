@@ -10,6 +10,7 @@
 #include <cstring>
 #include <iomanip>
 #include <limits>
+#include "rlutil.h"
 
 using namespace std;
 
@@ -1224,12 +1225,15 @@ void Venta::listadoVentasPorMarca()
         cout << vecVentas[i].getPatente().getNumeroPatente();
 
         rlutil::locate(25, fila);
-        // Buscar y mostrar la marca del auto
+        /// Buscar y mostrar la marca del auto
         const char* marca = nullptr;
         char numeroPatente[10];
+        char numeroChasis[10];
         strcpy(numeroPatente, vecVentas[i].getPatente().getNumeroPatente());
+        strcpy(numeroChasis, vecVentas[i].getPatente().getNumeroChasis());
 
-        int pos = archivoAutoNuevo.Buscar(numeroPatente);
+        /// Primero buscar en autos nuevos por numero de chasis
+        int pos = archivoAutoNuevo.Buscar(numeroChasis);
         if(pos >= 0)
         {
             autoNuevo = archivoAutoNuevo.Leer(pos);
@@ -1237,6 +1241,7 @@ void Venta::listadoVentasPorMarca()
         }
         else
         {
+            /// Si no se encuentra en autos nuevos, buscar en autos usados por patente
             pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente);
             if(pos >= 0)
             {
@@ -1318,28 +1323,1132 @@ void Venta::listadoVentasPorMarca()
 
 void Venta::consultaVentasPorCliente()
 {
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    ArchivoCliente archivoCliente("clientes.dat");
+    Venta venta;
+    Cliente cliente;
+    Venta *vecVentas = nullptr;
 
+    char dniCliente[12];
+    int idCliente = -1;
+    int cantidadVentas = 0;
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar DNI del cliente
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE VENTAS POR CLIENTE ===" << endl;
+    cout << "======================================" << endl;
+    cout << endl;
+
+    cin.ignore();
+    cout << "Ingrese el DNI del cliente: ";
+    cin.getline(dniCliente, sizeof(dniCliente));
+    if (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: Ingreso demasiados caracteres." << endl;
+        system("pause");
+    }
+
+    // Buscar el cliente por DNI
+    int posCliente = archivoCliente.buscarClientePorDNI(dniCliente);
+    if(posCliente == -1)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: No se encontro un cliente con el DNI " << dniCliente << endl;
+        system("pause");
+        return;
+    }
+
+    /// Obtener informacion del cliente
+    cliente = archivoCliente.Leer(posCliente);
+    idCliente = cliente.getIdCliente();
+
+    /// Contar cuantas ventas tiene este cliente
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getIdCliente() == idCliente && venta.getEstado() == true)
+        {
+            cantidadVentas++;
+        }
+    }
+
+    if(cantidadVentas == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "El cliente " << cliente.getNombre() << " " << cliente.getApellido() << " (DNI: " << dniCliente << ") no tiene ventas registradas." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vector para almacenar las ventas del cliente
+    vecVentas = new Venta[cantidadVentas];
+
+    if(vecVentas == nullptr)
+    {
+        cout << "Error: No se pudo asignar memoria." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Cargar las ventas del cliente en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getIdCliente() == idCliente && venta.getEstado() == true)
+        {
+            vecVentas[j] = venta;
+            j++;
+        }
+    }
+
+    /// Mostrar las ventas del cliente
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion del cliente
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== VENTAS DEL CLIENTE ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "==========================";
+
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "Cliente: " << cliente.getNombre() << " " << cliente.getApellido();
+    rlutil::locate(5, 12);
+    cout << "DNI: " << cliente.getDni();
+    rlutil::locate(5, 13);
+    cout << "Telefono: " << cliente.getNumeroTelefono();
+    rlutil::locate(5, 14);
+    cout << "Email: " << cliente.getEmail();
+
+    rlutil::locate(5, 16);
+    rlutil::setColor(rlutil::LIGHTGREEN);
+    cout << "Total de ventas: " << cantidadVentas;
+
+    // Encabezado de la tabla
+    rlutil::locate(5, 18);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 18);
+    cout << "Patente";
+    rlutil::locate(25, 18);
+    cout << "Monto";
+    rlutil::locate(42, 18);
+    cout << "Fecha";
+    rlutil::locate(55, 18);
+    cout << "Vendedor";
+    rlutil::locate(75, 18);
+    cout << "Estado";
+
+    rlutil::locate(5, 19);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    // Mostrar las ventas
+    int fila = 20;
+    float totalMonto = 0.0f;
+
+    for(int i = 0; i < cantidadVentas; i++)
+    {
+        // Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        /// Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+        totalMonto += vecVentas[i].getMonto();
+
+        rlutil::locate(42, fila);
+        // Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(55, fila);
+        cout << "ID: " << vecVentas[i].getIdVendedor();
+
+        rlutil::locate(75, fila);
+        // Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    // Línea final de la tabla
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    // Resumen
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas: " << cantidadVentas;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Monto total: $" << fixed << setprecision(2) << totalMonto;
+
+    // Mensaje de espera
+    rlutil::locate(5, fila + 5);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
 }
-
 
 void Venta::consultaVentasPorVendedor()
 {
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    ArchivoVendedor archivoVendedor("vendedor.dat");
+    Venta venta;
+    Vendedor vendedor;
+    Venta *vecVentas = nullptr;
 
+    char dniVendedor[12];
+    int idVendedor = -1;
+    int cantidadVentas = 0;
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar DNI del vendedor
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE VENTAS POR VENDEDOR ===" << endl;
+    cout << "=======================================" << endl;
+    cout << endl;
+
+    cin.ignore();
+    cout << "Ingrese el DNI del vendedor: ";
+    cin.getline(dniVendedor, sizeof(dniVendedor));
+    if (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: Ingreso demasiados caracteres." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Buscar el vendedor por DNI
+    int posVendedor = archivoVendedor.buscarVendedorPorDNI(dniVendedor);
+    if(posVendedor == -1)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: No se encontro un vendedor con el DNI " << dniVendedor << endl;
+        system("pause");
+        return;
+    }
+
+    /// Obtener informacion del vendedor
+    vendedor = archivoVendedor.Leer(posVendedor);
+    idVendedor = vendedor.getIdVendedor();
+
+    /// Contar cuantas ventas tiene este vendedor
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getIdVendedor() == idVendedor && venta.getEstado() == true)
+        {
+            cantidadVentas++;
+        }
+    }
+
+    if(cantidadVentas == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "El vendedor " << vendedor.getNombre() << " " << vendedor.getApellido() << " (DNI: " << dniVendedor << ") no tiene ventas registradas." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vector para almacenar las ventas del vendedor
+    vecVentas = new Venta[cantidadVentas];
+
+    if(vecVentas == nullptr)
+    {
+        cout << "Error: No se pudo asignar memoria." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Cargar las ventas del vendedor en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getIdVendedor() == idVendedor && venta.getEstado() == true)
+        {
+            vecVentas[j] = venta;
+            j++;
+        }
+    }
+
+    /// Mostrar las ventas del vendedor
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion del vendedor
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== VENTAS DEL VENDEDOR ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "===========================";
+
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "Vendedor: " << vendedor.getNombre() << " " << vendedor.getApellido();
+    rlutil::locate(5, 12);
+    cout << "DNI: " << vendedor.getDni();
+    rlutil::locate(5, 13);
+    cout << "Telefono: " << vendedor.getNumeroTelefono();
+    rlutil::locate(5, 14);
+    cout << "Email: " << vendedor.getEmail();
+
+    /// Encabezado de la tabla
+    rlutil::locate(5, 18);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 18);
+    cout << "Patente";
+    rlutil::locate(25, 18);
+    cout << "Monto";
+    rlutil::locate(42, 18);
+    cout << "Fecha";
+    rlutil::locate(55, 18);
+    cout << "Cliente";
+    rlutil::locate(75, 18);
+    cout << "Estado";
+
+    rlutil::locate(5, 19);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    /// Mostrar las ventas
+    int fila = 20;
+    float totalMonto = 0.0f;
+
+    for(int i = 0; i < cantidadVentas; i++)
+    {
+        /// Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        /// Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+        totalMonto += vecVentas[i].getMonto();
+
+        rlutil::locate(42, fila);
+        /// Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(55, fila);
+        cout << "ID: " << vecVentas[i].getIdCliente();
+
+        rlutil::locate(75, fila);
+        /// Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    /// Linea final de la tabla
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    /// Resumen
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas: " << cantidadVentas;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Monto total: $" << fixed << setprecision(2) << totalMonto;
+
+    /// Mensaje de espera
+    rlutil::locate(5, fila + 5);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
 }
 
 void Venta::consultaVentasPorFecha()
 {
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    Venta venta;
+    Venta *vecVentas = nullptr;
 
+    int anioConsulta;
+    int cantidadVentas = 0;
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar año de consulta
+
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE VENTAS POR FECHA ===" << endl;
+    cout << "====================================" << endl;
+    cout << endl;
+
+    cout << "Ingrese el anio para consultar las ventas: ";
+    cin >> anioConsulta;
+    if(cin.fail() || anioConsulta < 1900 || anioConsulta > 2025)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Error: Ingrese un anio valido." << endl;
+        system("pause");
+        return;
+    }
+
+
+    /// Contar cuantas ventas hay en ese año
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getFechaDeVenta().getAnio() == anioConsulta && venta.getEstado() == true)
+        {
+            cantidadVentas++;
+        }
+    }
+
+    if(cantidadVentas == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se encontraron ventas registradas en el anio " << anioConsulta << "." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vector para almacenar las ventas del año
+    vecVentas = new Venta[cantidadVentas];
+
+    if(vecVentas == nullptr)
+    {
+        cout << "Error: No se pudo asignar memoria." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Cargar las ventas del año en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getFechaDeVenta().getAnio() == anioConsulta && venta.getEstado() == true)
+        {
+            vecVentas[j] = venta;
+            j++;
+        }
+    }
+
+    /// Mostrar las ventas del año
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion de la consulta
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== VENTAS DEL ANIO " << anioConsulta << " ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "===============================";
+
+    /// Encabezado de la tabla
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 11);
+    cout << "Patente";
+    rlutil::locate(25, 11);
+    cout << "Monto";
+    rlutil::locate(42, 11);
+    cout << "Fecha";
+    rlutil::locate(55, 11);
+    cout << "Cliente";
+    rlutil::locate(65, 11);
+    cout << "Vendedor";
+    rlutil::locate(75, 11);
+    cout << "Estado";
+
+    rlutil::locate(5, 12);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    /// Mostrar las ventas
+    int fila = 13;
+    float totalMonto = 0.0f;
+
+    for(int i = 0; i < cantidadVentas; i++)
+    {
+        /// Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        /// Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+        totalMonto += vecVentas[i].getMonto();
+
+        rlutil::locate(42, fila);
+        /// Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(55, fila);
+        cout << vecVentas[i].getIdCliente();
+
+        rlutil::locate(65, fila);
+        cout << vecVentas[i].getIdVendedor();
+
+        rlutil::locate(75, fila);
+        /// Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas en " << anioConsulta << ": " << cantidadVentas;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Monto total: $" << fixed << setprecision(2) << totalMonto;
+
+    rlutil::locate(5, fila + 5);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
 }
 
 void Venta::consultaVentasPorMarca()
 {
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    ArchivoAutoNuevo archivoAutoNuevo("autonuevo.dat");
+    ArchivoAutoUsado archivoAutoUsado("autousado.dat");
+    Venta venta;
+    Venta *vecVentas = nullptr;
+    AutoNuevo autoNuevo;
+    AutoUsado autoUsado;
 
+    char marcaConsulta[50];
+    int cantidadVentas = 0;
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar marca de consulta
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE VENTAS POR MARCA ===" << endl;
+    cout << "====================================" << endl;
+    cout << endl;
+
+    cin.ignore();
+    cout << "Ingrese la marca para consultar las ventas: ";
+    cin.getline(marcaConsulta, sizeof(marcaConsulta));
+    if (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: Ingreso demasiados caracteres." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Contar cuantas ventas hay de esa marca
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getEstado() == true)
+        {
+            /// Buscar la marca del auto en esta venta
+            bool marcaEncontrada = false;
+
+            /// Buscar en autos nuevos
+            int cantidadAutosNuevos = archivoAutoNuevo.CantidadRegistros();
+            for(int j = 0; j < cantidadAutosNuevos; j++)
+            {
+                autoNuevo = archivoAutoNuevo.Leer(j);
+                if(strcmp(autoNuevo.getMarca(), marcaConsulta) == 0)
+                {
+                    marcaEncontrada = true;
+                    break;
+                }
+            }
+
+            /// Buscar en autos usados
+            int cantidadAutosUsados = archivoAutoUsado.CantidadRegistros();
+            for(int k = 0; k < cantidadAutosUsados; k++)
+            {
+                autoUsado = archivoAutoUsado.Leer(k);
+                if(strcmp(autoUsado.getMarca(), marcaConsulta) == 0)
+                {
+                    marcaEncontrada = true;
+                    break;
+                }
+            }
+
+            /// Si la marca coincide, contar la venta
+            if(marcaEncontrada)
+            {
+                cantidadVentas++;
+            }
+        }
+    }
+
+    if(cantidadVentas == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se encontraron ventas registradas de la marca " << marcaConsulta << "." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vector para almacenar las ventas de esa marca
+    vecVentas = new Venta[cantidadVentas];
+    if(vecVentas == nullptr)
+    {
+        cout << "Error: No se pudo asignar memoria." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Cargar las ventas de esa marca en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getEstado() == true)
+        {
+            /// Buscar la marca del auto en esta venta
+            bool marcaEncontrada = false;
+
+            /// Buscar en autos nuevos
+            int cantidadAutosNuevos = archivoAutoNuevo.CantidadRegistros();
+            for(int k = 0; k < cantidadAutosNuevos; k++)
+            {
+                autoNuevo = archivoAutoNuevo.Leer(k);
+                if(strcmp(autoNuevo.getMarca(), marcaConsulta) == 0)
+                {
+                    marcaEncontrada = true;
+                    break;
+                }
+            }
+
+            /// Buscar en autos usados
+            int cantidadAutosUsados = archivoAutoUsado.CantidadRegistros();
+            for(int l = 0; l < cantidadAutosUsados; l++)
+            {
+                autoUsado = archivoAutoUsado.Leer(l);
+                if(strcmp(autoUsado.getMarca(), marcaConsulta) == 0)
+                {
+                    marcaEncontrada = true;
+                    break;
+                }
+            }
+
+            /// Si la marca coincide, agregar la venta al vector
+            if(marcaEncontrada)
+            {
+                vecVentas[j] = venta;
+                j++;
+            }
+        }
+    }
+
+    /// Mostrar las ventas de esa marca
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion de la consulta
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== VENTAS DE LA MARCA " << marcaConsulta << " ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "=================================";
+
+    /// Encabezado de la tabla
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 11);
+    cout << "Patente";
+    rlutil::locate(25, 11);
+    cout << "Marca";
+    rlutil::locate(40, 11);
+    cout << "Monto";
+    rlutil::locate(57, 11);
+    cout << "Fecha";
+    rlutil::locate(70, 11);
+    cout << "Cliente";
+    rlutil::locate(80, 11);
+    cout << "Vendedor";
+    rlutil::locate(90, 11);
+    cout << "Estado";
+
+    rlutil::locate(5, 12);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "-------------------------------------------------------------------------------------------";
+
+    /// Mostrar las ventas
+    int fila = 13;
+    float totalMonto = 0.0f;
+
+    for(int i = 0; i < cantidadVentas; i++)
+    {
+        /// Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        /// Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        cout << marcaConsulta;
+
+        rlutil::locate(40, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+        totalMonto += vecVentas[i].getMonto();
+
+        rlutil::locate(57, fila);
+        /// Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(70, fila);
+        cout << vecVentas[i].getIdCliente();
+
+        rlutil::locate(80, fila);
+        cout << vecVentas[i].getIdVendedor();
+
+        rlutil::locate(90, fila);
+        /// Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "-------------------------------------------------------------------------------------------";
+
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas de " << marcaConsulta << ": " << cantidadVentas;
+
+    rlutil::locate(5, fila + 3);
+    cout << "Monto total: $" << fixed << setprecision(2) << totalMonto;
+
+    rlutil::locate(5, fila + 5);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
 }
 
 void Venta::consultaVentasPorRangoDePrecios()
 {
+    Menu menu;
+    ArchivoVenta archivoVenta("ventas.dat");
+    Venta venta;
+    Venta *vecVentas = nullptr;
 
+    float precioMinimo, precioMaximo;
+    int cantidadVentas = 0;
+    int cantidadRegistros = archivoVenta.CantidadRegistros();
+
+    if(cantidadRegistros == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No hay ventas registradas para consultar." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar rango de precios
+    system("cls");
+    menu.mostrarLogo();
+    cout << "=== CONSULTA DE VENTAS POR RANGO DE PRECIOS ===" << endl;
+    cout << "===============================================" << endl;
+    cout << endl;
+
+    /// Solicitar precio minimo
+    cout << "Ingrese el precio minimo: $";
+    cin >> precioMinimo;
+    if(cin.fail() || precioMinimo < 0)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Error: Ingrese un precio minimo valido." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Solicitar precio maximo
+    cout << "Ingrese el precio maximo: $";
+    cin >> precioMaximo;
+    if(cin.fail() || precioMaximo < 0)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Error: Ingrese un precio maximo valido." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Validar que el precio maximo sea mayor al minimo
+    if(precioMaximo < precioMinimo)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Error: El precio maximo debe ser mayor o igual al precio minimo." << endl;
+        system("pause");
+        return;
+    }
+
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getEstado() == true && venta.getMonto() >= precioMinimo && venta.getMonto() <= precioMaximo)
+        {
+            cantidadVentas++;
+        }
+    }
+
+    if(cantidadVentas == 0)
+    {
+        system("cls");
+        menu.mostrarLogo();
+        cout << "No se encontraron ventas registradas entre $" << fixed << setprecision(2) << precioMinimo << " y $" << precioMaximo << "." << endl;
+        cout << endl;
+        system("pause");
+        return;
+    }
+
+    /// Crear vector para almacenar las ventas del rango
+    vecVentas = new Venta[cantidadVentas];
+    if(vecVentas == nullptr)
+    {
+        cout << "Error: No se pudo asignar memoria." << endl;
+        system("pause");
+        return;
+    }
+
+    /// Cargar las ventas del rango en el vector
+    int j = 0;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        venta = archivoVenta.Leer(i);
+        if(venta.getEstado() == true && venta.getMonto() >= precioMinimo && venta.getMonto() <= precioMaximo)
+        {
+            vecVentas[j] = venta;
+            j++;
+        }
+    }
+
+    /// Mostrar las ventas del rango
+    rlutil::cls();
+    menu.mostrarLogo();
+
+    /// Informacion de la consulta
+    rlutil::locate(5, 8);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout << "=== VENTAS ENTRE $" << fixed << setprecision(2) << precioMinimo << " Y $" << precioMaximo << " ===";
+    rlutil::locate(5, 9);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "===============================================";
+
+    /// Encabezado de la tabla
+    rlutil::locate(5, 11);
+    rlutil::setColor(rlutil::YELLOW);
+    cout << "ID";
+    rlutil::locate(12, 11);
+    cout << "Patente";
+    rlutil::locate(25, 11);
+    cout << "Monto";
+    rlutil::locate(42, 11);
+    cout << "Fecha";
+    rlutil::locate(55, 11);
+    cout << "Cliente";
+    rlutil::locate(65, 11);
+    cout << "Vendedor";
+    rlutil::locate(75, 11);
+    cout << "Estado";
+
+    rlutil::locate(5, 12);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    /// Mostrar las ventas
+    int fila = 13;
+    float totalMonto = 0.0f;
+
+    for(int i = 0; i < cantidadVentas; i++)
+    {
+        /// Alternar colores para las filas
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+
+        /// Posicionar cada columna individualmente
+        rlutil::locate(5, fila);
+        cout << vecVentas[i].getIdVenta();
+
+        rlutil::locate(12, fila);
+        cout << vecVentas[i].getPatente().getNumeroPatente();
+
+        rlutil::locate(25, fila);
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "$" << fixed << setprecision(2) << vecVentas[i].getMonto();
+        totalMonto += vecVentas[i].getMonto();
+
+        rlutil::locate(42, fila);
+        /// Volver al color de la fila
+        if(i % 2 == 0)
+        {
+            rlutil::setColor(rlutil::WHITE);
+        }
+        else
+        {
+            rlutil::setColor(rlutil::GREY);
+        }
+        cout << vecVentas[i].getFechaDeVenta().toString();
+
+        rlutil::locate(55, fila);
+        cout << vecVentas[i].getIdCliente();
+
+        rlutil::locate(65, fila);
+        cout << vecVentas[i].getIdVendedor();
+
+        rlutil::locate(75, fila);
+        /// Color especial para el estado
+        if(vecVentas[i].getEstado())
+        {
+            rlutil::setColor(rlutil::LIGHTGREEN);
+            cout << "ACTIVA";
+        }
+        else
+        {
+            rlutil::setColor(rlutil::LIGHTRED);
+            cout << "INACTIVA";
+        }
+
+        fila++;
+    }
+
+    /// Linea final de la tabla
+    rlutil::locate(5, fila);
+    rlutil::setColor(rlutil::WHITE);
+    cout << "--------------------------------------------------------------------------------";
+
+    rlutil::locate(5, fila + 2);
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << "Total de ventas en el rango: " << cantidadVentas;
+
+    rlutil::locate(5, fila + 5);
+    rlutil::setColor(rlutil::WHITE);
+    system("pause");
+
+    rlutil::setColor(rlutil::WHITE);
+
+    delete[] vecVentas;
 }
 
 
