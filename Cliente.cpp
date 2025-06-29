@@ -315,6 +315,7 @@ bool Cliente::cargarCliente()
 
     while(true)
     {
+        /*
         while (true)
         {
             system("cls");
@@ -342,6 +343,21 @@ bool Cliente::cargarCliente()
             system("cls");
             menu.mostrarLogo();
             cout << "Error: La altura debe ser mayor a cero." << endl;
+            system("pause");
+        }
+        */
+        system("cls");
+        menu.mostrarLogo();
+        cout << "Ingrese altura: ";
+        cin >> altura;
+
+        if(cin.fail() || altura <= 0)
+        {
+            system("cls");
+            menu.mostrarLogo();
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Error: La altura debe ser un numero positivo." << endl;
             system("pause");
         }
         else
