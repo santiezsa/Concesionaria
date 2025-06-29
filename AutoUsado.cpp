@@ -412,7 +412,7 @@ bool AutoUsado::cargarAutoUsado()
             menu.mostrarLogo();
             cout << "Ingrese anio: ";
             cin >> anio;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -423,7 +423,7 @@ bool AutoUsado::cargarAutoUsado()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
         if(anio < 1900 || anio > 2025)
@@ -580,7 +580,7 @@ bool AutoUsado::cargarAutoUsado()
             menu.mostrarLogo();
             cout << "Ingrese los kilometros actuales del auto: ";
             cin >> kilometraje;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -591,7 +591,7 @@ bool AutoUsado::cargarAutoUsado()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
         if(kilometraje < 0)
@@ -1146,7 +1146,7 @@ void AutoUsado::listadoAutosUsadosPorMarca()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;
@@ -1293,7 +1293,7 @@ void AutoUsado::listadoAutosUsadosPorModelo()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;
@@ -1345,7 +1345,7 @@ void AutoUsado::listadoAutosUsadosPorAnio()
         vecAutosUsados[i] = aux;
     }
 
-    /// Bubble sort (ordenar por año)
+    /// Bubble sort (ordenar por aï¿½o)
     for(int i = 0; i < cantidadRegistros; i++)
     {
         for(int j = 0; j < cantidadRegistros - i - 1; j++)
@@ -1440,7 +1440,7 @@ void AutoUsado::listadoAutosUsadosPorAnio()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;

@@ -638,12 +638,14 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
 
     ArchivoVendedor archivoVendedor;
 
+    Vendedor vendedorTemporal = vendedor; /// Copia temporal del vendedor para modificar
+
     while(!confirmarTodo)
     {
         system("cls");
         menu.mostrarLogo();
         cout << "=== DATOS DEL VENDEDOR ===" << endl;
-        mostrarVendedor(vendedor);
+        mostrarVendedor(vendedorTemporal);
         cout << endl;
         cout << "Los datos son correctos? (s/n)";
         cin >> opcion;
@@ -662,6 +664,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
 
         if(opcion == 's')
         {
+            vendedor = vendedorTemporal; // Copio datos modificados al vendedor original
             confirmarTodo = true;
         }
         else if(opcion == 'n')
@@ -725,7 +728,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
                     else
                     {
-                        vendedor.setDni(dni);
+                        vendedorTemporal.setDni(dni);
                         break;
                     }
                 }
@@ -754,7 +757,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
                     else
                     {
-                        vendedor.setNombre(nombre);
+                        vendedorTemporal.setNombre(nombre);
                         break;
                     }
                 }
@@ -783,7 +786,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
                     else
                     {
-                        vendedor.setApellido(apellido);
+                        vendedorTemporal.setApellido(apellido);
                         break;
                     }
                 }
@@ -812,7 +815,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
                     else
                     {
-                        vendedor.setEmail(email);
+                        vendedorTemporal.setEmail(email);
                         break;
                     }
                 }
@@ -890,7 +893,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
 
                     Direccion nuevaDireccion(calle, altura, localidad);
-                    vendedor.setDireccion(nuevaDireccion);
+                    vendedorTemporal.setDireccion(nuevaDireccion);
                     break;
                 }
                 break;
@@ -918,7 +921,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     }
                     else
                     {
-                        vendedor.setNumeroTelefono(numeroTelefono);
+                        vendedorTemporal.setNumeroTelefono(numeroTelefono);
                         break;
                     }
                 }
@@ -941,9 +944,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         cout << "Error: Fecha invalida." << endl;
                         system("pause");
                     }
-                    else if (vendedor.esMayor(vendedor.getFechaDeIngreso(),nuevaFechaNacimiento))
+                    else if (vendedorTemporal.esMayor(vendedorTemporal.getFechaDeIngreso(),nuevaFechaNacimiento))
                     {
-                        vendedor.setFechaNacimiento(nuevaFechaNacimiento);
+                        vendedorTemporal.setFechaNacimiento(nuevaFechaNacimiento);
                         break;
                     }
                 }
@@ -966,9 +969,9 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         cout << "Error: Fecha invalida." << endl;
                         system("pause");
                     }
-                    else if (vendedor.esMayor(nuevaFechaIngreso,vendedor.getFechaNacimiento()))
+                    else if (vendedorTemporal.esMayor(nuevaFechaIngreso,vendedorTemporal.getFechaNacimiento()))
                     {
-                        vendedor.setFechaDeIngreso(nuevaFechaIngreso);
+                        vendedorTemporal.setFechaDeIngreso(nuevaFechaIngreso);
                         break;
                     }
                 }

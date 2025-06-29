@@ -301,7 +301,7 @@ bool AutoNuevo::cargarAutoNuevo()
             menu.mostrarLogo();
             cout << "Ingrese anio: ";
             cin >> anio;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -312,7 +312,7 @@ bool AutoNuevo::cargarAutoNuevo()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
         if(anio < 1900 || anio > 2025)
@@ -411,7 +411,7 @@ bool AutoNuevo::cargarAutoNuevo()
             menu.mostrarLogo();
             cout << "Ingrese el precio de venta del auto: ";
             cin >> precioVenta;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -422,7 +422,7 @@ bool AutoNuevo::cargarAutoNuevo()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
         if(precioVenta < 0)
@@ -469,7 +469,7 @@ bool AutoNuevo::cargarAutoNuevo()
             menu.mostrarLogo();
             cout << "Ingrese anios de garantia: ";
             cin >> garantia;
-            if (cin.fail()) // Si la entrada es inválida
+            if (cin.fail()) // Si la entrada es invï¿½lida
             {
                 system("cls");
                 menu.mostrarLogo();
@@ -480,7 +480,7 @@ bool AutoNuevo::cargarAutoNuevo()
             }
             else
             {
-                break; // Si la entrada es válida, salir del bucle
+                break; // Si la entrada es vï¿½lida, salir del bucle
             }
         }
         if(garantia < 0)
@@ -994,7 +994,7 @@ void AutoNuevo::listadoAutosNuevosPorMarca()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;
@@ -1141,7 +1141,7 @@ void AutoNuevo::listadoAutosNuevosPorModelo()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;
@@ -1193,7 +1193,7 @@ void AutoNuevo::listadoAutosNuevosPorAnio()
         vecAutosNuevos[i] = aux;
     }
 
-    /// Bubble sort (ordenar por año)
+    /// Bubble sort (ordenar por aï¿½o)
     for(int i = 0; i < cantidadRegistros; i++)
     {
         for(int j = 0; j < cantidadRegistros - i - 1; j++)
@@ -1288,7 +1288,7 @@ void AutoNuevo::listadoAutosNuevosPorAnio()
             cout << "VENDIDO" << endl;
         }
 
-        // Línea separadora
+        // Lï¿½nea separadora
         rlutil::setColor(rlutil::GREY);
         cout << "--------------------------------------------------------" << endl;
         cout << endl;
