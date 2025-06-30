@@ -943,7 +943,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     cout << "Ingrese nueva fecha de nacimiento:" << endl;
                     cout << "Dia: ";
                     cin >> dia;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -954,10 +954,10 @@ bool Cliente::modificarCliente(Cliente &cliente)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Mes: ";
                     cin >> mes;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -968,10 +968,10 @@ bool Cliente::modificarCliente(Cliente &cliente)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Anio: ";
                     cin >> anio;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -982,7 +982,7 @@ bool Cliente::modificarCliente(Cliente &cliente)
                         system("pause");
                         continue;
                     }
-                    
+
                     Fecha nuevaFechaNacimiento(dia, mes, anio);
                     if(!nuevaFechaNacimiento.esValida())
                     {
