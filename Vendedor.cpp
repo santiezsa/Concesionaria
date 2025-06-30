@@ -527,7 +527,7 @@ bool Vendedor::cargarVendedor()
             cout << "== Fecha de nacimiento ===" << endl;
             cout << "Dia: ";
             cin >> dia;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -538,10 +538,10 @@ bool Vendedor::cargarVendedor()
                 system("pause");
                 continue;
             }
-            
+
             cout << "Mes: ";
             cin >> mes;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -552,10 +552,10 @@ bool Vendedor::cargarVendedor()
                 system("pause");
                 continue;
             }
-            
+
             cout << "Anio: ";
             cin >> anio;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -589,7 +589,7 @@ bool Vendedor::cargarVendedor()
             cout << "== Fecha de ingreso ===" << endl;
             cout << "Dia: ";
             cin >> dia;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -600,10 +600,10 @@ bool Vendedor::cargarVendedor()
                 system("pause");
                 continue;
             }
-            
+
             cout << "Mes: ";
             cin >> mes;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -614,10 +614,10 @@ bool Vendedor::cargarVendedor()
                 system("pause");
                 continue;
             }
-            
+
             cout << "Anio: ";
             cin >> anio;
-            
+
             if(cin.fail())
             {
                 cin.clear();
@@ -1020,7 +1020,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     cout << "Ingrese nueva fecha de nacimiento:" << endl;
                     cout << "Dia: ";
                     cin >> dia;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1031,10 +1031,10 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Mes: ";
                     cin >> mes;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1045,10 +1045,10 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Anio: ";
                     cin >> anio;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1059,7 +1059,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     Fecha nuevaFechaNacimiento(dia, mes, anio);
                     if(!nuevaFechaNacimiento.esValida())
                     {
@@ -1081,7 +1081,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                     cout << "Ingrese nueva fecha de ingreso:" << endl;
                     cout << "Dia: ";
                     cin >> dia;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1092,10 +1092,10 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Mes: ";
                     cin >> mes;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1106,10 +1106,10 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     cout << "Anio: ";
                     cin >> anio;
-                    
+
                     if(cin.fail())
                     {
                         cin.clear();
@@ -1120,7 +1120,7 @@ bool Vendedor::modificarVendedor(Vendedor &vendedor)
                         system("pause");
                         continue;
                     }
-                    
+
                     Fecha nuevaFechaIngreso(dia, mes, anio);
                     if(!nuevaFechaIngreso.esValida())
                     {

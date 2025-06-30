@@ -199,6 +199,7 @@ bool AutoUsado::cargarAutoUsado()
     {
         system("cls");
         menu.mostrarLogo();
+        char cargarOtro;
         cout << "Ingrese numero de patente: ";
         cin.getline(numeroPatente, sizeof(numeroPatente));
 
@@ -217,6 +218,49 @@ bool AutoUsado::cargarAutoUsado()
             menu.mostrarLogo();
             cout << "Error: Ingrese una patente valida." << endl;
             system("pause");
+        }
+        else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente) >= 0)  /// Valida patente en archivo auto usado
+        {
+            /// Verifico si el auto encontrado esta vendido o disponible
+            int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente);
+            AutoUsado autoExistente = archivoAutoUsado.Leer(pos);
+
+            if(autoExistente.getEstado())   /// Si esta disponible
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Error: Ya existe un auto con ese numero de patente." << endl;
+                system("pause");
+                return false;
+            }
+            else  /// Si el auto esta vendido, permito reingreso
+            {
+                system("cls");
+                menu.mostrarLogo();
+                cout << "Se encontro un auto con ese numero de patente que fue vendido anteriormente." << endl;
+                cout << "Se permitira reingresar el auto al sistema." << endl;
+                cout << "La patente ingresada es " << numeroPatente << ". Es correcto? (s/n) " << endl;
+                cin >> confirmar;
+                confirmar = tolower(confirmar);
+                while(confirmar != 's' && confirmar != 'n')
+                {
+                    system("cls");
+                    menu.mostrarLogo();
+                    cout << "Error: Opcion incorrecta." << endl;
+                    cout << "La patente ingresada es " << numeroPatente << ". Es correcto? (s/n) " << endl;
+                    cin >> confirmar;
+                    confirmar = tolower(confirmar);
+                }
+                if (confirmar == 's')
+                {
+                    cin.ignore();
+                    break;
+                }
+                else
+                {
+                    cin.ignore();
+                }
+            }
         }
         else
         {
@@ -794,7 +838,29 @@ bool AutoUsado::modificarAutoUsado(AutoUsado &autoUsado)
                         cout << "Error: Ingrese un numero de patente valido." << endl;
                         system("pause");
                     }
-                    else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente) >= 0 && strcmp(numeroPatente, autoUsado.getPatente().getNumeroPatente()) != 0)
+                    else if(archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente) >= 0 &&
+                            strcmp(numeroPatente, autoUsado.getPatente().getNumeroPatente()) != 0)
+                    {
+                        /// Verifico si el auto encontrado esta vendido o disponible
+                        int pos = archivoAutoUsado.BuscarAutoUsadoPorNumeroDePatente(numeroPatente);
+                        AutoUsado autoExistente = archivoAutoUsado.Leer(pos);
+
+                        if(autoExistente.getEstado())   /// Si esta disponible
+                        {
+                            cout << "Error: Ya existe un auto con ese numero de patente." << endl;
+                            system("pause");
+                        }
+                        else  /// Si el auto esta vendido, permito reingreso
+                        {
+                            cout << "Se encontro un auto con ese numero de patente que fue vendido anteriormente." << endl;
+                            cout << "Se permitira usar esta patente." << endl;
+                            system("pause");
+                            patente.setNumeroPatente(numeroPatente);
+                            autoUsado.setPatente(patente);
+                            break;
+                        }
+                    }
+                    else
                     {
                         patente.setNumeroPatente(numeroPatente);
                         autoUsado.setPatente(patente);

@@ -213,7 +213,7 @@
 1751223562 c:\0repos\concesionaria\menu.h
 	"rlutil.h"
 
-1751244750 source:c:\0repos\concesionaria\autousado.cpp
+1751246586 source:c:\0repos\concesionaria\autousado.cpp
 	"AutoUsado.h"
 	<iostream>
 	"Menu.h"
@@ -223,7 +223,7 @@
 	<iomanip>
 	<limits>
 
-1751243919 source:c:\0repos\concesionaria\cliente.cpp
+1751245723 source:c:\0repos\concesionaria\cliente.cpp
 	"Cliente.h"
 	"ArchivoCliente.h"
 	"Menu.h"
@@ -377,7 +377,7 @@
 	"Persona.h"
 	<cstring>
 
-1751243919 source:c:\0repos\concesionaria\vendedor.cpp
+1751245723 source:c:\0repos\concesionaria\vendedor.cpp
 	"Vendedor.h"
 	"ArchivoVendedor.h"
 	<iostream>
