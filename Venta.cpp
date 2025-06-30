@@ -377,10 +377,45 @@ bool Venta::cargarVentaAutoUsado()
                         cout << "=== Fecha de venta ===" << endl;
                         cout << "Dia: ";
                         cin >> dia;
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el dia." << endl;
+                            system("pause");
+                            continue;
+                        }
+                        
                         cout << "Mes: ";
                         cin >> mes;
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el mes." << endl;
+                            system("pause");
+                            continue;
+                        }
+                        
                         cout << "Anio: ";
                         cin >> anio;
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el anio." << endl;
+                            system("pause");
+                            continue;
+                        }
 
                         fechaDeVenta = Fecha(dia, mes, anio);
                         if(!fechaDeVenta.esValida())
@@ -661,10 +696,45 @@ bool Venta::cargarVentaAutoNuevo()
                         cout << "=== Fecha de venta ===" << endl;
                         cout << "Dia: ";
                         cin >> dia;
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el dia." << endl;
+                            system("pause");
+                            continue;
+                        }
+                        
                         cout << "Mes: ";
                         cin >> mes;
-                        cout << "Ao: ";
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el mes." << endl;
+                            system("pause");
+                            continue;
+                        }
+                        
+                        cout << "Anio: ";
                         cin >> anio;
+                        
+                        if(cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            system("cls");
+                            menu.mostrarLogo();
+                            cout << "Error: Debe ingresar un numero valido para el anio." << endl;
+                            system("pause");
+                            continue;
+                        }
 
                         fechaDeVenta = Fecha(dia, mes, anio);
                         if (!fechaDeVenta.esValida())
