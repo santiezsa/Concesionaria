@@ -25,7 +25,6 @@ int Cliente::getIdCliente()
 }
 
 /// Setter
-/// TODO: Agregar validacion
 void Cliente::setIdCliente(int idCliente)
 {
     _idCliente = idCliente;
@@ -511,10 +510,40 @@ bool Cliente::cargarCliente()
         cout << "== Fecha de nacimiento ===" << endl;
         cout << "Dia: ";
         cin >> dia;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Debe ingresar un numero valido para el día." << endl;
+            system("pause");
+            continue;
+        }
         cout << "Mes: ";
         cin >> mes;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Debe ingresar un numero valido para el mes." << endl;
+            system("pause");
+            continue;
+        }
         cout << "Anio: ";
         cin >> anio;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            menu.mostrarLogo();
+            cout << "Error: Debe ingresar un numero valido para el anio." << endl;
+            system("pause");
+            continue;
+        }
 
         fechaNacimiento = Fecha(dia, mes, anio);
         if(!fechaNacimiento.esValida())
@@ -839,7 +868,8 @@ bool Cliente::modificarCliente(Cliente &cliente)
                             cout << "Error: La altura debe ser un numero positivo." << endl;
                             system("pause");
                         }
-                        else{
+                        else
+                        {
                             break;
                         }
 
@@ -913,10 +943,46 @@ bool Cliente::modificarCliente(Cliente &cliente)
                     cout << "Ingrese nueva fecha de nacimiento:" << endl;
                     cout << "Dia: ";
                     cin >> dia;
+                    
+                    if(cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Debe ingresar un numero valido para el dia." << endl;
+                        system("pause");
+                        continue;
+                    }
+                    
                     cout << "Mes: ";
                     cin >> mes;
+                    
+                    if(cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Debe ingresar un numero valido para el mes." << endl;
+                        system("pause");
+                        continue;
+                    }
+                    
                     cout << "Anio: ";
                     cin >> anio;
+                    
+                    if(cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        system("cls");
+                        menu.mostrarLogo();
+                        cout << "Error: Debe ingresar un numero valido para el anio." << endl;
+                        system("pause");
+                        continue;
+                    }
+                    
                     Fecha nuevaFechaNacimiento(dia, mes, anio);
                     if(!nuevaFechaNacimiento.esValida())
                     {
